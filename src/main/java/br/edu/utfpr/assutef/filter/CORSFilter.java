@@ -19,7 +19,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
  	<!-- Add this to your web.xml to enable "CORS" -->
 	<filter>
 	  <filter-name>cors</filter-name>
-	  <filter-class>br.edu.utfpr.springaula5.filter.CORSFilter</filter-class>
+	  <filter-class>br.edu.utfpr.springassutef.filter.CORSFilter</filter-class>
 	</filter>
 	  
 	<filter-mapping>

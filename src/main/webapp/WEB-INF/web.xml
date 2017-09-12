@@ -2,10 +2,10 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
-  <display-name>teste_aula5</display-name>
+  <display-name>teste_assutef</display-name>
   	<filter>
 	  <filter-name>cors</filter-name>
-	  <filter-class>br.edu.utfpr.aula5.filter.CORSFilter</filter-class>
+	  <filter-class>br.edu.utfpr.assutef.filter.CORSFilter</filter-class>
 	</filter>
 	  
 	<filter-mapping>
