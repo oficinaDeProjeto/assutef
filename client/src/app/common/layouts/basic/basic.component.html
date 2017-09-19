@@ -1,0 +1,19 @@
+<div fxLayout="column" fxFlex [class.dark-theme]="isDarkTheme">
+
+	<md-toolbar color="primary">
+		<span>Site pesquisa</span>
+		<span fxFlex></span>
+		<button md-icon-button [mdMenuTriggerFor]="themeMenu">
+			<md-icon>more_vert</md-icon>
+		</button>
+
+	</md-toolbar>
+	<div>
+		<router-outlet></router-outlet>
+	</div>
+	<md-menu #themeMenu x-position="before">
+		<button md-menu-item (click)="isDarkTheme = !isDarkTheme">Mude o tema</button>
+		<button md-menu-item (click)="isDarkTheme = !isDarkTheme">Acesso administrativo</button>
+		<button md-menu-item (click)="isDarkTheme = !isDarkTheme">Anúncie com a gente</button>
+	</md-menu>
+</div>
