@@ -1,5 +1,4 @@
 import { AuthService } from './service/auth/auth.service';
-import { AdminComponent } from './views/admin/admin.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -21,6 +20,7 @@ import { BlankComponent } from './common/layouts/blank/blank.component';
 import { BasicComponent } from './common/layouts/basic/basic.component';
 import { HomeComponent } from './views/home/home.component';
 import { LoginComponent } from './views/login/login.component';
+import { UserComponent } from './views/user/user.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,7 @@ import { LoginComponent } from './views/login/login.component';
     BasicComponent,
     HomeComponent,
     LoginComponent,
-    AdminComponent
+    UserComponent
   ],
   imports: [
     BrowserModule,

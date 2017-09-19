@@ -1,15 +1,14 @@
-import { DialogComponent } from './../../dialog/dialog.component';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MdIconRegistry, MdDialog } from '@angular/material';
 import { Component, OnInit } from '@angular/core';
+import { DialogComponent } from "app/dialog/dialog.component";
 
 @Component({
-	selector: 'app-admin',
-	templateUrl: './admin.component.html',
-	styleUrls: ['./admin.component.css']
+	selector: 'app-user',
+	templateUrl: './user.component.html',
+	styleUrls: ['./user.component.css']
 })
-export class AdminComponent implements OnInit {
-
+export class UserComponent implements OnInit {
 
 	ngOnInit() {
 	}

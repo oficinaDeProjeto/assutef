@@ -2,7 +2,7 @@
 	<md-sidenav mode="side" opened>
 
 		<md-tab-group>
-			<md-tab label="Proficionais">
+			<md-tab label="Usuários">
 				<md-nav-list>
 					<md-list-item *ngFor="let user of users" (click)="selectedUser = user">
 						<md-icon svgIcon="avatars:{{user.avatar}}" class="avatar"></md-icon>
@@ -10,8 +10,8 @@
 					</md-list-item>
 				</md-nav-list>
 			</md-tab>
-			<md-tab label="Ramos de atividade">
-				<span>Ramos de atividade</span>
+			<md-tab label="Configurações">
+				<span>Configurações</span>
 			</md-tab>
 		</md-tab-group>
 
