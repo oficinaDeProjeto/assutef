@@ -8,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./basic.component.css']
 })
 export class BasicComponent implements OnInit {
-	isDarkTheme = false;
 	public currentUser: User;
-	constructor(private router: Router) { }
-
+	menuItens = [
+		{ link: "user", icon: "supervisor_account", desc: "Usuários" },
+		{ link: "home", icon: "supervisor_account", desc: "Dashboars" },
+		{ link: "home", icon: "supervisor_account", desc: "Relatórios" },
+		{ link: "home", icon: "supervisor_account", desc: "Chequinhos" },
+		{ link: "home", icon: "supervisor_account", desc: "Teste" },
+	];
 	ngOnInit() {
 		let localUser = JSON.parse(localStorage.getItem('currentUser'));
 		if (localUser) {
@@ -19,6 +23,14 @@ export class BasicComponent implements OnInit {
 		} else {
 			this.router.navigate(['/login']);
 		}
-
 	}
+
+
+	constructor(private router: Router) {
+	}
+
+	activeRoute(routename: string): boolean {
+		return this.router.url.indexOf(routename) > -1;
+	}
+
 }

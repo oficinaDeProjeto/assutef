@@ -1,6 +1,6 @@
+import { UserComponent } from './views/user/user.component';
 import { BlankComponent } from './common/layouts/blank/blank.component';
 import { LoginComponent } from './views/login/login.component';
-import { AdminComponent } from './views/admin/admin.component';
 import { HomeComponent } from './views/home/home.component';
 import { BasicComponent } from './common/layouts/basic/basic.component';
 import { Routes } from "@angular/router";
@@ -15,7 +15,7 @@ export const ROUTES: Routes = [
 		path: '', component: BasicComponent,
 		children: [
 			{ path: 'home', component: HomeComponent },
-			{ path: 'admin', component: AdminComponent }
+			{ path: 'user', component: UserComponent }
 		]
 	},
 	{
@@ -25,5 +25,5 @@ export const ROUTES: Routes = [
 		]
 	},
 
-	{ path: '**', component: HomeComponent }
+	{ path: '**', component: LoginComponent }
 ];
