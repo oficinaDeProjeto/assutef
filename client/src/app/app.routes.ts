@@ -1,3 +1,4 @@
+import { CategoriaComponent } from './views/categoria/categoria.component';
 import { UserComponent } from './views/user/user.component';
 import { BlankComponent } from './common/layouts/blank/blank.component';
 import { LoginComponent } from './views/login/login.component';
@@ -15,7 +16,8 @@ export const ROUTES: Routes = [
 		path: '', component: BasicComponent,
 		children: [
 			{ path: 'home', component: HomeComponent },
-			{ path: 'user', component: UserComponent }
+			{ path: 'user', component: UserComponent },
+			{path:'categoria', component: CategoriaComponent}
 		]
 	},
 	{

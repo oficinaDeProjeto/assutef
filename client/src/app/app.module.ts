@@ -21,6 +21,7 @@ import { BasicComponent } from './common/layouts/basic/basic.component';
 import { HomeComponent } from './views/home/home.component';
 import { LoginComponent } from './views/login/login.component';
 import { UserComponent } from './views/user/user.component';
+import { CategoriaComponent } from './views/categoria/categoria.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { UserComponent } from './views/user/user.component';
     BasicComponent,
     HomeComponent,
     LoginComponent,
-    UserComponent
+    UserComponent,
+    CategoriaComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,12 @@
+<h3>Manutenção de categoria</h3>
+<form #form="ngForm" ngNativeValidate>
+    <md-input-container>
+      <input mdInput placeholder="Categoria" [(ngModel)]="categoria.descricao"
+       #decricao="ngModel" required name="decricao">
+    </md-input-container>
+  </div>
+  <md-dialog-actions align="end">
+    <button md-button type="button" (click)="dialogRef.close()">Cancel</button>
+    <button md-button color="accent" (click)="save()">Salvar</button>
+  </md-dialog-actions>
+</form>

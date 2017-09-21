@@ -26,14 +26,10 @@ module.exports.policies = {
   *                                                                          *
   ***************************************************************************/
 
-  '*': true,
-  ImobiliariaController : ["isAuthorized", "isAdmin"], 
-  UserController : ["isAuthorized"], 
-  UserController: {
-		create: true,
-    read: ["isAuthorized"], 
-    delete: ["isAuthorized", "isAdmin"],
-	},
+  '*': ["isAuthorized", "isAdmin"],
+  UserController : ["isAuthorized", "isAdmin"], 
+  AuthController: true
+  
 
   /***************************************************************************
   *                                                                          *
