@@ -1,0 +1,25 @@
+<md-sidenav-container fxFlex>
+	<md-sidenav mode="side" opened>
+
+		<md-tab-group>
+			<md-tab label="Categoria">
+				<md-nav-list>
+					<md-list-item *ngFor="let categoria of catagoria" 
+          (click)="selectedCategoria = categoria">
+						<span>{{categoria.descricao}}</span>
+					</md-list-item>
+				</md-nav-list>
+			</md-tab>
+		</md-tab-group>
+
+	</md-sidenav>
+	<div class="content" fxLayout="row" fxLayout.sm="column">
+		<md-card fxFlex>
+			<h2>{{selectedCategoria.descricao}}</h2>
+		</md-card>
+	</div>
+</md-sidenav-container>
+
+<button md-fab (click)="openDialog()" class="fab-bottom-right">
+	<md-icon>add</md-icon>
+</button>

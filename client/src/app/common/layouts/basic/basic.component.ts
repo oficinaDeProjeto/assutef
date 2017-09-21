@@ -12,7 +12,7 @@ export class BasicComponent implements OnInit {
 	menuItens = [
 		{ link: "user", icon: "supervisor_account", desc: "Usuários" },
 		{ link: "home", icon: "supervisor_account", desc: "Dashboars" },
-		{ link: "home", icon: "supervisor_account", desc: "Relatórios" },
+		{ link: "categoria", icon: "assignment_turned_in", desc: "Categoria" },
 		{ link: "home", icon: "supervisor_account", desc: "Chequinhos" },
 		{ link: "home", icon: "supervisor_account", desc: "Teste" },
 	];
