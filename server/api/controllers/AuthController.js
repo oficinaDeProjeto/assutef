@@ -6,33 +6,56 @@
  */
 
 module.exports = {
-  index: function(req, res) {
-    var email = req.param("email");
-    var password = req.param("password");
+	index: function (req, res) {
+		var email = req.param("email");
+		var password = req.param("password");
 
-    if (!email || !password) {
-      return res.json(401, { err: "email and password required" });
-    }
+		if (!email || !password) {
+			return res.json(401, { err: "E-mail e senha são necessários" });
+		}
 
-    User.findOne({ email: email }, function(err, user) {
-      if (!user) {
-        return res.json(401, { err: "invalid email!" });
-      }
+		User.findOne({ email: email }).then(function (user) {
+			User.comparePassword(password, user, function (err, valid) {
+				if (err) {
+					return res.json(403, { err: "forbidden" });
+				}
 
-      User.comparePassword(password, user, function(err, valid) {
-        if (err) {
-          return res.json(403, { err: "forbidden" });
-        }
+				if (!valid) {
+					return res.json(401, { err: "E-mail ou senha inválidos" });
+				} else {
+					res.json({
+						token: jwToken.issue({ id: user.id })
+					});
+				}
+			})
+		}).catch(function (err) {
+			return res.json(401, { err: "E-mail ou senha inválidos!" });
+		})
+	},
+	getUserLogged: function (req, res) {
+		var token, idUser;
 
-        if (!valid) {
-          return res.json(401, { err: "invalid password" });
-        } else {
-          res.json({
-            user: user,
-            token: jwToken.issue({ id: user.id })
-          });
-        }
-      });
-    });
-  }
+		if (req.headers && req.headers.authorization) {
+			var parts = req.headers.authorization.split(" ");
+			var scheme = parts[0],
+				credentials = parts[1];
+
+			if (/^Bearer$/i.test(scheme)) {
+				token = credentials;
+			}
+		}
+		idUser = jwToken.getIdUserByToken(token);
+		return new Promise(function (resolve, reject) {
+			var result = false;
+			User.findOne({ id: idUser }).then(function (user) {
+				if (!user) {
+					return res.json(404, { err: "Usuário não encontrado" });
+				} else {
+					return res.json(user);
+				}
+			}).catch(function (err) {
+				return res.json(404, { err: "Usuário não encontrado" });
+			});
+		});
+	}
 };

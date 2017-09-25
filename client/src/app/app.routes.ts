@@ -17,7 +17,7 @@ export const ROUTES: Routes = [
 		children: [
 			{ path: 'home', component: HomeComponent },
 			{ path: 'user', component: UserComponent },
-			{path:'categoria', component: CategoriaComponent}
+			{ path:'categoria', component: CategoriaComponent }
 		]
 	},
 	{
