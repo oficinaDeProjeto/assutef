@@ -68,5 +68,16 @@ export class GenericService extends SuperService {
 			return super.extractData(res);
 		}).catch(super.handleError);
 	}
+	
+	/**
+	 * Exclui um objeto de acordo com a tabela e o id passados por parametro.
+	 * @param table 
+	 * @param id 
+	 */
+	public delete(table: string, id: number): Observable<Object> {
+		return this.http.delete(this.apiUrl + '/' + id).map(res => {
+			return super.extractData(res);
+		}).catch(super.handleError);
+	}
 
 }
