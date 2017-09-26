@@ -11,8 +11,8 @@
 var fs = require('fs');
 module.exports.bootstrap = function (next) {
 	// Em caso de implantação.
-	createAdminUser();
-	createPaisEstadoCidade();
+	//createAdminUser();
+	//createPaisEstadoCidade();
 	next();
 };
 
