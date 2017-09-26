@@ -32,9 +32,8 @@ module.exports = {
 			return res.json(401, { err: "E-mail ou senha inválidos!" });
 		})
 	},
-	getUserLogged: function (req, res) {
+	getuserbytoken: function (req, res) {
 		var token, idUser;
-
 		if (req.headers && req.headers.authorization) {
 			var parts = req.headers.authorization.split(" ");
 			var scheme = parts[0],
@@ -45,17 +44,14 @@ module.exports = {
 			}
 		}
 		idUser = jwToken.getIdUserByToken(token);
-		return new Promise(function (resolve, reject) {
-			var result = false;
-			User.findOne({ id: idUser }).then(function (user) {
-				if (!user) {
-					return res.json(404, { err: "Usuário não encontrado" });
-				} else {
-					return res.json(user);
-				}
-			}).catch(function (err) {
-				return res.json(404, { err: "Usuário não encontrado" });
-			});
+		User.findOne({ id: idUser }).then(function (user) {
+			if (!user) {
+				return res.json(401, { err: "Usuário não encontrado!" });
+			} else {
+				return res.json(user);
+			}
+		}).catch(function(err){
+			return res.json(403, { err: err });
 		});
 	}
 };

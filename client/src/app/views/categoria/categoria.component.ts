@@ -1,6 +1,9 @@
+import { AuthService } from 'app/service/auth/auth.service';
+import { Router } from '@angular/router';
 import { MdDialog, MD_DIALOG_DATA, MdSnackBar, MdDialogRef } from '@angular/material';
 import { Categoria } from './../../models/categoria';
 import { Component, OnInit, Inject } from '@angular/core';
+import { GenericService } from "app/service/generic/generic.service";
 
 @Component({
 	selector: 'app-categoria',
@@ -8,48 +11,39 @@ import { Component, OnInit, Inject } from '@angular/core';
 	styleUrls: ['./categoria.component.css']
 })
 export class CategoriaComponent implements OnInit {
-	
+
 	categoria: Categoria = new Categoria();
 	categorias: Categoria[] = [];
 	selectedCategoria: Categoria = new Categoria;
 
-	constructor(private dialog: MdDialog) { }
+	constructor(private genercService: GenericService, private router: Router, private authService: AuthService) {
+	}
 
 	ngOnInit() {
+		this.getAll();
 	}
 
-	openDialog(categoria: Categoria) {
-		categoria = categoria || new Categoria();
-		
-		const dialogRef = this.dialog.open(CategoriaDialogContent, {
-			data: categoria
+
+	getAll() {
+		this.genercService.getAll('categoria').subscribe(categorias => {
+			this.categorias = <Categoria[]>categorias;
+		}, err => {
+			console.log(err);
 		});
 	}
 
-}
-
-/**
- * Componente de dialog.
- */
-@Component({
-	selector: 'dialog-content',
-	templateUrl: './categoriadialog.component.html',
-	styleUrls: ['./categoriadialog.component.css']
-})
-export class CategoriaDialogContent {
-	
-	constructor( 
-		@Inject(MD_DIALOG_DATA) public categoria: Categoria,
-		public dialogRef: MdDialogRef<CategoriaDialogContent>
-	) { }
-
-
-
-	/*openSnackBar(message: string, action: string) {
-		this.snackBar.open(message, action, {
-			duration: 4000
+	salvarCategoria(categoria: Categoria) {
+		this.genercService.save('categoria', categoria).subscribe(categoria => {
+			console.log('Salvo com sucesso');
+			this.getAll();
+		}, err => {
+			console.log(err);
 		});
-	}*/
+	}
+
+	newCategoria() {
+		this.selectedCategoria = new Categoria();
+	}
+
 
 }
-
