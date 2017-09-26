@@ -23,6 +23,7 @@ import { HomeComponent } from './views/home/home.component';
 import { LoginComponent } from './views/login/login.component';
 import { UserComponent } from './views/user/user.component';
 import { CategoriaComponent } from './views/categoria/categoria.component';
+import { ChequinhoComponent } from './views/chequinho/chequinho.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { CategoriaComponent } from './views/categoria/categoria.component';
     HomeComponent,
     LoginComponent,
     UserComponent,
-    CategoriaComponent
+    CategoriaComponent,
+    ChequinhoComponent
   ],
   imports: [
     BrowserModule,

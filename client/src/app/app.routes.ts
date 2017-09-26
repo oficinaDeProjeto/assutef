@@ -1,3 +1,4 @@
+import { ChequinhoComponent } from './views/chequinho/chequinho.component';
 import { CategoriaComponent } from './views/categoria/categoria.component';
 import { UserComponent } from './views/user/user.component';
 import { BlankComponent } from './common/layouts/blank/blank.component';
@@ -17,7 +18,8 @@ export const ROUTES: Routes = [
 		children: [
 			{ path: 'home', component: HomeComponent },
 			{ path: 'user', component: UserComponent },
-			{ path:'categoria', component: CategoriaComponent }
+			{ path: 'categoria', component: CategoriaComponent },
+			{ path: 'chequinho', component: ChequinhoComponent }
 		]
 	},
 	{

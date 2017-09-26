@@ -16,7 +16,11 @@ export class CategoriaComponent implements OnInit {
 	categorias: Categoria[] = [];
 	selectedCategoria: Categoria = new Categoria;
 
-	constructor(private genercService: GenericService, private router: Router, private authService: AuthService) {
+	constructor(
+		private genercService: GenericService,
+		private router: Router,
+		private authService: AuthService
+	) {
 	}
 
 	ngOnInit() {
