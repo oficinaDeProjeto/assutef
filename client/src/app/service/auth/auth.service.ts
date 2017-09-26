@@ -1,3 +1,4 @@
+import { User } from './../../models/user';
 import { SuperService } from './../super.service';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
@@ -13,8 +14,7 @@ export class AuthService extends SuperService {
 
 	constructor(private http: Http) {
 		super();
-		var currentUser = JSON.parse(localStorage.getItem('currentUser'));
-		this.token = currentUser && currentUser.token;
+		var token = localStorage.getItem('token');
 	}
 
 	public login(email: string, password: string): Observable<boolean> {
@@ -24,25 +24,23 @@ export class AuthService extends SuperService {
 				let user = response.json() && response.json().user;
 				if (token) {
 					this.token = token;
-					console.log(token);
-					localStorage.setItem('currentUser', JSON.stringify({ user: user, token: token }));
+					localStorage.setItem('token', token);
 					return true;
 				} else {
-					return false;	
+					return false;
 				}
-			});
+			}).catch( super.handleError);
 	}
 
 	public logout(): void {
 		this.token = null;
-		localStorage.removeItem('currentUser');
+		localStorage.removeItem('token');
 	}
 
-	public isLoggedIn(): boolean {
-		return true;
-	}
 
-	public isLoggedInFalse(): boolean {
-		return false;
+	public getUserByToken(): Observable<User> {
+		return this.http.get(this.apiUrl+'auth/getuserbytoken').map((response: Response) => {
+			return response;
+		}).catch(super.handleError);
 	}
 }

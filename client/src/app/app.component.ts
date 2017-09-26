@@ -4,7 +4,6 @@ import {DomSanitizer} from '@angular/platform-browser';
 
 import 'rxjs/add/operator/filter';
 
-import {DialogComponent} from './dialog/dialog.component';
 
 @Component({
   selector: 'app-root',

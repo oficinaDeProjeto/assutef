@@ -1,7 +1,6 @@
 import { DomSanitizer } from '@angular/platform-browser';
 import { MdIconRegistry, MdDialog } from '@angular/material';
 import { Component, OnInit } from '@angular/core';
-import { DialogComponent } from "app/dialog/dialog.component";
 
 @Component({
 	selector: 'app-user',
@@ -85,12 +84,5 @@ export class UserComponent implements OnInit {
 		iconRegistry.addSvgIconSetInNamespace('avatars', avatarsSafeUrl);
 	}
 
-	openAdminDialog() {
-		this.dialog.open(DialogComponent).afterClosed()
-			.filter(result => !!result)
-			.subscribe(user => {
-				this.users.push(user);
-				this.selectedUser = user;
-			});
-	}
+	
 }

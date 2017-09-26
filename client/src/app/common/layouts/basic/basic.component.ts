@@ -1,6 +1,7 @@
 import { Router } from '@angular/router';
-import { User } from './../../../models/user';
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from "app/service/auth/auth.service";
+import { User } from "app/models/user";
 
 @Component({
 	selector: 'app-basic',
@@ -16,18 +17,18 @@ export class BasicComponent implements OnInit {
 		{ link: "home", icon: "supervisor_account", desc: "Chequinhos" },
 		{ link: "home", icon: "supervisor_account", desc: "Teste" },
 	];
+	constructor(private router: Router, private authService: AuthService) {
+	}
+	
 	ngOnInit() {
-		let localUser = JSON.parse(localStorage.getItem('currentUser'));
-		if (localUser) {
-			this.currentUser = JSON.parse(localStorage.getItem('currentUser')).user;
-		} else {
+		this.authService.getUserByToken().subscribe(user => {
+			this.currentUser = <User>user; 
+		}, err => {
 			this.router.navigate(['/login']);
-		}
+		})
 	}
 
 
-	constructor(private router: Router) {
-	}
 
 	activeRoute(routename: string): boolean {
 		return this.router.url.indexOf(routename) > -1;
