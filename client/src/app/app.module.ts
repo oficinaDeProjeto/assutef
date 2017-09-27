@@ -1,29 +1,27 @@
-import { GenericService } from './service/generic/generic.service';
-import { HttpInterceptorService } from './service/http-interceptor.service';
-import { AuthService } from './service/auth/auth.service';
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule, Http } from '@angular/http';
-import { RouterModule } from "@angular/router";
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { ROUTES } from "./app.routes";
-
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from '@angular/material';
-import { FlexLayoutModule } from '@angular/flex-layout';
-
-import { AppComponent } from './app.component';
-
 import 'hammerjs';
-import { BlankComponent } from './common/layouts/blank/blank.component';
+import { AppComponent } from './app.component';
+import { AuthService } from './service/auth/auth.service';
 import { BasicComponent } from './common/layouts/basic/basic.component';
-import { HomeComponent } from './views/home/home.component';
-import { LoginComponent } from './views/login/login.component';
-import { UserComponent } from './views/user/user.component';
+import { BlankComponent } from './common/layouts/blank/blank.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
 import { CategoriaComponent } from './views/categoria/categoria.component';
 import { ChequinhoComponent } from './views/chequinho/chequinho.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { GenericService } from './service/generic/generic.service';
+import { HomeComponent } from './views/home/home.component';
+import { HttpInterceptorService } from './service/http-interceptor.service';
+import { HttpModule, Http } from '@angular/http';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { LoginComponent } from './views/login/login.component';
+import { MaterialModule } from '@angular/material';
+import { ModalComponent } from './views/categoria/modal/modal.component';
+import { NgModule } from '@angular/core';
+import { RouterModule } from "@angular/router";
+import { ROUTES } from "./app.routes";
+import { UserComponent } from './views/user/user.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +32,8 @@ import { ChequinhoComponent } from './views/chequinho/chequinho.component';
     LoginComponent,
     UserComponent,
     CategoriaComponent,
-    ChequinhoComponent
+    ChequinhoComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +51,7 @@ import { ChequinhoComponent } from './views/chequinho/chequinho.component';
     AuthService,
     GenericService
   ],
+  entryComponents: [ModalComponent],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

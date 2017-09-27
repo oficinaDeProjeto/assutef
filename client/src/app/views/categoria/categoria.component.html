@@ -1,39 +1,25 @@
-<md-sidenav-container fxFlex>
-	<md-sidenav mode="side" opened>
+<div class="content" fxFlex fxLayout="row" fxLayoutAlign="space-around center">
+	<md-card>
+		<md-card-header>
+			<md-card-title>Categoria</md-card-title>
+			<md-card-subtitle>Lista de categorias cadastradas</md-card-subtitle>
+			<md-input-container>
+				<input mdInput [(ngModel)]="query" name="query" placeholder="Pesquise por categoria" (input)="filterCategoria(query)">
+			</md-input-container>
+		</md-card-header>
+		<md-card-content>
+			<md-list>
+				<h3 md-subheader>Categoria</h3>
+				<md-list-item *ngFor="let categoria of filteredCategorias" (click)="openDialog(categoria)">
+					<md-icon md-list-icon>folder</md-icon>
+					<h4 md-line>{{categoria.descricao}}</h4>
+					<p md-line> outra coisa... sei lá </p>
+				</md-list-item>
+			</md-list>
+		</md-card-content>
+	</md-card>
+</div>
 
-		<md-tab-group>
-			<md-tab label="Categoria">
-				<md-nav-list>
-					<md-list-item *ngFor="let categoria of categorias" (click)="selectedCategoria = categoria">
-						<span>{{categoria.descricao}}</span>
-					</md-list-item>
-				</md-nav-list>
-			</md-tab>
-		</md-tab-group>
-
-	</md-sidenav>
-	<div class="content" fxLayout="row" fxLayoutAlign="space-around center">
-		<md-card>
-			<md-card-header>
-				<md-card-title>Categoria</md-card-title>
-				<md-card-subtitle>Dados para cadastro de categorias</md-card-subtitle>
-			</md-card-header>
-			<md-card-content>
-				<form class="formRamoAtividade">
-					<md-form-field>
-						<input mdInput placeholder="Descrição" [(ngModel)]="selectedCategoria.descricao" 
-						#nome="ngModel" required name="descricao">
-					</md-form-field>
-				</form>
-			</md-card-content>
-			<md-card-actions>
-				<button md-button (click)="newCategoria()">CANCELAR</button>
-				<button md-button (click)="salvarCategoria(selectedCategoria)">SALVAR</button>
-			</md-card-actions>
-		</md-card>
-	</div>
-</md-sidenav-container>
-
-<button md-fab (click)="newCategoria()" class="fab-bottom-right">
+<button md-fab (click)="openDialog()" class="fab-bottom-right">
 	<md-icon>add</md-icon>
 </button>
