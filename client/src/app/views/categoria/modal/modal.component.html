@@ -1,0 +1,15 @@
+<md-card>
+	<md-card-header>
+		<md-card-title>Categoria</md-card-title>
+		<md-card-subtitle>Informe os dados para cadstro de categoria</md-card-subtitle>
+	</md-card-header>
+	<md-card-content>
+		<md-form-field>
+			<input mdInput placeholder="Descrição" [(ngModel)]="categoria.descricao" #nome="ngModel" required name="descricao">
+		</md-form-field>
+	</md-card-content>
+	<md-card-actions>
+		<button type="button" md-raised-button [md-dialog-close]="categoria">SALVAR</button>
+		<button type="button" md-button (click)="dialogRef.close()">CANCELAR</button>
+	</md-card-actions>
+</md-card>
