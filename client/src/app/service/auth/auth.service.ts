@@ -1,9 +1,9 @@
-import { User } from './../../models/user';
+import { User } from 'app/models/user';
 import { SuperService } from './../super.service';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
-import { environment } from './../../../environments/environment.prod';
+import { environment } from 'app/../environments/environment.prod';
 import 'rxjs/add/operator/map'
 
 @Injectable()

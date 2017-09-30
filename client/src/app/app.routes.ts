@@ -1,3 +1,4 @@
+import { AssociadoComponent } from './views/associado/associado/associado.component';
 import { ChequinhoComponent } from './views/chequinho/chequinho.component';
 import { CategoriaComponent } from './views/categoria/categoria.component';
 import { UserComponent } from './views/user/user.component';
@@ -19,7 +20,8 @@ export const ROUTES: Routes = [
 			{ path: 'home', component: HomeComponent },
 			{ path: 'user', component: UserComponent },
 			{ path: 'categoria', component: CategoriaComponent },
-			{ path: 'chequinho', component: ChequinhoComponent }
+			{ path: 'chequinho', component: ChequinhoComponent },
+			{ path: 'associado', component: AssociadoComponent }
 		]
 	},
 	{

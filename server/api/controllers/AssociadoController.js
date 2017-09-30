@@ -1,7 +1,7 @@
 /**
- * ProficionalController
+ * AssociadoController
  *
- * @description :: Server-side logic for managing proficionals
+ * @description :: Server-side logic for managing associadoes
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 

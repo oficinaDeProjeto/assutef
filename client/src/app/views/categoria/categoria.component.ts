@@ -1,8 +1,8 @@
-import { ModalComponent } from './modal/modal.component';
+import { ModalCategoriaComponent } from './modal/modal-categoria.component';
 import { AuthService } from 'app/service/auth/auth.service';
 import { Router } from '@angular/router';
 import { MdDialog, MD_DIALOG_DATA, MdSnackBar, MdDialogRef } from '@angular/material';
-import { Categoria } from './../../models/categoria';
+import { Categoria } from 'app/models/categoria';
 import { Component, OnInit, Inject } from '@angular/core';
 import { GenericService } from "app/service/generic/generic.service";
 
@@ -68,7 +68,7 @@ export class CategoriaComponent implements OnInit {
 	}
 
 	openDialog(categoria: Categoria): void {
-		let dialogRef = this.dialog.open(ModalComponent, {
+		let dialogRef = this.dialog.open(ModalCategoriaComponent, {
 			data: categoria
 		});
 
