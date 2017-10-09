@@ -1,7 +1,45 @@
-<p>
-  chequinho works!
-</p>
-
-<div *ngFor="let chequinho of chequinhos" >
-    {{chequinho.descricao}}
+<div class="content" fxFlex fxLayout="grid" fxLayoutAlign="space-around ">			
+	<md-card>    
+		<md-card-header>
+			<md-card-title>Chequinhos</md-card-title>
+			<md-card-subtitle></md-card-subtitle>			
+		</md-card-header>		
+		<md-card-content>		
+			<md-input-container>
+				<input mdInput placeholder="Número">
+			</md-input-container>														
+			<md-input-container>				
+					<input type="number" mdInput placeholder="Limite R$">
+				</md-input-container>										
+			<md-input-container>
+					<input type="number" mdInput placeholder="Valor utilizado R$">
+				</md-input-container>						
+				<p></p>
+			<md-input-container>
+					<input  mdInput placeholder="Valor por extenso">
+			</md-input-container>	
+			<p></p>
+			<label>_________________________ de ________________ de ______________</label>
+			<p></p>
+			<label>Valido com identificação pessoal com foto</label>
+			<p></p>
+			<md-input-container>
+				<input mdInput placeholder="Código" width="1px" disabled>
+			</md-input-container>
+			<md-input-container>	
+				<input mdInput placeholder="CPF" type="number">
+			</md-input-container>
+			<md-input-container>
+				<input mdInput placeholder="Associado" type="text">
+			</md-input-container>
+			<p></p>
+			<label>______________________________________________________</label>
+			<p></p>
+			<label>Assinatura do associado</label>
+		</md-card-content>
+	</md-card>
 </div>
+
+<button md-fab (click)="openDialog()" class="fab-bottom-right">
+	<md-icon>add</md-icon>
+</button>
