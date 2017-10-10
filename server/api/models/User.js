@@ -33,8 +33,7 @@ module.exports = {
 			required: "true",
 		},
 		avatar: {
-			model:'foto',
-			unique: true
+			type: 'string'
 		},
 		
 		// Para não enviar uma senha criptografada
