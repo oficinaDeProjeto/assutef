@@ -6,6 +6,25 @@
     width: 600px;
 }
 
-#associado{
+#cmbAssociado{
     width: 350px;
+}
+
+#lblData{
+    margin-left: 33%;
+}
+
+
+#lblIdent{
+    margin-left: 45%;
+}
+
+#linh,#assinatura{
+    margin-left: 45%;
+}
+
+#barCode{
+    border: 1px solid black;
+    height: 50px;
+    width: 200px;        
 }

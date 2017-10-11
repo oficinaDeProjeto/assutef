@@ -1,0 +1,2 @@
+"$basedir/../jsbarcode/bin/barcodes/EAN_UPC/EAN8.js"   "$@"
+exit $?

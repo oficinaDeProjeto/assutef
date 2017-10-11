@@ -23,6 +23,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from "@angular/router";
 import { ROUTES } from "./app.routes";
 import { UserComponent } from './views/user/user.component';
+import { NgxBarcodeModule } from 'ngx-barcode';
+
 import { AssociadoComponent } from './views/associado/associado/associado.component';
 
 @NgModule({
@@ -43,8 +45,9 @@ import { AssociadoComponent } from './views/associado/associado/associado.compon
 		BrowserModule,
 		FormsModule,
 		HttpModule,
-		MaterialModule,
+		MaterialModule,	
 		FlexLayoutModule,
+		NgxBarcodeModule,
 		BrowserAnimationsModule,
 		RouterModule.forRoot(ROUTES),
 		ReactiveFormsModule,

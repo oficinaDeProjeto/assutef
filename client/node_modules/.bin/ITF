@@ -1,0 +1,2 @@
+"$basedir/../jsbarcode/bin/barcodes/ITF"   "$@"
+exit $?
