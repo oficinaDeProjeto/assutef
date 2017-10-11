@@ -18,6 +18,7 @@ export class UserComponent implements OnInit {
 	usuarios : User[] = [];
 	filteredUsuarios: User[] = [];
 	selectedUser = new User();
+	
 
 	ngOnInit() {
 		this.getAll();
@@ -45,7 +46,6 @@ export class UserComponent implements OnInit {
 	) {
 		// To avoid XSS attacks, the URL needs to be trusted from inside of your application.
 		const avatarsSafeUrl = sanitizer.bypassSecurityTrustResourceUrl('./assets/avatars.svg');
-
 		iconRegistry.addSvgIconSetInNamespace('avatars', avatarsSafeUrl);
 	}
 
