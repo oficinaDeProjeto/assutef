@@ -23,6 +23,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from "@angular/router";
 import { ROUTES } from "./app.routes";
 import { UserComponent } from './views/user/user.component';
+import { NgxBarcodeModule } from 'ngx-barcode';
+
 import { AssociadoComponent } from './views/associado/associado/associado.component';
 import { ModalUserComponent } from './views/user/modal/modal-user/modal-user.component';
 import { ConveniadoComponent } from './views/conveniado/conveniado.component';
@@ -53,8 +55,9 @@ import { ModalConveniadoComponent } from 'app/views/conveniado/modal/modal-conve
 		BrowserModule,
 		FormsModule,
 		HttpModule,
-		MaterialModule,
+		MaterialModule,	
 		FlexLayoutModule,
+		NgxBarcodeModule,
 		BrowserAnimationsModule,
 		RouterModule.forRoot(ROUTES),
 		ReactiveFormsModule,
