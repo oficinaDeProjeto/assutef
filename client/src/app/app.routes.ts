@@ -7,6 +7,8 @@ import { LoginComponent } from './views/login/login.component';
 import { HomeComponent } from './views/home/home.component';
 import { BasicComponent } from './common/layouts/basic/basic.component';
 import { Routes } from "@angular/router";
+import { ConveniadoComponent } from 'app/views/conveniado/conveniado.component';
+import { TipoconveniadoComponent } from 'app/views/tipoconveniado/tipoconveniado.component';
 
 
 export const ROUTES: Routes = [
@@ -21,7 +23,9 @@ export const ROUTES: Routes = [
 			{ path: 'user', component: UserComponent },
 			{ path: 'categoria', component: CategoriaComponent },
 			{ path: 'chequinho', component: ChequinhoComponent },
-			{ path: 'associado', component: AssociadoComponent }
+			{ path: 'associado', component: AssociadoComponent },
+			{ path: 'conveniado', component: ConveniadoComponent },
+			{ path: 'tipoconveniado', component: TipoconveniadoComponent }
 		]
 	},
 	{
