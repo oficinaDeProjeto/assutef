@@ -1,0 +1,25 @@
+<md-card>
+	<md-card-header>
+		<md-card-title>Usuário</md-card-title>
+		<md-card-subtitle>Informe os dados para cadastro de usuário</md-card-subtitle>
+	</md-card-header>
+	<md-card-content>
+		<md-form-field>
+			<input mdInput placeholder="Nome" [(ngModel)]="usuario.nome" #nome="ngModel" required name="nome">
+		</md-form-field>
+		<br />
+		<md-form-field>
+			<input mdInput placeholder="Email" [(ngModel)]="usuario.email" #nome="ngModel" required name="email">
+		</md-form-field>
+		<br />
+		<md-form-field>
+			<input type="password" mdInput placeholder="Senha" [(ngModel)]="usuario.senha" #nome="ngModel" required name="senha">
+		</md-form-field>
+		
+		
+	</md-card-content>
+	<md-card-actions>
+		<button type="button" md-raised-button [md-dialog-close]="usuario">SALVAR</button>
+		<button type="button" md-button (click)="dialogRef.close()">CANCELAR</button>
+	</md-card-actions>
+</md-card>

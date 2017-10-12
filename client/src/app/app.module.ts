@@ -26,6 +26,7 @@ import { UserComponent } from './views/user/user.component';
 import { NgxBarcodeModule } from 'ngx-barcode';
 
 import { AssociadoComponent } from './views/associado/associado/associado.component';
+import { ModalUserComponent } from './views/user/modal/modal-user/modal-user.component';
 
 @NgModule({
 	declarations: [
@@ -39,7 +40,8 @@ import { AssociadoComponent } from './views/associado/associado/associado.compon
 		ChequinhoComponent,
 		AssociadoComponent,
 		ModalCategoriaComponent,
-		ModalAssociadoComponent
+		ModalAssociadoComponent,
+		ModalUserComponent
 	],
 	imports: [
 		BrowserModule,
@@ -58,7 +60,7 @@ import { AssociadoComponent } from './views/associado/associado/associado.compon
 		AuthService,
 		GenericService
 	],
-	entryComponents: [ModalCategoriaComponent, ModalAssociadoComponent],
+	entryComponents: [ModalCategoriaComponent, ModalAssociadoComponent, ModalUserComponent],
 	bootstrap: [AppComponent],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

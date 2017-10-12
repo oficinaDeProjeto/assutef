@@ -4,7 +4,7 @@
 		<md-tab-group>
 			<md-tab label="Usuários">
 				<md-nav-list>
-					<md-list-item *ngFor="let user of users" (click)="selectedUser = user">
+					<md-list-item *ngFor="let user of usuarios" (click)="selectedUser = user">
 						<md-icon svgIcon="avatars:{{user.avatar}}" class="avatar"></md-icon>
 						<span>{{user.name}}</span>
 					</md-list-item>
@@ -32,6 +32,6 @@
 	</div>
 </md-sidenav-container>
 
-<button md-fab (click)="openAdminDialog()" class="fab-bottom-right">
+<button md-fab (click)="openNewUserDialog()" class="fab-bottom-right">
 	<md-icon>add</md-icon>
 </button>
