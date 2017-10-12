@@ -17,6 +17,8 @@ export class BasicComponent implements OnInit {
 		{ link: "chequinho", icon: "supervisor_account", desc: "Chequinhos" },
 		{ link: "home", icon: "supervisor_account", desc: "Teste" },
 		{ link: "associado", icon: "accessibility", desc: "Associado" },
+		{ link: "tipoconveniado", icon: "assignment_turned_in", desc: "Tipoconveniado" },
+		{ link: "conveniado", icon: "accessibility", desc: "Conveniado" },
 	];
 	constructor(private router: Router, private authService: AuthService) {
 	}

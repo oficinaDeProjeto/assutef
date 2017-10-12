@@ -27,6 +27,10 @@ import { NgxBarcodeModule } from 'ngx-barcode';
 
 import { AssociadoComponent } from './views/associado/associado/associado.component';
 import { ModalUserComponent } from './views/user/modal/modal-user/modal-user.component';
+import { ConveniadoComponent } from './views/conveniado/conveniado.component';
+import { TipoconveniadoComponent } from './views/tipoconveniado/tipoconveniado.component';
+import { ModalTipoconveniadoComponent } from 'app/views/tipoconveniado/modal/modal-tipoconveniado.component';
+import { ModalConveniadoComponent } from 'app/views/conveniado/modal/modal-conveniado.component';
 
 @NgModule({
 	declarations: [
@@ -41,7 +45,11 @@ import { ModalUserComponent } from './views/user/modal/modal-user/modal-user.com
 		AssociadoComponent,
 		ModalCategoriaComponent,
 		ModalAssociadoComponent,
-		ModalUserComponent
+		ModalUserComponent,
+		ConveniadoComponent,
+		TipoconveniadoComponent,
+		ModalTipoconveniadoComponent,
+		ModalConveniadoComponent
 	],
 	imports: [
 		BrowserModule,
@@ -60,7 +68,8 @@ import { ModalUserComponent } from './views/user/modal/modal-user/modal-user.com
 		AuthService,
 		GenericService
 	],
-	entryComponents: [ModalCategoriaComponent, ModalAssociadoComponent, ModalUserComponent],
+	entryComponents: [ModalCategoriaComponent, ModalAssociadoComponent, ModalUserComponent, 
+		ModalTipoconveniadoComponent, ModalConveniadoComponent],
 	bootstrap: [AppComponent],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
