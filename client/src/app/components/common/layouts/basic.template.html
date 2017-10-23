@@ -1,0 +1,23 @@
+<mat-sidenav-container>
+    <mat-sidenav #sidenav mode="side" class="main-menu">
+        <navigation></navigation>
+    </mat-sidenav>
+    <div class="my-content">
+        <mat-toolbar color="primary">
+            <button *ngIf="!sidenav.opened" mat-icon-button (click)="sidenav.open()">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <button *ngIf="sidenav.opened" mat-icon-button (click)="sidenav.close()">
+                <mat-icon>close</mat-icon>
+            </button>
+            <span>Assutef</span>
+            <ol class="breadcrumb">
+                <li *ngFor="let breadcrumb of breadcrumbs">
+                    <a [routerLink]="[breadcrumb.url, breadcrumb.params]">{{ breadcrumb.label }}</a>
+                </li>
+            </ol>
+            <span fxFlex></span>
+        </mat-toolbar>
+        <router-outlet></router-outlet>
+    </div>
+</mat-sidenav-container>

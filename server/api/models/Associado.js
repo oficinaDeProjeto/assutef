@@ -41,6 +41,10 @@ module.exports = {
 		},
 		endereco: {
 			model: 'endereco',
+		},
+		ativo:{
+			type:"boolean",
+			defaultsTo : true
 		}
 		//createdAt: 'date',
 		//updatedAt: 'date',

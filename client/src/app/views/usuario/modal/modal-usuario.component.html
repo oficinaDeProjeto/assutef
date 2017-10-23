@@ -1,0 +1,25 @@
+<mat-card>
+	<mat-card-header>
+		<mat-card-title>Usuário</mat-card-title>
+		<mat-card-subtitle>Informe os dados para cadastro de usuário</mat-card-subtitle>
+	</mat-card-header>
+	<mat-card-content>
+		<mat-form-field>
+			<input matInput placeholder="Nome" [(ngModel)]="usuario.nome" #nome="ngModel" required name="nome">
+		</mat-form-field>
+		<br />
+		<mat-form-field>
+			<input matInput placeholder="Email" [(ngModel)]="usuario.email" #nome="ngModel" required name="email">
+		</mat-form-field>
+		<br />
+		<mat-form-field>
+			<input type="password" matInput placeholder="Senha" [(ngModel)]="usuario.senha" #nome="ngModel" required name="senha">
+		</mat-form-field>
+		
+		
+	</mat-card-content>
+	<mat-card-actions>
+		<button type="button" mat-raised-button [mat-dialog-close]="usuario">SALVAR</button>
+		<button type="button" mat-button (click)="dialogRef.close()">CANCELAR</button>
+	</mat-card-actions>
+</mat-card>

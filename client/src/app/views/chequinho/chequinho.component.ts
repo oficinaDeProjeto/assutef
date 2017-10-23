@@ -1,8 +1,6 @@
-import { GenericService } from 'app/service/generic/generic.service';
+import { Chequinho } from './../../models/chequinho';
+import { GenericService } from './../../services/generic/generic.service';
 import { Component, OnInit } from '@angular/core';
-import { Chequinho } from "app/models/chequinho";
-
-
 
 @Component({
 	selector: 'app-chequinho',

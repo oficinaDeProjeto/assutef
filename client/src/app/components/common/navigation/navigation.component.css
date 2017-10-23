@@ -1,0 +1,124 @@
+.iconMenu {
+    color: rgb(173,173,173);
+}
+.textMenu {
+    color: rgb(173,173,173);
+}
+
+.iconMenu:hover {
+    color:rgb(255,255,255);
+}
+.textMenu:hover {
+    color:rgb(255,255,255);
+}
+
+/*.main-menu {
+    background-color: rgb(51,51,51);
+    color: rgb(173,173,173);
+}
+
+.main-menu-selcted {
+    background-color: rgb(37,37,38);
+    height: 100vh;
+    min-width: 180px;
+}*/
+/*
+.main-menu>ul {
+    margin:7px 0;
+}
+
+.main-menu li {
+    position:relative;
+    display:block;
+}
+
+.main-menu li>a {
+    color: rgb(173,173,173);
+    text-decoration: none;
+    transition: all .1s linear;
+    padding: 13px;
+    cursor: pointer;
+}
+
+.main-menu .nav-icon {
+    position:relative;
+    display:table-cell;
+    width:60px;
+    height:36px;
+    text-align:center;
+    vertical-align:middle;
+    font-size:18px;
+}
+
+.main-menu>ul.footericons {
+    position:absolute;
+    left:0;
+    bottom:0;
+}
+
+.main-menu-selcted>ul {
+    margin: 15px -25px;
+}
+
+.main-menu-selcted li {
+    position:relative;
+    display:block;
+}
+
+.main-menu-selcted li>a {
+    color: rgb(173,173,173);
+    text-decoration: none;
+    transition: all .1s linear;
+    cursor: pointer;
+}
+
+.main-menu-selcted .nav-icon {
+    position:relative;
+    display:table-cell;
+    width:60px;
+    height:36px;
+    text-align:center;
+    vertical-align:middle;
+    font-size:18px;
+}
+
+.main-menu-selcted>ul.footericons {
+    position:absolute;
+    left:0;
+    bottom:0;
+}
+.no-touch .scrollable.hover {
+    overflow-y:hidden;
+}
+
+.no-touch .scrollable.hover:hover {
+    overflow-y:auto;
+    overflow:visible;
+}
+
+a:hover,a:focus {
+    text-decoration:none;
+}
+
+nav {
+    -webkit-usuario-select:none;
+    -moz-usuario-select:none;
+    -ms-usuario-select:none;
+    -o-usuario-select:none;
+    usuario-select:none;
+}
+nav ul,nav li {
+    outline:0;
+    margin:0;
+    padding:0;
+}
+.main-menu li:hover>a,nav.main-menu li.active>a,.dropdown-menu>li>a:hover,.dropdown-menu>li>a:focus,.dropdown-menu>.active>a,.dropdown-menu>.active>a:hover,.dropdown-menu>.active>a:focus,.no-touch .dashboard-page nav.dashboard-menu ul li:hover a,.dashboard-page nav.dashboard-menu ul li.active a {
+    color:rgb(255,255,255);
+}
+.main-menu-selcted li:hover>a,nav.main-menu li.active>a,.dropdown-menu>li>a:hover,.dropdown-menu>li>a:focus,.dropdown-menu>.active>a,.dropdown-menu>.active>a:hover,.dropdown-menu>.active>a:focus,.no-touch .dashboard-page nav.dashboard-menu ul li:hover a,.dashboard-page nav.dashboard-menu ul li.active a {
+    color:rgb(255,255,255);
+}
+i.material-icons {
+    font-size: 1.8em;
+    line-height: 2;
+}*/

@@ -5,7 +5,8 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import { SchematicPath, Tree } from '@angular-devkit/schematics';
+import { Path } from '@angular-devkit/core';
+import { Tree } from '@angular-devkit/schematics';
 export interface ModuleOptions {
     module?: string;
     name: string;
@@ -16,13 +17,13 @@ export interface ModuleOptions {
     appRoot?: string;
 }
 /**
- * Find the module refered by a set of options passed to the schematics.
+ * Find the module referred by a set of options passed to the schematics.
  */
-export declare function findModuleFromOptions(host: Tree, options: ModuleOptions): SchematicPath | undefined;
+export declare function findModuleFromOptions(host: Tree, options: ModuleOptions): Path | undefined;
 /**
  * Function to find the "closest" module to a generated file's path.
  */
-export declare function findModule(host: Tree, generateDir: string): SchematicPath;
+export declare function findModule(host: Tree, generateDir: string): Path;
 /**
  * Build a relative path from one file path to another file path.
  */
