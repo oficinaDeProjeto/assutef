@@ -1,4 +1,4 @@
-import { MatDialogModule, MatInputModule } from '@angular/material';
+import { MatDialogModule, MatInputModule, MatButtonModule } from '@angular/material';
 import { ModalCategoriaComponent } from './modal/modal-categoria.component';
 import { CategoriaComponent } from './categoria.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -15,7 +15,8 @@ import { CommonModule } from '@angular/common';
         FormsModule,
         ReactiveFormsModule,
         MatDialogModule,
-        MatInputModule     
+        MatInputModule,
+        MatButtonModule     
     ],
     entryComponents:[ModalCategoriaComponent]
 })
