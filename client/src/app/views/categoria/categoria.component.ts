@@ -1,10 +1,10 @@
+import { GenericService } from './../../services/generic/generic.service';
+import { AuthService } from './../../services/auth/auth.service';
+import { Categoria } from './../../models/categoria';
 import { ModalCategoriaComponent } from './modal/modal-categoria.component';
-import { AuthService } from 'app/service/auth/auth.service';
 import { Router } from '@angular/router';
-import { MdDialog, MD_DIALOG_DATA, MdSnackBar, MdDialogRef } from '@angular/material';
-import { Categoria } from 'app/models/categoria';
+import { MatDialog, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 import { Component, OnInit, Inject } from '@angular/core';
-import { GenericService } from "app/service/generic/generic.service";
 
 @Component({
 	selector: 'app-categoria',
@@ -22,7 +22,7 @@ export class CategoriaComponent implements OnInit {
 		private genercService: GenericService,
 		private router: Router,
 		private authService: AuthService,
-		public dialog: MdDialog
+		public dialog: MatDialog
 	) {
 	}
 

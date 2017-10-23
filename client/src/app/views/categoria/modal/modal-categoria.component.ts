@@ -1,6 +1,7 @@
 import { Categoria } from './../../../models/categoria';
-import { MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 import { Component, OnInit, Inject, Optional } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+
 
 @Component({
 	selector: 'app-modal-categoria',
@@ -11,14 +12,14 @@ export class ModalCategoriaComponent implements OnInit {
 	categoria: Categoria = new Categoria();
 
 	constructor(
-		public dialogRef: MdDialogRef<ModalCategoriaComponent>,
-		@Optional() @Inject(MD_DIALOG_DATA) public data: Categoria
+		public dialogRef: MatDialogRef<ModalCategoriaComponent>,
+		@Optional() @Inject(MAT_DIALOG_DATA) public data: Categoria
 	) { }
 
 	ngOnInit() {
-		if (this.data) 
+		if (this.data)
 			this.categoria = this.data;
-		
+
 	}
 
 }

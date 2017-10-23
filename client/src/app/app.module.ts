@@ -1,76 +1,59 @@
-import { ModalAssociadoComponent } from './views/associado/associado/modal/modal-associado.component';
-import { ModalCategoriaComponent } from './views/categoria/modal/modal-categoria.component';
+import { UsuarioModule } from './views/usuario/usuario.module';
+import { ChequinhoModule } from './views/chequinho/chequinho.module';
+import { CategoriaModule } from './views/categoria/categoria.module';
+import { AssociadoModule } from './views/associado/associado.module';
 import 'hammerjs';
-import { AppComponent } from './app.component';
-import { AuthService } from './service/auth/auth.service';
-import { BasicComponent } from './common/layouts/basic/basic.component';
-import { BlankComponent } from './common/layouts/blank/blank.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
-import { CategoriaComponent } from './views/categoria/categoria.component';
-import { ChequinhoComponent } from './views/chequinho/chequinho.component';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { GenericService } from './service/generic/generic.service';
-import { HomeComponent } from './views/home/home.component';
-import { HttpInterceptorService } from './service/http-interceptor.service';
-import { HttpModule, Http } from '@angular/http';
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
-import { LoginComponent } from './views/login/login.component';
-import { MaterialModule } from '@angular/material';
-import { NgModule } from '@angular/core';
-import { RouterModule } from "@angular/router";
-import { ROUTES } from "./app.routes";
-import { UserComponent } from './views/user/user.component';
-import { NgxBarcodeModule } from 'ngx-barcode';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LOCALE_ID, NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
 
-import { AssociadoComponent } from './views/associado/associado/associado.component';
-import { ModalUserComponent } from './views/user/modal/modal-user/modal-user.component';
-import { ConveniadoComponent } from './views/conveniado/conveniado.component';
-import { TipoconveniadoComponent } from './views/tipoconveniado/tipoconveniado.component';
-import { ModalTipoconveniadoComponent } from 'app/views/tipoconveniado/modal/modal-tipoconveniado.component';
-import { ModalConveniadoComponent } from 'app/views/conveniado/modal/modal-conveniado.component';
+import { ROUTES } from './app.routes';
+import { AppComponent } from './app.component';
+// App views
+// App modules/components
+import { LoginModule } from './views/login/login.module';
+import { HomeModule } from './views/home/home.module';
+import { LayoutsModule } from './components/common/layouts/layouts.module';
+import { HttpInterceptorService } from './services/http-interceptor.service';
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
+import { ProfileModule } from './views/profile/profile.module';
+import { ToastyModule, ToastyService } from "ng2-toasty";
 
 @NgModule({
-	declarations: [
-		AppComponent,
-		BlankComponent,
-		BasicComponent,
-		HomeComponent,
-		LoginComponent,
-		UserComponent,
-		CategoriaComponent,
-		ChequinhoComponent,
-		AssociadoComponent,
-		ModalCategoriaComponent,
-		ModalAssociadoComponent,
-		ModalUserComponent,
-		ConveniadoComponent,
-		TipoconveniadoComponent,
-		ModalTipoconveniadoComponent,
-		ModalConveniadoComponent
-	],
-	imports: [
-		BrowserModule,
-		FormsModule,
-		HttpModule,
-		MaterialModule,	
-		FlexLayoutModule,
-		NgxBarcodeModule,
-		BrowserAnimationsModule,
-		RouterModule.forRoot(ROUTES),
-		ReactiveFormsModule,
-	],
-	providers: [
-		{ provide: Http, useClass: HttpInterceptorService },
-		{ provide: LocationStrategy, useClass: HashLocationStrategy },
-		AuthService,
-		GenericService
-	],
-	entryComponents: [ModalCategoriaComponent, ModalAssociadoComponent, ModalUserComponent, 
-		ModalTipoconveniadoComponent, ModalConveniadoComponent],
-	bootstrap: [AppComponent],
-	schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  declarations: [AppComponent],
+  imports: [
+    // Angular modules
+    BrowserModule,
+    BrowserAnimationsModule,
+    HttpModule,
+    HttpClientModule,
+    ToastyModule.forRoot(),
+
+    // Views
+    LoginModule,
+    HomeModule,
+    ProfileModule,
+    AssociadoModule,
+    CategoriaModule,
+    ChequinhoModule,
+    UsuarioModule,
+
+    // Modules
+    LayoutsModule,
+
+    ROUTES
+  ],
+  bootstrap: [AppComponent],
+  providers: [
+    { provide: LOCALE_ID, useValue: "pt-BR" },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorService,
+      multi: true
+    },
+    ToastyService
+  ],
 })
-export class AppModule { }
+export class AppModule {
+}

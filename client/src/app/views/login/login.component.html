@@ -1,49 +1,50 @@
 <div class="backgroundLogin" fxLayout="row">
-	<div fxFlex="55" fxFlex.gt-sm="65" [fxHide.xs]="true">
-		<div fxflex id="login-intro">
-			<img class="logosuperior" src="/assets/img/logo.jpg" alt="Logo">
-			<div class="title">
-				Bem vindo!
-			</div>
-			<div class="description">
-				O painel do administrador vai proporcionar uma visão mais ampla do seu negócio.
-			</div>
-		</div>
-	</div>
-	<div fxFlex fxFlex.gt-xs="45" fxFlex.gt-sm="35">
-		<md-card style="height:100vh;">
-			<form class="formLogin" fxLayout="column wrap" role="form" name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
-				<!--<img fxHide [fxShow.xs]="true" class="logo" src="/assets/img/logo.jpg" alt="Logo">-->
-				<p>FAÇA LOGIN NA SUA CONTA</p>
-				<!-- <span>Informe os dados correntamente para conseguir acesso</span> -->
-				<md-form-field class="full-width">
-					<input type="email" mdInput placeholder="E-mail" [formControl]="emailFormControl" [(ngModel)]="loginModel.email">
-					<md-error *ngIf="emailFormControl.hasError('pattern')">
-						Por favor insira um endereço de e-mail válido
-					</md-error>
-					<md-error *ngIf="emailFormControl.hasError('required')">
-						E-mail é <strong>necessário</strong>
-					</md-error>
-				</md-form-field>
-				<md-form-field class="full-width">
-					<input type="password" mdInput placeholder="Senha" [formControl]="passWordFormControll" [(ngModel)]="loginModel.password">
-					<md-error *ngIf="passWordFormControll.hasError('required')">
-						Senha é <strong>necessário</strong>
-					</md-error>
-				</md-form-field>
-				<div fxLayout="column">
-					<div fxLayout="row" fxLayoutAlign="space-around center">
-						<md-checkbox>Me lembre!</md-checkbox>
-						<button md-button color="accent">Esqueceu a senha?</button>
-					</div>
-					<button type="submit" md-raised-button color="accent">LOGIN</button>
-					<md-error *ngIf="error.length > 0">
-						{{error}}
-					</md-error>
-				</div>
-				<!-- TODO - habilitar o botão apenas quando os formulários estiverem ok. -->
-				<span class="infoRodape">Caso não possua acesso ainda, solicite o acesso ao adiminstrador de seu sistema.</span>
-			</form>
-		</md-card>
-	</div>
+    <div fxFlex="55" fxFlex.gt-sm="65" [fxHide.xs]="true">
+        <div fxflex id="login-intro">
+            <img class="logosuperior" src="/assets/img/logo.png" alt="Logo">
+            <div class="title">
+                Bem vindo!
+            </div>
+            <div class="description">
+                O painel do administrador vai proporcionar uma visão mais ampla do seu negócio.
+            </div>
+        </div>
+    </div>
+    <div fxFlex fxFlex.gt-xs="45" fxFlex.gt-sm="35">
+        <mat-card style="height:100vh;">
+            <form class="formLogin" fxLayout="column wrap" role="form" name="form" 
+                (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+                <!--<img fxHide [fxShow.xs]="true" class="logo" src="/assets/img/logo.jpg" alt="Logo">-->
+                <p>FAÇA LOGIN NA SUA CONTA</p>
+                <!-- <span>Informe os dados correntamente para conseguir acesso</span> -->
+                <mat-form-field class="full-width">
+                    <input type="email" matInput placeholder="E-mail" [formControl]="emailFormControl" [(ngModel)]="loginModel.email">
+                    <mat-error *ngIf="emailFormControl.hasError('pattern')">
+                        Por favor insira um endereço de e-mail válido
+                    </mat-error>
+                    <mat-error *ngIf="emailFormControl.hasError('required')">
+                        E-mail é <strong>necessário</strong>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                    <input type="password" matInput placeholder="Senha" [formControl]="passWordFormControll" [(ngModel)]="loginModel.password">
+                    <mat-error *ngIf="passWordFormControll.hasError('required')">
+                        Senha é <strong>necessário</strong>
+                    </mat-error>
+                </mat-form-field>
+                <div fxLayout="column">
+                    <div fxLayout="row" fxLayoutAlign="space-around center">
+                        <mat-checkbox>Me lembre!</mat-checkbox>
+                        <button mat-button color="primary">Esqueceu a senha?</button>
+                    </div>
+                    <button type="submit" mat-raised-button color="primary">LOGIN</button>
+                    <mat-error *ngIf="error.length > 0">
+                        {{error}}
+                    </mat-error>
+                </div>
+                <!-- TODO - habilitar o botão apenas quando os formulários estiverem ok. -->
+                <span class="infoRodape">Caso não possua acesso ainda, solicite o acesso ao adiminstrador de seu sistema.</span>
+            </form>
+        </mat-card>
+    </div>
 </div>
