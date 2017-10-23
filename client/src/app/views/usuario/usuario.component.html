@@ -1,0 +1,37 @@
+<mat-sidenav-container fxFlex>
+	<mat-sidenav mode="side" opened>
+
+		<mat-tab-group>
+			<mat-tab label="Usuários">
+				<mat-nav-list>
+					<mat-list-item *ngFor="let usuario of usuarios" (click)="selectedUsuario = usuario">
+						<mat-icon svgIcon="avatars:{{usuario.avatar}}" class="avatar"></mat-icon>
+						<span>{{usuario.name}}</span>
+					</mat-list-item>
+				</mat-nav-list>
+			</mat-tab>
+			<mat-tab label="Configurações">
+				<span>Configurações</span>
+			</mat-tab>
+		</mat-tab-group>
+
+	</mat-sidenav>
+	<div class="content" fxLayout="row" fxLayout.sm="column" fxLayoutGap="16px">
+
+		<mat-card fxFlex="80">
+			<mat-icon svgIcon="avatars:{{selectedUsuario.avatar}}" class="avatar"></mat-icon>
+			<h2>{{selectedUsuario.name}}</h2>
+			<p>{{selectedUsuario.details}}</p>
+		</mat-card>
+
+		<mat-card fxFlex fxLayout="column" fxLayoutGap="14px">
+			<mat-slide-toggle [(ngModel)]="selectedUsuario.isAdmin">Satan?</mat-slide-toggle>
+			<mat-slide-toggle [(ngModel)]="selectedUsuario.isCool">Porcodio?</mat-slide-toggle>
+		</mat-card>
+
+	</div>
+</mat-sidenav-container>
+
+<button mat-fab (click)="openNewUsuarioDialog()" class="fab-bottom-right">
+	<mat-icon>add</mat-icon>
+</button>

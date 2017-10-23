@@ -1,9 +1,8 @@
 import {Component} from '@angular/core';
-import {MdIconRegistry, MdDialog} from '@angular/material';
-import {DomSanitizer} from '@angular/platform-browser';
+import {correctHeight, detectBody} from './app.helpers';
+import {ToastyConfig, ToastyService} from "ng2-toasty";
 
-import 'rxjs/add/operator/filter';
-
+declare var jQuery: any;
 
 @Component({
   selector: 'app-root',
@@ -12,4 +11,7 @@ import 'rxjs/add/operator/filter';
 })
 export class AppComponent {
 
+  constructor(private toastyConfig: ToastyConfig) {
+
+  }
 }

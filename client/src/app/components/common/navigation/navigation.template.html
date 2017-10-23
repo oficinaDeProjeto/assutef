@@ -1,0 +1,41 @@
+<!--<div fxLayout="row">
+	<nav class="main-menu">
+		<ul>
+			<li *ngFor="let item of menuItens" [ngClass]="{active: activeRoute('item.link')}">
+				<a (click)="togleSideNav(item)" >
+					<i class="material-icons">{{item.icon}}</i>
+				</a>
+			</li>
+		</ul>
+
+		<ul class="footericons">
+			<li>
+				<a (click)="logout()">
+					 <i class="material-icons">power_settings_new</i>
+				 </a>
+			</li>
+		</ul>
+	</nav>
+
+	<div  *ngIf="isOpen" class="main-menu-selcted" ng-if="isOpen">
+		<ul>
+			<li *ngFor="let item of menuItenSelected.itens">
+				<a [routerLink]="['/'+ item.link]" (click)="isOpen = false">
+					<p>{{item.desc}}</p>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>-->
+
+<mat-list class="main-menu">
+	<h3 mat-subheader class="textMenu">Menu</h3>
+	<mat-list-item *ngFor="let item of menuItens">
+		<mat-icon class="iconMenu" mat-list-icon>{{item.icon}}</mat-icon>
+		<h4 mat-line class="textMenu">
+			<a class="textMenu" [routerLink]="['/'+ item.link]">
+				<p>{{item.desc}}</p>
+			</a>
+		</h4>
+	</mat-list-item>
+</mat-list>
