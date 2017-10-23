@@ -12,13 +12,13 @@ export class BasicComponent implements OnInit {
 	public currentUser: User;
 	menuItens = [
 		{ link: "user", icon: "supervisor_account", desc: "Usuários" },
-		{ link: "home", icon: "supervisor_account", desc: "Dashboars" },
+		{ link: "home", icon: "dashboard", desc: "Dashboard" },
 		{ link: "categoria", icon: "assignment_turned_in", desc: "Categoria" },
-		{ link: "chequinho", icon: "supervisor_account", desc: "Chequinhos" },
+		{ link: "chequinho", icon: "chrome_reader_mode", desc: "Chequinhos" },
 		{ link: "home", icon: "supervisor_account", desc: "Teste" },
-		{ link: "associado", icon: "accessibility", desc: "Associado" },
+		{ link: "associado", icon: "face", desc: "Associado" },
 		{ link: "tipoconveniado", icon: "assignment_turned_in", desc: "Tipoconveniado" },
-		{ link: "conveniado", icon: "accessibility", desc: "Conveniado" },
+		{ link: "conveniado", icon: "store", desc: "Conveniado" },
 	];
 	constructor(private router: Router, private authService: AuthService) {
 	}
