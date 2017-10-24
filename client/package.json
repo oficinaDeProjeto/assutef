@@ -1,6 +1,6 @@
 {
   "name": "assutef",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "angular-cli": {},
   "scripts": {
     "start": "ng serve",
