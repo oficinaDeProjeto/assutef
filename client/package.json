@@ -36,7 +36,7 @@
     "metismenu": "^2.5.0",
     "ng2-toasty": "^4.0.3",
     "primeng": "^4.2.2",
-    "rxjs": "5.4.3",
+    "rxjs": "5.5.0",
     "ts-helpers": "^1.1.1",
     "zone.js": "^0.8.16",
     "sockjs": "^0.3.18",
@@ -49,7 +49,7 @@
     "@types/jasmine": "^2.2.30",
     "@types/lodash": "^4.14.77",
     "@types/node": "^8.0.24",
-    "codelyzer": "3.2.1",
+    "codelyzer": "3.2.2",
     "jasmine-core": "2.8.0",
     "jasmine-spec-reporter": "4.2.1",
     "karma": "1.7.1",
@@ -57,9 +57,9 @@
     "karma-cli": "^1.0.1",
     "karma-jasmine": "^1.0.2",
     "karma-remap-istanbul": "^0.6.0",
-    "protractor": "5.1.2",
+    "protractor": "5.2.0",
     "ts-node": "3.3.0",
-    "tslint": "5.7.0",
+    "tslint": "5.8.0",
     "typescript": "~2.5.3"
   }
 }
