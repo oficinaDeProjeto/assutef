@@ -32,7 +32,7 @@ module.exports = {
 			return res.json(401, { err: "E-mail ou senha inválidos!" });
 		})
 	},
-	getuserbytoken: function (req, res) {
+	getusuariobytoken: function (req, res) {
 		var token, idUsuario;
 		if (req.headers && req.headers.authorization) {
 			var parts = req.headers.authorization.split(" ");

@@ -15,7 +15,7 @@ export class UsuarioService extends SuperService {
     }
 
     getUsuarioLogged(): Observable<Usuario> {
-        return this.httpClient.get<Usuario>(this.apiUrl + 'auth/getuserbytoken');
+        return this.httpClient.get<Usuario>(this.apiUrl + 'auth/getusuariobytoken');
     }
 
     // updateSenha(senha: string, novaSenha: string): Observable<Boolean> {
