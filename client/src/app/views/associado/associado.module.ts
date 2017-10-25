@@ -7,10 +7,19 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { MatDialogModule, MatCardModule, MatInputModule, MatButtonModule, MatIconModule } from "@angular/material";
+import {
+    MatDialogModule,
+    MatCardModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
+    MatStepperModule,
+    MatSelectModule,
+    MatDatepickerModule
+} from "@angular/material";
 
 @NgModule({
-    declarations: [AssociadoComponent,ModalAssociadoComponent],
+    declarations: [AssociadoComponent, ModalAssociadoComponent],
     exports: [AssociadoComponent, ModalAssociadoComponent],
     imports: [
         CommonModule,
@@ -20,7 +29,12 @@ import { MatDialogModule, MatCardModule, MatInputModule, MatButtonModule, MatIco
         MatCardModule,
         MatInputModule,
         MatButtonModule,
-        MatIconModule    
+        MatIconModule,
+        MatStepperModule,
+        MatSelectModule,
+        MatDatepickerModule,
+        MatButtonModule,
+        FlexLayoutModule
     ],
     entryComponents: [ModalAssociadoComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],

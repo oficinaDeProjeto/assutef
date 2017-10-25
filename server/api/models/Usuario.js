@@ -1,5 +1,5 @@
 /**
- * User.js
+ * Usuario.js
  *
  * @description :: Entidade que representa o objeto de usuário no banco de dados
  * @docs        :: http://sailsjs.org/#!documentation/models
