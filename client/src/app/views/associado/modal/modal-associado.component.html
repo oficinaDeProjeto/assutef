@@ -1,41 +1,57 @@
-<mat-card>
-	<mat-card-header>
-		<mat-card-title>Associado</mat-card-title>
-		<mat-card-subtitle>Informe os dados para cadstro de associado</mat-card-subtitle>
-	</mat-card-header>
-	<mat-card-content>
-		<!-- TODO - adicionar datepiker no campo aniversário-->
-		<form #formAssociado="ngForm">
-			<mat-form-field>
-				<input matInput placeholder="name" [(ngModel)]="associado.name" required name="name">
-			</mat-form-field>
-			<mat-form-field>
-				<input matInput type="email" placeholder="email" [(ngModel)]="associado.email" required name="email">
-			</mat-form-field>
-			<mat-form-field>
-				<input matInput placeholder="tel" [(ngModel)]="associado.tel" required name="tel">
-			</mat-form-field>
-			<mat-form-field>
-				<input matInput placeholder="cpf" [(ngModel)]="associado.cpf" required name="cpf">
-			</mat-form-field>
-			<mat-form-field>
-				<input matInput placeholder="aniversario" [(ngModel)]="associado.aniversario" required name="aniversario">
-			</mat-form-field>
-			<mat-select placeholder="Sexo" [(ngModel)]="associado.sexo" required name="sexo">
-				<mat-option value="MASCULINO">
-					Masculino
-				</mat-option>
-				<mat-option value="FEMININO">
-					Feminino
-				</mat-option>
-			</mat-select>
-			<mat-form-field>
-				<input matInput placeholder="endereco" [(ngModel)]="associado.endereco" required name="endereco">
-			</mat-form-field>
+<mat-horizontal-stepper>
+	<mat-step>
+		<form>
+			<ng-template matStepLabel>Dados pessoais</ng-template>
+			<form #formAssociado="ngForm">
+				<mat-form-field>
+					<input matInput placeholder="name" [(ngModel)]="associado.name" required name="name">
+				</mat-form-field>
+				<mat-form-field>
+					<input matInput type="email" placeholder="email" [(ngModel)]="associado.email" required name="email">
+				</mat-form-field>
+				<mat-form-field>
+					<input matInput placeholder="tel" [(ngModel)]="associado.tel" required name="tel">
+				</mat-form-field>
+				<mat-form-field>
+					<input matInput placeholder="cpf" [(ngModel)]="associado.cpf" required name="cpf">
+				</mat-form-field>
+				<mat-form-field>
+					<input matInput placeholder="aniversario" [(ngModel)]="associado.aniversario" required name="aniversario">
+				</mat-form-field>
+				<mat-select placeholder="Sexo" [(ngModel)]="associado.sexo" required name="sexo">
+					<mat-option value="MASCULINO">
+						Masculino
+					</mat-option>
+					<mat-option value="FEMININO">
+						Feminino
+					</mat-option>
+				</mat-select>
+			</form>
+			<div fxLayout="row" fxLayoutAlign="end center">
+				<button mat-button matStepperNext>Voltar</button>
+			</div>
 		</form>
-	</mat-card-content>
-	<mat-card-actions>
-		<button type="button" mat-raised-button [disabled]="!formAssociado.form.valid" [mat-dialog-close]="associado">SALVAR</button>
-		<button type="button" mat-button (click)="dialogRef.close()">CANCELAR</button>
-	</mat-card-actions>
-</mat-card>
+	</mat-step>
+	<mat-step>
+		<form>
+			<ng-template matStepLabel>Endereço</ng-template>
+			<form #formEndereco="ngForm">
+				<mat-form-fild>
+					<input matInput name="cep" required [(ngModel)]="associado.endereco.cep" appMaskDirective="99999-999"> 
+				</mat-form-fild>
+			</form>
+			<div fxLayout="row" fxLayoutAlign="end center">
+				<button mat-button matStepperPrevious>Voltar</button>
+				<button mat-button matStepperNext>Próximo</button>
+			</div>
+		</form>
+	</mat-step>
+	<mat-step>
+		<ng-template matStepLabel>Pronto</ng-template>
+		You are now done.
+		<div fxLayout="row" fxLayoutAlign="end center">
+			<button mat-button (click)="dialogRef.close()">CANCELAR</button>
+			<button mat-raised-button [disabled]="!formAssociado.form.valid" [mat-dialog-close]="associado">SALVAR</button>
+		</div>
+	</mat-step>
+</mat-horizontal-stepper>

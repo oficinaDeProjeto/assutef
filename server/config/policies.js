@@ -27,7 +27,7 @@ module.exports.policies = {
   ***************************************************************************/
 
   '*': ["isAuthorized", "isAdmin"],
-  UserController : ["isAuthorized", "isAdmin"], 
+  UsuarioController : ["isAuthorized", "isAdmin"], 
   AuthController: true
   
 

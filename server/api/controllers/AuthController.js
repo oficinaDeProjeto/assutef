@@ -14,8 +14,8 @@ module.exports = {
 			return res.json(401, { err: "E-mail e senha são necessários" });
 		}
 
-		User.findOne({ email: email }).then(function (user) {
-			User.comparePassword(password, user, function (err, valid) {
+		Usuario.findOne({ email: email }).then(function (user) {
+			Usuario.comparePassword(password, user, function (err, valid) {
 				if (err) {
 					return res.json(403, { err: "forbidden" });
 				}
@@ -33,7 +33,7 @@ module.exports = {
 		})
 	},
 	getuserbytoken: function (req, res) {
-		var token, idUser;
+		var token, idUsuario;
 		if (req.headers && req.headers.authorization) {
 			var parts = req.headers.authorization.split(" ");
 			var scheme = parts[0],
@@ -43,8 +43,8 @@ module.exports = {
 				token = credentials;
 			}
 		}
-		idUser = jwToken.getIdUserByToken(token);
-		User.findOne({ id: idUser }).then(function (user) {
+		idUsuario = jwToken.getIdUsuarioByToken(token);
+		Usuario.findOne({ id: idUsuario }).then(function (user) {
 			if (!user) {
 				return res.json(401, { err: "Usuário não encontrado!" });
 			} else {
