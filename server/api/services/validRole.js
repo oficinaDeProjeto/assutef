@@ -10,7 +10,7 @@ var Promise = require('bluebird');
 
 // Generates a token from supplied payloadGenerates a token from supplied payload
 module.exports.confirmRole = function(role,only, req) {
-	var token, idUser;
+	var token, idUsuario;
 	
 	if (req.headers && req.headers.authorization) {
 		var parts = req.headers.authorization.split(" ");
@@ -21,12 +21,12 @@ module.exports.confirmRole = function(role,only, req) {
 			token = credentials;
 		}
 	}
-	idUser = jwToken.getIdUserByToken(token);
+	idUsuario = jwToken.getIdUsuarioByToken(token);
 
 	return new Promise( function( resolve, reject )	{
 		var result = false;
-		User.findOne({
-			id: idUser
+		Usuario.findOne({
+			id: idUsuario
 		}).exec(function(err, user) {
 			if (err) {
 				sails.log("Erro:" + err);
