@@ -1,4 +1,4 @@
-<mat-sidenav-container fxFlex>
+<!--<mat-sidenav-container fxFlex>
 	<mat-sidenav mode="side" opened>
 
 		<mat-tab-group>
@@ -15,7 +15,7 @@
 			</mat-tab>
 		</mat-tab-group>
 
-	</mat-sidenav>
+</mat-sidenav>
 	<div class="content" fxLayout="row" fxLayout.sm="column" fxLayoutGap="16px">
 
 		<mat-card fxFlex="80">
@@ -31,6 +31,31 @@
 
 	</div>
 </mat-sidenav-container>
+
+ -->
+
+<div class="content" fxFlex fxLayout="row" fxLayoutAlign="space-around center">
+	
+	<mat-card>
+		<mat-card-header>
+			<mat-card-title>Usuarios</mat-card-title>
+			<mat-card-subtitle>Lista de usuarios cadastrados</mat-card-subtitle>
+			<mat-input-container>
+				<input matInput [(ngModel)]="query" name="query" placeholder="Pesquise por nome de usuario" (input)="filterUsuario(query)">
+			</mat-input-container>
+		</mat-card-header>
+		<mat-card-content> <!-- lista  -->
+			<mat-list>
+				<h3 mat-subheader>Usuario</h3>
+				<mat-list-item *ngFor="let usuario of usuarios" (click)="openUser(usuario)">					
+					<h4 mat-line class="linkHover"><mat-icon mat-list-icon>account_box</mat-icon> {{usuario.name}} - {{usuario.email}}</h4>
+				</mat-list-item>
+			</mat-list>
+		</mat-card-content>
+	</mat-card>
+</div>
+
+
 
 <button mat-fab (click)="openNewUsuarioDialog()" class="fab-bottom-right">
 	<mat-icon>add</mat-icon>

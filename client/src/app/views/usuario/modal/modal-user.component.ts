@@ -16,8 +16,16 @@ export class ModalUsuarioComponent implements OnInit {
 	) { }
 
   ngOnInit() {
-    if (this.data) 
-    this.usuario = this.data;
+    if (this.data){
+		this.usuario = this.data;
+		this.showInfos();
+	}
+  }
+  
+  showInfos(): void{
+	  //mostrar as infos do usuario nos campos e desativar os mesmos
+	  //só ativar quando clicado no botao editar
+	  
   }
 
 }
