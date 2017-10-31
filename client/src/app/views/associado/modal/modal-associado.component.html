@@ -1,57 +1,125 @@
-<mat-horizontal-stepper>
-	<mat-step>
-		<form>
-			<ng-template matStepLabel>Dados pessoais</ng-template>
-			<form #formAssociado="ngForm">
-				<mat-form-field>
-					<input matInput placeholder="name" [(ngModel)]="associado.name" required name="name">
-				</mat-form-field>
-				<mat-form-field>
-					<input matInput type="email" placeholder="email" [(ngModel)]="associado.email" required name="email">
-				</mat-form-field>
-				<mat-form-field>
-					<input matInput placeholder="tel" [(ngModel)]="associado.tel" required name="tel">
-				</mat-form-field>
-				<mat-form-field>
-					<input matInput placeholder="cpf" [(ngModel)]="associado.cpf" required name="cpf">
-				</mat-form-field>
-				<mat-form-field>
-					<input matInput placeholder="aniversario" [(ngModel)]="associado.aniversario" required name="aniversario">
-				</mat-form-field>
-				<mat-select placeholder="Sexo" [(ngModel)]="associado.sexo" required name="sexo">
-					<mat-option value="MASCULINO">
-						Masculino
-					</mat-option>
-					<mat-option value="FEMININO">
-						Feminino
-					</mat-option>
-				</mat-select>
+<div fxLayout="row" fxLayoutAlign="space-around center">
+	<mat-horizontal-stepper>
+		<mat-step>
+			<form>
+				<ng-template matStepLabel>Dados pessoais</ng-template>
+				<form #dadosPessoaisForm="ngForm">
+					<div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="center start">
+						<mat-form-field fxFlex.gt-sm="50" fxFlex="100" class="p-5">
+							<input matInput [appMask]="masks.cpf" placeholder="CPF" [(ngModel)]="associado.cpf" required name="cpf">
+						</mat-form-field>
+						<mat-form-field fxFlex.gt-sm="50" fxFlex="100" class="p-5">
+							<input matInput placeholder="Nome" [(ngModel)]="associado.nome" required name="nome">
+						</mat-form-field>
+						<mat-form-field fxFlex.gt-sm="50" fxFlex="100" class="p-5">
+							<input matInput [appMask]="masks.brCellPhone" placeholder="Celular" [(ngModel)]="associado.tel" required name="tel">
+						</mat-form-field>
+						<mat-form-field fxFlex.gt-sm="50" fxFlex="100" class="p-5">
+							<input matInput placeholder="E-mail" [(ngModel)]="associado.email" required name="email" type="email">
+						</mat-form-field>
+						<div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="center start" fxFlex.gt-sm="100" fxFlex="100" class="p-5">
+							<div fxLayout="row" fxLayoutAlign="center start" fxFlex="50" class="p-5">
+								<label>Sexo:</label>
+								<mat-radio-group [(ngModel)]="associado.sexo" name="sexo" required>
+									<mat-radio-button color="primary" class="margin-10" value="MASCULINO">Masculino</mat-radio-button>
+									<mat-radio-button color="primary" class="margin-10" value="FEMININO">Feminino</mat-radio-button>
+								</mat-radio-group>
+							</div>
+							<mat-form-field fxFlex="50" class="p-5">
+								<input required matInput name="aniversario" [matDatepicker]="picker" [(ngModel)]="associado.aniversario" placeholder="Marque sua data de aniversário">
+								<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+								<mat-datepicker #picker></mat-datepicker>
+							</mat-form-field>
+						</div>
+					</div>
+				</form>
+				<div>
+					<button mat-button matStepperNext color="primary" [disabled]="!dadosPessoaisForm.form.valid">Próximo</button>
+				</div>
 			</form>
-			<div fxLayout="row" fxLayoutAlign="end center">
-				<button mat-button matStepperNext>Voltar</button>
-			</div>
-		</form>
-	</mat-step>
-	<mat-step>
-		<form>
-			<ng-template matStepLabel>Endereço</ng-template>
-			<form #formEndereco="ngForm">
-				<mat-form-fild>
-					<input matInput name="cep" required [(ngModel)]="associado.endereco.cep" appMaskDirective="99999-999"> 
-				</mat-form-fild>
+		</mat-step>
+		<mat-step>
+			<form>
+				<ng-template matStepLabel>Endereço</ng-template>
+				<form #enderecoForm="ngForm">
+					<div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="center start">
+						<mat-form-field fxFlex.gt-sm="50" fxFlex="100" class="p-5">
+							<input matInput [appMask]="masks.cep" placeholder="Cep" [(ngModel)]="associado.endereco.cep" name="cep"
+							 (blur)="getAddressByPostalCode(associado.endereco.cep)">
+						</mat-form-field>
+						<div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="center start" fxFlex.gt-sm="50" fxFlex="100" class="p-5">
+							<mat-form-field fxFlex="80" class="p-5">
+								<input matInput placeholder="Endereço" [(ngModel)]="associado.endereco.logradouro" required name="endereco">
+							</mat-form-field>
+							<mat-form-field fxFlex="20" class="p-5">
+								<input matInput type="number" placeholder="Nº" [(ngModel)]="associado.endereco.numero" required name="numero">
+							</mat-form-field>
+						</div>
+						<mat-form-field fxFlex.gt-sm="50" fxFlex="100" class="p-5">
+							<input matInput placeholder="Bairro" [(ngModel)]="associado.endereco.bairro" required name="bairro">
+						</mat-form-field>
+						<mat-form-field fxFlex.gt-sm="50" fxFlex="100" class="p-5">
+							<input matInput placeholder="Complemento" [(ngModel)]="associado.endereco.complemento" required name="complemento">
+						</mat-form-field>
+
+						<mat-form-field fxFlex.gt-sm="50" fxFlex="100" class="p-5">
+							<input matInput placeholder="Localidade/Cidade" [(ngModel)]="associado.endereco.localidade" required name="localidade">
+						</mat-form-field>
+						<mat-form-field fxFlex.gt-sm="50" fxFlex="100" class="p-5">
+							<input matInput placeholder="UF" [(ngModel)]="associado.endereco.uf" required name="uf">
+						</mat-form-field>
+					</div>
+				</form>
+				<div>
+					<button mat-button matStepperPrevious>Voltar</button>
+					<button mat-button matStepperNext color="primary" [disabled]="!enderecoForm.form.valid">Próximo</button>
+				</div>
 			</form>
-			<div fxLayout="row" fxLayoutAlign="end center">
+		</mat-step>
+		<mat-step>
+			<ng-template matStepLabel>Pronto</ng-template>
+			<!--<div *ngIf="!error && !success">
+
+					<div class="ibox product-detail">
+						<div class="ibox-content">
+							<div class="row">
+								<div class="col-mat-7">
+									<h2 class="font-bold m-b-xs">
+										{{associado.nome}}
+									</h2>
+									<small>{{associado.email}}</small>
+									<div class="m-t-mat">
+										<h2 class="product-main-price">
+											{{associado.nascimento | date}}
+											<small class="text-muted">Aniversário</small>
+										</h2>
+									</div>
+									<hr>
+									<h4>Confira os dados do usuário:</h4>
+									<div class="small text-muted">
+										Tel.: {{associado.tel}}
+										<br>Cpf: {{associado.cnpjf}}
+										<br>Cep: {{associado.cep}}
+										<br>Estado: {{associado.cidade?.uf}}
+										<br>Cidade: {{associado.cidade?.nome}}
+										<br>Bairro: {{associado.bairro}}
+										<br>Endereço: {{associado.endereco}}
+										<br>Numero: {{associado.numero}}
+										<br>Sexo: {{associado.sexo}}
+									</div>
+									<hr>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>-->
+			<app-animation-msg-error *ngIf="error"></app-animation-msg-error>
+			<app-animation-msg-success *ngIf="success"></app-animation-msg-success>
+			<div>
 				<button mat-button matStepperPrevious>Voltar</button>
-				<button mat-button matStepperNext>Próximo</button>
+				<button mat-button color="primary" (click)="save(associado)">Salvar</button>
 			</div>
-		</form>
-	</mat-step>
-	<mat-step>
-		<ng-template matStepLabel>Pronto</ng-template>
-		You are now done.
-		<div fxLayout="row" fxLayoutAlign="end center">
-			<button mat-button (click)="dialogRef.close()">CANCELAR</button>
-			<button mat-raised-button [disabled]="!formAssociado.form.valid" [mat-dialog-close]="associado">SALVAR</button>
-		</div>
-	</mat-step>
-</mat-horizontal-stepper>
+		</mat-step>
+	</mat-horizontal-stepper>
+</div>

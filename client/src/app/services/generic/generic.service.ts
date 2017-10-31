@@ -1,15 +1,20 @@
+import { Endereco } from './../../models/endereco';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { environment } from '../../../environments/environment';
 import { SuperService } from '../super.service';
 import { Observable } from 'rxjs';
+/**
+ * TODO - remover os metodos genéricos;
+ */
 
 @Injectable()
 export class GenericService extends SuperService {
 
 	private apiUrl = environment.api_url;
 
-	constructor(private http: Http) {
+	constructor(private http: Http, private httpClient: HttpClient) {
 		super();
 	}
 
@@ -18,12 +23,8 @@ export class GenericService extends SuperService {
 	 * através de um cep.
 	 * @param PostalCode 
 	 */
-	public getAddressByPostalCode(PostalCode: string): Observable<any> {
-		return this.http.get(this.apiUrl + 'general/getAddressByPostalCode?postalcode=' + PostalCode)
-			.map(res => {
-				return super.extractData(res);
-			})
-			.catch(super.handleError);
+	public getAddressByPostalCode(PostalCode: string): Observable<Endereco> {
+		return this.httpClient.get<Endereco>(`${this.apiUrl}general/getAddressByPostalCode?postalcode=${PostalCode}`);
 	}
 
 	/**
