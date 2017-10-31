@@ -32,9 +32,9 @@ module.exports = {
 			enum: ['ADMIN', 'USER'],
 			required: "true",
 		},
-		avatar: {
+		/*avatar: {
 			type: 'string'
-		},
+		},*/
 		
 		// Para não enviar uma senha criptografada
 		toJSON: function () {

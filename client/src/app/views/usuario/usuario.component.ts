@@ -44,6 +44,17 @@ export class UsuarioComponent implements OnInit {
 		iconRegistry.addSvgIconSetInNamespace('avatars', avatarsSafeUrl);
 	}
 
+	openUser(usuario): void{
+		let dialogRef = this.dialog.open(ModalUsuarioComponent, {
+			data: usuario
+		});
+
+		dialogRef.afterClosed().subscribe(result => {
+			console.log(result);
+			//this.salvarCategoria(result);
+		});
+	}
+	
 	openNewUsuarioDialog(): void {
 		let dialogRef = this.dialog.open(ModalUsuarioComponent, {
 			data: null

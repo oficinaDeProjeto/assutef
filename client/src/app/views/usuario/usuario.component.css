@@ -31,3 +31,5 @@ mat-sidenav-container {
 /deep/ .mat-list-item-content {
   height: auto !important;
 }
+
+.linkHover:hover{cursor:pointer;}
