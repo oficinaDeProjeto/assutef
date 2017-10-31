@@ -1,7 +1,12 @@
-import { Cidade } from './cidade';
 export class Endereco {
-    cidade: Cidade;
-    endereco: string;
-    numero: string;
-    cep: string;
+    bairro:string;
+    cep:string;
+    complemento:string;
+    gia:string;
+    ibge:string;
+    localidade:string;
+    logradouro:string;
+    uf:string;
+    unidade:string;
+    numero:string;
 }

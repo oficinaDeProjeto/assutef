@@ -1,3 +1,5 @@
+import { AssociadoService } from './../../services/associado/associado.service';
+import { appMaskModule } from './../../directives/mask.module';
 import { GenericService } from './../../services/generic/generic.service';
 import { AuthService } from './../../services/auth/auth.service';
 import { ModalAssociadoComponent } from './modal/modal-associado.component';
@@ -15,7 +17,9 @@ import {
     MatIconModule,
     MatStepperModule,
     MatSelectModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatRadioModule
 } from "@angular/material";
 
 @NgModule({
@@ -33,12 +37,15 @@ import {
         MatStepperModule,
         MatSelectModule,
         MatDatepickerModule,
+        MatNativeDateModule,
         MatButtonModule,
-        FlexLayoutModule
+        MatRadioModule,
+        FlexLayoutModule,
+        appMaskModule
     ],
     entryComponents: [ModalAssociadoComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    providers: [AuthService, GenericService]
+    providers: [AuthService, GenericService, AssociadoService]
 })
 
 export class AssociadoModule { }
