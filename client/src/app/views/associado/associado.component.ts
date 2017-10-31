@@ -1,3 +1,4 @@
+import { AssociadoService } from './../../services/associado/associado.service';
 import { GenericService } from './../../services/generic/generic.service';
 import { AuthService } from './../../services/auth/auth.service';
 import { Associado } from './../../models/associado';
@@ -20,6 +21,7 @@ export class AssociadoComponent implements OnInit {
 
 	constructor(
 		private genercService: GenericService,
+		private associadoService: AssociadoService,
 		private router: Router,
 		private authService: AuthService,
 		public dialog: MatDialog
@@ -27,12 +29,12 @@ export class AssociadoComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.getAll();
+		this.findAll();
 	}
 
 
-	getAll() {
-		this.genercService.getAll('associado').subscribe(associados => {
+	findAll() {
+		this.associadoService.findAll().subscribe(associados => {
 			this.associados = <Associado[]>associados;
 			this.filteredAssociados = Object.assign([], this.associados);
 		}, err => {
@@ -43,7 +45,7 @@ export class AssociadoComponent implements OnInit {
 	salvarAssociado(associado: Associado) {
 		this.genercService.save('associado', associado).subscribe(associado => {
 			console.log('Salvo com sucesso');
-			this.getAll();
+			this.findAll();
 		}, err => {
 			console.log(err);
 		});
