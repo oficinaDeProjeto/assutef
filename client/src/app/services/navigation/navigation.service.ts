@@ -11,7 +11,7 @@ export class NavigationService extends SuperService {
 		{ link: "usuario", icon: "supervisor_account", desc: "Usuários", permicoes: ['ADMIN', 'CLIENT'] },
 		{ link: "home", icon: "supervisor_account", desc: "Dashboars", permicoes: ['ADMIN', 'CLIENT'] },
 		{ link: "categoria", icon: "assignment_turned_in", desc: "Categoria", permicoes: ['ADMIN', 'CLIENT'] },
-		{ link: "produto", icon: "supervisor_account", desc: "Produto", permicoes: ['ADMIN', 'CLIENT']},
+		{ link: "produto", icon: "assignmentt", desc: "Produto", permicoes: ['ADMIN', 'CLIENT']},
 		{ link: "chequinho", icon: "supervisor_account", desc: "Chequinhos", permicoes: ['ADMIN', 'CLIENT'] },
 		{ link: "home", icon: "supervisor_account", desc: "Teste", permicoes: ['ADMIN', 'CLIENT'] },
 		{ link: "associado", icon: "accessibility", desc: "Associado", permicoes: ['ADMIN', 'CLIENT'] },

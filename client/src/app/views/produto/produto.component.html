@@ -1,10 +1,12 @@
-<div class="content" fxLayout="row" fxLayoutAlign="space-around center">
+<div class="content" fxLayoutAlign="space-around center">
 	<div>
 		<mat-card fxFlex>
 			<mat-card-header>
 				<mat-card-title>Produto</mat-card-title>
+				<br />
 				<mat-card-subtitle>Lista de produtos cadastrados</mat-card-subtitle>
 				<span fxFlex></span>
+				<br />
 				<mat-input-container>
 					<input matInput [(ngModel)]="query" name="query" placeholder="Pesquise por produto" (input)="filterProduto(query)">
 				</mat-input-container>
@@ -14,7 +16,7 @@
 					<h3 mat-subheader>Produto</h3>
 					<mat-list-item *ngFor="let produto of filteredProdutos" (click)="openDialog(produto)">
 						<mat-icon mat-list-icon>folder</mat-icon>
-						<h4 mat-line>{{produto.descricao}}</h4>
+						<h4 mat-line>{{produto.nome}}</h4>
 						
 					</mat-list-item>
 				</mat-list>

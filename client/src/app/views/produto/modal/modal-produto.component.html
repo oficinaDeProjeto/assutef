@@ -1,41 +1,53 @@
 <mat-card>
 	<mat-card-header>
 		<mat-card-title>Produto</mat-card-title>
+		<br />
 		<mat-card-subtitle>Informe os dados para cadastro de produto</mat-card-subtitle>
 	</mat-card-header>
+	<br />
+	<br />
+	<br />
 	<mat-card-content>
 		<mat-form-field>
 			<input matInput placeholder="Nome" [(ngModel)]="produto.nome" #nome="ngModel" required name="nome">
 		</mat-form-field>
-	</mat-card-content>
-	<mat-card-content>
+	
+	<br />
+	
 		<mat-form-field>
 			<input matInput placeholder="Descrição" [(ngModel)]="produto.descricao" #nome="ngModel" required name="descricao">
 		</mat-form-field>
-	</mat-card-content>
-	<mat-card-content>
+	
+	<br />
+	
 		<mat-form-field>
 			<input matInput placeholder="Valor" [(ngModel)]="produto.valor" #nome="ngModel" required name="valor">
 		</mat-form-field>
-	</mat-card-content>
-	<!--<mat-card-content>
+	
+	<br />
+
 		<mat-form-field>
-			<input matInput placeholder="Categoria" [(ngModel)]="produto.categoria.descricao" #nome="ngModel">
+			<input matInput placeholder="Categoria" [(ngModel)]="produto.Categoria" #nome="ngModel">
 		</mat-form-field>
-	</mat-card-content>
-	-->
-	<mat-card-content>
-		<mat-form-field>
+		<button type="button" mat-raised-button [mat-dialog-close]="categoria">Add</button>
+		<!--<button mat-fab (click)="openDialog()" class="fab-bottom-right">
+			<mat-icon>add</mat-icon>
+		</button>-->
+	<br />
+			<mat-form-field>
 			<input matInput placeholder="Unidade" [(ngModel)]="produto.unidade" #nome="ngModel" required name="unidade">
 		</mat-form-field>
-	</mat-card-content>
-	<mat-card-content>
+	
+	<br />
+	
 		<mat-form-field>
 			<input matInput placeholder="Estoque" [(ngModel)]="produto.estoque" #nome="ngModel" required name="estoque">
 		</mat-form-field>
-	</mat-card-content>
+	
+	<br />
 	<mat-card-actions>
 		<button type="button" mat-raised-button [mat-dialog-close]="produto">SALVAR</button>
 		<button type="button" mat-button (click)="dialogRef.close()">CANCELAR</button>
 	</mat-card-actions>
+	</mat-card-content>
 </mat-card>

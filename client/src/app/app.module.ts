@@ -1,6 +1,7 @@
 import { UsuarioModule } from './views/usuario/usuario.module';
 import { ChequinhoModule } from './views/chequinho/chequinho.module';
 import { CategoriaModule } from './views/categoria/categoria.module';
+import { ProdutoModule } from './views/produto/produto.module';
 import { AssociadoModule } from './views/associado/associado.module';
 import 'hammerjs';
 import { BrowserModule } from '@angular/platform-browser';
@@ -36,6 +37,7 @@ import { ToastyModule, ToastyService } from "ng2-toasty";
     ProfileModule,
     AssociadoModule,
     CategoriaModule,
+    ProdutoModule,
     ChequinhoModule,
     UsuarioModule,
 
