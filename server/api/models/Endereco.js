@@ -9,12 +9,16 @@ module.exports = {
 	schema: true,
 	connection: 'mongo',
 	attributes: {
-		cidade: {
-			model: 'cidade'
-		},
-		endereco: 'string',
-		numero: 'string',
-		cep: 'string'
+		bairro:"string",
+		cep:"string",
+		complemento:"string",
+		gia:"string",
+		ibge:"string",
+		localidade:"string",
+		logradouro:"string",
+		uf:"string",
+		unidade:"string",
+		numero:"string"
 	}
 };
 
