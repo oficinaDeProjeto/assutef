@@ -1,4 +1,9 @@
+import {Associado} from './associado';
 export class Chequinho {
-    id: string;
-    descricao: string;
+    id: number;
+    valorLimite : number;
+    valorUtilizado : number;
+    associado: Associado;
+    data: Date;
+    codigoDeBarras : number;
 }
