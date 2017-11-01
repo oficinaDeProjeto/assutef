@@ -1,4 +1,4 @@
 export class Chequinho {
     id: string;
-    descrica: string;
+    descricao: string;
 }

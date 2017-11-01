@@ -6,9 +6,20 @@
  */
 
 module.exports = {
-
-  attributes: {
-
+  schema: true,
+	connection: 'mongo',
+	attributes: {
+		/*pra quando for usar o postgres
+		id: {
+			type: 'integer',
+			autoIncrement: true,
+			primaryKey: true
+		},*/
+		descricao: {
+			type: 'string',
+			required: true,
+			unique: true
+    }
   }
 };
 
