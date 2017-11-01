@@ -5,6 +5,7 @@ import { ModalProdutoComponent } from './modal/modal-produto.component';
 import { Router } from '@angular/router';
 import { MatDialog, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 import { Component, OnInit, Inject } from '@angular/core';
+import { ProdutoService } from '../../services/produto/produto.service';
 
 @Component({
 	selector: 'app-produto',
@@ -19,7 +20,7 @@ export class ProdutoComponent implements OnInit {
 	filteredProdutos: Produto[] = [];
 
 	constructor(
-		private genercService: GenericService,
+		private produtoService: ProdutoService,
 		private router: Router,
 		private authService: AuthService,
 		public dialog: MatDialog
@@ -32,8 +33,8 @@ export class ProdutoComponent implements OnInit {
 
 
 	getAll() {
-		this.genercService.getAll('produto').subscribe(produtos => {
-			this.produtos = <Produto[]>produtos;
+		this.produtoService.findAll().subscribe(produtos => {
+			this.produtos = produtos;
 			this.filteredProdutos = Object.assign([], this.produtos);
 		}, err => {
 			console.log(err);
@@ -41,7 +42,7 @@ export class ProdutoComponent implements OnInit {
 	}
 
 	salvarProduto(produto: Produto) {
-		this.genercService.save('produto', produto).subscribe(produto => {
+		this.produtoService.save(produto).subscribe(produto => {
 			console.log('Salvo com sucesso');
 			this.getAll();
 		}, err => {

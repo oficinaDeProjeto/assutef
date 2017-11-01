@@ -5,7 +5,7 @@ export class Produto {
     nome:string;
     descicao:string;
     valor:string;
-    categoria:Categoria;
+    categoria:Categoria = new Categoria();
     unidade:string;
     estoque:string;
 }
