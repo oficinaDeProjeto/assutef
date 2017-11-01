@@ -19,7 +19,8 @@ import {
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatRadioModule
+    MatRadioModule,
+    MatSnackBarModule
 } from "@angular/material";
 
 @NgModule({
@@ -41,7 +42,8 @@ import {
         MatButtonModule,
         MatRadioModule,
         FlexLayoutModule,
-        appMaskModule
+        appMaskModule,
+        MatSnackBarModule
     ],
     entryComponents: [ModalAssociadoComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],

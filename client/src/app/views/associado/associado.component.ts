@@ -4,7 +4,7 @@ import { AuthService } from './../../services/auth/auth.service';
 import { Associado } from './../../models/associado';
 import { ModalAssociadoComponent } from './modal/modal-associado.component';
 import { Router } from '@angular/router';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatSnackBar } from '@angular/material';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -24,7 +24,8 @@ export class AssociadoComponent implements OnInit {
 		private associadoService: AssociadoService,
 		private router: Router,
 		private authService: AuthService,
-		public dialog: MatDialog
+		public dialog: MatDialog,
+		public snackBar: MatSnackBar
 	) {
 	}
 
@@ -38,16 +39,7 @@ export class AssociadoComponent implements OnInit {
 			this.associados = <Associado[]>associados;
 			this.filteredAssociados = Object.assign([], this.associados);
 		}, err => {
-			console.log(err);
-		});
-	}
-
-	salvarAssociado(associado: Associado) {
-		this.genercService.save('associado', associado).subscribe(associado => {
-			console.log('Salvo com sucesso');
-			this.findAll();
-		}, err => {
-			console.log(err);
+			this.openSnackBar("Não foi possível carregar associados", "OK");
 		});
 	}
 
@@ -75,8 +67,22 @@ export class AssociadoComponent implements OnInit {
 		});
 
 		dialogRef.afterClosed().subscribe(result => {
-			console.log(result);
-			this.salvarAssociado(result);
+			this.save(result);
+		});
+	}
+
+	save(associado: Associado) {
+		this.associadoService.save(associado).subscribe(associado => {
+			this.openSnackBar("Salvo com sucesso", "OK");
+			this.findAll();
+		}, err => {
+			this.openSnackBar("Não foi possível salvar associado", "OK");
+		});
+	}
+
+	openSnackBar(message: string, action: string) {
+		this.snackBar.open(message, action, {
+			duration: 10000,
 		});
 	}
 }

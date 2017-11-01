@@ -15,7 +15,7 @@ module.exports = {
 			autoIncrement: true,
 			primaryKey: true
 		},*/
-		name: {
+		nome: {
 			type: 'string',
 			required: true,
 			unique: true
