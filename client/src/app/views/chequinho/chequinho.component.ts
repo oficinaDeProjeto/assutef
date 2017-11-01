@@ -1,6 +1,7 @@
 import { Chequinho } from './../../models/chequinho';
 import { GenericService } from './../../services/generic/generic.service';
 import { Component, OnInit } from '@angular/core';
+import { ChequinhoService } from '../../services/chequinho/chequinho.service';
 
 @Component({
 	selector: 'app-chequinho',
@@ -9,9 +10,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChequinhoComponent implements OnInit {
 	chequinhos: Chequinho[] = [];
+	chequinho: Chequinho = new Chequinho();
 
 	constructor(
-		private genericService: GenericService,
+		private chequinhoService: ChequinhoService,
 	) { }
 
 	ngOnInit() {
@@ -19,12 +21,23 @@ export class ChequinhoComponent implements OnInit {
 	}
 	
 	getAll() {
-		this.genericService.getAll('chequinho').subscribe(chequinhos => {
+		this.chequinhoService.findAll().subscribe(chequinhos => {
 			this.chequinhos = <Chequinho[]>chequinhos;
 		}, err => {
 			console.log(err);
 		})
 	}
+	gerarChequinho(){
+		this.chequinho.descricao = "teste";
+		this.chequinhoService.save(this.chequinho).subscribe(chequinho => {
+			console.log("nois");
+			
+		}, err => {
+			console.log("fudeu");
+		});
+	
+	}
+
 	elementType = 'svg';
 	value = '23350057715';
 	format = 'CODE128';
