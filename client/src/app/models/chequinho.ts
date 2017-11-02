@@ -4,6 +4,5 @@ export class Chequinho {
     valorLimite : number;
     valorUtilizado : number;
     associado: Associado;
-    data: Date;
-    codigoDeBarras : number;
+    data: Date;    
 }
