@@ -2,6 +2,8 @@ import { Chequinho } from './../../models/chequinho';
 import { GenericService } from './../../services/generic/generic.service';
 import { Component, OnInit } from '@angular/core';
 import { ChequinhoService } from '../../services/chequinho/chequinho.service';
+import { Associado } from '../../models/associado';
+import { AssociadoService } from '../../services/associado/associado.service';
 
 @Component({
 	selector: 'app-chequinho',
@@ -9,31 +11,33 @@ import { ChequinhoService } from '../../services/chequinho/chequinho.service';
 	styleUrls: ['./chequinho.component.css']
 })
 export class ChequinhoComponent implements OnInit {
-	chequinhos: Chequinho[] = [];
+	associados: Associado[] = [];
 	chequinho: Chequinho = new Chequinho();
 
 	constructor(
 		private chequinhoService: ChequinhoService,
+		private associadoService: AssociadoService
 	) { }
 
 	ngOnInit() {
-		this.getAll();
+		this.getAllAssociados();
+	}
+
+	getAllAssociados(){
+		this.associadoService.findAll().subscribe(a => {
+			this.associados = <Associado[]> a;
+		}, err => {
+			console.log("Erro ao listar associados");			
+		});
 	}
 	
-	getAll() {
-		this.chequinhoService.findAll().subscribe(chequinhos => {
-			this.chequinhos = <Chequinho[]>chequinhos;
-		}, err => {
-			console.log(err);
-		})
-	}
 	gerarChequinho(){
-		this.chequinho.descricao = "teste";
+		//this.chequinho.descricao = "teste";
 		this.chequinhoService.save(this.chequinho).subscribe(chequinho => {
-			console.log("nois");
+			console.log("Chequinhos gerados com sussesso");
 			
 		}, err => {
-			console.log("fudeu");
+			console.log("Erro ao gerar chequinhos");			
 		});
 	
 	}
