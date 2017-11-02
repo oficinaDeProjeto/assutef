@@ -46,7 +46,7 @@ import {
     ],
     entryComponents: [],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    providers: [AuthService, GenericService, CarrinhoService]
+    providers: [AuthService, GenericService]
 })
 
 export class CarrinhoModule { }

@@ -2,6 +2,8 @@ import { UsuarioModule } from './views/usuario/usuario.module';
 import { ChequinhoModule } from './views/chequinho/chequinho.module';
 import { CategoriaModule } from './views/categoria/categoria.module';
 import { AssociadoModule } from './views/associado/associado.module';
+import { VendaModule } from './views/venda/venda.module';
+import { CarrinhoModule } from './views/carrinho/carrinho.module';
 import 'hammerjs';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -40,6 +42,8 @@ import { CarrinhoComponent } from './views/carrinho/carrinho.component';
     CategoriaModule,
     ChequinhoModule,
     UsuarioModule,
+    VendaModule,
+    CarrinhoModule,
     
     
 
