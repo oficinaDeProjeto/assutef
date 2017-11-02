@@ -17,7 +17,7 @@ export class ChequinhoComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
-		this.getAll();
+		//this.getAll();
 	}
 	
 	getAll() {
@@ -28,7 +28,7 @@ export class ChequinhoComponent implements OnInit {
 		})
 	}
 	gerarChequinho(){
-		this.chequinho.descricao = "teste";
+		//this.chequinho.descricao = "teste";
 		this.chequinhoService.save(this.chequinho).subscribe(chequinho => {
 			console.log("nois");
 			

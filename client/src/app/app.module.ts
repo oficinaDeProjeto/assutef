@@ -19,9 +19,11 @@ import { HttpInterceptorService } from './services/http-interceptor.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { ProfileModule } from './views/profile/profile.module';
 import { ToastyModule, ToastyService } from "ng2-toasty";
+import { VendaComponent } from './views/venda/venda.component';
+import { CarrinhoComponent } from './views/carrinho/carrinho.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, VendaComponent, CarrinhoComponent],
   imports: [
     // Angular modules
     BrowserModule,
@@ -38,6 +40,8 @@ import { ToastyModule, ToastyService } from "ng2-toasty";
     CategoriaModule,
     ChequinhoModule,
     UsuarioModule,
+    
+    
 
     // Modules
     LayoutsModule,
