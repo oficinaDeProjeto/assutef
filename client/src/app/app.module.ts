@@ -19,7 +19,6 @@ import { HttpInterceptorService } from './services/http-interceptor.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { ProfileModule } from './views/profile/profile.module';
 import { ToastyModule, ToastyService } from "ng2-toasty";
-import { ConfirmDialogComponent } from './components/common/confirm-dialog/confirm-dialog.component';
 
 /**
  * Módulo principal da aplicação 
