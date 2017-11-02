@@ -9,6 +9,8 @@ import { HomeComponent } from './views/home/home.component';
 import { LoginComponent } from './views/login/login.component';
 import { ModuleWithProviders } from "@angular/core";
 import { ProfileComponent } from './views/profile/profile.component';
+import { VendaComponent } from './views/venda/venda.component';
+import { CarrinhoComponent } from './views/carrinho/carrinho.component';
 
 
 const routes: Routes = [
