@@ -1,4 +1,4 @@
-import { AssociadoService } from './../../services/associado/associado.service';
+import { CarrinhoService } from './../../services/carrinho/carrinho.service';
 import { appMaskModule } from './../../directives/mask.module';
 import { GenericService } from './../../services/generic/generic.service';
 import { AuthService } from './../../services/auth/auth.service';

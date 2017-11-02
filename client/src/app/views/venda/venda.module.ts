@@ -1,4 +1,4 @@
-import { AssociadoService } from './../../services/associado/associado.service';
+import { VendaService } from './../../services/venda/venda.service';
 import { appMaskModule } from './../../directives/mask.module';
 import { GenericService } from './../../services/generic/generic.service';
 import { AuthService } from './../../services/auth/auth.service';
@@ -21,6 +21,7 @@ import {
     MatRadioModule,
     MatSnackBarModule
 } from "@angular/material";
+import { CarrinhoComponent } from '../carrinho/carrinho.component';
 
 @NgModule({
     declarations: [VendaComponent],
@@ -44,9 +45,9 @@ import {
         appMaskModule,
         MatSnackBarModule
     ],
-   // entryComponents: [CarrinhoComponent],
-   // schemas: [CUSTOM_ELEMENTS_SCHEMA],
-   // providers: [AuthService, GenericService, VendaService]
+    entryComponents: [CarrinhoComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    providers: [AuthService, GenericService, VendaService]
 })
 
 export class VendaModule { }
