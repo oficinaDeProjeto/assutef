@@ -60,14 +60,21 @@ const routes: Routes = [
                 data: {
                     breadcrumb: "Perfil"
                 }
-            }
+            },
             {
                 path: 'venda',
                 component: VendaComponent,
                 data: {
                     breadcrumb: "Venda"
                 }
-            }
+            },
+            {
+                path: 'carrinho',
+                component: CarrinhoComponent,
+                data: {
+                    breadcrumb: "Carrinho"
+                }
+            },
         ]
     },
     {
