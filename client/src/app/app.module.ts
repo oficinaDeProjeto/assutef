@@ -20,6 +20,10 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { ProfileModule } from './views/profile/profile.module';
 import { ToastyModule, ToastyService } from "ng2-toasty";
 
+/**
+ * Módulo principal da aplicação 
+ * delclara o componente principal e importa os módulos das outras telas
+ */
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -30,7 +34,7 @@ import { ToastyModule, ToastyService } from "ng2-toasty";
     HttpClientModule,
     ToastyModule.forRoot(),
 
-    // Views
+    // Views (Módulos)
     LoginModule,
     HomeModule,
     ProfileModule,
@@ -38,10 +42,7 @@ import { ToastyModule, ToastyService } from "ng2-toasty";
     CategoriaModule,
     ChequinhoModule,
     UsuarioModule,
-
-    // Modules
     LayoutsModule,
-
     ROUTES
   ],
   bootstrap: [AppComponent],
