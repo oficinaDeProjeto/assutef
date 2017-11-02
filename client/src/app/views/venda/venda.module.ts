@@ -23,6 +23,7 @@ import {
 } from "@angular/material";
 import { CarrinhoComponent } from '../carrinho/carrinho.component';
 
+
 @NgModule({
     declarations: [VendaComponent],
     exports: [VendaComponent],

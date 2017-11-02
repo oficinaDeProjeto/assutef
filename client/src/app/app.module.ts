@@ -21,11 +21,10 @@ import { HttpInterceptorService } from './services/http-interceptor.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { ProfileModule } from './views/profile/profile.module';
 import { ToastyModule, ToastyService } from "ng2-toasty";
-import { VendaComponent } from './views/venda/venda.component';
-import { CarrinhoComponent } from './views/carrinho/carrinho.component';
+
 
 @NgModule({
-  declarations: [AppComponent, VendaComponent, CarrinhoComponent],
+  declarations: [AppComponent],
   imports: [
     // Angular modules
     BrowserModule,
