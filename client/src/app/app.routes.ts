@@ -65,24 +65,17 @@ const routes: Routes = [
             },
             {
                 path: 'venda',
-                
                 component: VendaComponent,
-                
-                data: {
-                
-                breadcrumb: "Venda"
-                
+                data:{
+                    breadcrumb: "Venda"
                 },
-                
                 children: [
-                
-                {
-                
-                path: 'carrinho/',
-                
-                component: CarrinhoComponent,
-                
-            },
+                    {
+                        path: 'carrinho/',
+                        component: CarrinhoComponent
+                    }
+                ]
+            }
         ]
     },
     {
