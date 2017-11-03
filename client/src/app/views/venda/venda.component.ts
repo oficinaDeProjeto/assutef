@@ -4,7 +4,9 @@ import { GenericService } from '../../services/generic/generic.service';
 import { VendaService } from '../../services/venda/venda.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MatDialog } from '@angular/material';
+import { CarrinhoService } from '../../services/carrinho/carrinho.service';
+import { CarrinhoComponent } from '../carrinho/carrinho.component';
 
 @Component({
   selector: 'app-venda',
@@ -20,23 +22,25 @@ export class VendaComponent implements OnInit {
   constructor(
   private genercService: GenericService,
   private vendaService: VendaService,
+  private carrinhoService: CarrinhoService,
   private router: Router,
   private authService: AuthService,
-  public snackBar: MatSnackBar
+  public snackBar: MatSnackBar,
+  private dialog: MatDialog
   ) { }
   
   ngOnInit() {
   //this.findAll();
   }
   
-  /*findAll() {
+  findAll() {
       this.vendaService.findAll().subscribe(venda => {
         this.vendas = <Venda[]>venda;
         this.filteredVendas = Object.assign([], this.vendas);
       }, err => {
         this.openSnackBar("Não foi possível carregar associados", "OK");
       });
-  }*/
+  }
   
   newVenda() {
       this.selectedVenda = new Venda();
@@ -65,24 +69,24 @@ export class VendaComponent implements OnInit {
   }
 
   
-  /*save(venda: Venda) {
+  save(venda: Venda) {
       this.vendaService.save(venda).subscribe(venda => {
         this.openSnackBar("Salvo com sucesso", "OK");
         this.findAll();
       }, err => {
         this.openSnackBar("Não foi possível salvar associado", "OK");
       });
-    }*/
+    }
   
-  openCarrinho(venda: Venda): void {
-      /*let dialogRef = this.dialog.open(ModalAssociadoComponent, {
-        data: venda
+  openCarrinho(carrinho): void {
+      let dialogRef = this.dialog.open(CarrinhoComponent, {
+        data: carrinho
       });
   
   
       dialogRef.afterClosed().subscribe(result => {
         this.save(result);
-  });*/
+  });
 
   this.router.navigate(['carrinho']);
     }
