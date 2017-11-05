@@ -44,9 +44,9 @@ import {
         appMaskModule,
         MatSnackBarModule
     ],
-    entryComponents: [],
+    entryComponents: [CarrinhoComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    providers: [AuthService, GenericService]
+    providers: [AuthService, GenericService, CarrinhoService]
 })
 
 export class CarrinhoModule { }
