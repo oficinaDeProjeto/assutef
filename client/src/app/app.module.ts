@@ -19,13 +19,19 @@ import { HttpInterceptorService } from './services/http-interceptor.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { ProfileModule } from './views/profile/profile.module';
 import { ToastyModule, ToastyService } from "ng2-toasty";
+import { LancamentoComponent } from './views/lancamento/lancamento.component';
 
-/**
+import { MatFormFieldModule } from '@angular/material';
+import { MatInputModule } from '@angular/material';
+
+import {MatTableModule} from '@angular/material';
+
+/** 
  * Módulo principal da aplicação 
  * delclara o componente principal e importa os módulos das outras telas
  */
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LancamentoComponent],
   imports: [
     // Angular modules
     BrowserModule,
@@ -43,6 +49,10 @@ import { ToastyModule, ToastyService } from "ng2-toasty";
     ChequinhoModule,
     UsuarioModule,
     LayoutsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTableModule,
+
     ROUTES
   ],
   bootstrap: [AppComponent],
