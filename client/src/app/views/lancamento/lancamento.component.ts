@@ -102,7 +102,7 @@ export class ExampleDataSource extends DataSource<any> {
 
     return Observable.merge(...displayDataChanges).map(() => {
       return this._exampleDatabase.data.slice().filter((item: Lancamento) => {
-        let searchStr = (item.associado.name).toLowerCase();
+        let searchStr = (item.associado.nome).toLowerCase();
         return searchStr.indexOf(this.filter.toLowerCase()) != -1;
       });
     });
