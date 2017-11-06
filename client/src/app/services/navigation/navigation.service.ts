@@ -15,6 +15,7 @@ export class NavigationService extends SuperService {
 		{ link: "home", icon: "supervisor_account", desc: "Teste", permicoes: ['ADMIN', 'CLIENT'] },
 		{ link: "associado", icon: "face", desc: "Associado", permicoes: ['ADMIN', 'CLIENT'] },
 		{ link: "conveniado", icon: "store", desc: "Conveniados", permicoes: ['ADMIN', 'CLIENT'] },
+		{ link: "lancamento", icon: "accessibility", desc: "Lançamentos", permicoes: ['ADMIN', 'CLIENT'] },
 	];
 
 	private apiUrl = environment.api_url;
