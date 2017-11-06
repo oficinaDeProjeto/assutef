@@ -1,0 +1,40 @@
+<div class="example-container mat-elevation-z8">
+  <div class="example-header">
+    <mat-form-field floatPlaceholder="never">
+      <input matInput #filter placeholder="Filter users">
+    </mat-form-field>
+  </div>
+
+  <mat-table #table [dataSource]="dataSource">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Progress Column -->
+    <ng-container matColumnDef="associado">
+      <mat-header-cell *matHeaderCellDef> Associado </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.associado}}% </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="empresa">
+      <mat-header-cell *matHeaderCellDef> Empresa </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.empresa}} </mat-cell>
+    </ng-container>
+
+    <!-- Color Column -->
+    <ng-container matColumnDef="valor">
+      <mat-header-cell *matHeaderCellDef> Valor </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.valor}} </mat-cell>
+    </ng-container>
+
+    <!-- Data Column -->
+    <ng-container matColumnDef="dataLancamento">
+      <mat-header-cell *matHeaderCellDef> Data </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.dataLancamento}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>
