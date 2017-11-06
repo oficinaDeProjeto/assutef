@@ -23,7 +23,8 @@ import { CommonModule } from '@angular/common';
         MatCardModule,
         MatSlideToggleModule,
         MatButtonModule,
-        MatInputModule
+        MatInputModule,
+		FlexLayoutModule
     ],
     providers: [
         GenericService

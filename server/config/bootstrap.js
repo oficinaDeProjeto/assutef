@@ -11,7 +11,7 @@
 var fs = require('fs');
 module.exports.bootstrap = function (next) {
 	// Em caso de implantação.
-	createAdminUser();
+	createAdminUsuario();
 	//createPaisEstadoCidade();
 	next();
 };
@@ -78,8 +78,8 @@ var createPaisEstadoCidade = function () {
 /**
  * Caso não exista o usuário admin, será criado um.
  */
-var createAdminUser = function () {
-	User.findOrCreate({ email: 'admin@admin.com' }, {
+var createAdminUsuario = function () {
+	Usuario.findOrCreate({ email: 'admin@admin.com' }, {
 		name: "admin",
 		email: 'admin@admin.com',
 		password: 'admin',
@@ -92,7 +92,7 @@ var createAdminUser = function () {
 		if (error) {
 			sails.log("Usuário administrador não foi criado", error.errmsg);
 		} else {
-			sails.log("User admin ok", createdOrFoundRecords.id);
+			sails.log("Usuario admin ok", createdOrFoundRecords.id);
 		}
 	});
 };

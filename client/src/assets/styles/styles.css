@@ -8751,3 +8751,7 @@ body .ui-calendar input {
 a {
     text-decoration: none;
 }
+
+.content {
+    width: 100%;
+}

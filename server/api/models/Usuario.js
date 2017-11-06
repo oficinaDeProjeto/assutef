@@ -1,5 +1,5 @@
 /**
- * User.js
+ * Usuario.js
  *
  * @description :: Entidade que representa o objeto de usuário no banco de dados
  * @docs        :: http://sailsjs.org/#!documentation/models
@@ -32,9 +32,9 @@ module.exports = {
 			enum: ['ADMIN', 'USER'],
 			required: "true",
 		},
-		avatar: {
+		/*avatar: {
 			type: 'string'
-		},
+		},*/
 		
 		// Para não enviar uma senha criptografada
 		toJSON: function () {

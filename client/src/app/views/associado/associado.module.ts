@@ -1,3 +1,5 @@
+import { AssociadoService } from './../../services/associado/associado.service';
+import { appMaskModule } from './../../directives/mask.module';
 import { GenericService } from './../../services/generic/generic.service';
 import { AuthService } from './../../services/auth/auth.service';
 import { ModalAssociadoComponent } from './modal/modal-associado.component';
@@ -7,10 +9,22 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { MatDialogModule, MatCardModule, MatInputModule, MatButtonModule, MatIconModule } from "@angular/material";
+import {
+    MatDialogModule,
+    MatCardModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
+    MatStepperModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatRadioModule,
+    MatSnackBarModule
+} from "@angular/material";
 
 @NgModule({
-    declarations: [AssociadoComponent,ModalAssociadoComponent],
+    declarations: [AssociadoComponent, ModalAssociadoComponent],
     exports: [AssociadoComponent, ModalAssociadoComponent],
     imports: [
         CommonModule,
@@ -20,11 +34,20 @@ import { MatDialogModule, MatCardModule, MatInputModule, MatButtonModule, MatIco
         MatCardModule,
         MatInputModule,
         MatButtonModule,
-        MatIconModule    
+        MatIconModule,
+        MatStepperModule,
+        MatSelectModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatButtonModule,
+        MatRadioModule,
+        FlexLayoutModule,
+        appMaskModule,
+        MatSnackBarModule
     ],
     entryComponents: [ModalAssociadoComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    providers: [AuthService, GenericService]
+    providers: [AuthService, GenericService, AssociadoService]
 })
 
 export class AssociadoModule { }

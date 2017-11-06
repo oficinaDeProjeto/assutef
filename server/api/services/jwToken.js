@@ -30,7 +30,7 @@ module.exports.verify = function(token, callback) {
 };
 
 // Verifies token on a request
-module.exports.getIdUserByToken = function(token) {
+module.exports.getIdUsuarioByToken = function(token) {
 	var aux = jwt.decode(token, {complete: true});
 	return aux.payload.id;
 };

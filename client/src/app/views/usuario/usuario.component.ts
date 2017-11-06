@@ -1,9 +1,9 @@
+import { UsuarioService } from './../../services/usuario/usuario.service';
 import { ModalUsuarioComponent } from './modal/modal-user.component';
 import { Usuario } from './../../models/Usuario';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
 import { MatIconRegistry, MatDialog } from "@angular/material";
-import { GenericService } from './../../services/generic/generic.service';
 
 
 @Component({
@@ -23,7 +23,7 @@ export class UsuarioComponent implements OnInit {
 
 	
 	getAll() {
-		this.genercService.getAll('usuario').subscribe(usuarios => {
+		this.usuarioService.getAll().subscribe(usuarios => {
 			this.usuarios = <Usuario[]>usuarios;
 			this.filteredUsuarios = Object.assign([], this.usuarios);
 			this.selectedUsuario = this.usuarios[0];
@@ -36,7 +36,7 @@ export class UsuarioComponent implements OnInit {
 	constructor(
 		iconRegistry: MatIconRegistry, 
 		sanitizer: DomSanitizer, 
-		private genercService: GenericService,
+		private usuarioService: UsuarioService,
 		private dialog: MatDialog
 	) {
 		// To avoid XSS attacks, the URL needs to be trusted from inside of your application.
@@ -44,6 +44,17 @@ export class UsuarioComponent implements OnInit {
 		iconRegistry.addSvgIconSetInNamespace('avatars', avatarsSafeUrl);
 	}
 
+	openUser(usuario): void{
+		let dialogRef = this.dialog.open(ModalUsuarioComponent, {
+			data: usuario
+		});
+
+		dialogRef.afterClosed().subscribe(result => {
+			console.log(result);
+			//this.salvarCategoria(result);
+		});
+	}
+	
 	openNewUsuarioDialog(): void {
 		let dialogRef = this.dialog.open(ModalUsuarioComponent, {
 			data: null

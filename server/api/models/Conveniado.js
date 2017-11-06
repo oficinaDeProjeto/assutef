@@ -37,9 +37,9 @@ module.exports = {
 		endereco: {
 			model: 'endereco'
     },
-    cidade: {
+    /*cidade: {
       model: 'cidade'
-		},
+		},*/
 		tipoconveniado:{
 			model: 'tipoconveniado'
 		}
