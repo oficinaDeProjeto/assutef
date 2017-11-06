@@ -5,13 +5,17 @@
 			<mat-card-title>Chequinhos</mat-card-title>
 			<mat-card-subtitle></mat-card-subtitle>			
 		</mat-card-header>		
-		<mat-card-content>					
-			<mat-select id="cmbAssociado" placeholder="Selecione o Associado">
-				<mat-option value="option">Usuario</mat-option>
+		<mat-card-content>				
+		<mat-form-field>	
+			<mat-select [(ngModel)]="chequinho.associado"  id="cmbAssociado" placeholder="Selecione o Associado">
+				<mat-option *ngFor="let associadoValue of associados" [value]="associadoValue">
+					{{associadoValue.nome}}
+				</mat-option>
 			</mat-select>
+			</mat-form-field>
 			<p></p>
 			<mat-input-container>								
-				<input type="number" matInput placeholder="Limite R$">
+				<input [(ngModel)]="chequinho.valorLimite" type="number" matInput placeholder="Limite R$">
 			</mat-input-container>										
 				<p></p>
 			<mat-input-container>
@@ -21,7 +25,7 @@
 
 		</mat-card-content>
 		<mat-card-actions>
-			<button type="button" mat-raised-button >GERAR</button>
+			<button type="button" mat-raised-button (click)="gerarChequinho()">GERAR</button>
 			<button type="button" mat-raised-button >LIMPAR</button>
 	</mat-card-actions>
 	</mat-card>
