@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { MatDialog, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 import { Component, OnInit, Inject } from '@angular/core';
 import { ProdutoService } from '../../services/produto/produto.service';
+import { Categoria } from '../../models/categoria';
+import { ModalCategoriaComponent } from '../categoria/modal/modal-categoria.component';
 
 @Component({
 	selector: 'app-produto',
@@ -79,6 +81,16 @@ export class ProdutoComponent implements OnInit {
 		});
 	}
 
+	/*openDialogCategoria(categoria: Categoria): void {
+		let dialogRef = this.dialog.open(ModalCategoriaComponent, {
+			data: categoria
+		});
+
+		dialogRef.afterClosed().subscribe(result => {
+			console.log(result);
+			this.salvarCategoria(result);
+		});
+	}*/
 
 
 }

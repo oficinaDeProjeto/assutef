@@ -2,18 +2,20 @@
 	<mat-card>
 		<mat-card-header>
 			<mat-card-title>Categoria</mat-card-title>
+			<br/>
 			<mat-card-subtitle>Lista de categorias cadastradas</mat-card-subtitle>
+			<br/>
 			<mat-input-container>
 				<input matInput [(ngModel)]="query" name="query" placeholder="Pesquise por categoria" (input)="filterCategoria(query)">
 			</mat-input-container>
 		</mat-card-header>
 		<mat-card-content>
 			<mat-list>
-				<h3 mat-subheader>Categoria</h3>
+				<h3 mat-subheader>Categorias Cadastradas</h3>
 				<mat-list-item *ngFor="let categoria of filteredCategorias" (click)="openDialog(categoria)">
 					<mat-icon mat-list-icon>folder</mat-icon>
 					<h4 mat-line>{{categoria.descricao}}</h4>
-					<p mat-line> outra coisa... sei lá </p>
+					<p mat-line> categoria 1 </p>
 				</mat-list-item>
 			</mat-list>
 		</mat-card-content>
