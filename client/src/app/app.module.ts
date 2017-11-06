@@ -26,6 +26,10 @@ import { MatInputModule } from '@angular/material';
 
 import {MatTableModule} from '@angular/material';
 
+/** 
+ * Módulo principal da aplicação 
+ * delclara o componente principal e importa os módulos das outras telas
+ */
 @NgModule({
   declarations: [AppComponent, LancamentoComponent],
   imports: [
@@ -36,7 +40,7 @@ import {MatTableModule} from '@angular/material';
     HttpClientModule,
     ToastyModule.forRoot(),
 
-    // Views
+    // Views (Módulos)
     LoginModule,
     HomeModule,
     ProfileModule,
@@ -44,8 +48,6 @@ import {MatTableModule} from '@angular/material';
     CategoriaModule,
     ChequinhoModule,
     UsuarioModule,
-
-    // Modules
     LayoutsModule,
     MatFormFieldModule,
     MatInputModule,
