@@ -1,7 +1,7 @@
 import { Endereco } from './endereco';
 export class Associado {
     id: string;
-    nome:string;
+    name:string;
     email: string;
     tel: string;
     cpf: string;
