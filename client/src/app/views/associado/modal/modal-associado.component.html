@@ -6,7 +6,8 @@
 				<form #dadosPessoaisForm="ngForm">
 					<div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="center start">
 						<mat-form-field fxFlex.gt-sm="50" fxFlex="100" class="p-5">
-							<input matInput [appMask]="masks.cpf" placeholder="CPF" [(ngModel)]="associado.cpf" required name="cpf">
+							<input matInput [appMask]="masks.cpf" placeholder="CPF" [(ngModel)]="associado.cpf" required name="cpf"
+							(blur)="findByCpf(associado.cpf)">
 						</mat-form-field>
 						<mat-form-field fxFlex.gt-sm="50" fxFlex="100" class="p-5">
 							<input matInput placeholder="Nome" [(ngModel)]="associado.nome" required name="nome">
@@ -15,7 +16,8 @@
 							<input matInput [appMask]="masks.brCellPhone" placeholder="Celular" [(ngModel)]="associado.tel" required name="tel">
 						</mat-form-field>
 						<mat-form-field fxFlex.gt-sm="50" fxFlex="100" class="p-5">
-							<input matInput placeholder="E-mail" [(ngModel)]="associado.email" required name="email" type="email">
+							<input matInput placeholder="E-mail" [(ngModel)]="associado.email" required name="email" type="email"
+							(blur)="findByEmail(associado.email)">
 						</mat-form-field>
 						<div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="center start" fxFlex.gt-sm="100" fxFlex="100" class="p-5">
 							<div fxLayout="row" fxLayoutAlign="center start" fxFlex="50" class="p-5">
@@ -33,7 +35,7 @@
 						</div>
 					</div>
 				</form>
-				<div>
+				<div fxLayout="row" fxLayoutAlign="end center">
 					<button mat-button matStepperNext color="primary" [disabled]="!dadosPessoaisForm.form.valid">Próximo</button>
 				</div>
 			</form>
@@ -70,7 +72,7 @@
 						</mat-form-field>
 					</div>
 				</form>
-				<div>
+				<div fxLayout="row" fxLayoutAlign="end center">
 					<button mat-button matStepperPrevious>Voltar</button>
 					<button mat-button matStepperNext color="primary" [disabled]="!enderecoForm.form.valid">Próximo</button>
 				</div>
@@ -78,8 +80,7 @@
 		</mat-step>
 		<mat-step>
 			<ng-template matStepLabel>Pronto</ng-template>
-			<!--<div *ngIf="!error && !success">
-
+			<div *ngIf="!error && !success">
 					<div class="ibox product-detail">
 						<div class="ibox-content">
 							<div class="row">
@@ -90,7 +91,7 @@
 									<small>{{associado.email}}</small>
 									<div class="m-t-mat">
 										<h2 class="product-main-price">
-											{{associado.nascimento | date}}
+											{{associado.aniversario | date}}
 											<small class="text-muted">Aniversário</small>
 										</h2>
 									</div>
@@ -98,14 +99,13 @@
 									<h4>Confira os dados do usuário:</h4>
 									<div class="small text-muted">
 										Tel.: {{associado.tel}}
-										<br>Cpf: {{associado.cnpjf}}
-										<br>Cep: {{associado.cep}}
-										<br>Estado: {{associado.cidade?.uf}}
-										<br>Cidade: {{associado.cidade?.nome}}
-										<br>Bairro: {{associado.bairro}}
-										<br>Endereço: {{associado.endereco}}
-										<br>Numero: {{associado.numero}}
-										<br>Sexo: {{associado.sexo}}
+										<br>Cpf: {{associado.cpf}}
+										<br>Tel: {{associado.tel}}
+										<br>Cep: {{associado.endereco?.cep}}
+										<br>Estado: {{associado.endereco?.uf}}
+										<br>Cidade: {{associado.endereco?.localidade}}
+										<br>Bairro: {{associado.endereco.bairro}}
+										<br>Endereço: {{associado.endereco?.logradouro}} nº {{associado.endereco?.numero}}
 									</div>
 									<hr>
 								</div>
@@ -113,12 +113,12 @@
 
 						</div>
 					</div>
-				</div>-->
+				</div>
 			<app-animation-msg-error *ngIf="error"></app-animation-msg-error>
 			<app-animation-msg-success *ngIf="success"></app-animation-msg-success>
-			<div>
+			<div  md-dialog-actions fxLayout="row" fxLayoutAlign="end center">
 				<button mat-button matStepperPrevious>Voltar</button>
-				<button mat-button color="primary" (click)="save(associado)">Salvar</button>
+				<button mat-button color="primary" [mat-dialog-close]="associado">Salvar</button>
 			</div>
 		</mat-step>
 	</mat-horizontal-stepper>

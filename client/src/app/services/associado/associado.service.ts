@@ -11,17 +11,20 @@ export class AssociadoService {
 	constructor(private httpClient: HttpClient) {
 	}
 
-	save(pessoa: Associado): Observable<Associado> {
-		return this.httpClient.post<Associado>(`${this.apiUrl}associado`, pessoa);
+	save(associado: Associado): Observable<Associado> {
+		return this.httpClient.post<Associado>(`${this.apiUrl}associado`, associado);
 	}
-
-	findByCpf(cpf: string): Observable<Associado> {
-		const url = `${this.apiUrl}associado?cpf=/${cpf}`;
-		return this.httpClient.get<Associado>(url);
+	
+	findByCpf(cpf: string): Observable<Associado[]> {
+		return this.httpClient.get<Associado[]>(`${this.apiUrl}associado?cpf=${cpf}`);
 	}
 
 	findAll() : Observable<Associado[]> {
 		return this.httpClient.get<Associado[]>(`${this.apiUrl}associado`);
+	}
+
+	findByEmail(email: string): Observable<Associado[]> {
+		return this.httpClient.get<Associado[]>(`${this.apiUrl}associado?email=${email}`);
 	}
 
 }
