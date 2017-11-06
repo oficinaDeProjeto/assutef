@@ -1,3 +1,4 @@
+import { PlanoContaModule } from './views/plano-conta/plano-conta.module';
 import { UsuarioModule } from './views/usuario/usuario.module';
 import { ChequinhoModule } from './views/chequinho/chequinho.module';
 import { CategoriaModule } from './views/categoria/categoria.module';
@@ -38,6 +39,7 @@ import { ToastyModule, ToastyService } from "ng2-toasty";
     CategoriaModule,
     ChequinhoModule,
     UsuarioModule,
+    PlanoContaModule,
 
     // Modules
     LayoutsModule,
