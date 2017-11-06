@@ -3,6 +3,7 @@ import { UsuarioComponent } from './views/usuario/usuario.component';
 import { CategoriaComponent } from './views/categoria/categoria.component';
 import { ProdutoComponent } from './views/produto/produto.component';
 import { ChequinhoComponent } from './views/chequinho/chequinho.component';
+import { LancamentoComponent } from './views/lancamento/lancamento.component';
 import { RouterModule, Routes } from '@angular/router';
 import { blankComponent } from "./components/common/layouts/blank.component";
 import { BasicComponent } from "./components/common/layouts/basic.component";
@@ -67,6 +68,13 @@ const routes: Routes = [
                 component: ProfileComponent,
                 data: {
                     breadcrumb: "Perfil"
+                }
+            },
+            {
+                path: 'lancamento',
+                component: LancamentoComponent,
+                data: {
+                    breadcrumb: "Lancamento"
                 }
             }
         ]
