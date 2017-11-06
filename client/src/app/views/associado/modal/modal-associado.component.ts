@@ -41,7 +41,7 @@ export class ModalAssociadoComponent implements OnInit {
 	findByCpf(cpf: string) {
 		this.associadoService.findByCpf(cpf).subscribe(res => {
 			if (res.length > 0) {
-				this.openSnackBar(`O Usuário  ${res[0].nome}, já possui cadastro com o cpf ${cpf}.`, "OK");
+				this.openSnackBar(`O Usuário  ${res[0].name}, já possui cadastro com o cpf ${cpf}.`, "OK");
 				//Não está funcionando.
 				this.associado.cpf = '';
 			}
@@ -51,7 +51,7 @@ export class ModalAssociadoComponent implements OnInit {
 	findByEmail(email: string) {
 		this.associadoService.findByEmail(email).subscribe(res => {
 			if (res.length > 0) {
-				this.openSnackBar(`O Usuário  ${res[0].nome}, já possui cadastro com o email ${email}.`, "OK");
+				this.openSnackBar(`O Usuário  ${res[0].name}, já possui cadastro com o email ${email}.`, "OK");
 				//Não está funcionando.
 				this.associado.email = '';
 			}
