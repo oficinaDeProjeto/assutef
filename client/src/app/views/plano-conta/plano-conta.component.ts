@@ -13,7 +13,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlanoContaComponent implements OnInit {
 
-  planoConta: PlanoConta = new PlanoConta();
+  	planoConta: PlanoConta = new PlanoConta();
 	planoContas: PlanoConta[] = [];
 	selectedPlanoConta: PlanoConta = new PlanoConta;
 	filteredPlanoConta: PlanoConta[] = [];
@@ -68,10 +68,11 @@ export class PlanoContaComponent implements OnInit {
 	}
 
 	save(planoConta: PlanoConta) {
-		this.planoContaService.save(planoConta).subscribe(planoConta => {
+		this.planoContaService.save(this.planoConta).subscribe(planoConta => {
 			this.openSnackBar("Salvo com sucesso", "OK");
 			this.findAll();
 		}, err => {
+			console.log(err);
 			this.openSnackBar("Não foi possível salvar a Conta", "OK");
 		});
 	}
