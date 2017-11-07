@@ -1,11 +1,9 @@
-import { ConfirmDialogModule } from './../../components/common/confirm-dialog/confirm-dialog.module';
 import { AssociadoService } from './../../services/associado/associado.service';
 import { appMaskModule } from './../../directives/mask.module';
 import { GenericService } from './../../services/generic/generic.service';
 import { AuthService } from './../../services/auth/auth.service';
-import { ModalAssociadoComponent } from './modal/modal-associado.component';
-import { AssociadoComponent } from './associado.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { LancamentoComponent } from './lancamento.component'
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -22,12 +20,12 @@ import {
     MatNativeDateModule,
     MatRadioModule,
     MatSnackBarModule,
-    MatTooltipModule
+    
 } from "@angular/material";
 
 @NgModule({
-    declarations: [AssociadoComponent, ModalAssociadoComponent],
-    exports: [AssociadoComponent, ModalAssociadoComponent],
+    declarations: [LancamentoComponent],
+    exports: [LancamentoComponent],
     imports: [
         CommonModule,
         FormsModule,
@@ -43,15 +41,13 @@ import {
         MatNativeDateModule,
         MatButtonModule,
         MatRadioModule,
-        MatTooltipModule,
         FlexLayoutModule,
         appMaskModule,
-        MatSnackBarModule,
-        ConfirmDialogModule
+        MatSnackBarModule
     ],
-    entryComponents: [ModalAssociadoComponent],
+    entryComponents: [],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     providers: [AuthService, GenericService, AssociadoService]
 })
 
-export class AssociadoModule { }
+export class LancamentoModule { }

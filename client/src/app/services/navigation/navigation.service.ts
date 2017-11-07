@@ -8,7 +8,7 @@ export class NavigationService extends SuperService {
 
 
 	menuItens = [
-		{ link: "usuario", icon: "face", desc: "Usuários", permicoes: ['ADMIN', 'CLIENT'] },
+		{ link: "usuario", icon: "account_circle", desc: "Usuários", permicoes: ['ADMIN', 'CLIENT'] },
 		{ link: "home", icon: "dashboard", desc: "Dashboard", permicoes: ['ADMIN', 'CLIENT'] },
 		{ link: "categoria", icon: "assignment_turned_in", desc: "Categoria", permicoes: ['ADMIN', 'CLIENT'] },
 		{ link: "produto", icon: "assignmentt", desc: "Produto", permicoes: ['ADMIN', 'CLIENT']},

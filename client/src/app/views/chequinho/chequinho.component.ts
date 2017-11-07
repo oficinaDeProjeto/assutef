@@ -32,7 +32,7 @@ export class ChequinhoComponent implements OnInit {
 	}
 	
 	gerarChequinho(){
-		//this.chequinho.descricao = "teste";
+		
 		this.chequinhoService.save(this.chequinho).subscribe(chequinho => {
 			console.log("Chequinhos gerados com sussesso");
 			
