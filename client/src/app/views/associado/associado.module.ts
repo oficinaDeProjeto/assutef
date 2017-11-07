@@ -1,3 +1,4 @@
+import { ConfirmDialogModule } from './../../components/common/confirm-dialog/confirm-dialog.module';
 import { AssociadoService } from './../../services/associado/associado.service';
 import { appMaskModule } from './../../directives/mask.module';
 import { GenericService } from './../../services/generic/generic.service';
@@ -21,7 +22,7 @@ import {
     MatNativeDateModule,
     MatRadioModule,
     MatSnackBarModule,
-    
+    MatTooltipModule
 } from "@angular/material";
 
 @NgModule({
@@ -42,9 +43,11 @@ import {
         MatNativeDateModule,
         MatButtonModule,
         MatRadioModule,
+        MatTooltipModule,
         FlexLayoutModule,
         appMaskModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        ConfirmDialogModule
     ],
     entryComponents: [ModalAssociadoComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],

@@ -1,3 +1,4 @@
+import { ConfirmDialogService } from './../../components/common/confirm-dialog/confirm-dialog.service';
 import { AssociadoService } from './../../services/associado/associado.service';
 import { GenericService } from './../../services/generic/generic.service';
 import { AuthService } from './../../services/auth/auth.service';
@@ -25,7 +26,8 @@ export class AssociadoComponent implements OnInit {
 		private router: Router,
 		private authService: AuthService,
 		public dialog: MatDialog,
-		public snackBar: MatSnackBar
+		public snackBar: MatSnackBar,
+		public confirmDialogService: ConfirmDialogService
 	) {
 	}
 
@@ -71,12 +73,32 @@ export class AssociadoComponent implements OnInit {
 		});
 	}
 
+	/**
+	 * Valida se é mesmo a intenção do usuário, caso sim remove um associado dá base
+	 * @param associado associado passado por parametro direto da View
+	 */
+	delete(associado: Associado) {
+		this.confirmDialogService.confirm(
+			'Confirmação',
+			`Você tem ceteza que deseja remover o associado ${associado.nome}?`)
+			.subscribe(res => {
+				if (res) {
+					this.associadoService.delete(associado.id).subscribe(associado => {
+						this.openSnackBar("Removido com sucesso", "OK");
+						this.findAll();
+					}, err => {
+						this.openSnackBar("Não foi possível remover o associado", "OK");
+					})
+				}
+			});
+	}
+
 	save(associado: Associado) {
 		this.associadoService.save(associado).subscribe(associado => {
 			this.openSnackBar("Salvo com sucesso", "OK");
 			this.findAll();
 		}, err => {
-			this.openSnackBar("Não foi possível salvar associado", "OK");
+			this.openSnackBar("Não foi possível salvar o associado", "OK");
 		});
 	}
 
