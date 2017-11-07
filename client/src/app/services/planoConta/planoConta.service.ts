@@ -15,4 +15,8 @@ export class PlanoContaService {
 		return this.httpClient.get<PlanoConta[]>(`${this.apiUrl}planoConta`);
 	}
 
+	save(planoConta: PlanoConta): Observable<PlanoConta> {
+		return this.httpClient.post<PlanoConta>(`${this.apiUrl}planoConta`, planoConta);
+	}
+
 }

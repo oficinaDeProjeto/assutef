@@ -28,14 +28,14 @@ export class LancamentoComponent implements OnInit {
 
   ngOnInit() {
 
-    this.dataSource = new ExampleDataSource(this.exampleDatabase);
+    /*this.dataSource = new ExampleDataSource(this.exampleDatabase);
     Observable.fromEvent(this.filter.nativeElement, 'keyup')
         .debounceTime(150)
         .distinctUntilChanged()
         .subscribe(() => {
           if (!this.dataSource) { return; }
           this.dataSource.filter = this.filter.nativeElement.value;
-        });
+        });*/
   }  
 
 }
