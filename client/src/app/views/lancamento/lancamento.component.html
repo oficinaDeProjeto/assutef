@@ -1,40 +1,34 @@
-<div class="example-container mat-elevation-z8">
-  <div class="example-header">
-    <mat-form-field floatPlaceholder="never">
-      <input matInput #filter placeholder="Filter users">
+
+<div class="content" fxFlex fxLayout="grid" fxLayoutAlign="space-around ">			
+	<mat-card>    
+		<mat-card-header>
+			<mat-card-title> Lançamento </mat-card-title>
+			<mat-card-subtitle></mat-card-subtitle>			
+		</mat-card-header>		
+		<mat-card-content>				
+		<mat-form-field>	
+			<mat-select [(ngModel)]="lancamento.associado"  id="cmbAssociado" placeholder="Selecione o Associado">
+				<mat-option *ngFor="let associadoValue of associados" [value]="associadoValue">
+					{{associadoValue.nome}}
+				</mat-option>
+      </mat-select>
+      
     </mat-form-field>
-  </div>
 
-  <mat-table #table [dataSource]="dataSource">
+    <p></p>
 
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
+    
+    <mat-form-field class="example-full-width">
+      <input matInput type="number" placeholder="Valor" >
+    </mat-form-field>
+														
+									
 
-    <!-- Progress Column -->
-    <ng-container matColumnDef="associado">
-      <mat-header-cell *matHeaderCellDef> Associado </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.associado}}% </mat-cell>
-    </ng-container>
-
-    <!-- Name Column -->
-    <ng-container matColumnDef="empresa">
-      <mat-header-cell *matHeaderCellDef> Empresa </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.empresa}} </mat-cell>
-    </ng-container>
-
-    <!-- Color Column -->
-    <ng-container matColumnDef="valor">
-      <mat-header-cell *matHeaderCellDef> Valor </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.valor}} </mat-cell>
-    </ng-container>
-
-    <!-- Data Column -->
-    <ng-container matColumnDef="dataLancamento">
-      <mat-header-cell *matHeaderCellDef> Data </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.dataLancamento}} </mat-cell>
-    </ng-container>
-
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  </mat-table>
+		</mat-card-content>
+		<mat-card-actions>
+			<button type="button" mat-raised-button (click)="salvarLancamento()">GERAR</button>
+			<button type="button" mat-raised-button >LIMPAR</button>
+	</mat-card-actions>
+	</mat-card>
 </div>
+

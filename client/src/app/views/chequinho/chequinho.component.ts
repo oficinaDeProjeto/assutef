@@ -31,7 +31,8 @@ export class ChequinhoComponent implements OnInit {
 		});
 	}
 	
-	gerarChequinho(){		
+	gerarChequinho(){
+		
 		this.chequinhoService.save(this.chequinho).subscribe(chequinho => {
 			console.log("Chequinhos gerados com sussesso");
 			

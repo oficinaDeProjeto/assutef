@@ -2,6 +2,7 @@ import { UsuarioModule } from './views/usuario/usuario.module';
 import { ChequinhoModule } from './views/chequinho/chequinho.module';
 import { CategoriaModule } from './views/categoria/categoria.module';
 import { AssociadoModule } from './views/associado/associado.module';
+import { LancamentoModule } from './views/lancamento/lancamento.module';
 import 'hammerjs';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,7 +20,6 @@ import { HttpInterceptorService } from './services/http-interceptor.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { ProfileModule } from './views/profile/profile.module';
 import { ToastyModule, ToastyService } from "ng2-toasty";
-import { LancamentoComponent } from './views/lancamento/lancamento.component';
 
 import { MatFormFieldModule } from '@angular/material';
 import { MatInputModule } from '@angular/material';
@@ -27,7 +27,7 @@ import { MatInputModule } from '@angular/material';
 import {MatTableModule} from '@angular/material';
 
 @NgModule({
-  declarations: [AppComponent, LancamentoComponent],
+  declarations: [AppComponent],
   imports: [
     // Angular modules
     BrowserModule,
@@ -44,6 +44,7 @@ import {MatTableModule} from '@angular/material';
     CategoriaModule,
     ChequinhoModule,
     UsuarioModule,
+    LancamentoModule,
 
     // Modules
     LayoutsModule,
