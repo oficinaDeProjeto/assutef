@@ -1,12 +1,17 @@
-import { MatDialogModule, MatInputModule, MatButtonModule } from '@angular/material';
+import { MatDialogModule, MatInputModule, MatButtonModule,MatSelectModule } from '@angular/material';
 
 import { ModalCategoriaComponent } from './modal/modal-categoria.component';
 import { CategoriaComponent } from './categoria.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { NgModule } from "@angular/core";
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { appMaskModule } from '../../directives/mask.module';
+import { ConfirmDialogModule } from '../../components/common/confirm-dialog/confirm-dialog.module';
+import { CategoriaService } from '../../services/categoria/categoria.service';
+import { GenericService } from '../../services/generic/generic.service';
+import { AuthService } from '../../services/auth/auth.service';
 
 @NgModule({
     declarations: [CategoriaComponent, ModalCategoriaComponent],
@@ -18,10 +23,14 @@ import { CommonModule } from '@angular/common';
         MatDialogModule,
         MatInputModule,
         MatButtonModule,
+        MatInputModule,
+        MatButtonModule,
+       
              
 
     ],
-    entryComponents:[ModalCategoriaComponent]
+    entryComponents:[ModalCategoriaComponent],
+   
 })
 
 export class CategoriaModule { }
