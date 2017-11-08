@@ -12,13 +12,13 @@
 							<input matInput placeholder="Nome Fantasia" [(ngModel)]="conveniado.nomefantasia" required name="nomefantasia">
 						</mat-form-field>
 						<mat-form-field fxFlex.gt-sm="30" fxFlex="30" class="p-5">
-							<input matInput placeholder="CNPJ" [(ngModel)]="conveniado.cnpj" required name="cnpj">
+							<input matInput [appMask]="masks.cnpj" placeholder="CNPJ" [(ngModel)]="conveniado.cnpj" required name="cnpj">
 						</mat-form-field>
 						<mat-form-field fxFlex.gt-sm="30" fxFlex="30" class="p-5">
 							<input matInput placeholder="Comissão" [(ngModel)]="conveniado.comissao" required name="comissao">
 						</mat-form-field>					
 						<mat-form-field fxFlex.gt-sm="30" fxFlex="30" class="p-5">
-							<input matInput placeholder="Telefone" [(ngModel)]="conveniado.telefone" required name="telefone">
+							<input matInput [appMask]="masks.brCellPhone" placeholder="Telefone" [(ngModel)]="conveniado.telefone" required name="telefone">
 						</mat-form-field>	
 						<mat-form-field fxFlex="30" class="p-5">
 							<input required matInput name="datacadastro" [matDatepicker]="picker" [(ngModel)]="conveniado.datacadastro" placeholder="Informe a data de cadastro">
@@ -45,7 +45,7 @@
 				<form #enderecoForm="ngForm">
 					<div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="center start">
 						<mat-form-field fxFlex.gt-sm="50" fxFlex="100" class="p-5">
-							<input matInput placeholder="Cep" [(ngModel)]="conveniado.endereco.cep" name="cep"
+							<input matInput [appMask]="masks.cep" placeholder="Cep" [(ngModel)]="conveniado.endereco.cep" name="cep"
 							 (blur)="getAddressByPostalCode(conveniado.endereco.cep)">
 						</mat-form-field>
 						<div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="center start" fxFlex.gt-sm="50" fxFlex="100" class="p-5">
