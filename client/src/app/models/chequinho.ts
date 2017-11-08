@@ -1,6 +1,6 @@
 import {Associado} from './associado';
 export class Chequinho {
-    id: number;
+    id: string;
     valorLimite : number;
     valorUtilizado : number;
     associado: Associado = new Associado;

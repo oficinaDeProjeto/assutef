@@ -1,4 +1,4 @@
-import { AuthService } from './../../services/auth/auth.service';
+import { AuthService } from './../../../services/auth/auth.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -15,15 +15,13 @@ import {
     MatListModule,
     MatNativeDateModule
 } from "@angular/material";
-import { ChequinhoComponent } from './chequinho.component';
-import { ImpressaoChequinhoComponent } from './impressao/impressao-chequinho.component';
-
-import { ChequinhoService } from '../../services/chequinho/chequinho.service';
+import { ImpressaoChequinhoComponent } from './../impressao/impressao-chequinho.component';
+import { ChequinhoService } from '../../../services/chequinho/chequinho.service';
 
 
 @NgModule({
-    declarations: [ChequinhoComponent],
-    exports: [ChequinhoComponent],
+    declarations: [ImpressaoChequinhoComponent],
+    exports: [ImpressaoChequinhoComponent],
     imports: [
         CommonModule,
         FormsModule,
@@ -43,4 +41,4 @@ import { ChequinhoService } from '../../services/chequinho/chequinho.service';
     ]
 })
 
-export class ChequinhoModule { }
+export class ImpressaoChequinhoModule { }
