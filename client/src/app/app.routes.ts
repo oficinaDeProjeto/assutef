@@ -10,6 +10,8 @@ import { HomeComponent } from './views/home/home.component';
 import { LoginComponent } from './views/login/login.component';
 import { ModuleWithProviders } from "@angular/core";
 import { ProfileComponent } from './views/profile/profile.component';
+import { ConveniadoComponent } from './views/conveniado/conveniado.component';
+import { TipoconveniadoComponent } from './views/tipoconveniado/tipoconveniado.component';
 
 
 const routes: Routes = [
@@ -53,6 +55,20 @@ const routes: Routes = [
                 component: AssociadoComponent,
                 data: {
                     breadcrumb: "Associado"
+                }
+            },
+            {
+                path: 'tipoconveniado',
+                component: TipoconveniadoComponent,
+                data: {
+                    breadcrumb: "Tipo Conveniado"
+                }
+            },
+            {
+                path: 'conveniado',
+                component: ConveniadoComponent,
+                data: {
+                    breadcrumb: "Conveniado"
                 }
             },
             {

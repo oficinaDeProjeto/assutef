@@ -20,6 +20,8 @@ import { HttpInterceptorService } from './services/http-interceptor.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { ProfileModule } from './views/profile/profile.module';
 import { ToastyModule, ToastyService } from "ng2-toasty";
+import { TipoconveniadoModule } from './views/tipoconveniado/tipoconveniado.module';
+import { ConveniadoModule } from './views/conveniado/conveniado.module';
 
 import { MatFormFieldModule } from '@angular/material';
 import { MatInputModule } from '@angular/material';
@@ -52,10 +54,8 @@ import {MatTableModule} from '@angular/material';
 
     // Modules
     LayoutsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatTableModule,
-
+    TipoconveniadoModule,
+    ConveniadoModule,
     ROUTES
   ],
   bootstrap: [AppComponent],

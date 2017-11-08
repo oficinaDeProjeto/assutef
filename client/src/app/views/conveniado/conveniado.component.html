@@ -1,0 +1,25 @@
+<div class="content" fxLayout="row" fxLayoutAlign="space-around center">
+	<div>
+		<mat-card fxFlex>
+			<mat-card-header>
+				<mat-card-title>Conveniado</mat-card-title>
+				<mat-card-subtitle>Lista de conveniados cadastrados</mat-card-subtitle>
+				<span fxFlex></span>
+				<mat-input-container>
+					<input matInput [(ngModel)]="query" name="query" placeholder="Pesquise por razão social" (input)="filterConveniado(query)">
+				</mat-input-container>
+			</mat-card-header>
+			<mat-card-content>
+				<mat-list>
+					<mat-list-item *ngFor="let conveniado of filteredConveniados" (click)="openDialog(conveniado)">
+						<h4 mat-line><mat-icon mat-list-icon>create</mat-icon>  {{conveniado.razaosocial}}</h4>
+					</mat-list-item>
+				</mat-list>
+			</mat-card-content>
+		</mat-card>
+	</div>
+</div>
+
+<button mat-fab (click)="openDialog()" class="fab-bottom-right">
+	<mat-icon>add</mat-icon>
+</button>
