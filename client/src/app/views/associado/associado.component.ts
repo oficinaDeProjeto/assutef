@@ -67,7 +67,9 @@ export class AssociadoComponent implements OnInit {
 		});
 
 		dialogRef.afterClosed().subscribe(result => {
-			this.save(result);
+			if (result) {
+				this.save(result);
+			}
 		});
 	}
 
