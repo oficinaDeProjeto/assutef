@@ -15,11 +15,22 @@ module.exports = {
 			autoIncrement: true,
 			primaryKey: true
 		},*/
-		descricao: {
-			type: 'string',
-			required: true,
-			unique: true
-    }
-  }
+		associado: {
+			model: 'associado',
+			required: true			
+		},
+		data: {
+			type : 'Date',
+			required : true
+		},
+		valorLimite:{			
+			type : 'float',
+			required : true
+		},
+		valorUtilizado:{
+			type : 'float',
+			required : false
+		},
+		}
 };
 

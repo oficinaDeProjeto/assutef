@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { ChequinhoService } from '../../services/chequinho/chequinho.service';
 import { Associado } from '../../models/associado';
 import { AssociadoService } from '../../services/associado/associado.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
 	selector: 'app-chequinho',
@@ -16,7 +17,8 @@ export class ChequinhoComponent implements OnInit {
 
 	constructor(
 		private chequinhoService: ChequinhoService,
-		private associadoService: AssociadoService
+		private associadoService: AssociadoService,
+		public snackBar: MatSnackBar,
 	) { }
 
 	ngOnInit() {
@@ -27,19 +29,22 @@ export class ChequinhoComponent implements OnInit {
 		this.associadoService.findAll().subscribe(a => {
 			this.associados = <Associado[]> a;
 		}, err => {
-			console.log("Erro ao listar associados");			
+			this.openSnackBar("Erro ao listar associados","OK");			
 		});
 	}
 	
 	gerarChequinho(){
 		this.chequinho.data = new Date();
 		this.chequinhoService.save(this.chequinho).subscribe(chequinho => {
-			console.log("Chequinhos gerados com sussesso");
-			
+			this.openSnackBar("Chequinho(s) gerado(s) com sucesso", "OK");			
 		}, err => {
-			console.log("Erro ao gerar chequinhos");			
+			this.openSnackBar("Não foi possível gerar o(s) chequinho(s)", "OK");
 		});
-	
 	}
 
+	openSnackBar(message: string, action: string) {
+		this.snackBar.open(message, action, {
+			duration: 10000,
+		});
+	}
 }
