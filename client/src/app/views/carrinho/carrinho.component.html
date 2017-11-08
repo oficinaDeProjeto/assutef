@@ -1,3 +1,32 @@
-<p>
-  carrinho works!
-</p>
+<div class="content">
+	<div fxLayout="row" fxLayoutAlign="space-around center">
+		<div>
+			<mat-card fxFlex>
+				<mat-card-header>
+					<mat-card-title>Venda</mat-card-title>
+					<mat-card-subtitle>Selecionar produto</mat-card-subtitle>
+					<span fxFlex></span>
+					<mat-input-container>
+            			<input matInput [(ngModel)]="query" name="query" 
+							placeholder="Pesquise por produto" (input)="filterProduto(query)">
+					</mat-input-container>
+					<span fxFlex></span>
+					<button mat-button (click)="addProduto()">Adicionar</button>
+				</mat-card-header>
+				<mat-card-content>
+					<mat-list>
+						<h3 mat-subheader>Produtos</h3>
+						<mat-list-item *ngFor="let produto of venda.produtos">
+							<h4 mat-line>{{produto.nome}}</h4>
+							<p mat-line>{{produto.valor}}</p>
+						</mat-list-item>
+					</mat-list>
+				</mat-card-content>
+				<mat-card-footer>
+					Total da venda: R$ {{venda.total}}
+					<button mat-button color="primary" [mat-dialog-close]="venda">Salvar</button>
+				</mat-card-footer>
+			</mat-card>
+		</div>
+	</div>
+</div>

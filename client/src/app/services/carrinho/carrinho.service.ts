@@ -24,6 +24,10 @@ export class CarrinhoService {
 		return this.httpClient.get<Carrinho[]>(`${this.apiUrl}carrinho?produto=${produto}`);
 	}
 
+	findByData(data: string): Observable<Carrinho[]> {
+		return this.httpClient.get<Carrinho[]>(`${this.apiUrl}carrinho?data=${data}`);
+	}
+
 	getAll(): Observable<Carrinho[]> {
         return this.httpClient.get<Carrinho[]>(`${this.apiUrl}carrinho`);
     }

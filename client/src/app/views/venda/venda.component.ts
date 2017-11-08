@@ -30,7 +30,7 @@ export class VendaComponent implements OnInit {
   ) { }
   
   ngOnInit() {
-  //this.findAll();
+    this.findAll();
   }
   
   findAll() {
@@ -38,7 +38,7 @@ export class VendaComponent implements OnInit {
         this.vendas = <Venda[]>venda;
         this.filteredVendas = Object.assign([], this.vendas);
       }, err => {
-        this.openSnackBar("Não foi possível carregar associados", "OK");
+        this.openSnackBar("Não foi possível carregar vendas", "OK");
       });
   }
   
@@ -71,24 +71,26 @@ export class VendaComponent implements OnInit {
   
   save(venda: Venda) {
       this.vendaService.save(venda).subscribe(venda => {
-        this.openSnackBar("Salvo com sucesso", "OK");
+        this.openSnackBar("Salva com sucesso", "OK");
         this.findAll();
       }, err => {
-        this.openSnackBar("Não foi possível salvar associado", "OK");
+        this.openSnackBar("Não foi possível salvar a venda", "OK");
       });
     }
   
-  openCarrinho(carrinho): void {
+  openDialog(venda): void {
       let dialogRef = this.dialog.open(CarrinhoComponent, {
-        data: carrinho
+        data: venda
       });
   
   
       dialogRef.afterClosed().subscribe(result => {
-        this.save(result);
-  });
+        if (result) {
+          this.save(result);
+        }
+      });
 
-  this.router.navigate(['carrinho']);
+      // this.router.navigate(['carrinho']);
     }
   
 }

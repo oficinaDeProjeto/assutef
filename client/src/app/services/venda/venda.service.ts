@@ -17,7 +17,10 @@ export class VendaService extends SuperService {
   findAll() : Observable<Venda[]> {
     return this.httpClient.get<Venda[]>(`${this.apiUrl}venda`);
   }
-      
+
+  findByData(data: string): Observable<Venda[]> {
+		return this.httpClient.get<Venda[]>(`${this.apiUrl}venda?data=${data}`);
+	}
       
    save(venda: Venda): Observable<Venda> {
     return this.httpClient.post<Venda>(`${this.apiUrl}venda`, venda);

@@ -1,7 +1,7 @@
 import { Produto } from "./produto";
 
 export class Carrinho {
-    produto: Produto;
+    produtos: Array<Produto>;
     quantidade: string;
     valor: string;
 }
