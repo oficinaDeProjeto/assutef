@@ -18,5 +18,8 @@ export class PlanoContaService {
 	save(planoConta: PlanoConta): Observable<PlanoConta> {
 		return this.httpClient.post<PlanoConta>(`${this.apiUrl}planoConta`, planoConta);
 	}
-
+	
+	findByNome(nomeConta: string): Observable<PlanoConta[]> {
+		return this.httpClient.get<PlanoConta[]>(`${this.apiUrl}planoConta?nomeConta=${nomeConta}`);
+	}
 }

@@ -31,7 +31,6 @@ export class PlanoContaComponent implements OnInit {
 		this.findAll();
 	}
 
-
 	findAll() {
 		this.planoContaService.findAll().subscribe(planoContas => {
 			this.planoContas = <PlanoConta[]>planoContas;
