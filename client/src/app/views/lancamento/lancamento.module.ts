@@ -1,6 +1,6 @@
 import { AssociadoService } from './../../services/associado/associado.service';
 import { appMaskModule } from './../../directives/mask.module';
-import { GenericService } from './../../services/generic/generic.service';
+import { LancamentoService } from './../../services/lancamento/lancamento.service';
 import { AuthService } from './../../services/auth/auth.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LancamentoComponent } from './lancamento.component'
@@ -47,7 +47,7 @@ import {
     ],
     entryComponents: [],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    providers: [AuthService, GenericService, AssociadoService]
+    providers: [AuthService, LancamentoService, AssociadoService]
 })
 
 export class LancamentoModule { }
