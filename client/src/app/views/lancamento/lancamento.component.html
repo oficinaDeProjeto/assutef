@@ -3,6 +3,7 @@
 	<mat-card>    
 		<mat-card-header>
 			<mat-card-title> Lançamento </mat-card-title>
+			<mat-card-subtitle>Informe os dados ou use o código de barras</mat-card-subtitle>	
 			<mat-card-subtitle></mat-card-subtitle>			
 		</mat-card-header>		
 		<mat-card-content>				
@@ -15,19 +16,30 @@
       
     </mat-form-field>
 
-    <p></p>
+		<p></p>
 
-    
-    <mat-form-field class="example-full-width">
-      <input matInput type="number" placeholder="Valor" >
+		<mat-form-field>	
+			<mat-select [(ngModel)]="lancamento.conveniado"  id="cmbConveniado" placeholder="Selecione o Conveniado">
+				<mat-option *ngFor="let conveniadoValue of conveniados" [value]="conveniadoValue">
+					{{conveniadoValue.razaosocial}}
+				</mat-option>
+      </mat-select>
+      
     </mat-form-field>
-														
+
+		<p></p>
+		
+		
+		<mat-input-container>								
+			<input [(ngModel)]="lancamento.valor" type="number"  matInput placeholder="Valor R$" class="example-right-align">
+			<span matPrefix>R$&nbsp;</span>		
+		</mat-input-container>													
 									
 
 		</mat-card-content>
 		<mat-card-actions>
-			<button type="button" mat-raised-button (click)="salvarLancamento()">GERAR</button>
-			<button type="button" mat-raised-button >LIMPAR</button>
+			<button type="button" mat-raised-button (click)="salvarLancamento()">Salvar</button>
+			
 	</mat-card-actions>
 	</mat-card>
 </div>
