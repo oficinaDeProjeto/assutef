@@ -2,6 +2,7 @@ import { UsuarioModule } from './views/usuario/usuario.module';
 import { ChequinhoModule } from './views/chequinho/chequinho.module';
 import { CategoriaModule } from './views/categoria/categoria.module';
 import { AssociadoModule } from './views/associado/associado.module';
+import { LancamentoModule } from './views/lancamento/lancamento.module';
 import 'hammerjs';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -22,7 +23,12 @@ import { ToastyModule, ToastyService } from "ng2-toasty";
 import { TipoconveniadoModule } from './views/tipoconveniado/tipoconveniado.module';
 import { ConveniadoModule } from './views/conveniado/conveniado.module';
 
-/**
+import { MatFormFieldModule } from '@angular/material';
+import { MatInputModule } from '@angular/material';
+
+import {MatTableModule} from '@angular/material';
+
+/** 
  * Módulo principal da aplicação 
  * delclara o componente principal e importa os módulos das outras telas
  */
@@ -44,6 +50,9 @@ import { ConveniadoModule } from './views/conveniado/conveniado.module';
     CategoriaModule,
     ChequinhoModule,
     UsuarioModule,
+    LancamentoModule,
+
+    // Modules
     LayoutsModule,
     TipoconveniadoModule,
     ConveniadoModule,
