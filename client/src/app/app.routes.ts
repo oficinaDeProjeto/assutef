@@ -12,6 +12,7 @@ import { ModuleWithProviders } from "@angular/core";
 import { ProfileComponent } from './views/profile/profile.component';
 import { ConveniadoComponent } from './views/conveniado/conveniado.component';
 import { TipoconveniadoComponent } from './views/tipoconveniado/tipoconveniado.component';
+import { ImpressaoChequinhoComponent } from './views/chequinho/impressao/impressao-chequinho.component';
 
 
 const routes: Routes = [
@@ -76,6 +77,13 @@ const routes: Routes = [
                 component: ProfileComponent,
                 data: {
                     breadcrumb: "Perfil"
+                }
+            },
+            {
+                path: 'chequinhoimpressao/:id',
+                component: ImpressaoChequinhoComponent,
+                data: {
+                    breadcrumb: "Imprimir chequinho"
                 }
             },
             {
