@@ -1,4 +1,3 @@
-import { GenericService } from './../../services/generic/generic.service';
 import { ModalPlanoContaComponent } from './modal/modal-planoConta.component';
 import { PlanoContaService } from './../../services/planoConta/planoConta.service';
 import { AuthService } from './../../services/auth/auth.service';
@@ -45,7 +44,7 @@ import {
     ],
     entryComponents: [ModalPlanoContaComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    providers: [AuthService, PlanoContaService, GenericService]
+    providers: [AuthService, PlanoContaService]
 })
 
 export class PlanoContaModule { }

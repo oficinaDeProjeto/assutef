@@ -51,11 +51,11 @@ export class PlanoContaComponent implements OnInit {
 		}
 	}
   
-  openSnackBar(message: string, action: string) {
-		this.snackBar.open(message, action, {
-			duration: 10000,
-    });
-  }
+	openSnackBar(message: string, action: string) {
+			this.snackBar.open(message, action, {
+				duration: 10000,
+		});
+	}
 
 	openDialog(planoConta: PlanoConta): void {
 		let dialogRef = this.dialog.open(ModalPlanoContaComponent, {
@@ -68,7 +68,7 @@ export class PlanoContaComponent implements OnInit {
 	}
 
 	save(planoConta: PlanoConta) {
-		this.planoContaService.save(this.planoConta).subscribe(planoConta => {
+		this.planoContaService.save(planoConta).subscribe(planoConta => {
 			this.openSnackBar("Salvo com sucesso", "OK");
 			this.findAll();
 		}, err => {
