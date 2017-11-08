@@ -1,10 +1,5 @@
-import { ConfirmDialogModule } from './../../components/common/confirm-dialog/confirm-dialog.module';
-import { AssociadoService } from './../../services/associado/associado.service';
-import { appMaskModule } from './../../directives/mask.module';
-import { GenericService } from './../../services/generic/generic.service';
+
 import { AuthService } from './../../services/auth/auth.service';
-import { ModalAssociadoComponent } from './modal/modal-associado.component';
-import { AssociadoComponent } from './associado.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -19,15 +14,19 @@ import {
     MatStepperModule,
     MatSelectModule,
     MatDatepickerModule,
+    MatListModule,
     MatNativeDateModule,
-    MatRadioModule,
-    MatSnackBarModule,
-    MatTooltipModule
+    MatRadioModule
 } from "@angular/material";
+import { ConveniadoComponent } from './conveniado.component';
+import { ModalConveniadoComponent } from './modal/modal-conveniado.component';
+import { appMaskModule } from '../../directives/mask.module';
+import { ConveniadoService } from '../../services/conveniado/conveniado.service';
+import { TipoconveniadoService } from '../../services/tipoconveniado/tipoconveniado.service';
 
 @NgModule({
-    declarations: [AssociadoComponent, ModalAssociadoComponent],
-    exports: [AssociadoComponent, ModalAssociadoComponent],
+    declarations: [ConveniadoComponent, ModalConveniadoComponent],
+    exports: [ConveniadoComponent, ModalConveniadoComponent],
     imports: [
         CommonModule,
         FormsModule,
@@ -43,15 +42,12 @@ import {
         MatNativeDateModule,
         MatButtonModule,
         MatRadioModule,
-        MatTooltipModule,
         FlexLayoutModule,
-        appMaskModule,
-        MatSnackBarModule,
-        ConfirmDialogModule
+        appMaskModule
     ],
-    entryComponents: [ModalAssociadoComponent],
+    entryComponents: [ModalConveniadoComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    providers: [AuthService, GenericService, AssociadoService]
+    providers: [AuthService, ConveniadoService, TipoconveniadoService]
 })
 
-export class AssociadoModule { }
+export class ConveniadoModule { }

@@ -21,7 +21,8 @@ import { HttpInterceptorService } from './services/http-interceptor.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { ProfileModule } from './views/profile/profile.module';
 import { ToastyModule, ToastyService } from "ng2-toasty";
-
+import { TipoconveniadoModule } from './views/tipoconveniado/tipoconveniado.module';
+import { ConveniadoModule } from './views/conveniado/conveniado.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -33,7 +34,7 @@ import { ToastyModule, ToastyService } from "ng2-toasty";
     HttpClientModule,
     ToastyModule.forRoot(),
 
-    // Views
+    // Views (Módulos)
     LoginModule,
     HomeModule,
     ProfileModule,
@@ -48,7 +49,8 @@ import { ToastyModule, ToastyService } from "ng2-toasty";
 
     // Modules
     LayoutsModule,
-
+    TipoconveniadoModule,
+    ConveniadoModule,
     ROUTES
   ],
   bootstrap: [AppComponent],

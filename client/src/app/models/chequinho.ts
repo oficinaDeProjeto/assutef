@@ -3,7 +3,6 @@ export class Chequinho {
     id: number;
     valorLimite : number;
     valorUtilizado : number;
-    associado: Associado;
-    data: Date;
-    codigoDeBarras : number;
+    associado: Associado = new Associado;
+    data: Date;    
 }
