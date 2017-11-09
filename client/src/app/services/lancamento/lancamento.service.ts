@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class LancamentoService {
-
+	
   private apiUrl = environment.api_url;
 	constructor(private httpClient: HttpClient) {
 	}
