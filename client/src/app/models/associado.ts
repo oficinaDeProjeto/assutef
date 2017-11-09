@@ -7,5 +7,6 @@ export class Associado {
     cpf: string;
     aniversario: Date;
     sexo: string;
+    numero: number;
     endereco: Endereco = new Endereco();
 }
