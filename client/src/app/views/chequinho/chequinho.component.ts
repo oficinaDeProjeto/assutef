@@ -5,6 +5,7 @@ import { ChequinhoService } from '../../services/chequinho/chequinho.service';
 import { Associado } from '../../models/associado';
 import { AssociadoService } from '../../services/associado/associado.service';
 import { MatSnackBar } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-chequinho',
@@ -16,6 +17,7 @@ export class ChequinhoComponent implements OnInit {
 	chequinho: Chequinho = new Chequinho();
 
 	constructor(
+		private router: Router,
 		private chequinhoService: ChequinhoService,
 		private associadoService: AssociadoService,
 		public snackBar: MatSnackBar,
@@ -37,6 +39,7 @@ export class ChequinhoComponent implements OnInit {
 		this.chequinho.data = new Date();
 		this.chequinhoService.save(this.chequinho).subscribe(chequinho => {
 			this.openSnackBar("Chequinho(s) gerado(s) com sucesso", "OK");			
+		    this.router.navigate(["chequinhoimpressao",chequinho.id])
 		}, err => {
 			this.openSnackBar("Não foi possível gerar o(s) chequinho(s)", "OK");
 		});

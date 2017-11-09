@@ -1,5 +1,6 @@
 import { UsuarioModule } from './views/usuario/usuario.module';
 import { ChequinhoModule } from './views/chequinho/chequinho.module';
+import { ImpressaoChequinhoModule } from './views/chequinho/impressao/impressao-chequinho.module';
 import { CategoriaModule } from './views/categoria/categoria.module';
 import { AssociadoModule } from './views/associado/associado.module';
 import { LancamentoModule } from './views/lancamento/lancamento.module';
@@ -51,6 +52,7 @@ import {MatTableModule} from '@angular/material';
     ChequinhoModule,
     UsuarioModule,
     LancamentoModule,
+    ImpressaoChequinhoModule,
 
     // Modules
     LayoutsModule,
