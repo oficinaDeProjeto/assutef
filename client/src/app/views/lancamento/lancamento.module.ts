@@ -8,6 +8,8 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import {MatTableModule} from '@angular/material/table';
+import { ModalLancamentoComponent } from './modal/modal-lancamento.component'
 import {
     MatDialogModule,
     MatCardModule,
@@ -24,8 +26,8 @@ import {
 } from "@angular/material";
 
 @NgModule({
-    declarations: [LancamentoComponent],
-    exports: [LancamentoComponent],
+    declarations: [LancamentoComponent, ModalLancamentoComponent,],
+    exports: [LancamentoComponent, ModalLancamentoComponent],
     imports: [
         CommonModule,
         FormsModule,
@@ -43,9 +45,10 @@ import {
         MatRadioModule,
         FlexLayoutModule,
         appMaskModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        MatTableModule
     ],
-    entryComponents: [],
+    entryComponents: [ModalLancamentoComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     providers: [AuthService, LancamentoService, AssociadoService]
 })

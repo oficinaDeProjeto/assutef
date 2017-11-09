@@ -1,46 +1,45 @@
+<div class="example-container mat-elevation-z8">
+	<div class="example-header">
+	  <mat-form-field>
+		<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+	  </mat-form-field>
+	</div>
 
-<div class="content" fxFlex fxLayout="grid" fxLayoutAlign="space-around ">			
-	<mat-card>    
-		<mat-card-header>
-			<mat-card-title> Lançamento </mat-card-title>
-			<mat-card-subtitle>Informe os dados ou use o código de barras</mat-card-subtitle>	
-			<mat-card-subtitle></mat-card-subtitle>			
-		</mat-card-header>		
-		<mat-card-content>				
-		<mat-form-field>	
-			<mat-select [(ngModel)]="lancamento.associado"  id="cmbAssociado" placeholder="Selecione o Associado">
-				<mat-option *ngFor="let associadoValue of associados" [value]="associadoValue">
-					{{associadoValue.nome}}
-				</mat-option>
-      </mat-select>
-      
-    </mat-form-field>
-
-		<p></p>
-
-		<mat-form-field>	
-			<mat-select [(ngModel)]="lancamento.conveniado"  id="cmbConveniado" placeholder="Selecione o Conveniado">
-				<mat-option *ngFor="let conveniadoValue of conveniados" [value]="conveniadoValue">
-					{{conveniadoValue.razaosocial}}
-				</mat-option>
-      </mat-select>
-      
-    </mat-form-field>
-
-		<p></p>
+		{{dataSource.data}}
+  
+	<mat-table #table [dataSource]="dataSource">
 		
-		
-		<mat-input-container>								
-			<input [(ngModel)]="lancamento.valor" type="number"  matInput placeholder="Valor R$" class="example-right-align">
-			<span matPrefix>R$&nbsp;</span>		
-		</mat-input-container>													
-									
+  
+	  <!-- Position Column -->
+	  <ng-container matColumnDef="Conveniado">
+		<mat-header-cell *matHeaderCellDef> Conveniado </mat-header-cell>
+		<mat-cell *matCellDef="let lancamento"> {{lancamento.conveniado.razaosocial}} </mat-cell>
+	  </ng-container>
+  
+	  <!-- Name Column -->
+	  <ng-container matColumnDef="Associado">
+		<mat-header-cell *matHeaderCellDef> Associado </mat-header-cell>
+		<mat-cell *matCellDef="let lancamento"> {{lancamento.associado.nome}} </mat-cell>
+	  </ng-container>
+  
+	  <!-- Weight Column -->
+	  <ng-container matColumnDef="Valor">
+		<mat-header-cell *matHeaderCellDef> Valor </mat-header-cell>
+		<mat-cell *matCellDef="let lancamento"> {{lancamento.valor}} </mat-cell>
+	  </ng-container>
+  
+	  <!-- Color Column -->
+	  <ng-container matColumnDef="Data">
+		<mat-header-cell *matHeaderCellDef> Data </mat-header-cell>
+		<mat-cell *matCellDef="let lancamento"> {{lancamento.dataLancamento}} </mat-cell>
+	  </ng-container>
+  
+	  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+	  <mat-row *matRowDef="let lancamento; columns: displayedColumns;"></mat-row>
+	</mat-table>
+  </div>
 
-		</mat-card-content>
-		<mat-card-actions>
-			<button type="button" mat-raised-button (click)="salvarLancamento()">Salvar</button>
-			
-	</mat-card-actions>
-	</mat-card>
-</div>
 
+<button mat-fab (click)="openDialog()" class="fab-bottom-right">
+	<mat-icon>add</mat-icon>
+</button>
