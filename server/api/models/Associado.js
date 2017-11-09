@@ -42,6 +42,10 @@ module.exports = {
 		endereco: {
 			model: 'endereco',
 		},
+		numero:{
+			type: 'number',
+			required: true
+		},
 		ativo:{
 			type:"boolean",
 			defaultsTo : true
