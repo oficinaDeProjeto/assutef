@@ -26,7 +26,7 @@ import { ConveniadoModule } from './views/conveniado/conveniado.module';
 
 import { MatFormFieldModule } from '@angular/material';
 import { MatInputModule } from '@angular/material';
-
+import { NgxBarcodeModule } from 'ngx-barcode';
 import {MatTableModule} from '@angular/material';
 
 /** 
@@ -55,6 +55,7 @@ import {MatTableModule} from '@angular/material';
     ImpressaoChequinhoModule,
 
     // Modules
+    NgxBarcodeModule,
     LayoutsModule,
     TipoconveniadoModule,
     ConveniadoModule,
