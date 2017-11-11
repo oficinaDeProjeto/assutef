@@ -16,7 +16,9 @@ import {
     MatDatepickerModule,
     MatListModule,
     MatNativeDateModule,
-    MatRadioModule
+    MatRadioModule,
+    MatTooltipModule,
+    MatSlideToggleModule
 } from "@angular/material";
 import { ConveniadoComponent } from './conveniado.component';
 import { ModalConveniadoComponent } from './modal/modal-conveniado.component';
@@ -43,7 +45,9 @@ import { TipoconveniadoService } from '../../services/tipoconveniado/tipoconveni
         MatButtonModule,
         MatRadioModule,
         FlexLayoutModule,
-        appMaskModule
+        appMaskModule,
+        MatTooltipModule,
+        MatSlideToggleModule
     ],
     entryComponents: [ModalConveniadoComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
