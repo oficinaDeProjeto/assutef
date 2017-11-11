@@ -1,3 +1,4 @@
+import { PainelModule } from './views/painel/painel.module';
 import { UsuarioModule } from './views/usuario/usuario.module';
 import { ChequinhoModule } from './views/chequinho/chequinho.module';
 import { ImpressaoChequinhoModule } from './views/chequinho/impressao/impressao-chequinho.module';
@@ -29,6 +30,7 @@ import { MatInputModule } from '@angular/material';
 
 import {MatTableModule} from '@angular/material';
 
+
 /** 
  * Módulo principal da aplicação 
  * delclara o componente principal e importa os módulos das outras telas
@@ -53,11 +55,13 @@ import {MatTableModule} from '@angular/material';
     UsuarioModule,
     LancamentoModule,
     ImpressaoChequinhoModule,
+    PainelModule,
 
     // Modules
     LayoutsModule,
     TipoconveniadoModule,
     ConveniadoModule,
+    PainelModule,
     ROUTES
   ],
   bootstrap: [AppComponent],
