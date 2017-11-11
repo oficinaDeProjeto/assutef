@@ -17,7 +17,7 @@ import {
 } from "@angular/material";
 import { ImpressaoChequinhoComponent } from './../impressao/impressao-chequinho.component';
 import { ChequinhoService } from '../../../services/chequinho/chequinho.service';
-
+import { NgxBarcodeModule } from 'ngx-barcode';
 
 @NgModule({
     declarations: [ImpressaoChequinhoComponent],
@@ -31,7 +31,8 @@ import { ChequinhoService } from '../../../services/chequinho/chequinho.service'
         MatButtonModule,                
         MatSelectModule,        
         MatButtonModule,        
-        FlexLayoutModule,        
+        FlexLayoutModule,
+        NgxBarcodeModule     
        
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -39,6 +40,10 @@ import { ChequinhoService } from '../../../services/chequinho/chequinho.service'
         AuthService,        
         ChequinhoService
     ]
+    
 })
 
-export class ImpressaoChequinhoModule { }
+export class ImpressaoChequinhoModule { 
+
+}
+
