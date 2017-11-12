@@ -16,8 +16,6 @@ import {
     MatNativeDateModule
 } from "@angular/material";
 import { ChequinhoComponent } from './chequinho.component';
-import { ImpressaoChequinhoComponent } from './impressao/impressao-chequinho.component';
-
 import { ChequinhoService } from '../../services/chequinho/chequinho.service';
 
 

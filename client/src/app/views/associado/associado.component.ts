@@ -69,7 +69,9 @@ export class AssociadoComponent implements OnInit {
 		});
 
 		dialogRef.afterClosed().subscribe(result => {
-			this.save(result);
+			if (result) {
+				this.save(result);
+			}
 		});
 	}
 
@@ -77,21 +79,21 @@ export class AssociadoComponent implements OnInit {
 	 * Valida se é mesmo a intenção do usuário, caso sim remove um associado dá base
 	 * @param associado associado passado por parametro direto da View
 	 */
-	delete(associado: Associado) {
-		this.confirmDialogService.confirm(
-			'Confirmação',
-			`Você tem ceteza que deseja remover o associado ${associado.nome}?`)
-			.subscribe(res => {
-				if (res) {
-					this.associadoService.delete(associado.id).subscribe(associado => {
-						this.openSnackBar("Removido com sucesso", "OK");
-						this.findAll();
-					}, err => {
-						this.openSnackBar("Não foi possível remover o associado", "OK");
-					})
-				}
-			});
-	}
+	//delete(associado: Associado) {
+	//	this.confirmDialogService.confirm(
+	//		'Confirmação',
+	//		`Você tem ceteza que deseja remover o associado ${associado.nome}?`)
+	//		.subscribe(res => {
+	//			if (res) {
+	//				this.associadoService.delete(associado.id).subscribe(associado => {
+	//					this.openSnackBar("Removido com sucesso", "OK");
+	//					this.findAll();
+	//				}, err => {
+	//					this.openSnackBar("Não foi possível remover o associado", "OK");
+	//				})
+	//			}
+	//		});
+	//}
 
 	save(associado: Associado) {
 		this.associadoService.save(associado).subscribe(associado => {

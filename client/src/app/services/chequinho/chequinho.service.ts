@@ -21,9 +21,6 @@ export class ChequinhoService {
 		return this.httpClient.get<Chequinho[]>(`${this.apiUrl}chequinho`);
 	}
 
-	findById(id: string): Observable<Chequinho> {
-		return this.httpClient.get<Chequinho>(`${this.apiUrl}chequinho/${id}`);
-    }
 	
 
 }
