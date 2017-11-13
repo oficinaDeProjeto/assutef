@@ -1,9 +1,10 @@
-<div fxLayout="row" fxLayoutAlign="space-around center">
-	<ng-template matStepLabel>Cheq</ng-template>
-	<div class="content" fxFlex fxLayout="grid" fxLayoutAlign="space-around ">
-		<div>
-			<Mat-input-container>
-				<label>Número:</label>
+
+<div style="margin-left: 12.6%;">
+	<mat-grid-list cols="4" rowHeight="4:1">
+		<mat-grid-tile>
+			<div style="width: 32.2%;" class="borda">
+				<label class="title">Número:</label>
+				<p></p>
 				<label>{{chequinho.id}}</label>
 				<Mat-input-container>
 					<label>Valor Utilizado R$:</label>
@@ -48,57 +49,77 @@
 						</mat-grid-tile>
 					</mat-grid-list>
 				</div>
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-				<div style="max-width:800px" class="borda">
-					<label class="title">Valor por extenso</label>
-					<p></p>
-					<label>____________________________________________________________________________________________________________</label>
-				</div>
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-				<div style="padding-left: 23%;">
-					<label>_________________________ de ________________ de ______________</label>
-					<p></p>
-					<label style="padding-left: 6%;">Valido com identificação pessoal com foto</label>
-				</div>
-				<mat-grid-list cols="3" rowHeight="4:1">
-					<mat-grid-tile>
-						<div style="width: 25%;" class="borda">
-							<label class="title"> Código</label>
-							<p></p>
-							<label>{{chequinho.associado.id}}</label>
-						</div>
-					</mat-grid-tile>
-					<mat-grid-tile>
-						<div style="width: 36%;" class="borda">
-							<label class="title"> Nome</label>
-							<p></p>
-							<label> {{chequinho.associado.nome}}</label>
-						</div>
-					</mat-grid-tile>
-					<mat-grid-tile>
-						<div style="width: 15.2%;" class="borda">
-							<label class="title"> CPF</label>
-							<p></p>
-							<label>{{chequinho.associado.cpf}}</label>
-						</div>
-		</div>
-	</div>
-	</mat-grid-tile>
+			</div>
+		</mat-grid-tile>
+		<mat-grid-tile>
+			<div style="width: 15.2%;" class="borda">
+				<label class="title">Valor Limite R$:</label>
+				<p></p>
+				<label>{{chequinho.valorLimite}}</label>
+			</div>
+		</mat-grid-tile>
+		<mat-grid-tile>
+			<div style="width: 15.2%;" class="borda">
+				<label class="title">Valor Utilizado R$:</label>
+				<p></p>
+				<label>______________</label>
+			</div>
+		</mat-grid-tile>
 	</mat-grid-list>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<ngx-barcode [bc-element-type]='svg' [bc-value]="3432342342" [bc-format]='CODE128' [bc-width]=4 [bc-height]=50 [bc-display-value]=true></ngx-barcode>
+</div>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<div style="width: 95.1%;" class="borda">
+		<label class="title">Valor por extenso</label>
+		<p></p>
+		<label>_____________________________________________________________________________________________________________________</label>
+</div>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<div style="padding-left: 43%;">
+	<label>_________________________ de ________________ de ______________</label>
+	<p></p>
+	<label style="padding-left: 12%;">Valido com identificação pessoal com foto</label>
+</div>
+<mat-grid-list cols="3" rowHeight="4:1">
+	<mat-grid-tile>
+		<div style="width: 25%;" class="borda">
+			<label class="title"> Código</label>
+			<p></p>
+			<label>{{chequinho.associado.id}}</label>
+		</div>
+	</mat-grid-tile>
+	<mat-grid-tile>
+		<div style="width: 49.4%;" class="borda">
+			<label class="title"> Nome</label>
+			<p></p>
+			<label> {{chequinho.associado.nome}}</label>
+		</div>
+	</mat-grid-tile>
+	<mat-grid-tile>
+		<div style="width: 15.2%;" class="borda">
+			<label class="title"> CPF</label>
+				<p></p>
+				<label>{{chequinho.associado.cpf}}</label>				
+		</div>
+	
+	</mat-grid-tile>
+</mat-grid-list>
+<br/>
+<br/>
+<br/>
+<br/>
+<ngx-barcode
+[bc-element-type]='svg'
+[bc-value]="3432342342"
+[bc-format]='CODE128'
+[bc-width]=4
+[bc-height]=50
+[bc-display-value]=true></ngx-barcode>
