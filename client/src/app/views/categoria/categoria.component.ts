@@ -5,13 +5,15 @@ import { ModalCategoriaComponent } from './modal/modal-categoria.component';
 import { Router } from '@angular/router';
 import { MatDialog, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 import { Component, OnInit, Inject } from '@angular/core';
-
+import { ConfirmDialogService } from './../../components/common/confirm-dialog/confirm-dialog.service';
+import { CategoriaService } from './../../services/categoria/categoria.service';
 @Component({
 	selector: 'app-categoria',
 	templateUrl: './categoria.component.html',
 	styleUrls: ['./categoria.component.css']
 })
 export class CategoriaComponent implements OnInit {
+	[x: string]: any;
 
 	categoria: Categoria = new Categoria();
 	categorias: Categoria[] = [];
@@ -22,21 +24,24 @@ export class CategoriaComponent implements OnInit {
 		private genercService: GenericService,
 		private router: Router,
 		private authService: AuthService,
-		public dialog: MatDialog
+		public dialog: MatDialog,
+		public confirmDialogService: ConfirmDialogService,
+		public snackBar: MatSnackBar,
+		private categoriaService: CategoriaService
 	) {
 	}
 
 	ngOnInit() {
-		this.getAll();
+		this.findAll();
 	}
 
 
-	getAll() {
-		this.genercService.getAll('categoria').subscribe(categorias => {
+	findAll() {
+		this.categoriaService.findAll().subscribe(categorias => {
 			this.categorias = <Categoria[]>categorias;
 			this.filteredCategorias = Object.assign([], this.categorias);
 		}, err => {
-			console.log(err);
+			this.openSnackBar("Não foi possível carregar ", "OK");
 		});
 	}
 
@@ -73,11 +78,40 @@ export class CategoriaComponent implements OnInit {
 		});
 
 		dialogRef.afterClosed().subscribe(result => {
-			console.log(result);
-			this.salvarCategoria(result);
+			this.save(result);
 		});
 	}
 
+	delete(categoria: Categoria) {
+		this.confirmDialogService.confirm(
+			'Confirmação',
+			`Você tem ceteza que deseja remover ${categoria.descricao}?`)
+			.subscribe(res => {
+				if (res) {
+					this.categoriaService.delete(categoria.id).subscribe(categoria => {
+						this.openSnackBar("Removido com sucesso", "OK");
+						this.findAll();
+					}, err => {
+						this.openSnackBar("Não foi possível remover ", "OK");
+					})
+				}
+			});
+	}
+
+	save(categoria: Categoria) {
+		this.categoriaService.save(categoria).subscribe(categoria => {
+			this.openSnackBar("Salvo com sucesso", "OK");
+			this.findAll();
+		}, err => {
+			this.openSnackBar("Não foi possível salvar ", "OK");
+		});
+	}
+
+	openSnackBar(message: string, action: string) {
+		this.snackBar.open(message, action, {
+			duration: 10000,
+		});
+	}
 
 
 }

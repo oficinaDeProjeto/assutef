@@ -1,15 +1,18 @@
 <mat-card>
 	<mat-card-header>
 		<mat-card-title>Categoria</mat-card-title>
-		<mat-card-subtitle>Informe os dados para cadstro de categoria</mat-card-subtitle>
+		<br/>
+		<mat-card-subtitle>Informe os dados para cadastro de categoria</mat-card-subtitle>
+		<br/><br/>
 	</mat-card-header>
 	<mat-card-content>
 		<mat-form-field>
 			<input matInput placeholder="Descrição" [(ngModel)]="categoria.descricao" #nome="ngModel" required name="descricao">
 		</mat-form-field>
 	</mat-card-content>
+	<br/>
 	<mat-card-actions>
-		<button type="button" mat-raised-button [mat-dialog-close]="categoria">SALVAR</button>
-		<button type="button" mat-button (click)="dialogRef.close()">CANCELAR</button>
+		<button mat-button color="primary" [mat-dialog-close]="categoria">SALVAR</button>
+		<button mat-button (click)="dialogRef.close()">CANCELAR</button>
 	</mat-card-actions>
 </mat-card>
