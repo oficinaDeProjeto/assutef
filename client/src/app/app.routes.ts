@@ -80,7 +80,7 @@ const routes: Routes = [
                 }
             },
             {
-                path: 'chequinhoimpressao/:id',
+                path: 'chequinhoimpressao/:ids',
                 component: ImpressaoChequinhoComponent,
                 data: {
                     breadcrumb: "Imprimir chequinho"

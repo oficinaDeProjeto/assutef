@@ -17,6 +17,7 @@ export class ImpressaoChequinhoComponent implements OnInit {
 
 	chequinho: Chequinho = new Chequinho();
 	associado: Associado = new Associado();
+	qtdeChequinho: Number;
 	masks = Masks;
 
 	constructor(
@@ -33,8 +34,10 @@ export class ImpressaoChequinhoComponent implements OnInit {
 			this.associado = this.dataAssociado;
 		if (this.dataChequinho)
 			this.chequinho = this.dataChequinho;
-		let idChequinho = this.route.snapshot.params["id"];
-		this.getChequinhoById(idChequinho)
+		//let idChequinho = this.route.snapshot.params["id"];
+		//this.qtdeChequinho = this.route.snapshot.params["qtdeChequinho"];
+		console.log(this.qtdeChequinho);
+		//this.getChequinhoById(idChequinho)
 	}
 
 	openSnackBar(message: string, action: string) {
