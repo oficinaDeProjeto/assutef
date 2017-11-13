@@ -1,3 +1,4 @@
+import { PainelComponent } from './views/painel/painel.component';
 import { AssociadoComponent } from './views/associado/associado.component';
 import { UsuarioComponent } from './views/usuario/usuario.component';
 import { CategoriaComponent } from './views/categoria/categoria.component';
@@ -91,6 +92,13 @@ const routes: Routes = [
                 component: LancamentoComponent,
                 data: {
                     breadcrumb: "Lancamento"
+                }
+            },
+            {
+                path: 'painel',
+                component: PainelComponent,
+                data: {
+                    breadcrumb: "Painel Associado"
                 }
             }
         ]

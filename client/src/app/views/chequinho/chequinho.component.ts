@@ -59,4 +59,5 @@ export class ChequinhoComponent implements OnInit {
 			duration: 10000,
 		});
 	}
+
 }
