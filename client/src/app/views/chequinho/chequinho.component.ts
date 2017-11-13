@@ -1,6 +1,11 @@
 import { Chequinho } from './../../models/chequinho';
 import { GenericService } from './../../services/generic/generic.service';
 import { Component, OnInit } from '@angular/core';
+import { ChequinhoService } from '../../services/chequinho/chequinho.service';
+import { Associado } from '../../models/associado';
+import { AssociadoService } from '../../services/associado/associado.service';
+import { MatSnackBar } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-chequinho',
@@ -8,44 +13,41 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./chequinho.component.css']
 })
 export class ChequinhoComponent implements OnInit {
-	chequinhos: Chequinho[] = [];
+	associados: Associado[] = [];
+	chequinho: Chequinho = new Chequinho();
 
 	constructor(
-		private genericService: GenericService,
+		private router: Router,
+		private chequinhoService: ChequinhoService,
+		private associadoService: AssociadoService,
+		public snackBar: MatSnackBar,
 	) { }
 
 	ngOnInit() {
-		this.getAll();
+		this.getAllAssociados();
+	}
+
+	getAllAssociados(){
+		this.associadoService.findAll().subscribe(a => {
+			this.associados = <Associado[]> a;
+		}, err => {
+			this.openSnackBar("Erro ao listar associados","OK");			
+		});
 	}
 	
-	getAll() {
-		this.genericService.getAll('chequinho').subscribe(chequinhos => {
-			this.chequinhos = <Chequinho[]>chequinhos;
+	gerarChequinho(){
+		this.chequinho.data = new Date();
+		this.chequinhoService.save(this.chequinho).subscribe(chequinho => {
+			this.openSnackBar("Chequinho(s) gerado(s) com sucesso", "OK");			
+		    this.router.navigate(["chequinhoimpressao",chequinho.id])
 		}, err => {
-			console.log(err);
-		})
+			this.openSnackBar("Não foi possível gerar o(s) chequinho(s)", "OK");
+		});
 	}
-	elementType = 'svg';
-	value = '23350057715';
-	format = 'CODE128';
-	lineColor = '#000000';
-	width = 2;
-	height = 50;
-	displayValue = true;
-	fontOptions = '';
-	font = 'monospace';
-	textAlign = 'center';
-	textPosition = 'bottom';
-	textMargin = 2;
-	fontSize = 0;
-	background = '#ffffff';
-	margin = 10;
-	marginTop = 10;
-	marginBottom = 10;
-	marginLeft = 10;
-	marginRight = 10;
-  
-	get values(): string[] {
-	  return this.value.split('\n');
+
+	openSnackBar(message: string, action: string) {
+		this.snackBar.open(message, action, {
+			duration: 10000,
+		});
 	}
 }

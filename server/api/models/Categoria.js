@@ -6,14 +6,14 @@
  */
 
 module.exports = {
-	schema: true,
-	connection: 'mongo',
-	attributes: {
-		descricao:{
-			type:'string',
-			unique:true,
-			required:true
-		}
-	}
+  schema: true,
+  connection: 'mongo',
+  attributes: {
+    descricao:{
+      type: 'string',
+      unique: true,
+      required: true
+    }    
+  }
 };
 

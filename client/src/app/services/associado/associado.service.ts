@@ -27,4 +27,8 @@ export class AssociadoService {
 		return this.httpClient.get<Associado[]>(`${this.apiUrl}associado?email=${email}`);
 	}
 
+	delete(id: string): Observable<Associado> {
+		return this.httpClient.delete<Associado>(`${this.apiUrl}associado/${id}`)
+	}
+
 }

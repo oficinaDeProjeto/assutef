@@ -1,7 +1,9 @@
 import { UsuarioModule } from './views/usuario/usuario.module';
 import { ChequinhoModule } from './views/chequinho/chequinho.module';
+import { ImpressaoChequinhoModule } from './views/chequinho/impressao/impressao-chequinho.module';
 import { CategoriaModule } from './views/categoria/categoria.module';
 import { AssociadoModule } from './views/associado/associado.module';
+import { LancamentoModule } from './views/lancamento/lancamento.module';
 import 'hammerjs';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,7 +21,18 @@ import { HttpInterceptorService } from './services/http-interceptor.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { ProfileModule } from './views/profile/profile.module';
 import { ToastyModule, ToastyService } from "ng2-toasty";
+import { TipoconveniadoModule } from './views/tipoconveniado/tipoconveniado.module';
+import { ConveniadoModule } from './views/conveniado/conveniado.module';
 
+import { MatFormFieldModule } from '@angular/material';
+import { MatInputModule } from '@angular/material';
+import { NgxBarcodeModule } from 'ngx-barcode';
+import {MatTableModule} from '@angular/material';
+
+/** 
+ * Módulo principal da aplicação 
+ * delclara o componente principal e importa os módulos das outras telas
+ */
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -30,7 +43,7 @@ import { ToastyModule, ToastyService } from "ng2-toasty";
     HttpClientModule,
     ToastyModule.forRoot(),
 
-    // Views
+    // Views (Módulos)
     LoginModule,
     HomeModule,
     ProfileModule,
@@ -38,10 +51,14 @@ import { ToastyModule, ToastyService } from "ng2-toasty";
     CategoriaModule,
     ChequinhoModule,
     UsuarioModule,
+    LancamentoModule,
+    ImpressaoChequinhoModule,
 
     // Modules
+    NgxBarcodeModule,
     LayoutsModule,
-
+    TipoconveniadoModule,
+    ConveniadoModule,
     ROUTES
   ],
   bootstrap: [AppComponent],
