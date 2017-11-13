@@ -56,21 +56,21 @@
 </div>
 <mat-grid-list cols="3" rowHeight="4:1">
 	<mat-grid-tile>
-		<div style="width: 14%;" class="borda">
+		<div style="width: 25%;" class="borda">
 			<label class="title"> Código</label>
 			<p></p>
 			<label>{{chequinho.associado.id}}</label>
 		</div>
 	</mat-grid-tile>
 	<mat-grid-tile>
-		<div style="width: 26%;" class="borda">
+		<div style="width: 36%;" class="borda">
 			<label class="title"> Nome</label>
 			<p></p>
 			<label> {{chequinho.associado.nome}}</label>
 		</div>
 	</mat-grid-tile>
 	<mat-grid-tile>
-		<div style="width: 7.2%;" class="borda">
+		<div style="width: 15.2%;" class="borda">
 			<label class="title"> CPF</label>
 				<p></p>
 				<label>{{chequinho.associado.cpf}}</label>				
@@ -88,6 +88,6 @@
 [bc-element-type]='svg'
 [bc-value]="3432342342"
 [bc-format]='CODE128'
-[bc-width]=2
+[bc-width]=4
 [bc-height]=50
-[bc-display-value]=false></ngx-barcode>
+[bc-display-value]=true></ngx-barcode>
