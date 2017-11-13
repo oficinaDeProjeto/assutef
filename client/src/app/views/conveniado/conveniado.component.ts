@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatSnackBar } from '@angular/material';
 import { Conveniado } from '../../models/conveniado';
 import { Tipoconveniado } from '../../models/tipoconveniado';
 import { AuthService } from '../../services/auth/auth.service';
 import { ModalConveniadoComponent } from './modal/modal-conveniado.component';
 import { ConveniadoService } from '../../services/conveniado/conveniado.service';
 import { TipoconveniadoService } from '../../services/tipoconveniado/tipoconveniado.service';
+import { ConfirmDialogService } from '../../components/common/confirm-dialog/confirm-dialog.service';
 
 @Component({
 	selector: 'app-conveniado',
@@ -30,6 +31,8 @@ export class ConveniadoComponent implements OnInit {
 		private tipoconveniadoService: TipoconveniadoService,
 		private router: Router,
 		private authService: AuthService,
+		public snackBar: MatSnackBar,
+		public confirmDialogService: ConfirmDialogService,
 		public dialog: MatDialog) {
 
 	}
@@ -59,10 +62,10 @@ export class ConveniadoComponent implements OnInit {
 
 	salvarConveniado(conveniado: Conveniado) {
 		this.conveniadoService.save(conveniado).subscribe(conveniado => {
-			console.log('Salvo com sucesso');
+			this.openSnackBar("Salvo com sucesso", "OK");
 			this.getAll();
 		}, err => {
-			console.log(err);
+			this.openSnackBar("Não foi possível salvar o conveniado", "OK");
 		});
 	}
 
@@ -92,6 +95,29 @@ export class ConveniadoComponent implements OnInit {
 		dialogRef.afterClosed().subscribe(result => {
 			console.log(result);
 			this.salvarConveniado(result);
+		});
+	}
+
+	delete(conveniado: Conveniado) {
+		this.confirmDialogService.confirm(
+			'Confirmação',
+			`Você tem ceteza que deseja remover o associado ${conveniado.razaosocial}?`)
+			.subscribe(res => {
+				if (res) {
+					this.conveniadoService.delete(conveniado.id).subscribe(conveniado => {
+						this.openSnackBar("Removido com sucesso", "OK");
+						this.getAll();
+					}, err => {
+						this.openSnackBar("Não foi possível remover o conveniado", "OK");
+					})
+				}
+			}
+		);
+	}
+
+	openSnackBar(message: string, action: string) {
+		this.snackBar.open(message, action, {
+			duration: 10000,
 		});
 	}
 }

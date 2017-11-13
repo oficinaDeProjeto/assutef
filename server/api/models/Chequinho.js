@@ -31,6 +31,10 @@ module.exports = {
 			type : 'float',
 			required : false
 		},
+		numero:{
+			type: 'float',
+			required: true
+		},
 		}
 };
 
