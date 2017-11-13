@@ -44,7 +44,7 @@ module.exports = {
 		},
 		numero:{
 			type: 'number',
-			required: true
+			required: false
 		},
 		ativo:{
 			type:"boolean",
