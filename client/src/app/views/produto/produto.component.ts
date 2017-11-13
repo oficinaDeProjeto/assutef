@@ -9,7 +9,6 @@ import { ProdutoService } from '../../services/produto/produto.service';
 import { Categoria } from '../../models/categoria';
 import { ModalCategoriaComponent } from '../categoria/modal/modal-categoria.component';
 import { ConfirmDialogService } from '../../components/common/confirm-dialog/confirm-dialog.service';
-import { CategoriaService } from '../../services/categoria/categoria.service';
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/observable/merge';
 import 'rxjs/add/operator/map';
@@ -32,7 +31,6 @@ export class ProdutoComponent implements OnInit {
 	produtos: Produto[] = [];
 	selectedProduto: Produto = new Produto;
 	filteredProdutos: Produto[] = [];
-	categorias: Categoria[] = [];
 
 	constructor(
 		private produtoService: ProdutoService,
@@ -41,8 +39,7 @@ export class ProdutoComponent implements OnInit {
 		public dialog: MatDialog,
 		private genericService: GenericService,
 		public confirmDialogService: ConfirmDialogService,
-		public snackBar: MatSnackBar,
-		private categoriaService: CategoriaService
+		public snackBar: MatSnackBar
 	) {
 	}
 
@@ -62,14 +59,6 @@ export class ProdutoComponent implements OnInit {
 			this.openSnackBar("Não foi possível carregar ", "OK");
 		});
 	}
-
-	getAllCategorias(){
-		this.categoriaService.findAll().subscribe(a => {
-			this.categorias = <Categoria[]> a;
-		}, err => {
-			console.log("Erro ao listar categorias");			
-		});
-  }
 
 	salvarProduto(produto: Produto) {
 		this.produtoService.save(produto).subscribe(produto => {
