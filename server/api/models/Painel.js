@@ -7,14 +7,25 @@
  */
 
 module.exports = {
-    
-      schema: true,
-      connection: 'mongo',
-      attributes: {
-        descricao: {
-          type: 'string',
-          unique: true,
-          required: true
-        }
+  schema: true,
+    connection: 'mongo',
+    attributes: {
+      codigo: {
+        type: 'string',
+        unique: true,
+        required: true
+      },
+      data: {
+        type : 'Date',
+        required : true
+      },
+      valorUtilizado:{
+        type : 'float',
+        required : false
+      },
+      local:{
+        type: 'string',
+        required: false
       }
-    };
+    }
+  };
