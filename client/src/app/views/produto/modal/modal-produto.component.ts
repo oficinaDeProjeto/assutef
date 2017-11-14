@@ -15,6 +15,7 @@ import { Categoria } from '../../../models/categoria';
 export class ModalProdutoComponent implements OnInit {
 	produto: Produto = new Produto();
 	categorias: Categoria[] = []
+
 	constructor(
 		public dialogRef: MatDialogRef<ModalProdutoComponent>,
 		@Optional() @Inject(MAT_DIALOG_DATA) public data: Produto,
@@ -29,14 +30,14 @@ export class ModalProdutoComponent implements OnInit {
 			this.produto = this.data;
 
 		this.findAllCategoria();
-
+		
 	}
 
 	findAllCategoria() {
 		this.categoriaService.findAll().subscribe(res => {
 			this.categorias = res;
 		}, err => {
-			//colocar mensagem de erro
+			this.openSnackBar("Erro ao listar categoria", "OK");
 		})
 	}
 	openSnackBar(message: string, action: string) {
