@@ -81,7 +81,7 @@ export class ConveniadoComponent implements OnInit {
 		if (!query) {
 			this.filteredConveniados = Object.assign([], this.conveniados);
 		} else {
-			this.filteredConveniados = Object.assign([], this.conveniado).filter(
+			this.filteredConveniados = Object.assign([], this.conveniados).filter(
 				conveniado => conveniado.razaosocial.toLowerCase().indexOf(query.toLowerCase()) > -1
 			)
 		}
