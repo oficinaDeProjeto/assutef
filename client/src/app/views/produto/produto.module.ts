@@ -1,15 +1,11 @@
-import { ConfirmDialogModule } from './../../components/common/confirm-dialog/confirm-dialog.module';
-import { CategoriaService } from './../../services/categoria/categoria.service';
-import { appMaskModule } from './../../directives/mask.module';
-import { GenericService } from './../../services/generic/generic.service';
-import { AuthService } from './../../services/auth/auth.service';
-import { ModalCategoriaComponent } from './modal/modal-categoria.component';
-import { CategoriaComponent } from './categoria.component';
+import { ModalProdutoComponent } from './modal/modal-produto.component';
+import { ProdutoComponent } from './produto.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { ProdutoService } from '../../services/produto/produto.service';
 import {
     MatDialogModule,
     MatCardModule,
@@ -24,11 +20,14 @@ import {
     MatSnackBarModule,
     MatTooltipModule
 } from "@angular/material";
-
+import { ConfirmDialogModule } from '../../components/common/confirm-dialog/confirm-dialog.module';
+import { appMaskModule } from '../../directives/mask.module';
+import { GenericService } from '../../services/generic/generic.service';
+import { AuthService } from '../../services/auth/auth.service';
 
 @NgModule({
-    declarations: [CategoriaComponent, ModalCategoriaComponent],
-    exports: [CategoriaComponent, ModalCategoriaComponent],
+    declarations: [ProdutoComponent, ModalProdutoComponent],
+    exports: [ProdutoComponent, ModalProdutoComponent],
     imports: [
         CommonModule,
         FormsModule,
@@ -48,14 +47,12 @@ import {
         FlexLayoutModule,
         appMaskModule,
         MatSnackBarModule,
-        ConfirmDialogModule
-       
-             
-
+        ConfirmDialogModule    
     ],
-    entryComponents:[ModalCategoriaComponent],
+    entryComponents:[ModalProdutoComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    providers: [AuthService, GenericService, CategoriaService]  
+    providers:[ProdutoService, AuthService, GenericService]
+    
 })
 
-export class CategoriaModule { }
+export class ProdutoModule { }
