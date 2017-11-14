@@ -15,7 +15,7 @@ import { ChequinhoService } from '../../../services/chequinho/chequinho.service'
 })
 export class ImpressaoChequinhoComponent implements OnInit {
 
-	chequinho: Chequinho = new Chequinho();
+	chequinhos: Chequinho[] = [];
 	associado: Associado = new Associado();
 	qtdeChequinho: Number;
 	masks = Masks;
@@ -30,14 +30,24 @@ export class ImpressaoChequinhoComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
-		if (this.dataAssociado)
+	/*	if (this.dataAssociado)
 			this.associado = this.dataAssociado;
 		if (this.dataChequinho)
-			this.chequinho = this.dataChequinho;
+			this.chequinho = this.dataChequinho;*/
 		//let idChequinho = this.route.snapshot.params["id"];
-		//this.qtdeChequinho = this.route.snapshot.params["qtdeChequinho"];
-		console.log(this.qtdeChequinho);
+		//this.qtdeChequinho = ;
+		this.tratarIDSChequinhos(this.route.snapshot.params["ids"]);
 		//this.getChequinhoById(idChequinho)
+	}
+
+	tratarIDSChequinhos(str : string):void{
+		for(let id of str.split("~")){
+			this.chequinhoService.findById(id).subscribe(res => {
+				this.chequinhos.push(res);
+			}, err => {
+				this.openSnackBar("Erro ao listar chequinho", "OK");
+			});			
+		}
 	}
 
 	openSnackBar(message: string, action: string) {
@@ -50,11 +60,8 @@ export class ImpressaoChequinhoComponent implements OnInit {
 	 * Busca chequinho por id.
 	 * @param id i
 	 */
-	getChequinhoById(id: string) {
-		this.chequinhoService.findById(id).subscribe(res => {
-			this.chequinho = res;
-		}, err => {
-			this.openSnackBar("Erro ao listar chequinho", "OK");
-		})
+	getChequinhoById(id: string) : Chequinho {
+		
+		return null;
 	}
 }
