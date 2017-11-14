@@ -103,6 +103,7 @@ const routes: Routes = [
             }
         ]
     },
+    
     {
         path: '', component: blankComponent,
         children: [
@@ -112,6 +113,7 @@ const routes: Routes = [
             }
         ]
     },
+    
 
     // Handle all other routes
     { path: '**', component: LoginComponent }

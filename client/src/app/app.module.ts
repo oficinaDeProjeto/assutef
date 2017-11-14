@@ -31,6 +31,7 @@ import { NgxBarcodeModule } from 'ngx-barcode';
 import {MatTableModule} from '@angular/material';
 
 
+
 /** 
  * Módulo principal da aplicação 
  * delclara o componente principal e importa os módulos das outras telas
