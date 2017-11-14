@@ -2,6 +2,7 @@ import { PainelComponent } from './views/painel/painel.component';
 import { AssociadoComponent } from './views/associado/associado.component';
 import { UsuarioComponent } from './views/usuario/usuario.component';
 import { CategoriaComponent } from './views/categoria/categoria.component';
+import { ProdutoComponent } from './views/produto/produto.component';
 import { ChequinhoComponent } from './views/chequinho/chequinho.component';
 import { LancamentoComponent } from './views/lancamento/lancamento.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -43,6 +44,13 @@ const routes: Routes = [
                 component: CategoriaComponent,
                 data: {
                     breadcrumb: "Categorias"
+                }
+            },
+            {
+                path: 'produto',
+                component: ProdutoComponent,
+                data: {
+                    breadcrumb: "Produtos"
                 }
             },
             {

@@ -3,6 +3,7 @@ import { UsuarioModule } from './views/usuario/usuario.module';
 import { ChequinhoModule } from './views/chequinho/chequinho.module';
 import { ImpressaoChequinhoModule } from './views/chequinho/impressao/impressao-chequinho.module';
 import { CategoriaModule } from './views/categoria/categoria.module';
+import { ProdutoModule } from './views/produto/produto.module';
 import { AssociadoModule } from './views/associado/associado.module';
 import { LancamentoModule } from './views/lancamento/lancamento.module';
 import 'hammerjs';
@@ -51,6 +52,7 @@ import {MatTableModule} from '@angular/material';
     ProfileModule,
     AssociadoModule,
     CategoriaModule,
+    ProdutoModule,
     ChequinhoModule,
     UsuarioModule,
     LancamentoModule,
