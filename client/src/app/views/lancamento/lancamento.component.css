@@ -1,8 +1,13 @@
 /* Structure */
+
+
 .example-container {
     display: flex;
     flex-direction: column;
     min-width: 300px;
+    padding-left: 33px;
+    padding-right: 33px;
+    box-shadow: none!important;  
   }
   
   .example-header {
@@ -18,9 +23,25 @@
     font-size: 14px;
     flex-grow: 1;
     margin-left: 32px;
+   
   }
+
   
   .mat-table {
     overflow: auto;
     max-height: 500px;
+  }
+
+  
+
+  .fab-bottom-right {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+  }
+  
+  .limit-cell{
+    max-width: 30px;
+    
+
   }

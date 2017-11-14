@@ -1,4 +1,4 @@
-import {Component, OnInit, ElementRef, ViewChild} from '@angular/core';
+import {Component, OnInit, ElementRef, ViewChild, Optional} from '@angular/core';
 import {DataSource} from '@angular/cdk/table';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Observable} from 'rxjs/Observable';
@@ -10,9 +10,10 @@ import { Conveniado } from '../../models/conveniado';
 import { AssociadoService } from '../../services/associado/associado.service';
 import { ConveniadoService } from '../../services/conveniado/conveniado.service';
 import { LancamentoService } from '../../services/lancamento/lancamento.service';
-import { MatSnackBar, MatDialog, MatTable } from '@angular/material';
+import { MatSnackBar, MatDialog, MatTable, MatPaginator, MatSort } from '@angular/material';
 import { ModalLancamentoComponent } from './modal/modal-lancamento.component';
 import {MatTableDataSource} from './table-data-source';
+import { ConfirmDialogService } from './../../components/common/confirm-dialog/confirm-dialog.service';
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/observable/merge';
 import 'rxjs/add/operator/map';
@@ -28,8 +29,11 @@ import 'rxjs/add/observable/fromEvent';
 })
 export class LancamentoComponent implements OnInit {
 
-	
+	@ViewChild(MatPaginator) paginator: MatPaginator;
+	@ViewChild(MatSort) sort: MatSort;
 
+	el: Elemento = new Elemento();
+	
 	lancamento: Lancamento = new Lancamento();
 	lancamentos: Lancamento[] = [];
 	selectedLancamento: Lancamento = new Lancamento;
@@ -47,15 +51,22 @@ export class LancamentoComponent implements OnInit {
 	selectedAssociado: Associado = new Associado;
 	filteredAssociados: Associado[] = [];
 
-	displayedColumns = ['Associado', 'Conveniado', 'Valor', 'Data'];
-	dataSource = new MatTableDataSource<Lancamento>(this.lancamentos);	
+	ELEMENT_DATA: Elemento[] = [];
 
+	displayedColumns = ['Associado', 'Conveniado', 'Valor', 'Data', 'acao'];
+	dataSource = new MatTableDataSource<Elemento>(this.ELEMENT_DATA);	
+
+	
+		
+	
+	
 	applyFilter(filterValue: string) {
 		filterValue = filterValue.trim(); // Remove whitespace
 		filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
 		this.dataSource.filter = filterValue;
 	  }
   
+	
   
   constructor(
     private associadoService: AssociadoService,
@@ -64,28 +75,41 @@ export class LancamentoComponent implements OnInit {
     public snackBar: MatSnackBar,
     private router: Router,
 	private authService: AuthService,
-	public dialog: MatDialog
+	public dialog: MatDialog,
+	public confirmDialogService: ConfirmDialogService,
+	
+	
+	
     
   ) {
    }
 
+   
+   
+
+
+	ngAfterViewInit() {
+		this.dataSource.paginator = this.paginator;
+		this.dataSource.sort = this.sort;
+	}
 
   ngOnInit() {
+
 	this.getAll();
-	
-    this.getAllAssociados();
+
+	this.getAllAssociados();
 	this.getAllConveniados();
-	this.dataSource.connect();
-	this.dataSource.data = this.lancamentos;
-	console.log(this.dataSource.data);
-	console.log(this.lancamentos);
+	this.construirData(this.lancamentos);
+	
+	
   }  
 
   getAll() {
 	this.lancamentoService.findAll().subscribe(lancamentos => {
 		this.lancamentos = <Lancamento[]>lancamentos;
-		this.dataSource.data = lancamentos;
 		this.filteredLancamentos = Object.assign([], this.lancamentos);
+		this.construirData(this.lancamentos);
+	
 	}, err => {
 		console.log(err);
 	});	
@@ -144,4 +168,65 @@ export class LancamentoComponent implements OnInit {
 		});
 	}
 
+	delete(id: string) {
+
+		this.confirmDialogService.confirm(
+			'Confirmação',
+			`Você tem ceteza que deseja remover esse lançamento?`)
+			.subscribe(res => {
+				if (res) {
+					this.lancamentoService.delete(id).subscribe(lancamento => {
+						this.openSnackBar("Removido com sucesso", "OK");
+						location.reload();
+					}, err => {
+						this.openSnackBar("Não foi possível remover o lancamento", "OK");
+					})
+				}
+				
+			});
+			
+	}
+
+	
+
+	findAll() {
+		this.lancamentoService.findAll().subscribe(lancamentos => {
+			this.lancamentos = <Lancamento[]>lancamentos;
+			this.filteredLancamentos = Object.assign([], this.lancamentos);
+		}, err => {
+			this.openSnackBar("Não foi possível carregar lançamentos", "OK");
+		});
+	}
+
+	construirData(lancamentos: Lancamento[]){
+		
+			
+			   
+				for (let index = 0; index < lancamentos.length; index++) {
+		
+					this.el = new Elemento();
+		
+					this.el.associado = lancamentos[index].associado.nome;
+					this.el.conveniado = lancamentos[index].conveniado.razaosocial;
+					this.el.dia = lancamentos[index].dataLancamento;
+					this.el.valor = lancamentos[index].valor;
+					this.el.id = lancamentos[index].id;
+		
+					this.ELEMENT_DATA[index] = this.el; 
+					this.dataSource.connect();
+					this.dataSource.data = this.ELEMENT_DATA;
+		
+					
+				}
+			}
+
 }
+
+export class Elemento {
+	associado: string;
+	conveniado : string;
+	valor: number;
+	dia: Date;
+	id: string;
+  }
+  
