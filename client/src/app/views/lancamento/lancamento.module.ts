@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import {MatTableModule} from '@angular/material/table';
 import { ModalLancamentoComponent } from './modal/modal-lancamento.component'
+import {Elemento} from './lancamento.component'
 import {
     MatDialogModule,
     MatCardModule,
@@ -50,7 +51,7 @@ import {
     ],
     entryComponents: [ModalLancamentoComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    providers: [AuthService, LancamentoService, AssociadoService]
+    providers: [AuthService, LancamentoService, AssociadoService, Elemento]
 })
 
 export class LancamentoModule { }
