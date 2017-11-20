@@ -30,3 +30,7 @@
   /deep/ .mat-list-item-content {
     height: auto !important;
   }
+  
+  .mat-form-field {
+    width: 600px;
+  }
