@@ -1,0 +1,26 @@
+
+<button class="btn btn-primary full-width" (click)="save(user)" *ngIf="form.valid">Finalizar</button>
+
+<div class="content">
+	<div fxLayout="row" fxLayoutAlign="space-around center">
+		<div>
+			<mat-card fxFlex>
+				<mat-card-header>
+					<mat-card-title>Cadastro</mat-card-title>
+					<mat-card-subtitle>Complete o seu cadastro</mat-card-subtitle>
+				</mat-card-header>
+				<mat-card-content>
+					<form #formAssociado>
+						<md-form-field class="example-full-width">
+							<input mdInput name="password" placeholder="Senha" [(ngModel)]="associado.password">
+						</md-form-field>
+					</form>
+				</mat-card-content>
+			</mat-card>
+		</div>
+	</div>
+
+	<button matTooltip="Adicionar um novo associado" mat-fab (click)="save(this.password)" class="fab-bottom-right">
+		<mat-icon>add</mat-icon>
+	</button>
+</div>

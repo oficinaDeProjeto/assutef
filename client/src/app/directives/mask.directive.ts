@@ -83,6 +83,7 @@ export class appMaskDirective implements ControlValueAccessor {
 	@HostListener('blur', ['$event'])
 	onBlur($event: any) {
 		if ($event.target.value.length === this.appMask.length) {
+			this.onChange($event.target.value);
 			return;
 		}
 		this.onChange('');
