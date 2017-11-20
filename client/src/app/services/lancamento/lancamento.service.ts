@@ -19,5 +19,14 @@ export class LancamentoService {
 	findAll() : Observable<Lancamento[]> {
 		return this.httpClient.get<Lancamento[]>(`${this.apiUrl}lancamento`);
 	}
+	
+	delete(id: string): Observable<Lancamento> {
+		return this.httpClient.delete<Lancamento>(`${this.apiUrl}lancamento/${id}`)
+	}
+
+	findById(id: string): Observable<Lancamento> {
+		return this.httpClient.get<Lancamento>(`${this.apiUrl}lancamento?id=${id}`);
+	}
+
 
 }

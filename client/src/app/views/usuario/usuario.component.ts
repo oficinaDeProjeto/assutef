@@ -3,7 +3,7 @@ import { ModalUsuarioComponent } from './modal/modal-user.component';
 import { Usuario } from './../../models/Usuario';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
-import { MatIconRegistry, MatDialog } from "@angular/material";
+import { MatIconRegistry, MatDialog, MatSnackBar } from "@angular/material";
 
 
 @Component({
@@ -34,14 +34,20 @@ export class UsuarioComponent implements OnInit {
 	isDarkTheme = false;
 
 	constructor(
-		iconRegistry: MatIconRegistry, 
-		sanitizer: DomSanitizer, 
 		private usuarioService: UsuarioService,
-		private dialog: MatDialog
+		private dialog: MatDialog,
+		public snackBar: MatSnackBar
 	) {
-		// To avoid XSS attacks, the URL needs to be trusted from inside of your application.
-		const avatarsSafeUrl = sanitizer.bypassSecurityTrustResourceUrl('./assets/avatars.svg');
-		iconRegistry.addSvgIconSetInNamespace('avatars', avatarsSafeUrl);
+	}
+	
+	save(usuario): void {
+		usuario.role = "ADMIN";
+		this.usuarioService.save(usuario).subscribe(usuario => {
+			this.openSnackBar("Salvo com sucesso", "OK");
+			this.getAll();
+		}, err => {
+			this.openSnackBar("Não foi possível salvar o usuario", "OK");
+		});
 	}
 
 	openUser(usuario): void{
@@ -50,20 +56,24 @@ export class UsuarioComponent implements OnInit {
 		});
 
 		dialogRef.afterClosed().subscribe(result => {
-			console.log(result);
-			//this.salvarCategoria(result);
+			this.save(result);
 		});
 	}
-	
-	openNewUsuarioDialog(): void {
-		let dialogRef = this.dialog.open(ModalUsuarioComponent, {
-			data: null
-		});
 
-		dialogRef.afterClosed().subscribe(result => {
-			console.log(result);
-			//this.salvarCategoria(result);
+	openSnackBar(message: string, action: string) {
+		this.snackBar.open(message, action, {
+			duration: 10000,
 		});
+	}
+
+	filterUsuario(query) {
+		if (!query) {
+			this.filteredUsuarios = Object.assign([], this.usuarios);
+		} else {
+			this.filteredUsuarios = Object.assign([], this.usuarios).filter(
+				u => u.nome.toLowerCase().indexOf(query.toLowerCase()) > -1 || u.email.toLowerCase().indexOf(query.toLowerCase()) > -1
+			)
+		}
 	}
 
 

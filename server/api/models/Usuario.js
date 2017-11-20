@@ -20,7 +20,7 @@ module.exports = {
 			required: "true",
 			unique: true
 		},
-		name: {
+		nome: {
 			type: "string",
 			required: true
 		},
@@ -31,11 +31,7 @@ module.exports = {
 			type: 'string',
 			enum: ['ADMIN', 'USER'],
 			required: "true",
-		},
-		/*avatar: {
-			type: 'string'
-		},*/
-		
+		},		
 		// Para não enviar uma senha criptografada
 		toJSON: function () {
 			var obj = this.toObject();
@@ -47,14 +43,27 @@ module.exports = {
 	beforeCreate: function (values, next) {
 		bcrypt.genSalt(10, function (err, salt) {
 			if (err) return next(err);
-			bcrypt.hash(values.password, salt, function (err, hash) {
+			bcrypt.hash(values.senha, salt, function (err, hash) {
 				if (err) return next(err);
 				values.encryptedPassword = hash;
 				next();
 			});
 		});
 	},
-
+	beforeUpdate: function(values, next){
+		if(typeof values.senha === 'undefined')
+			return next();
+		if(values.senha != null){
+			bcrypt.genSalt(10, function (err, salt) {
+				if (err) return next(err);
+				bcrypt.hash(values.senha, salt, function (err, hash) {
+					if (err) return next(err);
+					values.encryptedPassword = hash;
+				});
+			});
+		}
+		next();
+	},
 	comparePassword: function (password, user, cb) {
 		bcrypt.compare(password, user.encryptedPassword, function (err, match) {
 			if (err) cb(err);

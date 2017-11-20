@@ -30,7 +30,7 @@ import { ConfirmDialogModule } from '../../components/common/confirm-dialog/conf
         FlexLayoutModule,
         MatTooltipModule,
         MatSnackBarModule,
-        ConfirmDialogModule        
+        ConfirmDialogModule    
     ],
     entryComponents:[ModalTipoconveniadoComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
