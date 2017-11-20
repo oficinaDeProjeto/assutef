@@ -1,62 +1,38 @@
-<!--<mat-sidenav-container fxFlex>
-	<mat-sidenav mode="side" opened>
-
-		<mat-tab-group>
-			<mat-tab label="Usuários">
-				<mat-nav-list>
-					<mat-list-item *ngFor="let usuario of usuarios" (click)="selectedUsuario = usuario">
-						<mat-icon svgIcon="avatars:{{usuario.avatar}}" class="avatar"></mat-icon>
-						<span>{{usuario.name}}</span>
-					</mat-list-item>
-				</mat-nav-list>
-			</mat-tab>
-			<mat-tab label="Configurações">
-				<span>Configurações</span>
-			</mat-tab>
-		</mat-tab-group>
-
-</mat-sidenav>
-	<div class="content" fxLayout="row" fxLayout.sm="column" fxLayoutGap="16px">
-
-		<mat-card fxFlex="80">
-			<mat-icon svgIcon="avatars:{{selectedUsuario.avatar}}" class="avatar"></mat-icon>
-			<h2>{{selectedUsuario.name}}</h2>
-			<p>{{selectedUsuario.details}}</p>
-		</mat-card>
-
-		<mat-card fxFlex fxLayout="column" fxLayoutGap="14px">
-			<mat-slide-toggle [(ngModel)]="selectedUsuario.isAdmin">Satan?</mat-slide-toggle>
-			<mat-slide-toggle [(ngModel)]="selectedUsuario.isCool">Porcodio?</mat-slide-toggle>
-		</mat-card>
-
-	</div>
-</mat-sidenav-container>
-
- -->
-
 <div class="content" fxFlex fxLayout="row" fxLayoutAlign="space-around center">
-	
 	<mat-card>
 		<mat-card-header>
-			<mat-card-title>Usuarios</mat-card-title>
-			<mat-card-subtitle>Lista de usuarios cadastrados</mat-card-subtitle>
 			<mat-input-container>
-				<input matInput [(ngModel)]="query" name="query" placeholder="Pesquise por nome de usuario" (input)="filterUsuario(query)">
+				<input matInput [(ngModel)]="query" name="query" placeholder="Pesquise pelo Nome ou E-Mail do usuario" (input)="filterUsuario(query)">
+				<span fxFlex.gt-sm="50" fxFlex="100" class="p-5"></span>
 			</mat-input-container>
-		</mat-card-header>
-		<mat-card-content> <!-- lista  -->
-			<mat-list>
-				<h3 mat-subheader>Usuario</h3>
-				<mat-list-item *ngFor="let usuario of usuarios" (click)="openUser(usuario)">					
-					<h4 mat-line class="linkHover"><mat-icon mat-list-icon>account_box</mat-icon> {{usuario.name}} - {{usuario.email}}</h4>
-				</mat-list-item>
-			</mat-list>
+			<br>			
+		</mat-card-header><br>
+		<mat-card-content>
+			<mat-card-content>
+				<mat-list>
+					<mat-list-item *ngFor="let usuario of filteredUsuarios" class="usuarioReg" (click)="openUser(usuario)">
+						<hr align="center" width="700" size="0">
+						<div fxLayout="row"  fxLayoutAlign="space-between center" >
+							<div>
+								<h4 mat-line>{{usuario.nome}} - {{usuario.email}}</h4>
+							</div>
+							<div>
+								<button mat-icon-button color="primary" (click)="openUser(usuario)"
+									matTooltip="Editar o Usuario {{usuario.nome}}">
+									<mat-icon>create</mat-icon>
+								</button>
+								<button mat-icon-button color="warn" (click)="delete(usuario)"
+									matTooltip="Remover o Usuario {{usuario.nome}}">
+									<mat-icon>delete</mat-icon>
+								</button>
+							</div>
+						</div>
+					</mat-list-item>
+				</mat-list>
+			</mat-card-content>
 		</mat-card-content>
 	</mat-card>
 </div>
-
-
-
-<button mat-fab (click)="openNewUsuarioDialog()" class="fab-bottom-right">
+<button mat-fab (click)="openUser()" class="fab-bottom-right">
 	<mat-icon>add</mat-icon>
 </button>
