@@ -15,12 +15,16 @@ export class GrupousuarioService extends SuperService {
    }
 
    save(grupousuario: Grupousuario): Observable<Grupousuario> {
-		return this.httpClient.post<Grupousuario>(`${this.apiUrl}grupousuario`, grupousuario);
+    if (grupousuario.id) return this.httpClient.put<Grupousuario>(`${this.apiUrl}grupousuario/${grupousuario.id}`, grupousuario)
+    else
+    return this.httpClient.post<Grupousuario>(`${this.apiUrl}grupousuario`, grupousuario);
 	}
 
    getAll(): Observable<Grupousuario[]> {
     return this.httpClient.get<Grupousuario[]>(`${this.apiUrl}grupousuario`);
 }
+
+
 
 delete(id: string): Observable<Grupousuario> {
   return this.httpClient.delete<Grupousuario>(`${this.apiUrl}grupousuario/${id}`)
