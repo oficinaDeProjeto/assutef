@@ -1,53 +1,20 @@
+<!--div *ngFor="let chequinho of chequinhos">
 
-<div style="margin-left: 12.6%;">
+<div style="margin-left: 8%;">
 	<mat-grid-list cols="4" rowHeight="4:1">
 		<mat-grid-tile>
-			<div style="width: 32.2%;" class="borda">
+			<div class="borda">
 				<label class="title">Número:</label>
 				<p></p>
 				<label>{{chequinho.id}}</label>
-				<Mat-input-container>
-					<label>Valor Utilizado R$:</label>
-					<label>{{chequinho.valorLimite}}</label>
-				</Mat-input-container>
-				<Mat-input-container>
-					<label>Valor Utilizado R$:</label>
-					<label>______________</label>
-				</Mat-input-container>
-
-				<div style="margin-left: 8%;">
-					<mat-grid-list cols="4" rowHeight="4:1">
-						<mat-grid-tile>
-							<div class="borda">
-								<label class="title">Número:</label>
-								<p></p>
-								<label>{{chequinho.id}}</label>
-							</div>
-						</mat-grid-tile>
-						<mat-grid-tile>
-							<div>
-								<div class="semBorda">
-									<label>Autorização de Compra</label>
-									<br/>
-									<label> máximo por folha</label>
-								</div>
-							</div>
-						</mat-grid-tile>
-						<mat-grid-tile>
-							<div class="borda">
-								<label class="title">Valor Limite R$:</label>
-								<p></p>
-								<label>{{chequinho.valorLimite}}</label>
-							</div>
-						</mat-grid-tile>
-						<mat-grid-tile>
-							<div class="borda">
-								<label class="title">Valor Utilizado R$:</label>
-								<p></p>
-								<label>______________</label>
-							</div>
-						</mat-grid-tile>
-					</mat-grid-list>
+			</div>
+		</mat-grid-tile>	
+		<mat-grid-tile>
+			<div>
+				<div class="semBorda">
+					<label>Autorização de Compra</label>
+					<br/>
+					<label> máximo por folha</label>
 				</div>
 				<br/>
 				<br/>
@@ -103,3 +70,4 @@
 	<br/>
 	<ngx-barcode [bc-element-type]='svg' [bc-value]="3432342342" [bc-format]='CODE128' [bc-width]=4 [bc-height]=50 [bc-display-value]=true></ngx-barcode>
 </div>
+-->

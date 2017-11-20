@@ -1,3 +1,4 @@
+﻿import { Grupousuario } from './models/Grupousuario';
 import { PainelModule } from './views/painel/painel.module';
 import { UsuarioModule } from './views/usuario/usuario.module';
 import { ChequinhoModule } from './views/chequinho/chequinho.module';
@@ -6,6 +7,8 @@ import { CategoriaModule } from './views/categoria/categoria.module';
 import { ProdutoModule } from './views/produto/produto.module';
 import { AssociadoModule } from './views/associado/associado.module';
 import { LancamentoModule } from './views/lancamento/lancamento.module';
+import { GrupousuarioModule } from './views/grupousuario/grupousuario.module';
+
 import 'hammerjs';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -15,6 +18,7 @@ import { HttpModule } from '@angular/http';
 import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 // App views
+
 // App modules/components
 import { LoginModule } from './views/login/login.module';
 import { HomeModule } from './views/home/home.module';
@@ -30,6 +34,7 @@ import { MatFormFieldModule } from '@angular/material';
 import { MatInputModule } from '@angular/material';
 import { NgxBarcodeModule } from 'ngx-barcode';
 import {MatTableModule} from '@angular/material';
+import { GrupousuarioComponent } from './views/grupousuario/grupousuario.component';
 
 
 
@@ -58,6 +63,7 @@ import {MatTableModule} from '@angular/material';
     UsuarioModule,
     LancamentoModule,
     ImpressaoChequinhoModule,
+    GrupousuarioModule,
     PainelModule,
 
     // Modules
