@@ -1,16 +1,11 @@
-import { AssociadoService } from './../../services/associado/associado.service';
-import { appMaskModule } from './../../directives/mask.module';
-import { LancamentoService } from './../../services/lancamento/lancamento.service';
-import { AuthService } from './../../services/auth/auth.service';
+import { ModalProdutoComponent } from './modal/modal-produto.component';
+import { ProdutoComponent } from './produto.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { LancamentoComponent } from './lancamento.component'
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import {MatTableModule} from '@angular/material/table';
-import { ModalLancamentoComponent } from './modal/modal-lancamento.component'
-import {Elemento} from './lancamento.component'
+import { ProdutoService } from '../../services/produto/produto.service';
 import {
     MatDialogModule,
     MatCardModule,
@@ -23,12 +18,16 @@ import {
     MatNativeDateModule,
     MatRadioModule,
     MatSnackBarModule,
-    
+    MatTooltipModule
 } from "@angular/material";
+import { ConfirmDialogModule } from '../../components/common/confirm-dialog/confirm-dialog.module';
+import { appMaskModule } from '../../directives/mask.module';
+import { GenericService } from '../../services/generic/generic.service';
+import { AuthService } from '../../services/auth/auth.service';
 
 @NgModule({
-    declarations: [LancamentoComponent, ModalLancamentoComponent,],
-    exports: [LancamentoComponent, ModalLancamentoComponent],
+    declarations: [ProdutoComponent, ModalProdutoComponent],
+    exports: [ProdutoComponent, ModalProdutoComponent],
     imports: [
         CommonModule,
         FormsModule,
@@ -44,14 +43,16 @@ import {
         MatNativeDateModule,
         MatButtonModule,
         MatRadioModule,
+        MatTooltipModule,
         FlexLayoutModule,
         appMaskModule,
         MatSnackBarModule,
-        MatTableModule
+        ConfirmDialogModule    
     ],
-    entryComponents: [ModalLancamentoComponent],
+    entryComponents:[ModalProdutoComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    providers: [AuthService, LancamentoService, AssociadoService, Elemento]
+    providers:[ProdutoService, AuthService, GenericService]
+    
 })
 
-export class LancamentoModule { }
+export class ProdutoModule { }

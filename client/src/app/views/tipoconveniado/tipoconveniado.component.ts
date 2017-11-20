@@ -15,25 +15,24 @@ import { ConfirmDialogService } from '../../components/common/confirm-dialog/con
 })
 export class TipoconveniadoComponent implements OnInit {
 
-  tipoconveniado: Tipoconveniado = new Tipoconveniado();
-	tipoconveniados: Tipoconveniado[] = [];
-	selectedTipoconveniado: Tipoconveniado = new Tipoconveniado;
-	filteredTipoconveniados: Tipoconveniado[] = [];
+	tipoconveniado: Tipoconveniado = new Tipoconveniado();
+		tipoconveniados: Tipoconveniado[] = [];
+		selectedTipoconveniado: Tipoconveniado = new Tipoconveniado;
+		filteredTipoconveniados: Tipoconveniado[] = [];
 
-  constructor(
-	private genercService: GenericService,
-		private tipoconveniadoService: TipoconveniadoService,
-		private router: Router,
-		private authService: AuthService,
-		public snackBar: MatSnackBar,
-		public confirmDialogService: ConfirmDialogService,
-		public dialog: MatDialog
-  ) { }
+	constructor(
+		private genercService: GenericService,
+			private tipoconveniadoService: TipoconveniadoService,
+			private router: Router,
+			private authService: AuthService,
+			public snackBar: MatSnackBar,
+			public confirmDialogService: ConfirmDialogService,
+			public dialog: MatDialog
+	) { }
 
-  ngOnInit() {
-		this.getAll();
+	ngOnInit() {
+			this.getAll();
 	}
-
 
 	getAll() {
 		this.tipoconveniadoService.findAll().subscribe(tipoconveniados => {
@@ -65,7 +64,7 @@ export class TipoconveniadoComponent implements OnInit {
 		if (!query) {
 			this.filteredTipoconveniados = Object.assign([], this.tipoconveniados);
 		} else {
-			this.filteredTipoconveniados = Object.assign([], this.tipoconveniado).filter(
+			this.filteredTipoconveniados = Object.assign([], this.tipoconveniados).filter(
 				tipoconveniado => tipoconveniado.descricao.toLowerCase().indexOf(query.toLowerCase()) > -1
 			)
 		}

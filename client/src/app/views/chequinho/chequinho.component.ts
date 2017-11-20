@@ -38,20 +38,25 @@ export class ChequinhoComponent implements OnInit {
 	}
 	
 	gerarChequinho(){
+		
 		this.chequinho.data = new Date();
-		for(var i=0; i < this.qtdeChequinho; i+=1){
-			this.chequinho.id = null;
+		for(let i=0; i < this.qtdeChequinho; i+=1){
 			this.chequinhoService.save(this.chequinho).subscribe(chequinho => {
 				this.chequinhos.push(chequinho.id);
+				console.log(this.chequinhos);
+				if(this.chequinhos.length === this.qtdeChequinho){					
+					this.router.navigate(["chequinhoimpressao", this.chequinhos.join('~') ]);
+				}
+
 			}, err => {
 				this.openSnackBar("Não foi possível gerar o(s) chequinho(s)", "OK");
 				return;
 			});
 		}
-		this.openSnackBar("Chequinho(s) gerado(s) com sucesso", "OK");			
-		console.log(this.chequinhos);
+
+		//this.openSnackBar("Chequinho(s) gerado(s) com sucesso", "OK");			
 		//console.log(this.chequinhos.map(function(item){return item.id;}));
-		//this.router.navigate(["chequinhoimpressao", this.chequinhos.map(function(item){return item.id}).join(';') ]);		
+		//	
 	}
 
 	openSnackBar(message: string, action: string) {

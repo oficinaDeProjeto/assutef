@@ -1,53 +1,49 @@
 /**
- * Conveniado.js
+ * Produto.js
  *
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
  */
 
 module.exports = {
-  schema: true,
+	schema: true,
 	connection: 'mongo',
-  attributes: {
-		/*pra o postgres
+	attributes: {
+		/*pra quando for usar o postgres
 		id: {
 			type: 'integer',
 			autoIncrement: true,
 			primaryKey: true
 		},*/
-    razaosocial: {
+		name: {
 			type: 'string',
 			required: true,
 			unique: true
 		},
-		nomefantasia: {
+		descricao: {
 			type: 'string',
 			required: true,
 			unique: true
 		},
-		telefone: {
+		valor: {
 			type: 'string',
+			required: true,
+			unique: true
 		},
-		cnpj: {
+		categoria: {
 			type: 'string',
-			unique: true,
+			required: true,
+			unique: true
 		},
-		comissao: {
+		unidade: {
 			type: 'string',
-			unique: true,
+			required: true,
+			unique: true
 		},
-		datacadastro: {
-			type: 'date',
-		},
-		ativo:{
+		estoque: {
 			type: 'string',
-			enum: ['ATIVO', 'INATIVO']
-		},
-		endereco: {
-			model: 'endereco'
-    },
-		tipoconveniado:{
-			model: 'tipoconveniado'
+			required: true,
+			unique: true
 		}
   }
 };
