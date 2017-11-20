@@ -12,7 +12,6 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 
 
-
 import {
   MatDialogModule,
   MatCardModule,
@@ -39,9 +38,9 @@ import {
 export class GrupousuarioComponent implements OnInit {
 	grupousuario: Grupousuario = new Grupousuario();
 	grupousuarios : Grupousuario[] = [];
+	selectedGrupousuario: Grupousuario  = new Grupousuario;
 	filteredGrupousuarios: Grupousuario[] = [];
-	selectedGrupousuario = new Grupousuario();
-	
+		
   constructor(
     iconRegistry: MatIconRegistry, 
 		sanitizer: DomSanitizer, 
@@ -53,38 +52,14 @@ export class GrupousuarioComponent implements OnInit {
 		public snackBar: MatSnackBar,
 		public confirmDialogService: ConfirmDialogService
   ) { 
-// To avoid XSS attacks, the URL needs to be trusted from inside of your application.
-const avatarsSafeUrl = sanitizer.bypassSecurityTrustResourceUrl('./assets/avatars.svg');
-iconRegistry.addSvgIconSetInNamespace('avatars', avatarsSafeUrl);
   }
 
-  openGrupouser(grupousuario): void{
-		let dialogRef = this.dialog.open(ModalGrupousuarioComponent, {
-			data: grupousuario
-		});
-
-		dialogRef.afterClosed().subscribe(result => {
-			console.log(result);
-			//this.salvarCategoria(result);
-		});
-  }
-  
-  openNewGrupousuarioDialog(grupousuario: Grupousuario): void {
-		let dialogRef = this.dialog.open(ModalGrupousuarioComponent, {
-			data: grupousuario
-		});
-
-		dialogRef.afterClosed().subscribe(result => {
-			console.log(result);
-			this.salvarGrupousuario(result);
-		});
-	}
-
-  ngOnInit() {
+	ngOnInit() {
     this.getAll();
-  }
+	}
+	
 
-  getAll() {
+	getAll() {
 		this.grupousuarioService.getAll().subscribe(grupousuarios => {
 			this.grupousuarios = <Grupousuario[]>grupousuarios;
 			this.filteredGrupousuarios = Object.assign([], this.grupousuarios);
@@ -93,8 +68,7 @@ iconRegistry.addSvgIconSetInNamespace('avatars', avatarsSafeUrl);
 			this.openSnackBar("Não foi possível carregar os grupos de usuários", "OK");
 		});
 	}
-  isDarkTheme = false;
-  
+ // isDarkTheme = false;
 
 
 
@@ -105,8 +79,10 @@ iconRegistry.addSvgIconSetInNamespace('avatars', avatarsSafeUrl);
 	assignCopy() {
 		this.filteredGrupousuarios = Object.assign([], this.grupousuario);
 	}
+	
+	
 
-	filterConveniado(query) {
+	filterGrupousuario(query) {
 		if (!query) {
 			this.filteredGrupousuarios = Object.assign([], this.grupousuarios);
 		} else {
@@ -116,24 +92,17 @@ iconRegistry.addSvgIconSetInNamespace('avatars', avatarsSafeUrl);
 		}
 	}
 
-
-	openSnackBar(message: string, action: string) {
-		this.snackBar.open(message, action, {
-			duration: 10000,
+  openNewGrupousuarioDialog(grupousuario: Grupousuario): void {
+		let dialogRef = this.dialog.open(ModalGrupousuarioComponent, {
+			data: grupousuario
+		});
+		dialogRef.afterClosed().subscribe(result => {
+		//	console.log(result);
+			this.salvarGrupousuario(result);
 		});
 	}
 
-	salvarGrupousuario(grupousuario: Grupousuario) {
-		this.grupousuarioService.save(grupousuario).subscribe(grupousuario => {
-			this.openSnackBar("Salvo com sucesso", "OK");
-			this.getAll();
-		}, err => {
-			this.openSnackBar("Não foi possível salvar o grupo de usuário", "OK");
-		});
-	}
-
-
-
+	
 	/**
 	 * Valida se é mesmo a intenção do usuário, caso sim remove um grupo da base
 	 * @param grupousuario grupousuario passado por parametro direto da View
@@ -153,5 +122,23 @@ iconRegistry.addSvgIconSetInNamespace('avatars', avatarsSafeUrl);
 				}
 			});
 	}
+
+	salvarGrupousuario(grupousuario: Grupousuario) {
+		this.grupousuarioService.save(grupousuario).subscribe(grupousuario => {
+			this.openSnackBar("Salvo com sucesso", "OK");
+			this.getAll();
+		}, err => {
+			this.openSnackBar("Não foi possível salvar o grupo de usuário", "OK");
+		});
+	}
+
+	openSnackBar(message: string, action: string) {
+		this.snackBar.open(message, action, {
+			duration: 10000,
+		});
+	}
+
+
+
 
 }
