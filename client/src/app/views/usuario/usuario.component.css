@@ -9,7 +9,6 @@ mat-sidenav {
 mat-sidenav-container {
     height: 100vh;
 }
-
 .content {
   padding: 12px;
 }
@@ -32,4 +31,16 @@ mat-sidenav-container {
   height: auto !important;
 }
 
-.linkHover:hover{cursor:pointer;}
+.mat-form-field {
+  width: 600px;
+}
+
+
+.usuarioReg{
+  background-color: white;
+}
+
+.usuarioReg :hover{
+  background-color: #f2f2f2;
+  cursor: pointer;
+}
