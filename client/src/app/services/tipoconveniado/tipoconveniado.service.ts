@@ -3,15 +3,20 @@ import { Observable } from 'rxjs/Observable';
 import { Tipoconveniado } from '../../models/tipoconveniado';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable()
 export class TipoconveniadoService {
 
-  private apiUrl = environment.api_url;
-	constructor(private httpClient: HttpClient) {
-  }
+	private apiUrl = environment.api_url;
+		constructor(
+			private httpClient: HttpClient,
+			private authService: AuthService) {
+	}
   
-  save(pessoa: Tipoconveniado): Observable<Tipoconveniado> {
+  	save(pessoa: Tipoconveniado): Observable<Tipoconveniado> {
+		if(pessoa.id)
+			return this.httpClient.put<Tipoconveniado>(`${this.apiUrl}tipoconveniado/${pessoa.id}`, pessoa);
 		return this.httpClient.post<Tipoconveniado>(`${this.apiUrl}tipoconveniado`, pessoa);
 	}
 

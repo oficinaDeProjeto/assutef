@@ -1,7 +1,9 @@
+import { PainelModule } from './views/painel/painel.module';
 import { UsuarioModule } from './views/usuario/usuario.module';
 import { ChequinhoModule } from './views/chequinho/chequinho.module';
 import { ImpressaoChequinhoModule } from './views/chequinho/impressao/impressao-chequinho.module';
 import { CategoriaModule } from './views/categoria/categoria.module';
+import { ProdutoModule } from './views/produto/produto.module';
 import { AssociadoModule } from './views/associado/associado.module';
 import { LancamentoModule } from './views/lancamento/lancamento.module';
 import 'hammerjs';
@@ -29,6 +31,7 @@ import { MatInputModule } from '@angular/material';
 import { NgxBarcodeModule } from 'ngx-barcode';
 import {MatTableModule} from '@angular/material';
 
+
 /** 
  * Módulo principal da aplicação 
  * delclara o componente principal e importa os módulos das outras telas
@@ -49,16 +52,19 @@ import {MatTableModule} from '@angular/material';
     ProfileModule,
     AssociadoModule,
     CategoriaModule,
+    ProdutoModule,
     ChequinhoModule,
     UsuarioModule,
     LancamentoModule,
     ImpressaoChequinhoModule,
+    PainelModule,
 
     // Modules
     NgxBarcodeModule,
     LayoutsModule,
     TipoconveniadoModule,
     ConveniadoModule,
+    PainelModule,
     ROUTES
   ],
   bootstrap: [AppComponent],

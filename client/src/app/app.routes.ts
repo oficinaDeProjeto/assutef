@@ -1,6 +1,8 @@
+import { PainelComponent } from './views/painel/painel.component';
 import { AssociadoComponent } from './views/associado/associado.component';
 import { UsuarioComponent } from './views/usuario/usuario.component';
 import { CategoriaComponent } from './views/categoria/categoria.component';
+import { ProdutoComponent } from './views/produto/produto.component';
 import { ChequinhoComponent } from './views/chequinho/chequinho.component';
 import { LancamentoComponent } from './views/lancamento/lancamento.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -45,6 +47,13 @@ const routes: Routes = [
                 }
             },
             {
+                path: 'produto',
+                component: ProdutoComponent,
+                data: {
+                    breadcrumb: "Produtos"
+                }
+            },
+            {
                 path: 'chequinho',
                 component: ChequinhoComponent,
                 data: {
@@ -80,7 +89,7 @@ const routes: Routes = [
                 }
             },
             {
-                path: 'chequinhoimpressao/:id',
+                path: 'chequinhoimpressao/:ids',
                 component: ImpressaoChequinhoComponent,
                 data: {
                     breadcrumb: "Imprimir chequinho"
@@ -91,6 +100,13 @@ const routes: Routes = [
                 component: LancamentoComponent,
                 data: {
                     breadcrumb: "Lancamento"
+                }
+            },
+            {
+                path: 'painel',
+                component: PainelComponent,
+                data: {
+                    breadcrumb: "Painel Associado"
                 }
             }
         ]

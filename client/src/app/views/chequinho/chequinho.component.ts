@@ -15,6 +15,8 @@ import { Router } from '@angular/router';
 export class ChequinhoComponent implements OnInit {
 	associados: Associado[] = [];
 	chequinho: Chequinho = new Chequinho();
+	chequinhos: string[] = [];
+	qtdeChequinho: Number;
 
 	constructor(
 		private router: Router,
@@ -36,13 +38,25 @@ export class ChequinhoComponent implements OnInit {
 	}
 	
 	gerarChequinho(){
+		
 		this.chequinho.data = new Date();
-		this.chequinhoService.save(this.chequinho).subscribe(chequinho => {
-			this.openSnackBar("Chequinho(s) gerado(s) com sucesso", "OK");			
-		    this.router.navigate(["chequinhoimpressao",chequinho.id])
-		}, err => {
-			this.openSnackBar("Não foi possível gerar o(s) chequinho(s)", "OK");
-		});
+		for(let i=0; i < this.qtdeChequinho; i+=1){
+			this.chequinhoService.save(this.chequinho).subscribe(chequinho => {
+				this.chequinhos.push(chequinho.id);
+				console.log(this.chequinhos);
+				if(this.chequinhos.length === this.qtdeChequinho){					
+					this.router.navigate(["chequinhoimpressao", this.chequinhos.join('~') ]);
+				}
+
+			}, err => {
+				this.openSnackBar("Não foi possível gerar o(s) chequinho(s)", "OK");
+				return;
+			});
+		}
+
+		//this.openSnackBar("Chequinho(s) gerado(s) com sucesso", "OK");			
+		//console.log(this.chequinhos.map(function(item){return item.id;}));
+		//	
 	}
 
 	openSnackBar(message: string, action: string) {
@@ -50,4 +64,5 @@ export class ChequinhoComponent implements OnInit {
 			duration: 10000,
 		});
 	}
+
 }
