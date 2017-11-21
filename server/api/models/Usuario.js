@@ -29,7 +29,7 @@ module.exports = {
 		},
 		role: {
 			type: 'string',
-			enum: ['ADMIN', 'USER'],
+			enum: ['ADMIN', 'USER', 'ASSOCIADO'],
 			required: "true",
 		},
 		/*avatar: {

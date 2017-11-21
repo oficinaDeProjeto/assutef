@@ -1,3 +1,4 @@
+import { Usuario } from './../../models/Usuario';
 import { UsuarioService } from './../../services/usuario/usuario.service';
 import { ActivatedRoute } from '@angular/router';
 import { Associado } from './../../models/associado';
@@ -40,7 +41,18 @@ export class ActivationAssociadoComponent implements OnInit {
 	}
 
 	save(associado: Associado) {
-		console.log(associado);
+		associado.usuario.email = associado.email;
+		associado.usuario.name = associado.nome;
+		associado.usuario.role = 'ASSOCIADO';
+		this.usuarioService.save(associado.usuario).subscribe(user => {
+			this.associadoSerivice.save(associado).subscribe(associado => {
+				console.log(associado);
+			}, err => {
+				console.log(err);
+			})
+		}, err => {
+			console.log(err);
+		});
 	}
 
 }
