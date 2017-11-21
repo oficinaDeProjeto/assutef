@@ -32,6 +32,8 @@ export class LancamentoComponent implements OnInit {
 	@ViewChild(MatPaginator) paginator: MatPaginator;
 	@ViewChild(MatSort) sort: MatSort;
 
+	
+
 	el: Elemento = new Elemento();
 	
 	lancamento: Lancamento = new Lancamento();

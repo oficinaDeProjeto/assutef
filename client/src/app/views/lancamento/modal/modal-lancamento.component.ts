@@ -5,6 +5,12 @@ import { Conveniado } from '../../../models/conveniado';
 import { ConveniadoService } from '../../../services/conveniado/conveniado.service';
 import { Associado } from '../../../models/associado';
 import { AssociadoService } from '../../../services/associado/associado.service';
+import {FormControl} from '@angular/forms';
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/operator/startWith';
+import 'rxjs/add/operator/map';
+
+
 
 
 @Component({
@@ -14,9 +20,14 @@ import { AssociadoService } from '../../../services/associado/associado.service'
 })
 export class ModalLancamentoComponent implements OnInit {
 
+  myControl: FormControl = new FormControl();
+  myControl2: FormControl = new FormControl();
   associados: Associado[] = [];
   conveniados: Conveniado[] = [];
   lancamento: Lancamento = new Lancamento();
+  filteredAssociados: Observable<Associado[]>;
+  filteredConveniados: Observable<Conveniado[]>;
+  
   
   constructor(
     public dialogRef: MatDialogRef<ModalLancamentoComponent>,
@@ -34,7 +45,33 @@ export class ModalLancamentoComponent implements OnInit {
         }
         this.associados = this.data.associados;
         this.conveniados = this.data.conveniados;
+        
     }
+    this.filteredConveniados = this.myControl.valueChanges
+    .startWith(null)
+    .map(conveniado => conveniado && typeof conveniado === 'object' ? conveniado.razaosocial : conveniado)
+    .map(razaosocial => razaosocial ? this.filterConveniado(razaosocial) : this.conveniados.slice());
+
+    this.filteredAssociados = this.myControl2.valueChanges
+    .startWith(null)
+    .map(associado => associado && typeof associado === 'object' ? associado.nome : associado)
+    .map(nome => nome ? this.filterAssociado(nome) : this.associados.slice());
   }  
-  
+
+  filterAssociado(name: string): Associado[] {
+    return this.associados.filter(option =>
+      option.nome.toLowerCase().indexOf(name.toLowerCase()) === 0);
+  }
+
+  filterConveniado(name: string): Conveniado[] {
+    return this.conveniados.filter(option =>
+      option.razaosocial.toLowerCase().indexOf(name.toLowerCase()) === 0);
+  }
+  displayFnAssociado(user: Associado): string {
+    return user ? user.nome : user.nome;
+  }
+  displayFnConveniado(user: Conveniado): string {
+    return user ? user.razaosocial : user.razaosocial;
+  }
+
 }

@@ -9,8 +9,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import {MatTableModule} from '@angular/material/table';
+import {BrowserModule} from "@angular/platform-browser";
 import { ModalLancamentoComponent } from './modal/modal-lancamento.component'
 import {Elemento} from './lancamento.component'
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {
     MatDialogModule,
     MatCardModule,
@@ -23,6 +25,7 @@ import {
     MatNativeDateModule,
     MatRadioModule,
     MatSnackBarModule,
+    MatAutocomplete,
     
 } from "@angular/material";
 
@@ -30,6 +33,7 @@ import {
     declarations: [LancamentoComponent, ModalLancamentoComponent,],
     exports: [LancamentoComponent, ModalLancamentoComponent],
     imports: [
+        BrowserModule,
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
@@ -47,7 +51,8 @@ import {
         FlexLayoutModule,
         appMaskModule,
         MatSnackBarModule,
-        MatTableModule
+        MatTableModule,
+        MatAutocompleteModule
     ],
     entryComponents: [ModalLancamentoComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
