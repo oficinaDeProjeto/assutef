@@ -8,8 +8,8 @@ let request = require('request');
 
 module.exports = {
     getAddressByPostalCode: (req, res) => {
-        let postalCode = req.param('postalcode');
-        let url = 'https://viacep.com.br/ws/${postalCode}/json/'
+        let postalCode = req.param('postalcode'),
+            url = `https://viacep.com.br/ws/${postalCode}/json/`
         request.get({ url: url }, (error, response, body) => {
             if (error) {
                 sails.log.error(error);
@@ -19,8 +19,8 @@ module.exports = {
         });
     },
     getDataEmpresaByCnpj: (req, res) => {
-        let postalCode = req.param('cnpj');
-        let url = `https://www.receitaws.com.br/v1/cnpj/${postalCode}/json/`
+        let postalCode = req.param('cnpj'),
+            url = `https://www.receitaws.com.br/v1/cnpj/${postalCode}/json/`
         request.get({ url: url }, (error, response, body) => {
             if (error) {
                 sails.log.error(error);

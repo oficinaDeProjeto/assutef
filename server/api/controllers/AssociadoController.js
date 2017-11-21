@@ -5,25 +5,16 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
-const randomstring = require("randomstring");
-
+const randomstring = require("randomstring"),
+	jwt = require("jsonwebtoken");
 module.exports = {
 	create: function (req, res) {
-		// Associado.create(req.body).then((err, associado) => {
-		// 	if (associado) {
-		// 		console.log(associado);
-		// 		self.makeActivation(associado);
-		// 		res.json(200, associado);
-		// 	}
-		// }).catch(err => {
-		// 	return res.json(err);
-		// });
-		var self = this;
+		let self = this;
 		Associado.create(req.body).exec(function (err, associado) {
 			if (err) {
 				return res.json(err.status, { err: err });
 			}
-			let token = jwToken.issue({ id: associado.id});
+			let token = jwToken.issue({ id: associado.id });
 			if (associado) {
 				console.log(associado);
 				self.makeActivation(associado, token);
@@ -54,7 +45,7 @@ module.exports = {
 			"registerEmail",
 			{
 				recipientName: associado.nome,
-				urlActivation: 'http://localhost:4200/#/activation-associado/' + activation.token,
+				urlActivation: 'http://localhost:4200/activation-associado/' + activation.token,
 				token: activation.token
 			},
 			{
@@ -72,11 +63,13 @@ module.exports = {
 	},
 
 	getPreAssociadoByToken: function (req, res) {
-		let paramters = req.method == 'PUT' || req.method == 'POST' ? req.body : req.query;
-		let aux = jwt.decode(paramters.token, { complete: true });
-		Associado.findOne({id: aux.payload.id}).exec(err, associado => {
-			if (err) return res.forbidden("Erro ao salvar associado");
+		let paramters = req.method == 'PUT' || req.method == 'POST' ? req.body : req.query,
+			aux = jwt.decode(paramters.token, { complete: true });
+		console.log(aux);
+		Associado.findOne({ id: aux.payload.id }).then(associado => {
 			return res.ok(associado);
+		}, err => {
+			res.forbidden("Erro ao buscar associado");
 		})
 	}
 

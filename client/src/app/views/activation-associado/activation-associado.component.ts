@@ -1,3 +1,4 @@
+import { UsuarioService } from './../../services/usuario/usuario.service';
 import { ActivatedRoute } from '@angular/router';
 import { Associado } from './../../models/associado';
 import { AssociadoService } from './../../services/associado/associado.service';
@@ -18,6 +19,7 @@ export class ActivationAssociadoComponent implements OnInit {
 		private router: Router,
 		private associadoSerivice: AssociadoService,
 		private route: ActivatedRoute,
+		private usuarioService: UsuarioService
 	) { }
 
 	ngOnInit() {
@@ -35,6 +37,10 @@ export class ActivationAssociadoComponent implements OnInit {
 		}, err => {
 			console.log(err);
 		})
+	}
+
+	save(associado: Associado) {
+		console.log(associado);
 	}
 
 }

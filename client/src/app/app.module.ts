@@ -60,6 +60,7 @@ import { ActivationAssociadoModule } from './views/activation-associado/activati
 		ImpressaoChequinhoModule,
 		PainelModule,
 		ActivationAssociadoModule,
+		ProdutoModule,
 
 		// Modules
 		NgxBarcodeModule,

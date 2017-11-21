@@ -1,6 +1,3 @@
-
-<button class="btn btn-primary full-width" (click)="save(user)" *ngIf="form.valid">Finalizar</button>
-
 <div class="content">
 	<div fxLayout="row" fxLayoutAlign="space-around center">
 		<div>
@@ -11,16 +8,16 @@
 				</mat-card-header>
 				<mat-card-content>
 					<form #formAssociado>
-						<md-form-field class="example-full-width">
-							<input mdInput name="password" placeholder="Senha" [(ngModel)]="associado.password">
-						</md-form-field>
+						<mat-form-field class="example-full-width">
+							<input matInput name="password" placeholder="Senha" [(ngModel)]="associado.password">
+						</mat-form-field>
 					</form>
 				</mat-card-content>
 			</mat-card>
 		</div>
 	</div>
 
-	<button matTooltip="Adicionar um novo associado" mat-fab (click)="save(this.password)" class="fab-bottom-right">
+	<button matTooltip="Adicionar um novo associado" mat-fab (click)="save(this.associado)" class="fab-bottom-right">
 		<mat-icon>add</mat-icon>
 	</button>
 </div>

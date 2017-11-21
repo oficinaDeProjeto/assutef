@@ -28,7 +28,10 @@ module.exports.policies = {
 
   '*': ["isAuthorized", "isAdmin"],
   UsuarioController : ["isAuthorized", "isAdmin"], 
-  AuthController: true
+  AuthController: true,
+  AssociadoController: {
+    getPreAssociadoByToken: true
+  }
   
 
   /***************************************************************************
