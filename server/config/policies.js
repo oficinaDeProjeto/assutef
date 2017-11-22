@@ -27,7 +27,10 @@ module.exports.policies = {
   ***************************************************************************/
 
   '*': ["isAuthorized", "isAdmin"],
-  UsuarioController : ["isAuthorized", "isAdmin"], 
+  UsuarioController : {
+    "*": ["isAuthorized", "isAdmin"],
+    create: true // por ora deixa assim, porém, é necessário validar qual role está sendo cadastrada.
+  }, 
   AuthController: true,
   AssociadoController: {
     getPreAssociadoByToken: true

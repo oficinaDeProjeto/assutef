@@ -9,7 +9,10 @@
 				<mat-card-content>
 					<form #formAssociado>
 						<mat-form-field class="example-full-width">
-							<input matInput name="password" placeholder="Senha" [(ngModel)]="associado.password">
+							<input matInput type="password" name="password" placeholder="Senha" [(ngModel)]="associado.usuario.password">
+						</mat-form-field>
+						<mat-form-field class="example-full-width">
+							<input matInput type="password" name="confirmPassword" placeholder="Confirma senha" [(ngModel)]="associado.usuario.confirmPassword">
 						</mat-form-field>
 					</form>
 				</mat-card-content>

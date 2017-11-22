@@ -16,7 +16,6 @@ module.exports = {
 			}
 			let token = jwToken.issue({ id: associado.id });
 			if (associado) {
-				console.log(associado);
 				self.makeActivation(associado, token);
 				res.json(200, associado);
 			}
@@ -45,7 +44,7 @@ module.exports = {
 			"registerEmail",
 			{
 				recipientName: associado.nome,
-				urlActivation: 'http://localhost:4200/activation-associado/' + activation.token,
+				urlActivation: `http://localhost:4200/activation-associado/${activation.token}`,
 				token: activation.token
 			},
 			{
@@ -53,7 +52,7 @@ module.exports = {
 				subject: "Bem-vindo à assutef!"
 			},
 			(msg) => {
-				console.log(err || "email enviado!");
+				console.log("email enviado!");
 			}
 		)
 	},

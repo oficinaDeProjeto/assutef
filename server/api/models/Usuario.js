@@ -8,7 +8,7 @@
  * TODO - VERIFICAR UMA FORMA DE NÃO PODER CADASTAR USUÁRIO ADMIN, TALBEZ NO CONTROLLER
  */
 
-var bcrypt = require("bcrypt");
+const bcrypt = require("bcrypt");
 
 module.exports = {
 	schema: true,
@@ -20,48 +20,59 @@ module.exports = {
 			required: "true",
 			unique: true
 		},
-		name: {
+		nome: {
 			type: "string",
 			required: true
 		},
-		encryptedPassword: {
+		password: {
 			type: "string"
 		},
 		role: {
 			type: 'string',
 			enum: ['ADMIN', 'USER', 'ASSOCIADO'],
 			required: "true",
-		},
-		/*avatar: {
-			type: 'string'
-		},*/
-		
+		},		
 		// Para não enviar uma senha criptografada
-		toJSON: function () {
+		toJSON:  () => {
 			var obj = this.toObject();
-			delete obj.encryptedPassword;
+			delete obj.password;
 			return obj;
 		}
 	},
 	// Criptografa a senha antes de criar o usuário.
-	beforeCreate: function (values, next) {
-		bcrypt.genSalt(10, function (err, salt) {
+	beforeCreate:  (values, next) =>{
+		bcrypt.genSalt(10,  (err, salt) =>{
 			if (err) return next(err);
-			bcrypt.hash(values.password, salt, function (err, hash) {
+			bcrypt.hash(values.senha, salt,  (err, hash) =>{
 				if (err) return next(err);
-				values.encryptedPassword = hash;
+				values.password = hash;
 				next();
 			});
 		});
 	},
-
-	comparePassword: function (password, user, cb) {
-		bcrypt.compare(password, user.encryptedPassword, function (err, match) {
-			if (err) cb(err);
+	beforeUpdate: (values, next) => {
+		if(typeof values.senha === 'undefined')
+			return next();
+		if(values.senha != null){
+			bcrypt.genSalt(10,  (err, salt) =>{
+				if (err) return next(err);
+				bcrypt.hash(values.senha, salt,  (err, hash) =>{
+					if (err) return next(err);
+					values.password = hash;
+				});
+			});
+		}
+		next();
+	},
+	comparePassword:  (password, user, next) =>{
+		console.log(user);
+		bcrypt.compare(password, user.password,  (err, match) =>{
+			console.log(err);
+			if (err) next(err);
 			if (match) {
-				cb(null, true);
+				next(null, true);
 			} else {
-				cb(err);
+				next(err);
 			}
 		});
 	}

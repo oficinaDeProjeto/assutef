@@ -22,8 +22,9 @@ export class ActivationAssociadoComponent implements OnInit {
 		private route: ActivatedRoute,
 		private usuarioService: UsuarioService
 	) { }
-
+	
 	ngOnInit() {
+		this.associado.usuario = new Usuario();
 		this.token = this.route.snapshot.params['token'];
 		this.getPreAssociadoByToken(this.token);
 	}
@@ -42,7 +43,7 @@ export class ActivationAssociadoComponent implements OnInit {
 
 	save(associado: Associado) {
 		associado.usuario.email = associado.email;
-		associado.usuario.name = associado.nome;
+		associado.usuario.nome = associado.nome;
 		associado.usuario.role = 'ASSOCIADO';
 		this.usuarioService.save(associado.usuario).subscribe(user => {
 			this.associadoSerivice.save(associado).subscribe(associado => {

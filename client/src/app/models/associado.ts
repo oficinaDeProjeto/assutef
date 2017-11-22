@@ -9,5 +9,5 @@ export class Associado {
     aniversario: Date;
     sexo: string;
     endereco: Endereco = new Endereco();
-    usuario: Usuario = new Usuario();
+    usuario: Usuario;
 }

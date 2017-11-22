@@ -7,8 +7,8 @@
 
 module.exports = {
 	index: function (req, res) {
-		var email = req.param("email");
-		var password = req.param("password");
+		let email = req.param("email");
+		let password = req.param("password");
 
 		if (!email || !password) {
 			return res.json(401, { err: "E-mail e senha são necessários" });

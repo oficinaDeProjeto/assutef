@@ -1,9 +1,9 @@
 import { MatButtonModule, MatInputModule } from '@angular/material';
 import { MatCardModule } from '@angular/material';
-import { MatIconModule } from '@angular/material';
+import { MatIconModule, MatTooltipModule, MatPaginatorModule } from '@angular/material';
 import { ModalUsuarioComponent } from './modal/modal-user.component';
 import { GenericService } from './../../services/generic/generic.service';
-import { MatDialogModule, MatSlideToggleModule } from '@angular/material';
+import { MatDialogModule, MatSlideToggleModule, MatSnackBarModule } from '@angular/material';
 import { UsuarioComponent } from './usuario.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgModule } from "@angular/core";
@@ -24,7 +24,10 @@ import { CommonModule } from '@angular/common';
         MatSlideToggleModule,
         MatButtonModule,
         MatInputModule,
-		FlexLayoutModule
+		FlexLayoutModule,
+		MatSnackBarModule,
+        MatTooltipModule,
+        MatPaginatorModule
     ],
     providers: [
         GenericService

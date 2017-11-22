@@ -1,3 +1,4 @@
+import { MaskModule } from './../../directives/mask/mask.module';
 import { ConfirmDialogModule } from './../../components/common/confirm-dialog/confirm-dialog.module';
 import { AssociadoService } from './../../services/associado/associado.service';
 import { appMaskModule } from './../../directives/mask.module';
@@ -47,7 +48,8 @@ import {
         FlexLayoutModule,
         appMaskModule,
         MatSnackBarModule,
-        ConfirmDialogModule
+        ConfirmDialogModule,
+        MaskModule
     ],
     entryComponents: [ModalAssociadoComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],

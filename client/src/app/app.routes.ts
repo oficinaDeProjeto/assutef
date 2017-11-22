@@ -1,3 +1,4 @@
+import { GrupousuarioComponent } from './views/grupousuario/grupousuario.component';
 import { ActivationAssociadoComponent } from './views/activation-associado/activation-associado.component';
 import { PainelComponent } from './views/painel/painel.component';
 import { AssociadoComponent } from './views/associado/associado.component';
@@ -104,6 +105,13 @@ const routes: Routes = [
                 }
             },
             {
+                path: 'grupousuario',
+                component: GrupousuarioComponent,
+                data: {
+                    breadcrumb: "Grupo de Usuários"
+                }
+            },
+            {
                 path: 'painel',
                 component: PainelComponent,
                 data: {
@@ -112,6 +120,7 @@ const routes: Routes = [
             }
         ]
     },
+    
     {
         path: '', component: blankComponent,
         children: [
@@ -125,6 +134,7 @@ const routes: Routes = [
             }
         ]
     },
+    
 
     // Handle all other routes
     { path: '**', component: LoginComponent }
