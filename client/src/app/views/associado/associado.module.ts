@@ -1,7 +1,6 @@
 import { MaskModule } from './../../directives/mask/mask.module';
 import { ConfirmDialogModule } from './../../components/common/confirm-dialog/confirm-dialog.module';
 import { AssociadoService } from './../../services/associado/associado.service';
-import { appMaskModule } from './../../directives/mask.module';
 import { GenericService } from './../../services/generic/generic.service';
 import { AuthService } from './../../services/auth/auth.service';
 import { ModalAssociadoComponent } from './modal/modal-associado.component';
@@ -46,7 +45,7 @@ import {
         MatRadioModule,
         MatTooltipModule,
         FlexLayoutModule,
-        appMaskModule,
+        MaskModule,
         MatSnackBarModule,
         ConfirmDialogModule,
         MaskModule
