@@ -86,11 +86,7 @@ export class LancamentoComponent implements OnInit {
   ) {
    }
 
-   
-   
-
-
-	ngAfterViewInit() {
+   ngAfterViewInit() {
 		this.dataSource.paginator = this.paginator;
 		this.dataSource.sort = this.sort;
 	}
@@ -161,12 +157,14 @@ export class LancamentoComponent implements OnInit {
   
   openDialog(lancamento: Lancamento): void {
 		let dialogRef = this.dialog.open(ModalLancamentoComponent, {
+			width: '40%',
+			
 			data: { lanc: lancamento, conveniados: this.conveniados, associados: this.associados }
 		});
 
 		dialogRef.afterClosed().subscribe(result => {
 			console.log(result);
-			this.salvarLancamento(result);
+			this.getAll();
 		});
 	}
 
