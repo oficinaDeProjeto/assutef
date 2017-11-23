@@ -26,6 +26,7 @@ import {
     MatRadioModule,
     MatSnackBarModule,
     MatAutocomplete,
+    MatPaginatorModule,
     
 } from "@angular/material";
 
@@ -52,7 +53,8 @@ import {
         appMaskModule,
         MatSnackBarModule,
         MatTableModule,
-        MatAutocompleteModule
+        MatAutocompleteModule,
+        MatPaginatorModule
     ],
     entryComponents: [ModalLancamentoComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
