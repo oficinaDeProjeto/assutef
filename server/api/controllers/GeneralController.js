@@ -4,13 +4,24 @@
  * @description :: Server-side logic for managing Generals
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
-var request = require('request');
+let request = require('request');
 
 module.exports = {
-    getAddressByPostalCode: function (req, res) {
-        var postalCode = req.param('postalcode');
-        var url = "https://viacep.com.br/ws/" + postalCode + "/json/"
-        request.get({ url: url }, function (error, response, body) {
+    getAddressByPostalCode: (req, res) => {
+        let postalCode = req.param('postalcode'),
+            url = `https://viacep.com.br/ws/${postalCode}/json/`
+        request.get({ url: url }, (error, response, body) => {
+            if (error) {
+                sails.log.error(error);
+            } else {
+                res.send(body);
+            }
+        });
+    },
+    getDataEmpresaByCnpj: (req, res) => {
+        let postalCode = req.param('cnpj'),
+            url = `https://www.receitaws.com.br/v1/cnpj/${postalCode}/json/`
+        request.get({ url: url }, (error, response, body) => {
             if (error) {
                 sails.log.error(error);
             } else {

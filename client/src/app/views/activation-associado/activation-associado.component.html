@@ -1,0 +1,25 @@
+<div class="content">
+	<div fxLayout="row" fxLayoutAlign="space-around center">
+		<div>
+			<mat-card fxFlex>
+				<mat-card-header>
+					<mat-card-title>Cadastro</mat-card-title>
+					<mat-card-subtitle> Olá, {{associado.nome}}! informe suas credenciais para acesso ao sistema <strong>Assutef</strong></mat-card-subtitle>
+				</mat-card-header>
+				<mat-card-content>
+					<form #formAssociado>
+						<mat-form-field class="example-full-width">
+							<input matInput type="password" name="password" placeholder="Senha" [(ngModel)]="usuario.password">
+						</mat-form-field>
+						<mat-form-field class="example-full-width">
+							<input matInput type="password" name="confirmPassword" placeholder="Confirma senha" [(ngModel)]="usuario.confirmPassword">
+						</mat-form-field>
+					</form>
+				</mat-card-content>
+				<mat-card-actions>
+					<button mat-button  matTooltip="Adicionar um novo associado" (click)="save(usuario)" >Salvar</button>
+				</mat-card-actions>
+			</mat-card>
+		</div>
+	</div>
+</div>

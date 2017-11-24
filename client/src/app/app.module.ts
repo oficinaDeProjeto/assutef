@@ -1,4 +1,4 @@
-﻿import { Grupousuario } from './models/Grupousuario';
+import { ActivationAssociadoComponent } from './views/activation-associado/activation-associado.component';
 import { PainelModule } from './views/painel/painel.module';
 import { UsuarioModule } from './views/usuario/usuario.module';
 import { ChequinhoModule } from './views/chequinho/chequinho.module';
@@ -33,9 +33,8 @@ import { ConveniadoModule } from './views/conveniado/conveniado.module';
 import { MatFormFieldModule } from '@angular/material';
 import { MatInputModule } from '@angular/material';
 import { NgxBarcodeModule } from 'ngx-barcode';
-import {MatTableModule} from '@angular/material';
-import { GrupousuarioComponent } from './views/grupousuario/grupousuario.component';
-
+import { MatTableModule } from '@angular/material';
+import { ActivationAssociadoModule } from './views/activation-associado/activation.module';
 
 
 /** 
@@ -43,47 +42,49 @@ import { GrupousuarioComponent } from './views/grupousuario/grupousuario.compone
  * delclara o componente principal e importa os módulos das outras telas
  */
 @NgModule({
-  declarations: [AppComponent],
-  imports: [
-    // Angular modules
-    BrowserModule,
-    BrowserAnimationsModule,
-    HttpModule,
-    HttpClientModule,
-    ToastyModule.forRoot(),
+	declarations: [AppComponent],
+	imports: [
+		// Angular modules
+		BrowserModule,
+		BrowserAnimationsModule,
+		HttpModule,
+		HttpClientModule,
+		ToastyModule.forRoot(),
 
-    // Views (Módulos)
-    LoginModule,
-    HomeModule,
-    ProfileModule,
-    AssociadoModule,
-    CategoriaModule,
-    ProdutoModule,
-    ChequinhoModule,
-    UsuarioModule,
-    LancamentoModule,
-    ImpressaoChequinhoModule,
-    GrupousuarioModule,
-    PainelModule,
+		// Views (Módulos)
+		LoginModule,
+		HomeModule,
+		ProfileModule,
+		AssociadoModule,
+		CategoriaModule,
+		ProdutoModule,
+		ChequinhoModule,
+		UsuarioModule,
+		LancamentoModule,
+		ImpressaoChequinhoModule,
+		GrupousuarioModule,
+		PainelModule,
+		ActivationAssociadoModule,
+		ProdutoModule,
 
-    // Modules
-    NgxBarcodeModule,
-    LayoutsModule,
-    TipoconveniadoModule,
-    ConveniadoModule,
-    PainelModule,
-    ROUTES
-  ],
-  bootstrap: [AppComponent],
-  providers: [
-    { provide: LOCALE_ID, useValue: "pt-BR" },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: HttpInterceptorService,
-      multi: true
-    },
-    ToastyService
-  ],
+		// Modules
+		NgxBarcodeModule,
+		LayoutsModule,
+		TipoconveniadoModule,
+		ConveniadoModule,
+		PainelModule,
+		ROUTES
+	],
+	bootstrap: [AppComponent],
+	providers: [
+		{ provide: LOCALE_ID, useValue: "pt-BR" },
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: HttpInterceptorService,
+			multi: true
+		},
+		ToastyService
+	],
 })
 export class AppModule {
 }

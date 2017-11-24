@@ -45,6 +45,9 @@ module.exports = {
 		ativo:{
 			type:"boolean",
 			defaultsTo : true
+		},
+		usuario: {
+			model: "usuario"
 		}
 		//createdAt: 'date',
 		//updatedAt: 'date',

@@ -80,13 +80,12 @@ var createPaisEstadoCidade = function () {
  */
 var createAdminUsuario = function () {
 	Usuario.findOrCreate({ email: 'admin@admin.com' }, {
-		name: "admin",
+		nome: "admin",
 		email: 'admin@admin.com',
 		password: 'admin',
 		confirmPassword: 'admin',
 		empresa: '',
 		role: 'ADMIN',
-		name: 'admin',
 		avatar: ''
 	}).exec(function (error, createdOrFoundRecords) {
 		if (error) {
