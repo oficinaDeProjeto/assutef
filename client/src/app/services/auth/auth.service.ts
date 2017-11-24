@@ -34,7 +34,7 @@ export class AuthService extends SuperService {
 			.map((response: Response) => {
 				let token = response.json() && response.json().token;
 				if (token) {
-					localStorage.setItem(this.JWT_KEY, token);
+					this.saveToken(token);
 					return true;
 				} else {
 					return false;
@@ -42,7 +42,7 @@ export class AuthService extends SuperService {
 			}).catch(super.handleError);
 	}
 
-	public logout(): void {
+	logout(): void {
 		localStorage.removeItem(this.JWT_KEY);
 	}
 
@@ -54,13 +54,17 @@ export class AuthService extends SuperService {
         return localStorage.getItem(this.JWT_KEY);
 	}
 
-	public logoutAndToHome(): void {
+	logoutAndToHome(): void {
 		localStorage.removeItem(this.JWT_KEY);
 		this.goTo("/home");
 	}
 
 	private goTo(page: string): void {
 		this.router.navigate([page]);
+	}
+
+	saveToken(token: string) {
+		localStorage.setItem(this.JWT_KEY, token);
 	}
 
 }

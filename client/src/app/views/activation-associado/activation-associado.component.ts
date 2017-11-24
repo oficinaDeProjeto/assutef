@@ -1,3 +1,4 @@
+import { AuthService } from './../../services/auth/auth.service';
 import { Usuario } from './../../models/Usuario';
 import { UsuarioService } from './../../services/usuario/usuario.service';
 import { ActivatedRoute } from '@angular/router';
@@ -15,13 +16,16 @@ export class ActivationAssociadoComponent implements OnInit {
 	
 	token: string;
 	associado: Associado = new Associado();
+	usuario: Usuario = new Usuario();
 	
 	constructor(
 		private router: Router,
 		private associadoSerivice: AssociadoService,
 		private route: ActivatedRoute,
-		private usuarioService: UsuarioService
-	) { }
+		private usuarioService: UsuarioService,
+		private authSevice: AuthService
+	) {
+	 }
 	
 	ngOnInit() {
 		this.associado.usuario = new Usuario();
@@ -41,13 +45,16 @@ export class ActivationAssociadoComponent implements OnInit {
 		})
 	}
 
-	save(associado: Associado) {
-		associado.usuario.email = associado.email;
-		associado.usuario.nome = associado.nome;
-		associado.usuario.role = 'ASSOCIADO';
-		this.usuarioService.save(associado.usuario).subscribe(user => {
-			this.associadoSerivice.save(associado).subscribe(associado => {
+	save(usuario: Usuario) {
+		usuario.email = this.associado.email;
+		usuario.nome = this.associado.nome;
+		usuario.role = 'ASSOCIADO';
+		this.usuarioService.save(usuario).subscribe(result => {
+			this.associado.usuario = <Usuario>result.usuario;
+			this.associadoSerivice.save(this.associado).subscribe(associado => {
 				console.log(associado);
+				this.authSevice.saveToken(result.token);
+				this.router.navigate(['home']);
 			}, err => {
 				console.log(err);
 			})

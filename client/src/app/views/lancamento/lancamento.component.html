@@ -53,11 +53,9 @@
 	  <mat-row *matRowDef="let elemento; columns: displayedColumns;"></mat-row>
 	</mat-table>
 	
-	<mat-paginator #paginator
-		[pageSize]="1"
-		[pageSizeOptions]="[5, 10, 20]">
-	</mat-paginator>
-  </div>
+	<mat-paginator [length]="filteredLancamentos.length" [pageSize]="10" (page)="onPaginateChange($event)"[pageSizeOptions]="[1, 5, 10, 25, 100]"></mat-paginator>
+	
+</div>
 
 
 <button mat-fab (click)="openDialog()" class="fab-bottom-right">

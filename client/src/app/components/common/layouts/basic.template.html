@@ -17,6 +17,19 @@
                 </li>
             </ol>
             <span fxFlex></span>
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+                <mat-icon>account_circle</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item [routerLink]="['/perfil']">
+                  <mat-icon>person_outline</mat-icon>
+                  <span>Perfil</span>
+                </button>
+                <button mat-menu-item [routerLink]="['/login']">
+                  <mat-icon>exit_to_app</mat-icon>
+                  <span>Sair</span>
+                </button>
+              </mat-menu>
         </mat-toolbar>
         <router-outlet></router-outlet>
     </div>
