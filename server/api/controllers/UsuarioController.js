@@ -6,19 +6,18 @@
  */
 
 module.exports = {
-	create: function (req, res) {
+	create: (req, res) => {
 		if (req.body.password !== req.body.confirmPassword) {
 			return res.json(401, { err: "Password doesn't match, What a shame!" });
 		}
-		Usuario.create(req.body).exec(function (err, user) {
-			if (err) {
-				return res.json(err.status, { err: err });
+		Usuario.create(req.body).then(usuario => {
+			console.log(usuario)
+			if (usuario) {
+				res.json(200, { usuario: usuario, token: jwToken.issue({ id: usuario.id }) });
 			}
-			// If user created successfuly we return user and token as response
-			if (user) {
-				// NOTE: payload is { id: user.id}
-				res.json(200, { user: user, token: jwToken.issue({ id: user.id }) });
-			}
+		}).catch(err => {
+			console.log(err);
+			res.forbidden(err);
 		});
 	}
 	

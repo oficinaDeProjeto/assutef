@@ -33,7 +33,7 @@ module.exports = {
 			required: "true",
 		},		
 		// Para não enviar uma senha criptografada
-		toJSON:  () => {
+		toJSON:  function() {
 			var obj = this.toObject();
 			delete obj.password;
 			return obj;
@@ -41,9 +41,11 @@ module.exports = {
 	},
 	// Criptografa a senha antes de criar o usuário.
 	beforeCreate:  (values, next) =>{
-		bcrypt.genSalt(10,  (err, salt) =>{
+		bcrypt.genSalt(10,  function(err, salt){
+			console.log(salt)
+			console.log(values)
 			if (err) return next(err);
-			bcrypt.hash(values.senha, salt,  (err, hash) =>{
+			bcrypt.hash(values.password, salt,  (err, hash) =>{
 				if (err) return next(err);
 				values.password = hash;
 				next();
@@ -51,12 +53,12 @@ module.exports = {
 		});
 	},
 	beforeUpdate: (values, next) => {
-		if(typeof values.senha === 'undefined')
+		if(typeof values.password === 'undefined')
 			return next();
-		if(values.senha != null){
-			bcrypt.genSalt(10,  (err, salt) =>{
+		if(values.password != null){
+			bcrypt.genSalt(10, function(err, salt) {
 				if (err) return next(err);
-				bcrypt.hash(values.senha, salt,  (err, hash) =>{
+				bcrypt.hash(values.password, salt,  (err, hash) =>{
 					if (err) return next(err);
 					values.password = hash;
 				});
@@ -65,9 +67,7 @@ module.exports = {
 		next();
 	},
 	comparePassword:  (password, user, next) =>{
-		console.log(user);
 		bcrypt.compare(password, user.password,  (err, match) =>{
-			console.log(err);
 			if (err) next(err);
 			if (match) {
 				next(null, true);
