@@ -46,8 +46,8 @@ export class ProdutoComponent implements OnInit {
 	@ViewChild('filter') filter: ElementRef;
 
 	ngOnInit() {
-		//this.findAll();
-		this.getAllCategorias();
+		this.findAll();
+		//this.getAllCategorias();
 	}
 
 	findAll() {
