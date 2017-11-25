@@ -35,7 +35,9 @@ export class AssociadoComponent implements OnInit {
 		this.findAll();
 	}
 
-
+	/**
+	 * Busca todos os associados salvos na base de dados.
+	 */
 	findAll() {
 		this.associadoService.findAll().subscribe(associados => {
 			this.associados = <Associado[]>associados;
@@ -44,16 +46,12 @@ export class AssociadoComponent implements OnInit {
 			this.openSnackBar("Não foi possível carregar associados", "OK");
 		});
 	}
-
-	newAssociado() {
-		this.selectedAssociado = new Associado();
-	}
-
-	assignCopy() {
-		this.filteredAssociados = Object.assign([], this.associado);
-	}
-
-	filterAssociado(query) {
+	
+	/**
+	 * Filtra na lista de associados per uma consulta.
+	 * @param query - texto para pesquisa.
+	 */
+	filterAssociado(query: string) {
 		if (!query) {
 			this.filteredAssociados = Object.assign([], this.associados);
 		} else {
@@ -63,7 +61,11 @@ export class AssociadoComponent implements OnInit {
 		}
 	}
 
-	openDialog(associado: Associado): void {
+	/**
+	 * Abre o componente de Dialog para cadastrar e editar associados.
+	 * @param associado em caso de edição é o usuário a ser editado.
+	 */
+	openDialog(associado: Associado) {
 		let dialogRef = this.dialog.open(ModalAssociadoComponent, {
 			data: associado
 		});
@@ -93,6 +95,10 @@ export class AssociadoComponent implements OnInit {
 			});
 	}
 
+	/**
+	 * Salva um novo associado na base de dados
+	 * @param associado objeto que representa um novo associado a ser cadastrado.
+	 */
 	save(associado: Associado) {
 		this.associadoService.save(associado).subscribe(associado => {
 			this.openSnackBar("Salvo com sucesso", "OK");
@@ -102,6 +108,11 @@ export class AssociadoComponent implements OnInit {
 		});
 	}
 
+	/**
+	 * Abre o serviço de mensagem em tela.
+	 * @param message mensagem a ser mostrada.
+	 * @param action texto para botão de acção.
+	 */
 	openSnackBar(message: string, action: string) {
 		this.snackBar.open(message, action, {
 			duration: 10000,
