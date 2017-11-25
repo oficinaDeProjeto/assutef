@@ -1,3 +1,4 @@
+import { MaskModule } from './../../directives/mask/mask.module';
 
 import { AuthService } from './../../services/auth/auth.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -22,7 +23,6 @@ import {
 } from "@angular/material";
 import { ConveniadoComponent } from './conveniado.component';
 import { ModalConveniadoComponent } from './modal/modal-conveniado.component';
-import { appMaskModule } from '../../directives/mask.module';
 import { ConveniadoService } from '../../services/conveniado/conveniado.service';
 import { TipoconveniadoService } from '../../services/tipoconveniado/tipoconveniado.service';
 
@@ -45,9 +45,9 @@ import { TipoconveniadoService } from '../../services/tipoconveniado/tipoconveni
         MatButtonModule,
         MatRadioModule,
         FlexLayoutModule,
-        appMaskModule,
         MatTooltipModule,
-        MatSlideToggleModule
+        MatSlideToggleModule,
+        MaskModule
     ],
     entryComponents: [ModalConveniadoComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],

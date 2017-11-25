@@ -12,6 +12,8 @@ export class AssociadoService {
 	}
 
 	save(associado: Associado): Observable<Associado> {
+		if (associado.id)
+			return this.httpClient.put<Associado>(`${this.apiUrl}associado/${associado.id}`, associado);
 		return this.httpClient.post<Associado>(`${this.apiUrl}associado`, associado);
 	}
 	
@@ -30,5 +32,8 @@ export class AssociadoService {
 	delete(id: string): Observable<Associado> {
 		return this.httpClient.delete<Associado>(`${this.apiUrl}associado/${id}`)
 	}
-
+	
+	getPreAssociadoByToken(token:string): Observable<Associado> {
+        return this.httpClient.get<Associado>(`${this.apiUrl}associado/getPreAssociadoByToken?token=${token}`);
+    }
 }
