@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-import { PlanoContaModule } from './views/plano-conta/plano-conta.module';
-=======
 import { ActivationAssociadoComponent } from './views/activation-associado/activation-associado.component';
 import { PainelModule } from './views/painel/painel.module';
->>>>>>> upstream/master
 import { UsuarioModule } from './views/usuario/usuario.module';
 import { ChequinhoModule } from './views/chequinho/chequinho.module';
 import { ImpressaoChequinhoModule } from './views/chequinho/impressao/impressao-chequinho.module';
@@ -46,26 +42,6 @@ import { ActivationAssociadoModule } from './views/activation-associado/activati
  * delclara o componente principal e importa os módulos das outras telas
  */
 @NgModule({
-<<<<<<< HEAD
-  declarations: [AppComponent, LancamentoComponent],
-  imports: [
-    // Angular modules
-    BrowserModule,
-    BrowserAnimationsModule,
-    HttpModule,
-    HttpClientModule,
-    ToastyModule.forRoot(),
-
-    // Views
-    LoginModule,
-    HomeModule,
-    ProfileModule,
-    AssociadoModule,
-    CategoriaModule,
-    ChequinhoModule,
-    UsuarioModule,
-    PlanoContaModule,
-=======
 	declarations: [AppComponent],
 	imports: [
 		// Angular modules
@@ -74,7 +50,6 @@ import { ActivationAssociadoModule } from './views/activation-associado/activati
 		HttpModule,
 		HttpClientModule,
 		ToastyModule.forRoot(),
->>>>>>> upstream/master
 
 		// Views (Módulos)
 		LoginModule,

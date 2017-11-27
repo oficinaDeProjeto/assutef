@@ -36,23 +36,15 @@ export class LancamentoComponent implements OnInit {
 
 	el: Elemento = new Elemento();
 
-<<<<<<< HEAD
-    /*this.dataSource = new ExampleDataSource(this.exampleDatabase);
+    this.dataSource = new ExampleDataSource(this.exampleDatabase);
     Observable.fromEvent(this.filter.nativeElement, 'keyup')
         .debounceTime(150)
         .distinctUntilChanged()
         .subscribe(() => {
           if (!this.dataSource) { return; }
           this.dataSource.filter = this.filter.nativeElement.value;
-        });*/
+        });
   }  
-=======
-	lancamento: Lancamento = new Lancamento();
-	lancamentos: Lancamento[] = [];
-	selectedLancamento: Lancamento = new Lancamento;
-	filteredLancamentos: Lancamento[] = [];
-	finalLancamentos: Lancamento[] = [];
->>>>>>> upstream/master
 
 	lancamentos2: Lancamento[] = [];
 
@@ -254,46 +246,11 @@ export class LancamentoComponent implements OnInit {
 
 }
 
-<<<<<<< HEAD
-/**
- * Data source to provide what data should be rendered in the table. Note that the data source
- * can retrieve its data in any way. In this case, the data source is provided a reference
- * to a common data base, ExampleDatabase. It is not the data source's responsibility to manage
- * the underlying data. Instead, it only needs to take the data and send the table exactly what
- * should be rendered.
- */
-export class ExampleDataSource extends DataSource<any> {
-  _filterChange = new BehaviorSubject('');
-  get filter(): string { return this._filterChange.value; }
-  set filter(filter: string) { this._filterChange.next(filter); }
-
-  constructor(private _exampleDatabase: ExampleDatabase) {
-    super();
-  }
-
-  /** Connect function called by the table to retrieve one stream containing the data to render. */
-  connect(): Observable<Lancamento[]> {
-    const displayDataChanges = [
-      this._exampleDatabase.dataChange,
-      this._filterChange,
-    ];
-
-    return Observable.merge(...displayDataChanges).map(() => {
-      return this._exampleDatabase.data.slice().filter((item: Lancamento) => {
-        let searchStr = (item.associado.nome).toLowerCase();
-        return searchStr.indexOf(this.filter.toLowerCase()) != -1;
-      });
-    });
-  }
-
-  disconnect() {}
-=======
 export class Elemento {
 	associado: string;
 	conveniado: string;
 	valor: number;
 	dia: Date;
 	id: string;
->>>>>>> upstream/master
 }
 

@@ -1,10 +1,6 @@
-<<<<<<< HEAD
-import { PlanoContaComponent } from './views/plano-conta/plano-conta.component';
-=======
 import { GrupousuarioComponent } from './views/grupousuario/grupousuario.component';
 import { ActivationAssociadoComponent } from './views/activation-associado/activation-associado.component';
 import { PainelComponent } from './views/painel/painel.component';
->>>>>>> upstream/master
 import { AssociadoComponent } from './views/associado/associado.component';
 import { UsuarioComponent } from './views/usuario/usuario.component';
 import { CategoriaComponent } from './views/categoria/categoria.component';
@@ -109,14 +105,6 @@ const routes: Routes = [
                 }
             },
             {
-<<<<<<< HEAD
-                path: 'plano-conta',
-                component: PlanoContaComponent,
-                data: {
-                    breadcrumb: "Plano de Contas"
-                }
-            },
-=======
                 path: 'grupousuario',
                 component: GrupousuarioComponent,
                 data: {
@@ -130,7 +118,6 @@ const routes: Routes = [
                     breadcrumb: "Painel Associado"
                 }
             }
->>>>>>> upstream/master
         ]
     },
     
