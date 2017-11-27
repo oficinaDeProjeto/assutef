@@ -1,8 +1,9 @@
 import {Associado} from './associado';
 export class Chequinho {
-    id: number;
+    id: string;
+    numero: number;
     valorLimite : number;
     valorUtilizado : number;
-    associado: Associado;
+    associado: Associado = new Associado;
     data: Date;    
 }

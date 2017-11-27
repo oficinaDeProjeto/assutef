@@ -62,7 +62,8 @@
       "check-whitespace"
     ],
     "quotemark": [
-      true
+      // true
+      false
     ],
     "radix": true,
     "semicolon": [

@@ -9,10 +9,12 @@
     "bluebird": "^3.5.0",
     "include-all": "^1.0.0",
     "jsonwebtoken": "^8.0.1",
+    "randomstring": "^1.1.5",
     "rc": "1.0.1",
     "request": "^2.81.0",
     "sails": "~0.12.13",
     "sails-disk": "~0.10.9",
+    "sails-hook-email": "^0.12.1",
     "sails-mongo": "^0.12.2"
   },
   "scripts": {

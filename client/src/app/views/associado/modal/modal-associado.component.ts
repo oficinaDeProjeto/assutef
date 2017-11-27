@@ -42,7 +42,7 @@ export class ModalAssociadoComponent implements OnInit {
 		this.associadoService.findByCpf(cpf).subscribe(res => {
 			if (res.length > 0) {
 				this.openSnackBar(`O Usuário  ${res[0].nome}, já possui cadastro com o cpf ${cpf}.`, "OK");
-				//Não está funcionando.
+				//Não está funcionando.s
 				this.associado.cpf = '';
 			}
 		});

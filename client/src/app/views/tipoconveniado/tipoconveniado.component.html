@@ -1,0 +1,39 @@
+<div class="content" fxFlex fxLayout="row" fxLayoutAlign="space-around center">
+	<mat-card>
+		<mat-card-header>
+			<mat-input-container>
+				<input matInput [(ngModel)]="query" name="query" placeholder="Pesquise pela descrição do tipo conveniado" (input)="filterTipoconveniado(query)">
+				<span fxFlex.gt-sm="50" fxFlex="100" class="p-5"></span>
+			</mat-input-container>
+			<br>			
+		</mat-card-header><br>
+		<mat-card-content>
+			<mat-card-content>
+				<mat-list>
+					<mat-list-item *ngFor="let tipoconveniado of filteredTipoconveniados" (click)="openDialog(Tipoconveniado)">
+						<hr align="center" width="700" size="0">
+						<div fxLayout="row" fxLayoutAlign="space-between center" >
+							<div>
+								<h4 mat-line>{{tipoconveniado.descricao}}</h4>
+							</div>
+							<div>
+								<button mat-icon-button color="primary" (click)="openDialog(tipoconveniado)"
+									matTooltip="Editar o Tipo Conveniado {{tipoconveniado.descricao}}">
+									<mat-icon>create</mat-icon>
+								</button>
+								<button mat-icon-button color="warn" (click)="delete(tipoconveniado)"
+									matTooltip="Remover o Tipo Conveniado {{tipoconveniado.descricao}}">
+									<mat-icon>delete</mat-icon>
+								</button>
+							</div>
+						</div>
+					</mat-list-item>
+				</mat-list>
+			</mat-card-content>
+		</mat-card-content>
+	</mat-card>
+</div>
+
+<button mat-fab (click)="openDialog()" class="fab-bottom-right">
+	<mat-icon>add</mat-icon>
+</button>

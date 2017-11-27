@@ -1,0 +1,54 @@
+
+    <mat-card-header>
+        <mat-card-title> Lançamento </mat-card-title><p></p>
+        <mat-card-subtitle>Informe os dados ou use o código de barras</mat-card-subtitle>
+        <mat-card-subtitle></mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+
+
+        <mat-form-field class="example-full-width">
+            <input #inptassoc [(ngModel)]="lancamento.associado" type="text" placeholder="Associado" aria-label="Associado" matInput [formControl]="myControl" [matAutocomplete]="auto" [value]="valueassoc" >
+            <mat-autocomplete #auto="matAutocomplete"  [displayWith]="displayFnAssociado">
+                <mat-option *ngFor="let associadoValue of filteredAssociados | async" [value]="associadoValue">
+                    {{ associadoValue.nome }}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+        <p></p>
+
+        <mat-form-field class="example-full-width">
+            <input [(ngModel)]="lancamento.conveniado" type="text" placeholder="Conveniado" aria-label="Conveniado" matInput [formControl]="myControl" [matAutocomplete]="autoTest" >
+            <mat-autocomplete   #autoTest="matAutocomplete"  [displayWith]="displayFnConveniado">
+                <mat-option *ngFor="let conveniadoValue of filteredConveniados | async" [value]="conveniadoValue">
+                    {{ conveniadoValue.razaosocial }}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+        <p></p>
+    
+
+        <!--<mat-form-field>
+            <mat-select [(ngModel)]="lancamento.conveniado" id="cmbConveniado" placeholder="Selecione o Conveniado">
+                <mat-option *ngFor="let conveniadoValue of conveniados" [value]="conveniadoValue">
+                    {{conveniadoValue.razaosocial}}
+                </mat-option>
+            </mat-select>
+
+        </mat-form-field>
+
+        <p></p>-->
+
+
+        <mat-input-container class="example-full-width">
+            <input [(ngModel)]="lancamento.valor" type="number" matInput placeholder="Valor R$" class="example-left-align " [value]="valueassoc">
+            <span matPrefix>R$&nbsp;</span>
+        </mat-input-container>
+
+
+    </mat-card-content>
+
+    <div md-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+        <button mat-raised-button color="primary" (click)="salvarusuario()">Salvar</button>
+    </div>

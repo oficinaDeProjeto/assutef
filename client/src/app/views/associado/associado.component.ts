@@ -1,3 +1,4 @@
+import { ConfirmDialogService } from './../../components/common/confirm-dialog/confirm-dialog.service';
 import { AssociadoService } from './../../services/associado/associado.service';
 import { GenericService } from './../../services/generic/generic.service';
 import { AuthService } from './../../services/auth/auth.service';
@@ -25,7 +26,8 @@ export class AssociadoComponent implements OnInit {
 		private router: Router,
 		private authService: AuthService,
 		public dialog: MatDialog,
-		public snackBar: MatSnackBar
+		public snackBar: MatSnackBar,
+		public confirmDialogService: ConfirmDialogService
 	) {
 	}
 
@@ -33,7 +35,9 @@ export class AssociadoComponent implements OnInit {
 		this.findAll();
 	}
 
-
+	/**
+	 * Busca todos os associados salvos na base de dados.
+	 */
 	findAll() {
 		this.associadoService.findAll().subscribe(associados => {
 			this.associados = <Associado[]>associados;
@@ -42,16 +46,12 @@ export class AssociadoComponent implements OnInit {
 			this.openSnackBar("Não foi possível carregar associados", "OK");
 		});
 	}
-
-	newAssociado() {
-		this.selectedAssociado = new Associado();
-	}
-
-	assignCopy() {
-		this.filteredAssociados = Object.assign([], this.associado);
-	}
-
-	filterAssociado(query) {
+	
+	/**
+	 * Filtra na lista de associados per uma consulta.
+	 * @param query - texto para pesquisa.
+	 */
+	filterAssociado(query: string) {
 		if (!query) {
 			this.filteredAssociados = Object.assign([], this.associados);
 		} else {
@@ -61,7 +61,11 @@ export class AssociadoComponent implements OnInit {
 		}
 	}
 
-	openDialog(associado: Associado): void {
+	/**
+	 * Abre o componente de Dialog para cadastrar e editar associados.
+	 * @param associado em caso de edição é o usuário a ser editado.
+	 */
+	openDialog(associado: Associado) {
 		let dialogRef = this.dialog.open(ModalAssociadoComponent, {
 			data: associado
 		});
@@ -71,15 +75,44 @@ export class AssociadoComponent implements OnInit {
 		});
 	}
 
+	/**
+	 * Valida se é mesmo a intenção do usuário, caso sim remove um associado dá base
+	 * @param associado associado passado por parametro direto da View
+	 */
+	delete(associado: Associado) {
+		this.confirmDialogService.confirm(
+			'Confirmação',
+			`Você tem ceteza que deseja remover o associado ${associado.nome}?`)
+			.subscribe(res => {
+				if (res) {
+					this.associadoService.delete(associado.id).subscribe(associado => {
+						this.openSnackBar("Removido com sucesso", "OK");
+						this.findAll();
+					}, err => {
+						this.openSnackBar("Não foi possível remover o associado", "OK");
+					})
+				}
+			});
+	}
+
+	/**
+	 * Salva um novo associado na base de dados
+	 * @param associado objeto que representa um novo associado a ser cadastrado.
+	 */
 	save(associado: Associado) {
 		this.associadoService.save(associado).subscribe(associado => {
 			this.openSnackBar("Salvo com sucesso", "OK");
 			this.findAll();
 		}, err => {
-			this.openSnackBar("Não foi possível salvar associado", "OK");
+			this.openSnackBar("Não foi possível salvar o associado", "OK");
 		});
 	}
 
+	/**
+	 * Abre o serviço de mensagem em tela.
+	 * @param message mensagem a ser mostrada.
+	 * @param action texto para botão de acção.
+	 */
 	openSnackBar(message: string, action: string) {
 		this.snackBar.open(message, action, {
 			duration: 10000,

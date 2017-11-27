@@ -10,6 +10,12 @@ module.exports = {
   schema: true,
   connection: 'mongo',
   attributes: {
+    /*pra o postgres
+		id: {
+			type: 'integer',
+			autoIncrement: true,
+			primaryKey: true
+		},*/
     descricao: {
       type: 'string',
       unique: true,

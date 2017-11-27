@@ -11,12 +11,22 @@ export class NavigationService extends SuperService {
 		{ link: "usuario", icon: "account_circle", desc: "Usuários", permicoes: ['ADMIN', 'CLIENT'] },
 		{ link: "home", icon: "dashboard", desc: "Dashboard", permicoes: ['ADMIN', 'CLIENT'] },
 		{ link: "categoria", icon: "assignment_turned_in", desc: "Categoria", permicoes: ['ADMIN', 'CLIENT'] },
+		{ link: "produto", icon: "assignment", desc: "Produto", permicoes: ['ADMIN', 'CLIENT'] },
 		{ link: "chequinho", icon: "chrome_reader_mode", desc: "Chequinhos", permicoes: ['ADMIN', 'CLIENT'] },
 		{ link: "home", icon: "supervisor_account", desc: "Teste", permicoes: ['ADMIN', 'CLIENT'] },
+<<<<<<< HEAD
 		{ link: "plano-conta", icon: "accessibility", desc: "Plano de Contas", permicoes: ['ADMIN', 'CLIENT'] },
 		{ link: "associado", icon: "face", desc: "Associado", permicoes: ['ADMIN', 'CLIENT'] },
 		{ link: "conveniado", icon: "store", desc: "Conveniados", permicoes: ['ADMIN', 'CLIENT'] },
 		{ link: "lancamento", icon: "accessibility", desc: "Lançamentos", permicoes: ['ADMIN', 'CLIENT'] },
+=======
+		{ link: "associado", icon: "store", desc: "Associado", permicoes: ['ADMIN', 'CLIENT'] },		
+		{ link: "tipoconveniado", icon: "account_balance_wallet", desc: "Tipo Conveniado", permicoes: ['ADMIN', 'CLIENT'] },
+		{ link: "conveniado", icon: "local_grocery_store", desc: "Conveniado", permicoes: ['ADMIN', 'CLIENT'] },
+		{ link: "lancamento", icon: "compare_arrows", desc: "Lançamentos", permicoes: ['ADMIN', 'CLIENT'] },
+		{ link: "painel", icon: "compare_arrows", desc: "Painel", permicoes: ['ADMIN', 'CLIENT'] },
+		{ link: "grupousuario", icon: "supervisor_account", desc: "Grupo de Usuários", permicoes: ['ADMIN', 'CLIENT'] },
+>>>>>>> upstream/master
 	];
 
 	private apiUrl = environment.api_url;
