@@ -1,5 +1,5 @@
+import { MaskModule } from './../../directives/mask/mask.module';
 import { AssociadoService } from './../../services/associado/associado.service';
-import { appMaskModule } from './../../directives/mask.module';
 import { LancamentoService } from './../../services/lancamento/lancamento.service';
 import { AuthService } from './../../services/auth/auth.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -26,6 +26,7 @@ import {
     MatRadioModule,
     MatSnackBarModule,
     MatAutocomplete,
+    MatPaginatorModule,
     
 } from "@angular/material";
 
@@ -49,10 +50,11 @@ import {
         MatButtonModule,
         MatRadioModule,
         FlexLayoutModule,
-        appMaskModule,
         MatSnackBarModule,
         MatTableModule,
-        MatAutocompleteModule
+        MatAutocompleteModule,
+        MatPaginatorModule,
+        MaskModule
     ],
     entryComponents: [ModalLancamentoComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],

@@ -1,3 +1,4 @@
+import { MaskModule } from './../../directives/mask/mask.module';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -10,7 +11,6 @@ import { MatCardModule } from '@angular/material';
 import { MatIconModule } from '@angular/material';
 import { ModalGrupousuarioComponent } from './modal/modal-grupouser.component';
 import { GrupousuarioComponent } from './grupousuario.component';
-import { appMaskModule } from './../../directives/mask.module';
 import { GrupousuarioService } from './../../services/grupousuario/grupousuario.service';
 import { AuthService } from './../../services/auth/auth.service';
 import { ConfirmDialogModule } from './../../components/common/confirm-dialog/confirm-dialog.module';
@@ -45,9 +45,9 @@ import {
     MatRadioModule,
     MatTooltipModule,
     FlexLayoutModule,
-    appMaskModule,
     MatSnackBarModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    MaskModule
   ],
   providers: [
     AuthService, GenericService, GrupousuarioService

@@ -1,6 +1,6 @@
 import { Chequinho } from './../../models/chequinho';
 import { GenericService } from './../../services/generic/generic.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ChequinhoService } from '../../services/chequinho/chequinho.service';
 import { Associado } from '../../models/associado';
 import { AssociadoService } from '../../services/associado/associado.service';
@@ -14,16 +14,20 @@ import { Router } from '@angular/router';
 })
 export class ChequinhoComponent implements OnInit {
 	associados: Associado[] = [];
+	
 	chequinho: Chequinho = new Chequinho();
 	chequinhos: string[] = [];
 	qtdeChequinho: Number;
+
 
 	constructor(
 		private router: Router,
 		private chequinhoService: ChequinhoService,
 		private associadoService: AssociadoService,
-		public snackBar: MatSnackBar,
-	) { }
+		public snackBar: MatSnackBar
+	) {
+
+	 }
 
 	ngOnInit() {
 		this.getAllAssociados();
@@ -37,11 +41,11 @@ export class ChequinhoComponent implements OnInit {
 		});
 	}
 	
-	gerarChequinho(){
-		
+	gerarChequinho(){		
 		this.chequinho.data = new Date();
+		this.chequinho.numero = 1;
 		for(let i=0; i < this.qtdeChequinho; i+=1){
-			this.chequinhoService.save(this.chequinho).subscribe(chequinho => {
+			this.chequinhoService.save(this.chequinho).subscribe(chequinho => {				
 				this.chequinhos.push(chequinho.id);
 				console.log(this.chequinhos);
 				if(this.chequinhos.length === this.qtdeChequinho){					
