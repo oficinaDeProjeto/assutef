@@ -1,3 +1,4 @@
+import { PlanoContaModule } from './views/plano-conta/plano-conta.module';
 import { ActivationAssociadoComponent } from './views/activation-associado/activation-associado.component';
 import { PainelModule } from './views/painel/painel.module';
 import { UsuarioModule } from './views/usuario/usuario.module';
@@ -66,6 +67,7 @@ import { ActivationAssociadoModule } from './views/activation-associado/activati
 		PainelModule,
 		ActivationAssociadoModule,
 		ProdutoModule,
+		PlanoContaModule,
 
 		// Modules
 		NgxBarcodeModule,
