@@ -10,6 +10,7 @@ import { TipoconveniadoService } from '../../services/tipoconveniado/tipoconveni
 import { ConfirmDialogService } from '../../components/common/confirm-dialog/confirm-dialog.service';
 import { BancoService } from '../../services/banco/banco.service';
 import { Banco } from '../../models/banco';
+import { Contacorrente } from '../../models/contacorrente';
 
 @Component({
 	selector: 'app-conveniado',

@@ -8,6 +8,7 @@ import { GenericService } from '../../../services/generic/generic.service';
 import { Masks } from '../../../services/constantes';
 import { Banco } from '../../../models/banco';
 import { BancoService } from '../../../services/banco/banco.service';
+import { Contacorrente } from '../../../models/contacorrente';
 @Component({
 	selector: 'app-modal-conveniado',
 	templateUrl: './modal-conveniado.component.html',
