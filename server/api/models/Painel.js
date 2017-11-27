@@ -15,17 +15,29 @@ module.exports = {
         unique: true,
         required: true
       },
-      data: {
-        type : 'Date',
-        required : true
+      /*
+      conveniado:{
+        model: 'conveniado'
       },
-      valorUtilizado:{
-        type : 'float',
-        required : false
+      valorUtilizado:{ //valor utilizado real do chequinho
+        model: 'chequinho'
       },
-      local:{
-        type: 'string',
-        required: false
+      data: { //dt geracao chequinho
+       model: 'chequinho'
+      },*/
+      chequinho:{
+        model: 'chequinho',
+        required: true
+      },
+
+      lancamento:{
+        model:'lancamento',
+        required: true
+      },
+      
+      conveniado:{
+        model:'conveniado',
+        required:true
       }
     }
   };
