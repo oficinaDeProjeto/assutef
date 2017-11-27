@@ -33,15 +33,11 @@ import { ConveniadoModule } from './views/conveniado/conveniado.module';
 import { MatFormFieldModule } from '@angular/material';
 import { MatInputModule } from '@angular/material';
 import { NgxBarcodeModule } from 'ngx-barcode';
-<<<<<<< HEAD
 import {MatTableModule} from '@angular/material';
+import { ActivationAssociadoModule } from './views/activation-associado/activation.module';
 import { GrupousuarioComponent } from './views/grupousuario/grupousuario.component';
 import { BancoModule } from './views/banco/banco.module';
 
-=======
-import { MatTableModule } from '@angular/material';
-import { ActivationAssociadoModule } from './views/activation-associado/activation.module';
->>>>>>> upstream/master
 
 
 /** 
