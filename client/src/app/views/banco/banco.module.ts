@@ -1,4 +1,7 @@
-
+import { ConfirmDialogModule } from './../../components/common/confirm-dialog/confirm-dialog.module';
+import { CategoriaService } from './../../services/categoria/categoria.service';
+import { appMaskModule } from './../../directives/mask.module';
+import { GenericService } from './../../services/generic/generic.service';
 import { AuthService } from './../../services/auth/auth.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
@@ -14,22 +17,19 @@ import {
     MatStepperModule,
     MatSelectModule,
     MatDatepickerModule,
-    MatListModule,
     MatNativeDateModule,
     MatRadioModule,
-    MatTooltipModule,
-    MatSlideToggleModule
+    MatSnackBarModule,
+    MatTooltipModule
 } from "@angular/material";
-import { ConveniadoComponent } from './conveniado.component';
-import { ModalConveniadoComponent } from './modal/modal-conveniado.component';
-import { appMaskModule } from '../../directives/mask.module';
-import { ConveniadoService } from '../../services/conveniado/conveniado.service';
-import { TipoconveniadoService } from '../../services/tipoconveniado/tipoconveniado.service';
+import { BancoComponent } from './banco.component';
+import { ModalBancoComponent } from './modal/modal-banco.component';
 import { BancoService } from '../../services/banco/banco.service';
 
+
 @NgModule({
-    declarations: [ConveniadoComponent, ModalConveniadoComponent],
-    exports: [ConveniadoComponent, ModalConveniadoComponent],
+    declarations: [BancoComponent, ModalBancoComponent],
+    exports: [BancoComponent, ModalBancoComponent],
     imports: [
         CommonModule,
         FormsModule,
@@ -45,14 +45,18 @@ import { BancoService } from '../../services/banco/banco.service';
         MatNativeDateModule,
         MatButtonModule,
         MatRadioModule,
+        MatTooltipModule,
         FlexLayoutModule,
         appMaskModule,
-        MatTooltipModule,
-        MatSlideToggleModule
+        MatSnackBarModule,
+        ConfirmDialogModule
+       
+             
+
     ],
-    entryComponents: [ModalConveniadoComponent],
+    entryComponents:[ModalBancoComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    providers: [AuthService, ConveniadoService, TipoconveniadoService, BancoService]
+    providers: [AuthService, GenericService, BancoService]  
 })
 
-export class ConveniadoModule { }
+export class BancoModule { }

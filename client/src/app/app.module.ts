@@ -35,6 +35,7 @@ import { MatInputModule } from '@angular/material';
 import { NgxBarcodeModule } from 'ngx-barcode';
 import {MatTableModule} from '@angular/material';
 import { GrupousuarioComponent } from './views/grupousuario/grupousuario.component';
+import { BancoModule } from './views/banco/banco.module';
 
 
 
@@ -65,6 +66,7 @@ import { GrupousuarioComponent } from './views/grupousuario/grupousuario.compone
     ImpressaoChequinhoModule,
     GrupousuarioModule,
     PainelModule,
+    BancoModule,
 
     // Modules
     NgxBarcodeModule,
