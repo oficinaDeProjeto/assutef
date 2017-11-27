@@ -1,10 +1,11 @@
+import { ConfirmDialogService } from './../../components/common/confirm-dialog/confirm-dialog.service';
 import { ModalPlanoContaComponent } from './modal/modal-planoConta.component';
 import { PlanoContaService } from './../../services/planoConta/planoConta.service';
-import { MatDialog, MatSnackBar } from '@angular/material';
+import { MatDialog, MatSnackBar, MatPaginator } from '@angular/material';
 import { Router } from '@angular/router';
 import { AuthService } from './../../services/auth/auth.service';
 import { PlanoConta } from './../../models/planoConta';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-plano-conta',
@@ -17,6 +18,8 @@ export class PlanoContaComponent implements OnInit {
 	planoContas: PlanoConta[] = [];
 	selectedPlanoConta: PlanoConta = new PlanoConta;
 	filteredPlanoConta: PlanoConta[] = [];
+
+	@ViewChild(MatPaginator) paginator: MatPaginator;
 
 	constructor(
 		private planoContaService: PlanoContaService,
@@ -42,12 +45,13 @@ export class PlanoContaComponent implements OnInit {
 	
 	filterPlanoConta(query) {
 		if (!query) {
-			this.filteredPlanoConta = Object.assign([], this.planoContas);
+			this.filteredPlanoConta = Object.assign([], this.planoConta);
 		} else {
 			this.filteredPlanoConta = Object.assign([], this.planoConta).filter(
-				planoConta => planoConta.nomeConta.toLowerCase().indexOf(query.toLowerCase()) > -1
-			)
+				p => p.nomeConta.toLowerCase().indexOf(query.toLowerCase()) > -1
+			);
 		}
+		this.filteredPlanoConta = this.filteredPlanoConta.slice(0, Math.min(this.filteredPlanoConta.length, this.paginator.pageSize));
 	}
   
 	openSnackBar(message: string, action: string) {
@@ -56,12 +60,13 @@ export class PlanoContaComponent implements OnInit {
 		});
 	}
 
-	openDialog(planoConta: PlanoConta): void {
+	openDialog(planoconta: PlanoConta): void {
 		let dialogRef = this.dialog.open(ModalPlanoContaComponent, {
-			data: planoConta
+			data: { planoConta: planoconta }
 		});
 
 		dialogRef.afterClosed().subscribe(result => {
+			console.log(result);
 			this.save(result);
 		});
 	}
@@ -71,8 +76,7 @@ export class PlanoContaComponent implements OnInit {
 			this.openSnackBar("Salvo com sucesso", "OK");
 			this.findAll();
 		}, err => {
-			console.log(err);
-			this.openSnackBar("Não foi possível salvar a Conta", "OK");
+			this.openSnackBar("Não foi possível salvar o plano de contas", "OK");
 		});
 	}
 
@@ -83,5 +87,12 @@ export class PlanoContaComponent implements OnInit {
 	assignCopy() {
 		this.filteredPlanoConta = Object.assign([], this.planoConta);
 	}
+
+	onPaginateChange(event):void{
+		let startIndex = event.pageIndex * event.pageSize;
+		let endIndex = Math.min(startIndex + this.paginator.pageSize, this.filteredPlanoConta.length);
+		this.filteredPlanoConta = this.filteredPlanoConta.slice(startIndex, endIndex);
+		
+	 }
 
 }

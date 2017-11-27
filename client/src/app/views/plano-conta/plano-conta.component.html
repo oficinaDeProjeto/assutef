@@ -14,9 +14,20 @@
 					<mat-list>
 						<h3 mat-subheader>Plano de Contas</h3>
 						<mat-list-item *ngFor="let planoConta of filteredPlanoConta" (click)="openDialog(planoConta)">
-							<h5 mat-line>{{planoConta.codConta}} - {{planoConta.nomeConta}}</h5>
+							<div fxLayout="row"  fxLayoutAlign="space-between center">
+								<div>
+									<h5 mat-line>{{planoConta.codConta}} - {{planoConta.nomeConta}}</h5>	
+								</div>
+								<div>
+									<button mat-icon-button color="primary" (click)="openDialog(planoConta)"
+										matTooltip="Editar a Conta?">
+										<mat-icon>create</mat-icon>
+									</button>
+								</div>
+							</div>
 						</mat-list-item>
 					</mat-list>
+					<mat-paginator [length]="filteredPlanoConta.length" [pageSize]="10" (page)="onPaginateChange($event)"[pageSizeOptions]="[1, 5, 10, 25, 100]"></mat-paginator>
 				</mat-card-content>
 			</mat-card>
 		</div>
