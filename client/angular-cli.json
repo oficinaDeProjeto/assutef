@@ -24,7 +24,10 @@
       ],
       "scripts": [
         "../src/vendor/pace/pace.min.js",
-        "../node_modules/lodash/lodash.js"
+        "../node_modules/lodash/lodash.js",
+        "../node_modules/jquery/dist/jquery.min.js",
+        "../node_modules/jquery-mask-plugin/dist/jquery.mask.min.js"
+
       ],
 
       "environmentSource": "environments/environment.ts",

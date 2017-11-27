@@ -9,6 +9,12 @@ module.exports = {
   schema: true,
 	connection: 'mongo',
   attributes: {
+		/*pra o postgres
+		id: {
+			type: 'integer',
+			autoIncrement: true,
+			primaryKey: true
+		},*/
     razaosocial: {
 			type: 'string',
 			required: true,
@@ -22,24 +28,24 @@ module.exports = {
 		telefone: {
 			type: 'string',
 		},
-		cgc: {
+		cnpj: {
 			type: 'string',
 			unique: true,
 		},
 		comissao: {
 			type: 'string',
 			unique: true,
-    },
-		ativo: {
+		},
+		datacadastro: {
+			type: 'date',
+		},
+		ativo:{
 			type: 'string',
-			enum: ['Ativo', 'Inativo']
+			enum: ['ATIVO', 'INATIVO']
 		},
 		endereco: {
 			model: 'endereco'
     },
-    /*cidade: {
-      model: 'cidade'
-		},*/
 		tipoconveniado:{
 			model: 'tipoconveniado'
 		}

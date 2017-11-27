@@ -4,6 +4,8 @@ import { Component, OnInit } from '@angular/core';
 import { ChequinhoService } from '../../services/chequinho/chequinho.service';
 import { Associado } from '../../models/associado';
 import { AssociadoService } from '../../services/associado/associado.service';
+import { MatSnackBar } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-chequinho',
@@ -13,10 +15,14 @@ import { AssociadoService } from '../../services/associado/associado.service';
 export class ChequinhoComponent implements OnInit {
 	associados: Associado[] = [];
 	chequinho: Chequinho = new Chequinho();
+	chequinhos: string[] = [];
+	qtdeChequinho: Number;
 
 	constructor(
+		private router: Router,
 		private chequinhoService: ChequinhoService,
-		private associadoService: AssociadoService
+		private associadoService: AssociadoService,
+		public snackBar: MatSnackBar,
 	) { }
 
 	ngOnInit() {
@@ -27,41 +33,36 @@ export class ChequinhoComponent implements OnInit {
 		this.associadoService.findAll().subscribe(a => {
 			this.associados = <Associado[]> a;
 		}, err => {
-			console.log("Erro ao listar associados");			
+			this.openSnackBar("Erro ao listar associados","OK");			
 		});
 	}
 	
-	gerarChequinho(){		
-		this.chequinhoService.save(this.chequinho).subscribe(chequinho => {
-			console.log("Chequinhos gerados com sussesso");
-			
-		}, err => {
-			console.log("Erro ao gerar chequinhos");			
-		});
-	
+	gerarChequinho(){
+		
+		this.chequinho.data = new Date();
+		for(let i=0; i < this.qtdeChequinho; i+=1){
+			this.chequinhoService.save(this.chequinho).subscribe(chequinho => {
+				this.chequinhos.push(chequinho.id);
+				console.log(this.chequinhos);
+				if(this.chequinhos.length === this.qtdeChequinho){					
+					this.router.navigate(["chequinhoimpressao", this.chequinhos.join('~') ]);
+				}
+
+			}, err => {
+				this.openSnackBar("Não foi possível gerar o(s) chequinho(s)", "OK");
+				return;
+			});
+		}
+
+		//this.openSnackBar("Chequinho(s) gerado(s) com sucesso", "OK");			
+		//console.log(this.chequinhos.map(function(item){return item.id;}));
+		//	
 	}
 
-	elementType = 'svg';
-	value = '23350057715';
-	format = 'CODE128';
-	lineColor = '#000000';
-	width = 2;
-	height = 50;
-	displayValue = true;
-	fontOptions = '';
-	font = 'monospace';
-	textAlign = 'center';
-	textPosition = 'bottom';
-	textMargin = 2;
-	fontSize = 0;
-	background = '#ffffff';
-	margin = 10;
-	marginTop = 10;
-	marginBottom = 10;
-	marginLeft = 10;
-	marginRight = 10;
-  
-	get values(): string[] {
-	  return this.value.split('\n');
+	openSnackBar(message: string, action: string) {
+		this.snackBar.open(message, action, {
+			duration: 10000,
+		});
 	}
+
 }

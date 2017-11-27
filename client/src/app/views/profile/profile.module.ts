@@ -1,3 +1,5 @@
+import { MatIconModule } from '@angular/material';
+import { MatCardModule, MatButtonModule, MatTabsModule } from '@angular/material';
 import { NgModule } from "@angular/core";
 import { ProfileComponent } from './profile.component';
 import { AuthService } from '../../services/auth/auth.service';
@@ -11,7 +13,16 @@ import { UsuarioService } from '../../services/usuario/usuario.service';
 @NgModule({
     declarations: [ProfileComponent],
     exports:[ProfileComponent],
-    imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule],
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        RouterModule,
+        MatCardModule,
+        MatButtonModule,
+        MatIconModule,
+        MatTabsModule
+    ],
     providers: [
         UsuarioService
     ],

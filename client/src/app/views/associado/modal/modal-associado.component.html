@@ -6,14 +6,14 @@
 				<form #dadosPessoaisForm="ngForm">
 					<div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="center start">
 						<mat-form-field fxFlex.gt-sm="50" fxFlex="100" class="p-5">
-							<input matInput [appMask]="masks.cpf" placeholder="CPF" [(ngModel)]="associado.cpf" required name="cpf"
+							<input matInput [mask]="'cpf'" placeholder="CPF" [(ngModel)]="associado.cpf" required name="cpf"
 							(blur)="findByCpf(associado.cpf)">
 						</mat-form-field>
 						<mat-form-field fxFlex.gt-sm="50" fxFlex="100" class="p-5">
 							<input matInput placeholder="Nome" [(ngModel)]="associado.nome" required name="nome">
 						</mat-form-field>
 						<mat-form-field fxFlex.gt-sm="50" fxFlex="100" class="p-5">
-							<input matInput [appMask]="masks.brCellPhone" placeholder="Celular" [(ngModel)]="associado.tel" required name="tel">
+							<input matInput [mask]="'brCellPhone'" placeholder="Celular" [(ngModel)]="associado.tel" required name="tel">
 						</mat-form-field>
 						<mat-form-field fxFlex.gt-sm="50" fxFlex="100" class="p-5">
 							<input matInput placeholder="E-mail" [(ngModel)]="associado.email" required name="email" type="email"
@@ -46,7 +46,7 @@
 				<form #enderecoForm="ngForm">
 					<div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="center start">
 						<mat-form-field fxFlex.gt-sm="50" fxFlex="100" class="p-5">
-							<input matInput [appMask]="masks.cep" placeholder="Cep" [(ngModel)]="associado.endereco.cep" name="cep"
+							<input matInput [mask]="'cep'" placeholder="Cep" [(ngModel)]="associado.endereco.cep" name="cep"
 							 (blur)="getAddressByPostalCode(associado.endereco.cep)">
 						</mat-form-field>
 						<div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="center start" fxFlex.gt-sm="50" fxFlex="100" class="p-5">

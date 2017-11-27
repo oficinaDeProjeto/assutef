@@ -1,4 +1,5 @@
 import { Chequinho } from './../../models/chequinho';
+import { Associado } from './../../models/associado';
 import { environment } from "./../../../environments/environment";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs/Observable";
@@ -11,7 +12,7 @@ export class ChequinhoService {
 	constructor(private httpClient: HttpClient) {
 	}
 
-	save(chequinho: Chequinho): Observable<Chequinho> {
+	save(chequinho: Chequinho): Observable<Chequinho> {		
 		return this.httpClient.post<Chequinho>(`${this.apiUrl}chequinho`, chequinho);
 	}
 	
@@ -20,6 +21,9 @@ export class ChequinhoService {
 		return this.httpClient.get<Chequinho[]>(`${this.apiUrl}chequinho`);
 	}
 
+	findById(id: string): Observable<Chequinho> {
+		return this.httpClient.get<Chequinho>(`${this.apiUrl}chequinho/${id}`);
+    }
 	
 
 }
