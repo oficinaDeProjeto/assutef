@@ -8,6 +8,8 @@ import { ModalConveniadoComponent } from './modal/modal-conveniado.component';
 import { ConveniadoService } from '../../services/conveniado/conveniado.service';
 import { TipoconveniadoService } from '../../services/tipoconveniado/tipoconveniado.service';
 import { ConfirmDialogService } from '../../components/common/confirm-dialog/confirm-dialog.service';
+import { BancoService } from '../../services/banco/banco.service';
+import { Banco } from '../../models/banco';
 
 @Component({
 	selector: 'app-conveniado',
@@ -26,9 +28,15 @@ export class ConveniadoComponent implements OnInit {
 	selectedTipoconveniado: Tipoconveniado = new Tipoconveniado;
 	filteredTipoconveniados: Tipoconveniado[] = [];
 
+	banco: Banco = new Banco();
+	bancos: Banco[] = [];
+	selectedBanco: Banco = new Banco;
+	filteredBancos: Banco[] = [];
+
 	constructor(
 		private conveniadoService: ConveniadoService,
 		private tipoconveniadoService: TipoconveniadoService,
+		private bancoService: BancoService,
 		private router: Router,
 		private authService: AuthService,
 		public snackBar: MatSnackBar,
@@ -40,6 +48,7 @@ export class ConveniadoComponent implements OnInit {
 	ngOnInit() {
 		this.getAll();
 		this.getAllTipoConveniados();
+		this.getAllBancos();
 	}
 
 	getAll() {
@@ -55,6 +64,15 @@ export class ConveniadoComponent implements OnInit {
 		this.tipoconveniadoService.findAll().subscribe(tipoconveniados => {
 			this.tipoconveniados = <Tipoconveniado[]>tipoconveniados;
 			this.filteredTipoconveniados = Object.assign([], this.tipoconveniados);
+		}, err => {
+			console.log(err);
+		});
+	}
+
+	getAllBancos() {
+		this.bancoService.findAll().subscribe(bancos => {
+			this.bancos = <Banco[]>bancos;
+			this.filteredBancos = Object.assign([], this.bancos);
 		}, err => {
 			console.log(err);
 		});
@@ -89,7 +107,7 @@ export class ConveniadoComponent implements OnInit {
 
 	openDialog(conveniado: Conveniado): void {
 		let dialogRef = this.dialog.open(ModalConveniadoComponent, {
-			data: { conv: conveniado, tipoconveniados: this.tipoconveniados }
+			data: { conv: conveniado, tipoconveniados: this.tipoconveniados, bancos: this.bancos }
 		});
 
 		dialogRef.afterClosed().subscribe(result => {

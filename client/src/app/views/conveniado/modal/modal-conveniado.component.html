@@ -85,6 +85,34 @@
 			</form>
 		</mat-step>
 		<mat-step>
+			<form>
+				<ng-template matStepLabel>Dados da Conta Corrente</ng-template>
+				<form #dadosContaCorrenteForm="ngForm">
+					<div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="center start">
+						<mat-form-field fxFlex.gt-sm="30" fxFlex="30" class="p-5">
+							<input matInput placeholder="Nome da Conta" [(ngModel)]="conveniado.contacorrente.nome" required name="nome">
+						</mat-form-field>					
+						<mat-form-field fxFlex.gt-sm="30" fxFlex="30" class="p-5">
+							<input matInput placeholder="Número da Conta" [(ngModel)]="conveniado.contacorrente.nrConta" required name="nrConta">
+						</mat-form-field>
+						<mat-form-field fxFlex.gt-sm="30" fxFlex="30" class="p-5">
+							<input matInput placeholder="Agência" [(ngModel)]="conveniado.contacorrente.agencia" required name="agencia">
+						</mat-form-field>
+						<mat-form-field fxFlex.gt-sm="30" fxFlex="30" class="p-5">
+							<mat-select name="banco" placeholder="Banco" [(ngModel)]="conveniado.contacorrente.banco">
+								<mat-option  *ngFor="let banco of bancos" [value]="banco.id">
+								{{ banco.descricao }}
+								</mat-option>
+							</mat-select>
+						</mat-form-field>
+					</div>
+				</form>
+				<div fxLayout="row">
+					<button mat-button matStepperNext color="primary" [disabled]="!dadosContaCorrenteForm.form.valid">Próximo</button>
+				</div>
+			</form>
+		</mat-step>
+		<mat-step>
 			<ng-template matStepLabel>Confirmar Dados</ng-template>
 			<div *ngIf="!error && !success">
 					<div class="ibox product-detail">

@@ -17,6 +17,7 @@ import { ProfileComponent } from './views/profile/profile.component';
 import { ConveniadoComponent } from './views/conveniado/conveniado.component';
 import { TipoconveniadoComponent } from './views/tipoconveniado/tipoconveniado.component';
 import { ImpressaoChequinhoComponent } from './views/chequinho/impressao/impressao-chequinho.component';
+import { BancoComponent } from './views/banco/banco.component';
 
 
 const routes: Routes = [
@@ -116,6 +117,13 @@ const routes: Routes = [
                 component: PainelComponent,
                 data: {
                     breadcrumb: "Painel Associado"
+                }
+            },
+            {
+                path: 'banco',
+                component: BancoComponent,
+                data: {
+                    breadcrumb: "Banco"
                 }
             }
         ]
