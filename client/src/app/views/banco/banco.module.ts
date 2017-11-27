@@ -1,6 +1,5 @@
 import { ConfirmDialogModule } from './../../components/common/confirm-dialog/confirm-dialog.module';
 import { CategoriaService } from './../../services/categoria/categoria.service';
-import { appMaskModule } from './../../directives/mask.module';
 import { GenericService } from './../../services/generic/generic.service';
 import { AuthService } from './../../services/auth/auth.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -25,6 +24,7 @@ import {
 import { BancoComponent } from './banco.component';
 import { ModalBancoComponent } from './modal/modal-banco.component';
 import { BancoService } from '../../services/banco/banco.service';
+import { MaskModule } from '../../directives/mask/mask.module';
 
 
 @NgModule({
@@ -47,9 +47,9 @@ import { BancoService } from '../../services/banco/banco.service';
         MatRadioModule,
         MatTooltipModule,
         FlexLayoutModule,
-        appMaskModule,
         MatSnackBarModule,
-        ConfirmDialogModule
+        ConfirmDialogModule,
+        MaskModule
        
              
 

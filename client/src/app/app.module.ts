@@ -54,22 +54,6 @@ import { BancoModule } from './views/banco/banco.module';
 		HttpClientModule,
 		ToastyModule.forRoot(),
 
-<<<<<<< HEAD
-    // Views (Módulos)
-    LoginModule,
-    HomeModule,
-    ProfileModule,
-    AssociadoModule,
-    CategoriaModule,
-    ProdutoModule,
-    ChequinhoModule,
-    UsuarioModule,
-    LancamentoModule,
-    ImpressaoChequinhoModule,
-    GrupousuarioModule,
-    PainelModule,
-    BancoModule,
-=======
 		// Views (Módulos)
 		LoginModule,
 		HomeModule,
@@ -85,7 +69,7 @@ import { BancoModule } from './views/banco/banco.module';
 		PainelModule,
 		ActivationAssociadoModule,
 		ProdutoModule,
->>>>>>> upstream/master
+		BancoModule,
 
 		// Modules
 		NgxBarcodeModule,
