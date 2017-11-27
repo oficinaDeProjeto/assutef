@@ -1,73 +1,29 @@
-<!--div *ngFor="let chequinho of chequinhos">
+<div id="chequinhoimpressao">	
+	<div *ngFor="let chequinho of chequinhos">
 
-<div style="margin-left: 8%;">
-	<mat-grid-list cols="4" rowHeight="4:1">
-		<mat-grid-tile>
-			<div class="borda">
-				<label class="title">Número:</label>
-				<p></p>
-				<label>{{chequinho.id}}</label>
-			</div>
-		</mat-grid-tile>	
-		<mat-grid-tile>
-			<div>
-				<div class="semBorda">
-					<label>Autorização de Compra</label>
-					<br/>
-					<label> máximo por folha</label>
-				</div>
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-				<div style="max-width:800px" class="borda">
-					<label class="title">Valor por extenso</label>
-					<p></p>
-					<label>____________________________________________________________________________________________________________</label>
-				</div>
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-				<div style="padding-left: 23%;">
-					<label>_________________________ de ________________ de ______________</label>
-					<p></p>
-					<label style="padding-left: 6%;">Valido com identificação pessoal com foto</label>
-				</div>
-				<mat-grid-list cols="3" rowHeight="4:1">
-					<mat-grid-tile>
-						<div style="width: 25%;" class="borda">
-							<label class="title"> Código</label>
-							<p></p>
-							<label>{{chequinho.associado.id}}</label>
-						</div>
-					</mat-grid-tile>
-					<mat-grid-tile>
-						<div style="width: 36%;" class="borda">
-							<label class="title"> Nome</label>
-							<p></p>
-							<label> {{chequinho.associado.nome}}</label>
-						</div>
-					</mat-grid-tile>
-					<mat-grid-tile>
-						<div style="width: 15.2%;" class="borda">
-							<label class="title"> CPF</label>
-							<p></p>
-							<label>{{chequinho.associado.cpf}}</label>
-						</div>
-						</mat-grid-tile>
-						</mat-grid-list>
-						</Mat-input-container>
-						</div>
-						</div>
-						
-						
+		<div style="margin-top:0.4cm;max-height:1cm">
+<!--		<label style="font-size:11px;margin-left:7.2cm;max-width:3.5cm;min-width:3.5">{{chequinho.id}}</label>	-->
+			<label style="position: fixed;font-size:11px;margin-left:7.2cm;max-width:3.5cm;min-width:3.5">1231</label>														
+			<span style="width: 2.8cm;min-width:2.8cm"> sampletext</span>
+			<label style="font-size:11px;margin-left:3.7cm;max-width:4.7cm;">{{chequinho.valorLimite}}</label>												
+		</div>
+		<div style="margin-top:3.4cm">
+			<label style="font-size:11px;margin-left:3.2cm;max-width:4.3cm">{{chequinho.associado.id}}</label>			
 		
-	
-	<br/>
-	<ngx-barcode [bc-element-type]='svg' [bc-value]="3432342342" [bc-format]='CODE128' [bc-width]=4 [bc-height]=50 [bc-display-value]=true></ngx-barcode>
+			<label style="font-size:11px;margin-left:0.9cm;min-width:10cm;max-width:10cm"> {{chequinho.associado.nome}}</label>							
+
+			<label style="font-size:11px;margin-left:6.2cm;max-width:7.2cm">{{chequinho.associado.cpf}}</label>										
+		</div>
+		<div style="margin-top:1.9cm"></div>
+		<br/>
+		<br/>			
+		<!--<ngx-barcode
+		[bc-format]='CODE128B'
+		[bc-element-type]='svg'
+		[bc-value]='1233212'
+		[bc-width]=4
+		[bc-height]=50
+		[bc-display-value]=true
+		[bc-font]='monospace'></ngx-barcode>-->
+	</div>	
 </div>
--->
