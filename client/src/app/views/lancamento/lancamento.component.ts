@@ -36,15 +36,11 @@ export class LancamentoComponent implements OnInit {
 
 	el: Elemento = new Elemento();
 
-    this.dataSource = new ExampleDataSource(this.exampleDatabase);
-    Observable.fromEvent(this.filter.nativeElement, 'keyup')
-        .debounceTime(150)
-        .distinctUntilChanged()
-        .subscribe(() => {
-          if (!this.dataSource) { return; }
-          this.dataSource.filter = this.filter.nativeElement.value;
-        });
-  }  
+	lancamento: Lancamento = new Lancamento();
+	lancamentos: Lancamento[] = [];
+	selectedLancamento: Lancamento = new Lancamento;
+	filteredLancamentos: Lancamento[] = [];
+	finalLancamentos: Lancamento[] = [];
 
 	lancamentos2: Lancamento[] = [];
 
@@ -253,4 +249,3 @@ export class Elemento {
 	dia: Date;
 	id: string;
 }
-
