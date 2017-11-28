@@ -5,7 +5,7 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
-const randomstring = require("randomstring"),
+//const randomstring = require("randomstring"),
 	jwt = require("jsonwebtoken");
 module.exports = {
 	create: function (req, res) {

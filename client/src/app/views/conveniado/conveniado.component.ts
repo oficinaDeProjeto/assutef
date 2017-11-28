@@ -11,6 +11,8 @@ import { ConfirmDialogService } from '../../components/common/confirm-dialog/con
 import { BancoService } from '../../services/banco/banco.service';
 import { Banco } from '../../models/banco';
 import { Contacorrente } from '../../models/contacorrente';
+import { MaskService } from '../../directives/mask/mask.service';
+import { GenericService } from '../../services/generic/generic.service';
 
 @Component({
 	selector: 'app-conveniado',
@@ -37,6 +39,8 @@ export class ConveniadoComponent implements OnInit {
 	constructor(
 		private conveniadoService: ConveniadoService,
 		private tipoconveniadoService: TipoconveniadoService,
+		private genericService: GenericService,
+		private maskService: MaskService,
 		private bancoService: BancoService,
 		private router: Router,
 		private authService: AuthService,
