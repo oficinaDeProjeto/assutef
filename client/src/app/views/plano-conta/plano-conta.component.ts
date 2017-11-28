@@ -18,6 +18,7 @@ export class PlanoContaComponent implements OnInit {
 	planoContas: PlanoConta[] = [];
 	selectedPlanoConta: PlanoConta = new PlanoConta;
 	filteredPlanoConta: PlanoConta[] = [];
+	fPlanoContas: PlanoConta[] = [];
 
 	@ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -45,15 +46,15 @@ export class PlanoContaComponent implements OnInit {
 	
 	filterPlanoConta(query) {
 		if (!query) {
-			this.filteredPlanoConta = Object.assign([], this.planoConta);
+			this.filteredPlanoConta = Object.assign([], this.planoContas);
 		} else {
-			this.filteredPlanoConta = Object.assign([], this.planoConta).filter(
+			this.filteredPlanoConta = Object.assign([], this.planoContas).filter(
 				p => p.nomeConta.toLowerCase().indexOf(query.toLowerCase()) > -1
 			);
 		}
-		this.filteredPlanoConta = this.filteredPlanoConta.slice(0, Math.min(this.filteredPlanoConta.length, this.paginator.pageSize));
+		this.fPlanoContas = this.filteredPlanoConta.slice(0, Math.min(this.filteredPlanoConta.length, this.paginator.pageSize));
 	}
-  
+
 	openSnackBar(message: string, action: string) {
 			this.snackBar.open(message, action, {
 				duration: 10000,
@@ -62,7 +63,7 @@ export class PlanoContaComponent implements OnInit {
 
 	openDialog(planoconta: PlanoConta): void {
 		let dialogRef = this.dialog.open(ModalPlanoContaComponent, {
-			data: { planoConta: planoconta }
+			data: planoconta 
 		});
 
 		dialogRef.afterClosed().subscribe(result => {
@@ -76,6 +77,7 @@ export class PlanoContaComponent implements OnInit {
 			this.openSnackBar("Salvo com sucesso", "OK");
 			this.findAll();
 		}, err => {
+			console.log(err);
 			this.openSnackBar("Não foi possível salvar o plano de contas", "OK");
 		});
 	}
@@ -91,8 +93,7 @@ export class PlanoContaComponent implements OnInit {
 	onPaginateChange(event):void{
 		let startIndex = event.pageIndex * event.pageSize;
 		let endIndex = Math.min(startIndex + this.paginator.pageSize, this.filteredPlanoConta.length);
-		this.filteredPlanoConta = this.filteredPlanoConta.slice(startIndex, endIndex);
-		
+		this.fPlanoContas = this.filteredPlanoConta.slice(startIndex, endIndex);
 	 }
 
 }
