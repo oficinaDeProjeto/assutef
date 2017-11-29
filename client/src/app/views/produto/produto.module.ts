@@ -1,3 +1,4 @@
+import { MaskModule } from './../../directives/mask/mask.module';
 import { ModalProdutoComponent } from './modal/modal-produto.component';
 import { ProdutoComponent } from './produto.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -21,7 +22,6 @@ import {
     MatTooltipModule
 } from "@angular/material";
 import { ConfirmDialogModule } from '../../components/common/confirm-dialog/confirm-dialog.module';
-import { appMaskModule } from '../../directives/mask.module';
 import { GenericService } from '../../services/generic/generic.service';
 import { AuthService } from '../../services/auth/auth.service';
 
@@ -45,9 +45,9 @@ import { AuthService } from '../../services/auth/auth.service';
         MatRadioModule,
         MatTooltipModule,
         FlexLayoutModule,
-        appMaskModule,
         MatSnackBarModule,
-        ConfirmDialogModule    
+        ConfirmDialogModule,
+        MaskModule   
     ],
     entryComponents:[ModalProdutoComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],

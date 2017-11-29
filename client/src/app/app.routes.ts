@@ -1,4 +1,5 @@
 import { GrupousuarioComponent } from './views/grupousuario/grupousuario.component';
+import { ActivationAssociadoComponent } from './views/activation-associado/activation-associado.component';
 import { PainelComponent } from './views/painel/painel.component';
 import { AssociadoComponent } from './views/associado/associado.component';
 import { UsuarioComponent } from './views/usuario/usuario.component';
@@ -16,6 +17,7 @@ import { ProfileComponent } from './views/profile/profile.component';
 import { ConveniadoComponent } from './views/conveniado/conveniado.component';
 import { TipoconveniadoComponent } from './views/tipoconveniado/tipoconveniado.component';
 import { ImpressaoChequinhoComponent } from './views/chequinho/impressao/impressao-chequinho.component';
+import { BancoComponent } from './views/banco/banco.component';
 
 
 const routes: Routes = [
@@ -116,6 +118,13 @@ const routes: Routes = [
                 data: {
                     breadcrumb: "Painel Associado"
                 }
+            },
+            {
+                path: 'banco',
+                component: BancoComponent,
+                data: {
+                    breadcrumb: "Banco"
+                }
             }
         ]
     },
@@ -126,6 +135,10 @@ const routes: Routes = [
             {
                 path: 'login/',
                 component: LoginComponent
+            },
+            {
+                path: 'activation-associado/:token',
+                component: ActivationAssociadoComponent
             }
         ]
     },

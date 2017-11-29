@@ -14,7 +14,7 @@ import { MatListModule, MatIconModule } from "@angular/material";
         RouterModule,
         MatListModule,
         MatIconModule,
-        FlexLayoutModule
+        FlexLayoutModule        
     ],
     exports: [NavigationComponent],
     providers: [
