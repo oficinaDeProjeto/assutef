@@ -7,8 +7,12 @@
                         <mat-card-subtitle>Lista de venda realizadas</mat-card-subtitle>
                         <span fxFlex></span>
                         <mat-input-container>
-                        <input matInput [(ngModel)]="query" name="query"
-                        placeholder="Pesquise por data" (input)="filterVenda(query)">
+                        <input matInput [(ngModel)]="query" name="query">
+                        
+                        <div flex-gt-xs>
+                            <h4>Pesquise por data</h4>
+                            <md-datepicker ng-model="ctrl.myDate" md-placeholder="filterVenda(query)" ></md-datepicker>
+                          </div>
                         </mat-input-container>
                 </mat-card-header>
                 <mat-card-content>
