@@ -26,9 +26,9 @@ export class ModalProdutoComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
-		if (this.data)
+		if (this.data) {
 			this.produto = this.data;
-
+		}
 		this.findAllCategoria();
 		
 	}

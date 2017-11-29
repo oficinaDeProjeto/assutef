@@ -4,21 +4,54 @@
 			<mat-card fxFlex>
 				<mat-card-header>
 					<mat-card-title>Venda</mat-card-title>
-					<mat-card-subtitle>Selecionar produto</mat-card-subtitle>
-					<span fxFlex></span>
-					<mat-input-container>
-            			<input matInput [(ngModel)]="query" name="query" 
-							placeholder="Pesquise por produto" (input)="filterProduto(query)">
-					</mat-input-container>
-					<span fxFlex></span>
 					<button mat-button (click)="addProduto()">Adicionar</button>
 				</mat-card-header>
 				<mat-card-content>
+					{{venda.data}}
+					<mat-form-field>
+						<mat-select [(ngModel)]="venda.associado"
+							[compareWith]="compararAssociado">
+							<mat-option>Selecione o associado</mat-option>
+							<mat-option *ngFor="let associado of associados" 
+								[value]="associado">
+								{{associado.nome}}
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
 					<mat-list>
 						<h3 mat-subheader>Produtos</h3>
-						<mat-list-item *ngFor="let produto of venda.produtos">
-							<h4 mat-line>{{produto.nome}}</h4>
-							<p mat-line>{{produto.valor}}</p>
+						<mat-list-item *ngFor="let vendaProduto of venda.produtos; let i=index">
+							<div fxLayout="row" fxLayoutAlign="space-between center" >
+								<div>
+									<h4 mat-line>
+										<mat-select [ngModel]="vendaProduto.produto"
+											(ngModelChange)="onProdutoChange($event, vendaProduto)"
+											[compareWith]="compararProduto">
+											<mat-option>Selecione o produto</mat-option>
+											<mat-option *ngFor="let produto of produtos" 
+												[value]="produto">
+												{{produto.descricao}}
+											</mat-option>
+										</mat-select>
+									</h4>
+									<p mat-line>
+										Valor unitário: R$ {{vendaProduto.valor}}
+									</p>
+									<p mat-line>
+										<input type="number" matInput 
+											[ngModel]="vendaProduto.quantidade"
+											(ngModelChange)="onQuantidadeChange($event, vendaProduto)" 
+											name="quantidade[{{i}}]" placeholder="quantidade">
+									</p>
+								</div>
+								<div>
+									<button mat-icon-button color="warn" 
+										(click)="removerProduto(i)"
+										matTooltip="Remover {{getDescricaoProduto()}}">
+										<mat-icon>delete</mat-icon>
+									</button>
+								</div>
+							</div>
 						</mat-list-item>
 					</mat-list>
 				</mat-card-content>

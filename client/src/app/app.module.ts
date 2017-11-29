@@ -35,6 +35,8 @@ import { MatInputModule } from '@angular/material';
 import { NgxBarcodeModule } from 'ngx-barcode';
 import { MatTableModule } from '@angular/material';
 import { ActivationAssociadoModule } from './views/activation-associado/activation.module';
+import { VendaModule } from './views/venda/venda.module';
+import { CarrinhoModule } from './views/carrinho/carrinho.module';
 
 
 /** 
@@ -50,7 +52,6 @@ import { ActivationAssociadoModule } from './views/activation-associado/activati
 		HttpModule,
 		HttpClientModule,
 		ToastyModule.forRoot(),
-
 		// Views (Módulos)
 		LoginModule,
 		HomeModule,
@@ -66,7 +67,8 @@ import { ActivationAssociadoModule } from './views/activation-associado/activati
 		PainelModule,
 		ActivationAssociadoModule,
 		ProdutoModule,
-
+		VendaModule,
+		CarrinhoModule,
 		// Modules
 		NgxBarcodeModule,
 		LayoutsModule,
