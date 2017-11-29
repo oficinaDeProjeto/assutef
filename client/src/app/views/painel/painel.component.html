@@ -2,8 +2,7 @@
 <nav class="navbar navbar-expand-md navbar-light bg-light rounded mb-3">
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav text-md-center nav-justified w-100">
-      <a class="nav-item nav-link" href="#">Lancamentos</a>
-      <a class="nav-item nav-link" href="#">Chequinhos</a>
+      <a class="nav-item nav-link"><h3>Lançamentos gerais</h3></a>
     </ul>
   </div>
 </nav>
@@ -40,39 +39,10 @@
   </main>
 </div>
 <br />
-<!--tela do chequinho-->
-<div class="container">
-    <main role="main">
-      <div class="row marketing">
-        <div class="container-fluid">
-          <div class="row">
-            <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
-              <div class="table-responsive">
-                <table class="table table-striped">
-                  <thead>
-                    <tr>
-                      <th>Chequinho</th>
-                      <th>Valor</th>
-                      <th>Data</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor="let c of chequinho">
-                      <td>{{c.id}}</td>
-                      <td>{{c.valor}}</td>
-                      <td>{{l.dataLancamento}}</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </main>
-          </div>
-        </div>
-      </div>
-    </main>
-  </div>
-
 <!--verificar a criação da função list
 https://mongodbwise.wordpress.com/2014/05/22/mongodb-guia-rapido/
 http://fernandoanselmo.blogspot.com.br/2013/12/rest-arrumando-o-projeto.html
+
+- PAGINAÇÃO NAS TELAS
+- SOMA DOS LANÇAMENTOS POR CONVENIADO COM SUBABA
 -->
