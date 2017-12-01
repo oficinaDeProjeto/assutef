@@ -10,7 +10,7 @@
 		<mat-card-content>
 			<mat-card-content>
 				<mat-list>
-					<mat-list-item *ngFor="let tipoconveniado of filteredTipoconveniados" (click)="openDialog(Tipoconveniado)">
+					<mat-list-item *ngFor="let tipoconveniado of finalTipoconveniados" (click)="openDialog(Tipoconveniado)">
 						<hr align="center" width="700" size="0">
 						<div fxLayout="row" fxLayoutAlign="space-between center" >
 							<div>
@@ -29,6 +29,7 @@
 						</div>
 					</mat-list-item>
 				</mat-list>
+				<mat-paginator [length]="filteredTipoconveniados.length" [pageSize]="10" (page)="onPaginateChange($event)"[pageSizeOptions]="[1, 5, 10, 25, 100]"></mat-paginator>
 			</mat-card-content>
 		</mat-card-content>
 	</mat-card>

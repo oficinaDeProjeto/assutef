@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { MatDialog, MatSnackBar } from '@angular/material';
+import { MatDialog, MatSnackBar, MatPaginator } from '@angular/material';
 import { Conveniado } from '../../models/conveniado';
 import { Tipoconveniado } from '../../models/tipoconveniado';
 import { AuthService } from '../../services/auth/auth.service';
@@ -10,6 +10,9 @@ import { TipoconveniadoService } from '../../services/tipoconveniado/tipoconveni
 import { ConfirmDialogService } from '../../components/common/confirm-dialog/confirm-dialog.service';
 import { BancoService } from '../../services/banco/banco.service';
 import { Banco } from '../../models/banco';
+import { Contacorrente } from '../../models/contacorrente';
+import { MaskService } from '../../directives/mask/mask.service';
+import { GenericService } from '../../services/generic/generic.service';
 
 @Component({
 	selector: 'app-conveniado',
@@ -18,10 +21,13 @@ import { Banco } from '../../models/banco';
 })
 export class ConveniadoComponent implements OnInit {
 
+	@ViewChild(MatPaginator) paginator: MatPaginator;
+
 	conveniado: Conveniado = new Conveniado();
 	conveniados: Conveniado[] = [];
 	selectedConveniado: Conveniado = new Conveniado;
 	filteredConveniados: Conveniado[] = [];
+	finalConveniados: Conveniado[] = [];
 
 	tipoconveniado: Tipoconveniado = new Tipoconveniado();
 	tipoconveniados: Tipoconveniado[] = [];
@@ -36,6 +42,8 @@ export class ConveniadoComponent implements OnInit {
 	constructor(
 		private conveniadoService: ConveniadoService,
 		private tipoconveniadoService: TipoconveniadoService,
+		private genericService: GenericService,
+		private maskService: MaskService,
 		private bancoService: BancoService,
 		private router: Router,
 		private authService: AuthService,
@@ -55,6 +63,7 @@ export class ConveniadoComponent implements OnInit {
 		this.conveniadoService.findAll().subscribe(conveniados => {
 			this.conveniados = <Conveniado[]>conveniados;
 			this.filteredConveniados = Object.assign([], this.conveniados);
+			this.filterConveniado("");
 		}, err => {
 			console.log(err);
 		});
@@ -103,6 +112,7 @@ export class ConveniadoComponent implements OnInit {
 				conveniado => conveniado.razaosocial.toLowerCase().indexOf(query.toLowerCase()) > -1
 			)
 		}
+		this.finalConveniados = this.filteredConveniados.slice(0, Math.min(this.filteredConveniados.length, this.paginator.pageSize));
 	}
 
 	openDialog(conveniado: Conveniado): void {
@@ -138,4 +148,11 @@ export class ConveniadoComponent implements OnInit {
 			duration: 10000,
 		});
 	}
+
+	onPaginateChange(event):void{
+		let startIndex = event.pageIndex * event.pageSize;
+		let endIndex = Math.min(startIndex + this.paginator.pageSize, this.filteredConveniados.length);
+		this.finalConveniados = this.filteredConveniados.slice(startIndex, endIndex);
+		
+	 }
 }
