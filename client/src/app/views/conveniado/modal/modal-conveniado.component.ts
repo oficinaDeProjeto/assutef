@@ -6,6 +6,10 @@ import { Tipoconveniado } from '../../../models/tipoconveniado';
 import { TipoconveniadoService } from '../../../services/tipoconveniado/tipoconveniado.service';
 import { GenericService } from '../../../services/generic/generic.service';
 import { Masks } from '../../../services/constantes';
+import { Banco } from '../../../models/banco';
+import { BancoService } from '../../../services/banco/banco.service';
+import { Contacorrente } from '../../../models/contacorrente';
+import { MaskService } from '../../../directives/mask/mask.service';
 @Component({
 	selector: 'app-modal-conveniado',
 	templateUrl: './modal-conveniado.component.html',
@@ -15,13 +19,16 @@ export class ModalConveniadoComponent implements OnInit {
 
 	conveniado: Conveniado = new Conveniado();
 	tipoconveniados: Tipoconveniado[] = [];
+	bancos: Banco[] = [];
 	masks = Masks;
 
 	constructor(
 		public dialogRef: MatDialogRef<ModalConveniadoComponent>,
 		@Optional() @Inject(MAT_DIALOG_DATA) public data,		
-		private tipoconveniadoService: TipoconveniadoService,
+		private tipoconveniadoService: TipoconveniadoService,	
+		private bancooService: BancoService,
 		private genericService: GenericService,
+		private maskService: MaskService,
 		public snackBar: MatSnackBar
 	) { }
 
@@ -31,6 +38,8 @@ export class ModalConveniadoComponent implements OnInit {
 				this.conveniado = this.data.conv;
 			}
 			this.tipoconveniados = this.data.tipoconveniados;
+			this.bancos = this.data.bancos;
+			console.log(this.bancos);
 		}
 	}
 

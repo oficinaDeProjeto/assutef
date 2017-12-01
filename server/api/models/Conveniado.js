@@ -48,6 +48,9 @@ module.exports = {
     },
 		tipoconveniado:{
 			model: 'tipoconveniado'
+		},
+		contacorrente:{
+			model: 'contacorrente'
 		}
   }
 };

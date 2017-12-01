@@ -33,7 +33,7 @@ import { ConveniadoModule } from './views/conveniado/conveniado.module';
 import { MatFormFieldModule } from '@angular/material';
 import { MatInputModule } from '@angular/material';
 import { NgxBarcodeModule } from 'ngx-barcode';
-import { MatTableModule } from '@angular/material';
+import {MatTableModule} from '@angular/material';
 import { ActivationAssociadoModule } from './views/activation-associado/activation.module';
 import { VendaModule } from './views/venda/venda.module';
 import { CarrinhoModule } from './views/carrinho/carrinho.module';
