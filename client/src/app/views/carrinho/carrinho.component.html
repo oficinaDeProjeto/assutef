@@ -9,11 +9,11 @@
 				<mat-card-content>
 					{{venda.data}}
 					<mat-form-field>
-						<mat-select [(ngModel)]="venda.associado"
+						<mat-select [(ngModel)]="venda.associado" name="associado"
 							[compareWith]="compararAssociado">
 							<mat-option>Selecione o associado</mat-option>
 							<mat-option *ngFor="let associado of associados" 
-								[value]="associado">
+								[value]="associado.id">
 								{{associado.nome}}
 							</mat-option>
 						</mat-select>
@@ -45,9 +45,7 @@
 									</p>
 								</div>
 								<div>
-									<button mat-icon-button color="warn" 
-										(click)="removerProduto(i)"
-										matTooltip="Remover {{getDescricaoProduto()}}">
+									<button mat-icon-button color="warn" (click)="removerProduto(i)">
 										<mat-icon>delete</mat-icon>
 									</button>
 								</div>
