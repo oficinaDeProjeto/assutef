@@ -28,7 +28,8 @@
 						</div>
 					</mat-list-item>
 				</mat-list>
-				<mat-paginator [length]="filteredConveniados.length" [pageSize]="10" (page)="onPaginateChange($event)"[pageSizeOptions]="[1, 5, 10, 25, 100]"></mat-paginator>
+				<hr align="center" width="700" size="0">
+				<mat-paginator [length]="filteredConveniados.length" [pageSize]="5" (page)="onPaginateChange($event)"[pageSizeOptions]="[1, 5, 10, 25, 100]"></mat-paginator>
 			</mat-card-content>
 		</mat-card-content>
 	</mat-card>
