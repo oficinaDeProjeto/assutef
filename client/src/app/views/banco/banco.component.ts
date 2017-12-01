@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Banco } from '../../models/banco';
 import { GenericService } from '../../services/generic/generic.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
-import { MatDialog, MatSnackBar } from '@angular/material';
+import { MatDialog, MatSnackBar, MatPaginator } from '@angular/material';
 import { ConfirmDialogService } from '../../components/common/confirm-dialog/confirm-dialog.service';
 import { BancoService } from '../../services/banco/banco.service';
 import { ModalBancoComponent } from './modal/modal-banco.component';
@@ -14,11 +14,14 @@ import { ModalBancoComponent } from './modal/modal-banco.component';
   styleUrls: ['./banco.component.css']
 })
 export class BancoComponent implements OnInit {
+	
+	@ViewChild(MatPaginator) paginator: MatPaginator;
 
-  banco: Banco = new Banco();
+    banco: Banco = new Banco();
 	bancos: Banco[] = [];
 	selectedBanco: Banco = new Banco;
 	filteredBancos: Banco[] = [];
+	finalBancos: Banco[] = [];
 
   constructor(
     private genercService: GenericService,
@@ -38,6 +41,7 @@ export class BancoComponent implements OnInit {
 		this.bancoService.findAll().subscribe(bancos => {
 			this.bancos = <Banco[]>bancos;
 			this.filteredBancos = Object.assign([], this.bancos);
+			this.filterBanco("");
 		}, err => {
 			this.openSnackBar("Não foi possível carregar ", "OK");
 		});
@@ -68,6 +72,7 @@ export class BancoComponent implements OnInit {
 				banco => banco.descricao.toLowerCase().indexOf(query.toLowerCase()) > -1
 			)
 		}
+		this.finalBancos = this.filteredBancos.slice(0, Math.min(this.filteredBancos.length, this.paginator.pageSize));
 	}
 
 	openDialog(banco: Banco): void {
@@ -110,5 +115,12 @@ export class BancoComponent implements OnInit {
 			duration: 10000,
 		});
 	}
+
+	onPaginateChange(event):void{
+		let startIndex = event.pageIndex * event.pageSize;
+		let endIndex = Math.min(startIndex + this.paginator.pageSize, this.filteredBancos.length);
+		this.finalBancos = this.filteredBancos.slice(startIndex, endIndex);
+		
+	 }
 
 }
