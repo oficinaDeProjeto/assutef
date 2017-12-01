@@ -47,10 +47,6 @@ export class ProdutoComponent implements OnInit {
 
 	ngOnInit() {
 		this.findAll();
-<<<<<<< HEAD
-=======
-		//this.getAllCategorias();
->>>>>>> upstream/master
 	}
 
 	findAll() {
