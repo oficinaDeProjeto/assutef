@@ -27,7 +27,7 @@ import {
     MatSnackBarModule,
     MatAutocomplete,
     MatPaginatorModule,
-    
+    MatSortModule
 } from "@angular/material";
 
 @NgModule({
@@ -54,6 +54,7 @@ import {
         MatTableModule,
         MatAutocompleteModule,
         MatPaginatorModule,
+        MatSortModule,
         MaskModule
     ],
     entryComponents: [ModalLancamentoComponent],
