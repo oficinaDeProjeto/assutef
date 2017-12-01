@@ -7,6 +7,8 @@ import { AuthService } from '../../services/auth/auth.service';
 import { MatSnackBar, MatDialog } from '@angular/material';
 import { CarrinhoService } from '../../services/carrinho/carrinho.service';
 import { CarrinhoComponent } from '../carrinho/carrinho.component';
+import { ConfirmDialogService } from '../../components/common/confirm-dialog/confirm-dialog.service';
+import { Produto } from '../../models/produto';
 
 @Component({
   selector: 'app-venda',
@@ -20,13 +22,14 @@ export class VendaComponent implements OnInit {
   filteredVendas: Venda[] = [];
   
   constructor(
-  private genercService: GenericService,
-  private vendaService: VendaService,
-  private carrinhoService: CarrinhoService,
-  private router: Router,
-  private authService: AuthService,
-  public snackBar: MatSnackBar,
-  private dialog: MatDialog
+    private genercService: GenericService,
+    private vendaService: VendaService,
+    private carrinhoService: CarrinhoService,
+    private router: Router,
+    private authService: AuthService,
+    public snackBar: MatSnackBar,
+    private dialog: MatDialog,
+    public confirmDialogService: ConfirmDialogService
   ) { }
   
   ngOnInit() {
@@ -37,6 +40,19 @@ export class VendaComponent implements OnInit {
       this.vendaService.findAll().subscribe(venda => {
         this.vendas = <Venda[]>venda;
         this.filteredVendas = Object.assign([], this.vendas);
+        if (this.filteredVendas) {
+          this.filteredVendas.forEach(outraVenda => {
+            if (outraVenda && outraVenda.produtos && outraVenda.produtos.length) {
+              outraVenda.produtos.forEach(vendaProduto => {
+                if (vendaProduto && vendaProduto.produto) {
+                  const produto = new Produto();
+                  produto.id = `${vendaProduto.produto}`;
+                  vendaProduto.produto = produto;
+                }
+              });
+            }
+          });
+        }
       }, err => {
         this.openSnackBar("Não foi possível carregar vendas", "OK");
       });
@@ -46,21 +62,21 @@ export class VendaComponent implements OnInit {
       this.selectedVenda = new Venda();
     }
   
-  
-    /*assignCopy() {
-      this.filteredVendas = Object.assign([], this.venda);
-  }*/
-  
-    /*filterVenda(query) {
-      if (!query) {
-        this.filteredVendas = Object.assign([], this.vendas);
-      } else {
-        this.filteredVendas = Object.assign([], this.venda).filter(
-          venda => venda.data.indexOf(query) > -1
-        )
-      }
-  }*/
-  
+  delete(venda: Venda) {
+    this.confirmDialogService.confirm(
+      'Confirmação',
+      `Você tem ceteza que deseja remover essa venda?`)
+      .subscribe(res => {
+        if (res) {
+          this.vendaService.delete(venda.id).subscribe(venda => {
+            this.openSnackBar("Removida com sucesso", "OK");
+            this.findAll();
+          }, err => {
+            this.openSnackBar("Não foi possível remover a venda", "OK");
+          });
+        }
+      });
+  }  
   
   openSnackBar(message: string, action: string) {
       this.snackBar.open(message, action, {
@@ -68,7 +84,6 @@ export class VendaComponent implements OnInit {
       });
   }
 
-  
   save(venda: Venda) {
       this.vendaService.save(venda).subscribe(venda => {
         this.openSnackBar("Salva com sucesso", "OK");

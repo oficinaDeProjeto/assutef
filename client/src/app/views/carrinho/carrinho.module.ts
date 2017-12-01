@@ -19,7 +19,9 @@ import {
     MatDatepickerModule,
     MatNativeDateModule,
     MatRadioModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatAutocompleteModule,
+    MatTooltipModule
 } from "@angular/material";
 
 @NgModule({
@@ -42,7 +44,9 @@ import {
         MatRadioModule,
         FlexLayoutModule,
         MaskModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        MatAutocompleteModule,
+        MatTooltipModule
     ],
     entryComponents: [CarrinhoComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],

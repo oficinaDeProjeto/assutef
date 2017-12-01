@@ -17,7 +17,8 @@ import { ProfileComponent } from './views/profile/profile.component';
 import { ConveniadoComponent } from './views/conveniado/conveniado.component';
 import { TipoconveniadoComponent } from './views/tipoconveniado/tipoconveniado.component';
 import { ImpressaoChequinhoComponent } from './views/chequinho/impressao/impressao-chequinho.component';
-import { BancoComponent } from './views/banco/banco.component';
+import { VendaComponent } from './views/venda/venda.component';
+import { CarrinhoComponent } from './views/carrinho/carrinho.component';
 
 
 const routes: Routes = [
@@ -120,15 +121,20 @@ const routes: Routes = [
                 }
             },
             {
-                path: 'banco',
-                component: BancoComponent,
+                path: 'venda',
+                component: VendaComponent,
                 data: {
-                    breadcrumb: "Banco"
-                }
+                    breadcrumb: "Venda"
+                },
+                children: [
+                    {
+                        path: 'carrinho/',
+                        component: CarrinhoComponent
+                    }
+                ]
             }
         ]
     },
-    
     {
         path: '', component: blankComponent,
         children: [
@@ -142,8 +148,6 @@ const routes: Routes = [
             }
         ]
     },
-    
-
     // Handle all other routes
     { path: '**', component: LoginComponent }
 ];

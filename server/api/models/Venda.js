@@ -6,9 +6,25 @@
  */
 
 module.exports = {
-
-  attributes: {
-
-  }
+    schema: true,
+    connection: 'mongo',
+    attributes: {
+        associado: {
+          model: 'Associado'
+        },
+        total: {
+          type: 'string',
+          required: true
+        },
+        produtos: {
+          collection: 'VendaProduto',
+          via: 'venda',
+          required: true
+        },
+        data: {
+          type: 'string',
+          required: true
+        }
+    }
 };
 
