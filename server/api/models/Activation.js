@@ -7,7 +7,7 @@
 
 module.exports = {
 	schema: true,
-	connection: 'posgtres',
+	connection: 'postgres',
 	attributes: {
 		id_usuario: {
 			model: 'usuario',
