@@ -7,7 +7,7 @@
 
 module.exports = {
 	schema: true,
-	connection: 'mongo',
+	connection: 'postgres',
 	attributes: {
 		bairro:"string",
 		cep:"string",
