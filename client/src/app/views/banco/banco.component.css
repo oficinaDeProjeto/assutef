@@ -40,9 +40,18 @@
   }
 
   .divNome{
-      width: 33%;
+      width: 50%;
   }
 
   .alinhar{
     position: relative;
+  }
+
+  .bancoReg{
+    background-color: white;
+  }
+  
+  .bancoReg :hover{
+    background-color: #f2f2f2;
+    cursor: pointer;
   }

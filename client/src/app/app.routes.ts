@@ -19,6 +19,7 @@ import { TipoconveniadoComponent } from './views/tipoconveniado/tipoconveniado.c
 import { ImpressaoChequinhoComponent } from './views/chequinho/impressao/impressao-chequinho.component';
 import { VendaComponent } from './views/venda/venda.component';
 import { CarrinhoComponent } from './views/carrinho/carrinho.component';
+import { BancoComponent } from './views/banco/banco.component';
 
 
 const routes: Routes = [
@@ -83,6 +84,13 @@ const routes: Routes = [
                 component: ConveniadoComponent,
                 data: {
                     breadcrumb: "Conveniado"
+                }
+            },
+            {
+                path: 'banco',
+                component: BancoComponent,
+                data: {
+                    breadcrumb: "Banco"
                 }
             },
             {
