@@ -6,7 +6,7 @@
 	</mat-card-header>
 	
 		<mat-form-field>
-			<input matInput placeholder="Nome" [(ngModel)]="produto.nome" #nome="ngModel" required name="nome">
+			<input matInput placeholder="Nome" [(ngModel)]="produto.name" #name="ngModel" required name="name">
 		</mat-form-field>
 	
 	<br />
@@ -24,7 +24,7 @@
 	<br />
 	<mat-form-field>	
 		<mat-select [(ngModel)]="produto.categoria"  id="cmbCategoria" placeholder="Selecione a Categoria">
-			<mat-option *ngFor="let categoriaValue of categorias" [value]="categoriaValue">
+			<mat-option *ngFor="let categoriaValue of categorias" [value]="categoriaValue.id">
 				{{categoriaValue.descricao}}
 			</mat-option>
   </mat-select>

@@ -7,32 +7,30 @@
 	  </mat-form-field>
 	</div>
 
-	
-
 	<mat-table #table [dataSource]="dataSource" matSort>
 		
   
 	  <!-- Position Column -->
 	  <ng-container matColumnDef="Conveniado">
-		<mat-header-cell *matHeaderCellDef> Conveniado </mat-header-cell>
+		<mat-header-cell *matHeaderCellDef  mat-sort-header> Conveniado </mat-header-cell>
 		<mat-cell *matCellDef="let elemento"> {{elemento.conveniado}} </mat-cell>
 	  </ng-container>
   
 	  <!-- Name Column -->
 	  <ng-container matColumnDef="Associado">
-		<mat-header-cell *matHeaderCellDef> Associado </mat-header-cell>
+		<mat-header-cell *matHeaderCellDef  mat-sort-header> Associado </mat-header-cell>
 		<mat-cell *matCellDef="let elemento"> {{elemento.associado}} </mat-cell>
 	  </ng-container>
   
 	  <!-- Weight Column -->
 	  <ng-container matColumnDef="Valor">
-		<mat-header-cell *matHeaderCellDef> Valor </mat-header-cell>
+		<mat-header-cell *matHeaderCellDef  mat-sort-header> Valor </mat-header-cell>
 		<mat-cell *matCellDef="let elemento"> R$ {{elemento.valor | number: '.2'}} </mat-cell>
 	  </ng-container>
   
 	  <!-- Color Column -->
 	  <ng-container matColumnDef="Data">
-		<mat-header-cell *matHeaderCellDef> Data </mat-header-cell>
+		<mat-header-cell *matHeaderCellDef  mat-sort-header> Data </mat-header-cell>
 		<mat-cell *matCellDef="let elemento"> {{elemento.dia | date: 'dd/MM/yyyy'}} </mat-cell>
 		</ng-container>
 		

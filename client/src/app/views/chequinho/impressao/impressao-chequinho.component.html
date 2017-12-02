@@ -1,29 +1,28 @@
 <div id="chequinhoimpressao">	
 	<div *ngFor="let chequinho of chequinhos">
 
-		<div style="margin-top:0.4cm;max-height:1cm">
-<!--		<label style="font-size:11px;margin-left:7.2cm;max-width:3.5cm;min-width:3.5">{{chequinho.id}}</label>	-->
-			<label style="position: fixed;font-size:11px;margin-left:7.2cm;max-width:3.5cm;min-width:3.5">1231</label>														
-			<span style="width: 2.8cm;min-width:2.8cm"> sampletext</span>
-			<label style="font-size:11px;margin-left:3.7cm;max-width:4.7cm;">{{chequinho.valorLimite}}</label>												
+		<div style="margin-top:0.5cm;max-height:1cm;width:100%;">						
+			<label id="1" style="position: absolute;font-size:11px;margin-left:8.3cm;max-width:3.5cm!important;min-width:3.5">{{chequinho.id}}</label>
+			<span style="width: 2.8cm;min-width:2.8cm"></span>
+			<label style="font-size:11px;margin-left:14.7cm;max-width:4.7cm;">{{chequinho.valorLimite}}</label>												
 		</div>
 		<div style="margin-top:3.4cm">
-			<label style="font-size:11px;margin-left:3.2cm;max-width:4.3cm">{{chequinho.associado.id}}</label>			
+			<label style="position: absolute;font-size:11px;margin-left:4.2cm;max-width:4.3cm">1</label>			
 		
-			<label style="font-size:11px;margin-left:0.9cm;min-width:10cm;max-width:10cm"> {{chequinho.associado.nome}}</label>							
+			<label style="position: absolute;font-size:11px;margin-left:8.1cm;min-width:10cm;max-width:10cm"> {{chequinho.associado.nome}}</label>							
 
-			<label style="font-size:11px;margin-left:6.2cm;max-width:7.2cm">{{chequinho.associado.cpf}}</label>										
+			<label style="position: absolute;font-size:11px;margin-left:17.2cm;max-width:7.2cm">{{chequinho.associado.cpf}}</label>										
 		</div>
 		<div style="margin-top:1.9cm"></div>
 		<br/>
-		<br/>			
-		<!--<ngx-barcode
+		<br/>		
+		<ngx-barcode
 		[bc-format]='CODE128B'
-		[bc-element-type]='svg'
-		[bc-value]='1233212'
+		[bc-element-type]='img'
+		[bc-value]='1'
 		[bc-width]=4
 		[bc-height]=50
 		[bc-display-value]=true
-		[bc-font]='monospace'></ngx-barcode>-->
+		[bc-font]='monospace'></ngx-barcode>
 	</div>	
 </div>

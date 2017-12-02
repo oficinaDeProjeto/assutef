@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { MatDialog, MatSnackBar } from '@angular/material';
+import { MatDialog, MatSnackBar, MatPaginator } from '@angular/material';
 import { Tipoconveniado } from '../../models/tipoconveniado';
 import { ModalTipoconveniadoComponent } from './modal/modal-tipoconveniado.component';
 import { GenericService } from '../../services/generic/generic.service';
@@ -15,10 +15,13 @@ import { ConfirmDialogService } from '../../components/common/confirm-dialog/con
 })
 export class TipoconveniadoComponent implements OnInit {
 
+	@ViewChild(MatPaginator) paginator: MatPaginator;
+
 	tipoconveniado: Tipoconveniado = new Tipoconveniado();
-		tipoconveniados: Tipoconveniado[] = [];
-		selectedTipoconveniado: Tipoconveniado = new Tipoconveniado;
-		filteredTipoconveniados: Tipoconveniado[] = [];
+	tipoconveniados: Tipoconveniado[] = [];
+	selectedTipoconveniado: Tipoconveniado = new Tipoconveniado;
+	filteredTipoconveniados: Tipoconveniado[] = [];
+	finalTipoconveniados: Tipoconveniado[] = [];
 
 	constructor(
 		private genercService: GenericService,
@@ -38,6 +41,7 @@ export class TipoconveniadoComponent implements OnInit {
 		this.tipoconveniadoService.findAll().subscribe(tipoconveniados => {
 			this.tipoconveniados = <Tipoconveniado[]>tipoconveniados;
 			this.filteredTipoconveniados = Object.assign([], this.tipoconveniados);
+			this.filterTipoconveniado("");
 		}, err => {
 			console.log(err);
 		});
@@ -68,6 +72,7 @@ export class TipoconveniadoComponent implements OnInit {
 				tipoconveniado => tipoconveniado.descricao.toLowerCase().indexOf(query.toLowerCase()) > -1
 			)
 		}
+		this.finalTipoconveniados = this.filteredTipoconveniados.slice(0, Math.min(this.filteredTipoconveniados.length, this.paginator.pageSize));
 	}
 
 	openDialog(tipoconveniado: Tipoconveniado): void {
@@ -103,4 +108,11 @@ export class TipoconveniadoComponent implements OnInit {
 			duration: 10000,
 		});
 	}
+
+	onPaginateChange(event):void{
+		let startIndex = event.pageIndex * event.pageSize;
+		let endIndex = Math.min(startIndex + this.paginator.pageSize, this.filteredTipoconveniados.length);
+		this.finalTipoconveniados = this.filteredTipoconveniados.slice(startIndex, endIndex);
+		
+	 }
 }

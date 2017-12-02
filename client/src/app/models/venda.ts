@@ -1,13 +1,14 @@
 import { Associado } 
 from './associado';
 import { Produto } from './produto';
+import { VendaProduto } from './vendaproduto';
 
 export class Venda {
 
     id: string;
     associado: Associado = new Associado();
-    total: number;
-    produtos: Array<Produto>;
+    total: string;
+    produtos: Array<VendaProduto>;
     data: string;
 
     constructor() {

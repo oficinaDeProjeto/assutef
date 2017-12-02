@@ -13,6 +13,9 @@ export class ProdutoService {
 	}
 
 	save(produto: Produto): Observable<Produto> {
+		if (produto.id) {
+			return this.httpClient.put<Produto>(`${this.apiUrl}produto/${produto.id}`, produto);
+		}
 		return this.httpClient.post<Produto>(`${this.apiUrl}produto`, produto);
 	}
 
