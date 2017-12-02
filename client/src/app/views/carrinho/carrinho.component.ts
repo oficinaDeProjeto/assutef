@@ -45,6 +45,7 @@ export class CarrinhoComponent implements OnInit {
 			this.venda.produtos = [];
 		}
 		const vendaProduto = new VendaProduto();
+		vendaProduto.quantidade = "1";
 		this.venda.produtos.push(vendaProduto);
 	}
 
@@ -63,9 +64,11 @@ export class CarrinhoComponent implements OnInit {
 			return 0;
 		}
 		let total = 0;
-		this.venda.produtos.forEach(vendaProduto => 
-			total += (parseFloat(vendaProduto.quantidade || '0') * 
-				parseFloat(vendaProduto.valor || '0')));
+		this.venda.produtos.forEach(vendaProduto => {
+			const quantidade = parseFloat(vendaProduto.quantidade || '1');
+			const valor = parseFloat(vendaProduto.valor || '0');
+			total += quantidade * valor;
+		});
 		return total;
 	}
 

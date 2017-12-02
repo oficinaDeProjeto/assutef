@@ -57,6 +57,10 @@ export class VendaComponent implements OnInit {
         this.openSnackBar("Não foi possível carregar vendas", "OK");
       });
   }
+
+  private limparFiltro(): void {
+    this.filteredVendas = Object.assign([], this.vendas);
+  }
   
   newVenda() {
       this.selectedVenda = new Venda();
@@ -77,6 +81,21 @@ export class VendaComponent implements OnInit {
         }
       });
   }  
+
+  onDataChange(novaData): void {
+    if (!novaData) {
+      this.limparFiltro();
+    } else {
+      this.filteredVendas = this.vendas.filter(venda => {
+        const novaDataStr = novaData.toLocaleString();
+        if (novaDataStr.length > 10 && venda.data.length > 10) {
+          return novaDataStr.substring(0, 10) === venda.data.substring(0, 10);
+        } else {
+          return novaDataStr === venda.data;
+        }
+      });
+    }
+  }
   
   openSnackBar(message: string, action: string) {
       this.snackBar.open(message, action, {

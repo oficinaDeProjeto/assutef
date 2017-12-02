@@ -4,16 +4,18 @@
             <mat-card fxFlex>
                 <mat-card-header>
                     <mat-card-title>Venda</mat-card-title>
-                        <mat-card-subtitle>Lista de venda realizadas</mat-card-subtitle>
-                        <span fxFlex></span>
-                        <mat-input-container>
-                        <input matInput [(ngModel)]="query" name="query">
-                        
-                        <div flex-gt-xs>
-                            <h4>Pesquise por data</h4>
-                            <md-datepicker ng-model="ctrl.myDate" md-placeholder="filterVenda(query)" ></md-datepicker>
-                          </div>
-                        </mat-input-container>
+                    <mat-card-subtitle>Lista de venda realizadas</mat-card-subtitle>
+                    <span fxFlex></span>
+                    <div flex-gt-xs>
+                        <!-- <md-datepicker ng-model="ctrl.myDate" md-placeholder="filterVenda(query)" ></md-datepicker> -->
+                        <mat-form-field>
+                            <input matInput name="data" [matDatepicker]="picker" 
+                                [ngModel]="query" (ngModelChange)="onDataChange($event)"
+                                [ngModelOptions]="{updateOn: 'blur'}" placeholder="Informe a data da venda">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                    </div>                        
                 </mat-card-header>
                 <mat-card-content>
                     <mat-list>

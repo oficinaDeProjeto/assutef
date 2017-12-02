@@ -38,7 +38,7 @@
 										Valor unitário: R$ {{vendaProduto.valor}}
 									</p>
 									<p mat-line>
-										<input type="number" matInput 
+										<input type="number" matInput min="1"
 											[ngModel]="vendaProduto.quantidade"
 											(ngModelChange)="onQuantidadeChange($event, vendaProduto)" 
 											name="quantidade[{{i}}]" placeholder="quantidade">
