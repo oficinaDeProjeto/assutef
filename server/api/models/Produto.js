@@ -39,7 +39,7 @@ module.exports = {
 			unique: true
 		},
 		estoque: {
-			type: 'string',
+			type: 'integer',
 			required: true,
 			unique: true
 		}

@@ -6,14 +6,14 @@
  */
 
 module.exports = {
-
+	schema: true,
+	connection: 'postgres',
   attributes: {
-    /*pra o postgres
 		id: {
 			type: 'integer',
 			autoIncrement: true,
 			primaryKey: true
-		},*/
+		},
     descricao: {
 			type: 'string',
 			required: true,

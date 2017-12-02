@@ -25,7 +25,7 @@ module.exports = {
 			unique: true
 		},
 		contaMae: {
-			type: 'string',
+			model: 'planoconta'
 		}
   }
 };
