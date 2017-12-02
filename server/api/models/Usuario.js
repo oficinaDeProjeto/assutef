@@ -12,7 +12,7 @@ const bcrypt = require("bcrypt");
 
 module.exports = {
 	schema: true,
-	connection: "mongo",
+	connection: "postgres",
 
 	attributes: {
 		email: {

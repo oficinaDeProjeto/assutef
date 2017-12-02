@@ -7,14 +7,13 @@
 
 module.exports = {
   schema: true,
-	connection: 'mongo',
+	connection: 'postgres',
   attributes: {
-		/*pra o postgres
 		id: {
 			type: 'integer',
 			autoIncrement: true,
 			primaryKey: true
-		},*/
+		},
     razaosocial: {
 			type: 'string',
 			required: true,
