@@ -38,6 +38,7 @@ import {MatTableModule} from '@angular/material';
 import { ActivationAssociadoModule } from './views/activation-associado/activation.module';
 import { VendaModule } from './views/venda/venda.module';
 import { CarrinhoModule } from './views/carrinho/carrinho.module';
+import { BancoModule } from './views/banco/banco.module';
 
 
 /** s
@@ -76,6 +77,7 @@ import { CarrinhoModule } from './views/carrinho/carrinho.module';
 		LayoutsModule,
 		TipoconveniadoModule,
 		ConveniadoModule,
+		BancoModule,
 		PainelModule,
 		ROUTES
 	],
