@@ -70,6 +70,7 @@ import { CarrinhoModule } from './views/carrinho/carrinho.module';
 		ProdutoModule,
 		VendaModule,
 		CarrinhoModule,
+		PlanoContaModule,
 		// Modules
 		NgxBarcodeModule,
 		LayoutsModule,
