@@ -25,8 +25,12 @@ module.exports = {
 			unique: true
 		},
 		contaMae: {
-			model: 'planoconta'
+			type: 'string'
+		},
+		natureza: {
+			type: 'string',
+			enum: ['C', 'D']
 		}
-  }
+	}	
 };
 

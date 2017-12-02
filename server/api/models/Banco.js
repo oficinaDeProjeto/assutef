@@ -14,7 +14,7 @@ module.exports = {
 			autoIncrement: true,
 			primaryKey: true
 		},
-    descricao: {
+    	descricao: {
 			type: 'string',
 			required: true,
 			unique: true

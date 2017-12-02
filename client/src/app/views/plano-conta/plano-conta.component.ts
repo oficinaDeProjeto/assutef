@@ -40,6 +40,7 @@ export class PlanoContaComponent implements OnInit {
 			this.planoContas = <PlanoConta[]>planoContas;
 			this.filteredPlanoConta = Object.assign([], this.planoContas);
 		}, err => {
+			console.log(err);
 			this.openSnackBar("Não foi possível carregar o Plano de Contas ", "OK");
 		});
 	}
