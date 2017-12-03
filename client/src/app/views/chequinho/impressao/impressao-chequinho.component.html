@@ -16,13 +16,16 @@
 		<div style="margin-top:1.9cm"></div>
 		<br/>
 		<br/>		
-		<ngx-barcode
-		[bc-format]='CODE128B'
-		[bc-element-type]='img'
-		[bc-value]='1'
-		[bc-width]=4
-		[bc-height]=50
-		[bc-display-value]=true
-		[bc-font]='monospace'></ngx-barcode>
+		<div style="margin-left:6.8cm">
+			<ngx-barcode
+			[bc-format]='codabar'
+			[bc-element-type]='svg'
+			[bc-value]='1234'
+			[bc-width]=3
+			[bc-height]=50
+			[bc-display-value]=true
+			[bc-font]='monospace'>
+			</ngx-barcode>
+		</div>
 	</div>	
 </div>
