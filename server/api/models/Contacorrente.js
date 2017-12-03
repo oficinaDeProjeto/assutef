@@ -14,7 +14,7 @@ module.exports = {
 			autoIncrement: true,
 			primaryKey: true
 		},
-    nome: {
+    	nome: {
 			type: 'string',
 			required: true,
 			unique: true
@@ -30,6 +30,9 @@ module.exports = {
 		banco: {
 			model: 'banco',
 			required: true
+		},
+		planoconta: {
+			model: 'planoconta'
 		}
   }
 };
