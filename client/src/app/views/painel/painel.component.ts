@@ -15,6 +15,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./painel.component.css']
 })
 export class PainelComponent implements OnInit {
+  paginator: any;
   //array de chequinhos e lançamentos
   chequinhos: Chequinho[] = []; //tipagem de tipo e inicializando com vazio
   lancamentos: Lancamento[] = [];
@@ -57,4 +58,13 @@ export class PainelComponent implements OnInit {
       },err =>{console.log(err);
       });
     }*/
+
+   
+    onPaginateChange(event):void{
+      let startIndex = event.pageIndex * event.pageSize;
+      let endIndex = Math.min(startIndex + this.paginator.pageSize, this.lancamentos.length, this.chequinhos.length);
+      this.lancamentos = this.lancamentos.slice(startIndex, endIndex);
+      this.chequinhos = this.chequinhos.slice(startIndex, endIndex);
+      
+     }
 }

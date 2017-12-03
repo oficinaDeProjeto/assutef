@@ -27,6 +27,8 @@
         </div>
       </div>
     </main>
+    <mat-paginator [length]="chequinhos.length" [pageSize]="5" (page)="onPaginateChange($event)"[pageSizeOptions]="[1, 5, 10, 25, 100]"></mat-paginator>
+    
   </div>
 <!--
 https://mongodbwise.wordpress.com/2014/05/22/mongodb-guia-rapido/

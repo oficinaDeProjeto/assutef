@@ -26,7 +26,7 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let l of lancamentos">
-                    <td>{{l.conveniado.razaosocial}}</td>
+                    <td>{{l.conveniado}}</td>
                     <td>{{l.valor}}</td>
                     <td>{{l.dataLancamento}}</td>
                   </tr>
@@ -38,6 +38,7 @@
       </div>
     </div>
   </main>
+  <mat-paginator [length]="lancamentos.length" [pageSize]="5" (page)="onPaginateChange($event)"[pageSizeOptions]="[1, 5, 10, 25, 100]"></mat-paginator>
 </div>
 <br />
 <!--verificar a criação da função list
