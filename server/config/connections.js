@@ -74,12 +74,24 @@ module.exports.connections = {
   *                                                                          *
   *                                                                          *
   ***************************************************************************/
-   postgres: {
+  
+  /****************************************************************************
+  *                                                                           *
+  * By Bruno                                                                  *
+  * 1- Se achar desejavel, voce pode alterar as propriedades user e password  *
+  * para o seu usuario dentro do servidor.                                    *
+  *                                                                           *
+  * 2- Importante destacar que é necessario criar o banco antes, é recomendado*
+  * manter o nome assutef                                                     *   
+  *                                                                           *
+  ****************************************************************************/
+
+  postgres: {
      adapter: 'sails-postgresql',
      host: 'localhost',
      user: 'postgres', // optional
      password: 'postgres', // optional
-     database: 'assutef' //optional
+     database: 'assutef'
    }
 
 

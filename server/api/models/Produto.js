@@ -30,7 +30,8 @@ module.exports = {
 			unique: true
 		},
 		categoria: {
-			type: 'string',
+			model: 'categoria',
+			/*type: 'string',*/
 			required: true
 		},
 		unidade: {
