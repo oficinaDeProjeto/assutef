@@ -1,71 +1,21 @@
-
-<div class="wrapper wrapper-content animated fadeInRight">
-	<div class="row">
-		<div class="col-mat-12">
-
-			<div class="ibox float-e-margins">
-				<div class="ibox-content">
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <div class="profile-image">
-                                <img src="../../../assets/img/sem-imagem-avatar.png" class="img-circle circle-border m-b-mat" alt="profile">
-                            </div>
-                        </div>
-                        <div class="col-sm-10">
-                            <br>
-                            <h2 class="no-margins">
-                                {{usuario.nome}}
-                            </h2>
-                            <h4>{{usuario.email}}</h4>
-                            <small>
-                                {{usuario.endereco}}
-                            </small>
-                        </div>
-					</div>
-				</div>
-			</div>
-
-
-            <div class="ibox float-e-margins">
-                <div class="ibox-title">
-                    <h5>Alterar minha senha</h5>
-                </div>
-                <div class="ibox-content">
-                   <div class="row">
-
-                       <div class="col-sm-12" *ngIf="mensagem">
-                           <div [class]="'alert alert-dismissable '+ mensagemType">
-                               <button class="close" type="button" (click)="hideMessagem()">×</button>
-                               {{mensagem}}
-                           </div>
-                       </div>
-
-                       <div class="col-sm-4">
-                           <div class="form-group">
-                               <label class="control-label" for="senha">Senha atual</label>
-                               <input type="password" id="senha" class="form-control" [(ngModel)]="senha">
-                           </div>
-                       </div>
-                       <div class="col-sm-4">
-                           <div class="form-group">
-                               <label class="control-label" for="novaSenha">Nova senha</label>
-                               <input type="password" id="novaSenha" class="form-control" [(ngModel)]="novaSenha">
-                           </div>
-                       </div>
-                       <div class="col-sm-4">
-                           <div class="form-group">
-                               <label class="control-label" for="confirma">Confirma nova senha</label>
-                               <input type="password" id="confirma" class="form-control" [(ngModel)]="confirmaNovaSenha">
-                           </div>
-                       </div>
-                       <div class="col-sm-12">
-                           <button type="button" class="btn btn-w-m btn-success pull-right" (click)="alterar()">Alterar</button>
-                       </div>
-                   </div>
-                </div>
+<div style="padding: 10px;">
+    <mat-card>
+        <mat-card-header>
+            <div mat-card-avatar>
+                <mat-icon>account_circle</mat-icon>
             </div>
-
-
-		</div>
-	</div>
+            <mat-card-title>{{usuario.nome}}</mat-card-title>
+            <mat-card-subtitle>{{usuario.email}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-tab-group>
+                <mat-tab label="Tab 1">Content 1</mat-tab>
+                <mat-tab label="Tab 2">Content 2</mat-tab>
+            </mat-tab-group>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-button>LIKE</button>
+            <button mat-button>SHARE</button>
+        </mat-card-actions>
+    </mat-card>
 </div>

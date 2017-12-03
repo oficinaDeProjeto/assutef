@@ -31,7 +31,7 @@ export class PainelComponent implements OnInit {
   ngOnInit() {//invocando a diretiva assim que instanciada
     this.getAllChequinhos();
     this.getAllLancamentos();
-    this.getAllConveniados();
+    //this.getAllConveniados();
   }
 
   getAllChequinhos(){
@@ -42,14 +42,6 @@ export class PainelComponent implements OnInit {
       console.log(err);
     });
   }
-/*
-  getAllLancamentos() {
-    this.lancamentoService.findAll().subscribe(lancamentos => {
-      this.lancamentos = <Lancamento[]>lancamentos;
-    }, err => {
-      console.log(err);
-    });	
-  }*/
 
     getAllLancamentos() {
       this.painelService.findAllLancamentos().subscribe(lancamentos => {
@@ -58,11 +50,11 @@ export class PainelComponent implements OnInit {
         console.log(err);
       });	
     }
-
+/*
     getAllConveniados(){
       this.painelService.findAllConveniados().subscribe(conveniado =>{
         this.conveniado = <Conveniado[]>conveniado;
       },err =>{console.log(err);
       });
-    }
+    }*/
 }

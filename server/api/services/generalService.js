@@ -3,8 +3,8 @@
  * @author: Lucas Henrique de Abreu <lucasigual14@gmail.com>
  * @date: 26/07/2017
  */
-var request = require('request');
-var Promise = require('bluebird');
+let request = require('request');
+let Promise = require('bluebird');
 
 module.exports = {
 
@@ -12,11 +12,11 @@ module.exports = {
 	 * Busca um enderço pelo cep.
 	 * @param {*} postalCode 
 	 */
-	getAddressByPostalCode: function (postalCode) {
-		var url = "https://viacep.com.br/ws/"+postalCode+"/json/";
+	getAddressByPostalCode: (postalCode) => {
+		let url = "https://viacep.com.br/ws/"+postalCode+"/json/";
 		
-		return new Promise(function(resolve, reject){
-			request.get({url:url}, function(error, response, body) {
+		return new Promise((resolve, reject) => {
+			request.get({url:url}, (error, response, body) => {
 				if (error) {
 					sails.log.error(error);
 				} else {
@@ -24,5 +24,21 @@ module.exports = {
 				}
 			});
 		});
-	}	
+	},
+
+	/**
+	 * Busca uma empresa pelo cpf
+	 */
+	getDataEmpresaByCnpj: (cnpj) => {
+		let url = "https://viacep.com.br/ws/"+postalCode+"/json/";
+		return new Promise((resolve, reject) => {
+			request.get({url:url}, (error, response, body) => {
+				if (error) {
+					sails.log.error(error);
+				} else {
+					return resolve(response.results);
+				}
+			});
+		});
+	}
 }

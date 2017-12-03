@@ -1,5 +1,3 @@
-
-<!--tela do chequinho
 <div class="container">
     <main role="main">
       <div class="row marketing">
@@ -10,18 +8,17 @@
                 <table class="table table-striped">
                   <thead>
                     <tr>
-                      <th>Chequinho</th>
-                      <th>Valor</th>
-                      <th>Data</th>
+                      <th>Conveniado</th>
+                      <th>Valor limite</th>
+                      <th>Quantidade impressa</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let c of chequinho">
-                      <td>{{c.id}}</td>
-                      <td>{{c.conveniado}}</td>
-                      <td>{{c.valor}}</td>
-                      <td>{{l.dataLancamento}}</td>
-                    </tr>
+                  <tr *ngFor="let c of chequinhos">
+                    <td>{{c.conveniado.razaosocial}}</td>
+                    <td>{{c.valorLimite}}</td>
+                    <td>{{c.qtdeChequinho}}</td>
+                  </tr>s
                   </tbody>
                 </table>
               </div>
@@ -31,7 +28,7 @@
       </div>
     </main>
   </div>
-
+<!--
 https://mongodbwise.wordpress.com/2014/05/22/mongodb-guia-rapido/
 http://fernandoanselmo.blogspot.com.br/2013/12/rest-arrumando-o-projeto.html
 

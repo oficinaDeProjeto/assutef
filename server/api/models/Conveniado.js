@@ -40,14 +40,17 @@ module.exports = {
 			type: 'date',
 		},
 		ativo:{
-			type:"boolean",
-			defaultsTo : true
+			type: 'string',
+			enum: ['ATIVO', 'INATIVO']
 		},
 		endereco: {
 			model: 'endereco'
     },
 		tipoconveniado:{
 			model: 'tipoconveniado'
+		},
+		contacorrente:{
+			model: 'contacorrente'
 		}
   }
 };

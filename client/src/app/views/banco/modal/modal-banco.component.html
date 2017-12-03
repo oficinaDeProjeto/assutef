@@ -1,0 +1,23 @@
+<mat-card>
+	<mat-card-header>
+		<mat-card-title>Banco</mat-card-title>
+		<br/>
+		<mat-card-subtitle>Informe os dados para cadastro de Banco</mat-card-subtitle>
+		<br/><br/>
+	</mat-card-header>
+	<mat-card-content>
+		<mat-form-field>
+			<input matInput placeholder="Descrição" [(ngModel)]="banco.descricao" #nome="ngModel" required name="descricao">
+		</mat-form-field>
+	</mat-card-content>
+	<mat-card-content>
+		<mat-form-field>
+			<input matInput placeholder="Código" [(ngModel)]="banco.codigo" #nome="ngModel" required name="codigo">
+		</mat-form-field>
+	</mat-card-content>
+	<br/>
+	<mat-card-actions>
+		<button mat-button color="primary" [mat-dialog-close]="banco">SALVAR</button>
+		<button mat-button (click)="dialogRef.close()">CANCELAR</button>
+	</mat-card-actions>
+</mat-card>

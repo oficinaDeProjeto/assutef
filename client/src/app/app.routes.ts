@@ -1,7 +1,10 @@
+import { GrupousuarioComponent } from './views/grupousuario/grupousuario.component';
+import { ActivationAssociadoComponent } from './views/activation-associado/activation-associado.component';
 import { PainelComponent } from './views/painel/painel.component';
 import { AssociadoComponent } from './views/associado/associado.component';
 import { UsuarioComponent } from './views/usuario/usuario.component';
 import { CategoriaComponent } from './views/categoria/categoria.component';
+import { ProdutoComponent } from './views/produto/produto.component';
 import { ChequinhoComponent } from './views/chequinho/chequinho.component';
 import { LancamentoComponent } from './views/lancamento/lancamento.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -14,6 +17,7 @@ import { ProfileComponent } from './views/profile/profile.component';
 import { ConveniadoComponent } from './views/conveniado/conveniado.component';
 import { TipoconveniadoComponent } from './views/tipoconveniado/tipoconveniado.component';
 import { ImpressaoChequinhoComponent } from './views/chequinho/impressao/impressao-chequinho.component';
+import { BancoComponent } from './views/banco/banco.component';
 
 
 const routes: Routes = [
@@ -43,6 +47,13 @@ const routes: Routes = [
                 component: CategoriaComponent,
                 data: {
                     breadcrumb: "Categorias"
+                }
+            },
+            {
+                path: 'produto',
+                component: ProdutoComponent,
+                data: {
+                    breadcrumb: "Produtos"
                 }
             },
             {
@@ -81,7 +92,7 @@ const routes: Routes = [
                 }
             },
             {
-                path: 'chequinhoimpressao/:id',
+                path: 'chequinhoimpressao/:ids',
                 component: ImpressaoChequinhoComponent,
                 data: {
                     breadcrumb: "Imprimir chequinho"
@@ -95,23 +106,43 @@ const routes: Routes = [
                 }
             },
             {
+                path: 'grupousuario',
+                component: GrupousuarioComponent,
+                data: {
+                    breadcrumb: "Grupo de Usuários"
+                }
+            },
+            {
                 path: 'painel',
                 component: PainelComponent,
                 data: {
                     breadcrumb: "Painel Associado"
                 }
+            },
+            {
+                path: 'banco',
+                component: BancoComponent,
+                data: {
+                    breadcrumb: "Banco"
+                }
             }
         ]
     },
+    
     {
         path: '', component: blankComponent,
         children: [
             {
                 path: 'login/',
                 component: LoginComponent
+            },
+            {
+                path: 'activation-associado/:token',
+                component: ActivationAssociadoComponent
             }
         ]
     },
+    
 
     // Handle all other routes
     { path: '**', component: LoginComponent }

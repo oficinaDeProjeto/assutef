@@ -8,7 +8,7 @@
  * TODO - VERIFICAR UMA FORMA DE NÃO PODER CADASTAR USUÁRIO ADMIN, TALBEZ NO CONTROLLER
  */
 
-var bcrypt = require("bcrypt");
+const bcrypt = require("bcrypt");
 
 module.exports = {
 	schema: true,
@@ -20,48 +20,59 @@ module.exports = {
 			required: "true",
 			unique: true
 		},
-		name: {
+		nome: {
 			type: "string",
 			required: true
 		},
-		encryptedPassword: {
+		password: {
 			type: "string"
 		},
 		role: {
 			type: 'string',
-			enum: ['ADMIN', 'USER'],
+			enum: ['ADMIN', 'USER', 'ASSOCIADO'],
 			required: "true",
-		},
-		/*avatar: {
-			type: 'string'
-		},*/
-		
+		},		
 		// Para não enviar uma senha criptografada
-		toJSON: function () {
+		toJSON:  function() {
 			var obj = this.toObject();
-			delete obj.encryptedPassword;
+			delete obj.password;
 			return obj;
 		}
 	},
 	// Criptografa a senha antes de criar o usuário.
-	beforeCreate: function (values, next) {
-		bcrypt.genSalt(10, function (err, salt) {
+	beforeCreate:  (values, next) =>{
+		bcrypt.genSalt(10,  function(err, salt){
+			console.log(salt)
+			console.log(values)
 			if (err) return next(err);
-			bcrypt.hash(values.password, salt, function (err, hash) {
+			bcrypt.hash(values.password, salt,  (err, hash) =>{
 				if (err) return next(err);
-				values.encryptedPassword = hash;
+				values.password = hash;
 				next();
 			});
 		});
 	},
-
-	comparePassword: function (password, user, cb) {
-		bcrypt.compare(password, user.encryptedPassword, function (err, match) {
-			if (err) cb(err);
+	beforeUpdate: (values, next) => {
+		if(typeof values.password === 'undefined')
+			return next();
+		if(values.password != null){
+			bcrypt.genSalt(10, function(err, salt) {
+				if (err) return next(err);
+				bcrypt.hash(values.password, salt,  (err, hash) =>{
+					if (err) return next(err);
+					values.password = hash;
+				});
+			});
+		}
+		next();
+	},
+	comparePassword:  (password, user, next) =>{
+		bcrypt.compare(password, user.password,  (err, match) =>{
+			if (err) next(err);
 			if (match) {
-				cb(null, true);
+				next(null, true);
 			} else {
-				cb(err);
+				next(err);
 			}
 		});
 	}

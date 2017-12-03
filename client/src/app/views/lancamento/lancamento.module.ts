@@ -1,5 +1,5 @@
+import { MaskModule } from './../../directives/mask/mask.module';
 import { AssociadoService } from './../../services/associado/associado.service';
-import { appMaskModule } from './../../directives/mask.module';
 import { LancamentoService } from './../../services/lancamento/lancamento.service';
 import { AuthService } from './../../services/auth/auth.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -9,7 +9,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import {MatTableModule} from '@angular/material/table';
+import {BrowserModule} from "@angular/platform-browser";
 import { ModalLancamentoComponent } from './modal/modal-lancamento.component'
+import {Elemento} from './lancamento.component'
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {
     MatDialogModule,
     MatCardModule,
@@ -22,6 +25,8 @@ import {
     MatNativeDateModule,
     MatRadioModule,
     MatSnackBarModule,
+    MatAutocomplete,
+    MatPaginatorModule,
     
 } from "@angular/material";
 
@@ -29,6 +34,7 @@ import {
     declarations: [LancamentoComponent, ModalLancamentoComponent,],
     exports: [LancamentoComponent, ModalLancamentoComponent],
     imports: [
+        BrowserModule,
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
@@ -44,13 +50,15 @@ import {
         MatButtonModule,
         MatRadioModule,
         FlexLayoutModule,
-        appMaskModule,
         MatSnackBarModule,
-        MatTableModule
+        MatTableModule,
+        MatAutocompleteModule,
+        MatPaginatorModule,
+        MaskModule
     ],
     entryComponents: [ModalLancamentoComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    providers: [AuthService, LancamentoService, AssociadoService]
+    providers: [AuthService, LancamentoService, AssociadoService, Elemento]
 })
 
 export class LancamentoModule { }

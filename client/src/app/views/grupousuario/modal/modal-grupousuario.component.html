@@ -1,0 +1,16 @@
+<mat-card>
+	<mat-card-header>
+		<mat-card-title>Grupo de Usuário</mat-card-title>
+		<mat-card-subtitle>Informe os dados para cadastro de grupo de usuário</mat-card-subtitle>
+	</mat-card-header>
+	<mat-card-content>
+		<mat-form-field>
+			<input matInput placeholder="Nome" [(ngModel)]="grupousuario.nome" #nome="ngModel" required name="nome">
+		</mat-form-field>
+		<br />
+		</mat-card-content>
+	<mat-card-actions>
+		<button type="button" mat-raised-button [mat-dialog-close]="grupousuario">SALVAR</button>
+		<button type="button" mat-button (click)="dialogRef.close()">CANCELAR</button>
+	</mat-card-actions>
+</mat-card>

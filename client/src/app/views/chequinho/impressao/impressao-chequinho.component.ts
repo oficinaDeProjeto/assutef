@@ -4,10 +4,11 @@ import { GenericService } from './../../../services/generic/generic.service';
 import { Associado } from './../../../models/associado';
 import { Chequinho } from './../../../models/chequinho';
 import { MAT_DIALOG_DATA, MatDialogRef, MatSnackBar } from '@angular/material';
-import { Component, OnInit, Optional, Inject } from '@angular/core';
+import { Component, OnInit, Optional, Inject, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ChequinhoService } from '../../../services/chequinho/chequinho.service';
-
+import { Observable } from 'rxjs';
+declare var jQuery: any;
 @Component({
 	selector: 'app-impressao-chequinho',
 	templateUrl: './impressao-chequinho.component.html',
@@ -15,9 +16,11 @@ import { ChequinhoService } from '../../../services/chequinho/chequinho.service'
 })
 export class ImpressaoChequinhoComponent implements OnInit {
 
-	chequinho: Chequinho = new Chequinho();
+	chequinhos: Chequinho[] = [];
 	associado: Associado = new Associado();
+	qtdeChequinho: Number;
 	masks = Masks;
+	private el: ElementRef;
 
 	constructor(
 		@Optional() @Inject(MAT_DIALOG_DATA) public dataAssociado: Associado,
@@ -25,16 +28,37 @@ export class ImpressaoChequinhoComponent implements OnInit {
 		private route: ActivatedRoute,
 		private associadoService: AssociadoService,
 		public snackBar: MatSnackBar,
-		private chequinhoService: ChequinhoService
-	) { }
+		private chequinhoService: ChequinhoService,
+		@Inject(ElementRef) el: ElementRef,
+	) {
+		this.el = el;
+	 }		 
 
 	ngOnInit() {
-		if (this.dataAssociado)
+	/*	if (this.dataAssociado)
 			this.associado = this.dataAssociado;
 		if (this.dataChequinho)
-			this.chequinho = this.dataChequinho;
-		let idChequinho = this.route.snapshot.params["id"];
-		this.getChequinhoById(idChequinho)
+			this.chequinho = this.dataChequinho;*/
+		//let idChequinho = this.route.snapshot.params["id"];
+		//this.qtdeChequinho = ;
+		this.tratarIDSChequinhos(this.route.snapshot.params["ids"]);
+		//this.getChequinhoById(idChequinho)
+	}
+
+	tratarIDSChequinhos(str : string):void{
+		let observables : any = [];
+		for(let id of str.split("~")){
+			observables.push(this.chequinhoService.findById(id));		
+		}
+
+		Observable.forkJoin(observables).subscribe((response) => {
+			for(let chequinho of response) {
+				this.chequinhos.push(<Chequinho>chequinho);
+			}
+			setTimeout(function(){
+				this.print();
+			}, 3000);
+		});
 	}
 
 	openSnackBar(message: string, action: string) {
@@ -47,11 +71,22 @@ export class ImpressaoChequinhoComponent implements OnInit {
 	 * Busca chequinho por id.
 	 * @param id i
 	 */
-	getChequinhoById(id: string) {
-		this.chequinhoService.findById(id).subscribe(res => {
-			this.chequinho = res;
-		}, err => {
-			this.openSnackBar("Erro ao listar chequinho", "OK");
-		})
+	getChequinhoById(id: string) : Chequinho {
+		
+		return null;
+	}
+
+	print() {
+		let container = this.el.nativeElement;
+		let conteudo = container.firstElementChild.innerHTML;
+
+		conteudo += `<style></style>`;
+		let tela_impressao = window.open('about:blank');
+		tela_impressao.document.write(conteudo);
+
+		setTimeout(function () {
+			tela_impressao.window.print();
+			tela_impressao.window.close();
+		}, 200);
 	}
 }

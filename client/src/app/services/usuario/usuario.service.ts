@@ -26,4 +26,14 @@ export class UsuarioService extends SuperService {
     getAll(): Observable<Usuario[]> {
         return this.httpClient.get<Usuario[]>(`${this.apiUrl}usuario`);
     }
+	
+	save(usuario: Usuario): Observable<any> {
+		if(usuario.id)
+            return this.httpClient.put<any>(`${this.apiUrl}usuario/${usuario.id}`, usuario);
+		return this.httpClient.post<any>(`${this.apiUrl}usuario`, usuario);
+    }
+    
+    delete(id: string): Observable<Usuario> {
+		return this.httpClient.delete<Usuario>(`${this.apiUrl}usuario/${id}`)
+	}
 }

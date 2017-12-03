@@ -12,13 +12,13 @@
 							<input matInput placeholder="Nome Fantasia" [(ngModel)]="conveniado.nomefantasia" required name="nomefantasia">
 						</mat-form-field>
 						<mat-form-field fxFlex.gt-sm="30" fxFlex="30" class="p-5">
-							<input matInput [appMask]="masks.cnpj" placeholder="CNPJ" [(ngModel)]="conveniado.cnpj" required name="cnpj">
+							<input matInput placeholder="CNPJ" [(ngModel)]="conveniado.cnpj" required name="cnpj">
 						</mat-form-field>
 						<mat-form-field fxFlex.gt-sm="30" fxFlex="30" class="p-5">
 							<input matInput placeholder="Comissão" [(ngModel)]="conveniado.comissao" required name="comissao">
 						</mat-form-field>					
 						<mat-form-field fxFlex.gt-sm="30" fxFlex="30" class="p-5">
-							<input matInput [appMask]="masks.brCellPhone" placeholder="Telefone" [(ngModel)]="conveniado.telefone" required name="telefone">
+							<input matInput placeholder="Telefone" [(ngModel)]="conveniado.telefone" required name="telefone">
 						</mat-form-field>	
 						<mat-form-field fxFlex="30" class="p-5">
 							<input required matInput name="datacadastro" [matDatepicker]="picker" [(ngModel)]="conveniado.datacadastro" placeholder="Informe a data de cadastro">
@@ -33,7 +33,11 @@
 							</mat-select>
 						</mat-form-field>
 						<div fxLayout="row" fxLayoutAlign="center start" fxFlex="50" class="p-5">
-							<mat-slide-toggle [value]="conveniado.ativo">Ativo</mat-slide-toggle>
+							<label>Status:</label>
+							<mat-radio-group [(ngModel)]="conveniado.ativo" name="ativo" required>
+								<mat-radio-button color="primary" class="margin-10" value="ATIVO">Ativo</mat-radio-button>
+								<mat-radio-button color="primary" class="margin-10" value="INATIVO">Inativo</mat-radio-button>
+							</mat-radio-group>
 						</div>
 					</div>
 				</form>
@@ -48,7 +52,7 @@
 				<form #enderecoForm="ngForm">
 					<div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="center start">
 						<mat-form-field fxFlex.gt-sm="50" fxFlex="100" class="p-5">
-							<input matInput [appMask]="masks.cep" placeholder="Cep" [(ngModel)]="conveniado.endereco.cep" name="cep"
+							<input matInput placeholder="Cep" [(ngModel)]="conveniado.endereco.cep" name="cep"
 							 (blur)="getAddressByPostalCode(conveniado.endereco.cep)">
 						</mat-form-field>
 						<div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="center start" fxFlex.gt-sm="50" fxFlex="100" class="p-5">
@@ -77,6 +81,34 @@
 				<div>
 					<button mat-button matStepperPrevious>Voltar</button>
 					<button mat-button matStepperNext color="primary" [disabled]="!enderecoForm.form.valid">Próximo</button>
+				</div>
+			</form>
+		</mat-step>
+		<mat-step>
+			<form>
+				<ng-template matStepLabel>Dados da Conta Corrente</ng-template>
+				<form #dadosContaCorrenteForm="ngForm">
+					<div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="center start">
+						<mat-form-field fxFlex.gt-sm="30" fxFlex="30" class="p-5">
+							<input matInput placeholder="Nome da Conta" [(ngModel)]="conveniado.contacorrente.nome" required name="nome">
+						</mat-form-field>					
+						<mat-form-field fxFlex.gt-sm="30" fxFlex="30" class="p-5">
+							<input matInput placeholder="Número da Conta" [(ngModel)]="conveniado.contacorrente.nrConta" required name="nrConta">
+						</mat-form-field>
+						<mat-form-field fxFlex.gt-sm="30" fxFlex="30" class="p-5">
+							<input matInput placeholder="Agência" [(ngModel)]="conveniado.contacorrente.agencia" required name="agencia">
+						</mat-form-field>
+						<mat-form-field fxFlex.gt-sm="30" fxFlex="30" class="p-5">
+							<mat-select name="banco" placeholder="Banco" [(ngModel)]="conveniado.contacorrente.banco">
+								<mat-option  *ngFor="let banco of bancos" [value]="banco.id">
+								{{ banco.descricao }}
+								</mat-option>
+							</mat-select>
+						</mat-form-field>
+					</div>
+				</form>
+				<div fxLayout="row">
+					<button mat-button matStepperNext color="primary" [disabled]="!dadosContaCorrenteForm.form.valid">Próximo</button>
 				</div>
 			</form>
 		</mat-step>
