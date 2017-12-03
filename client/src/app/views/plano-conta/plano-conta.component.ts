@@ -53,7 +53,6 @@ export class PlanoContaComponent implements OnInit {
 				p => p.nomeConta.toLowerCase().indexOf(query.toLowerCase()) > -1
 			);
 		}
-		this.fPlanoContas = this.filteredPlanoConta.slice(0, Math.min(this.filteredPlanoConta.length, this.paginator.pageSize));
 	}
 
 	openSnackBar(message: string, action: string) {
@@ -90,11 +89,5 @@ export class PlanoContaComponent implements OnInit {
 	assignCopy() {
 		this.filteredPlanoConta = Object.assign([], this.planoConta);
 	}
-
-	onPaginateChange(event):void{
-		let startIndex = event.pageIndex * event.pageSize;
-		let endIndex = Math.min(startIndex + this.paginator.pageSize, this.filteredPlanoConta.length);
-		this.fPlanoContas = this.filteredPlanoConta.slice(startIndex, endIndex);
-	 }
 
 }
