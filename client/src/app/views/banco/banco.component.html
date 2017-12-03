@@ -9,7 +9,7 @@
 		<mat-card-content>
 			<mat-card-content>
 				<mat-list>
-					<mat-list-item *ngFor="let banco of filteredBancos" (click)="openDialog(banco)">
+					<mat-list-item *ngFor="let banco of finalBancos" class="bancoReg">
 						<hr align="center" width="700" size="0">
 						<div fxLayout="row" fxLayoutAlign="space-between center" class="alinhar">
 							<div class="divNome">
@@ -31,6 +31,8 @@
 						</div>
 					</mat-list-item>
 				</mat-list>
+				<hr align="center" width="700" size="0">
+				<mat-paginator [length]="filteredBancos.length" [pageSize]="5" (page)="onPaginateChange($event)"[pageSizeOptions]="[1, 5, 10, 25, 100]"></mat-paginator>
 			</mat-card-content>
 		</mat-card-content>
 	</mat-card>

@@ -47,7 +47,6 @@ export class ProdutoComponent implements OnInit {
 
 	ngOnInit() {
 		this.findAll();
-		//this.getAllCategorias();
 	}
 
 	findAll() {
@@ -61,7 +60,7 @@ export class ProdutoComponent implements OnInit {
 	}
 
 	salvarProduto(produto: Produto) {
-		this.produtoService.save(produto).subscribe(produto => {
+		this.produtoService.save(produto).subscribe(result => {
 			console.log('Salvo com sucesso');
 			this.getAll();
 		}, err => {
@@ -82,7 +81,7 @@ export class ProdutoComponent implements OnInit {
 			this.filteredProdutos = Object.assign([], this.produtos);
 		} else {
 			this.filteredProdutos = Object.assign([], this.produto).filter(
-				produto => produto.nome.toLowerCase().indexOf(query.toLowerCase()) > -1
+				produto => produto.name.toLowerCase().indexOf(query.toLowerCase()) > -1
 			)
 		}
 	}
@@ -93,16 +92,16 @@ export class ProdutoComponent implements OnInit {
 		});
 
 		dialogRef.afterClosed().subscribe(result => {
-			//console.log(result);
-			//this.salvarProduto(result);
-			this.save(result);
+			if (result) {
+				this.save(result);
+			}
 		});
 	}
 
 	delete(produto: Produto) {
 		this.confirmDialogService.confirm(
 			'Confirmação',
-			`Você tem ceteza que deseja remover ${produto.nome}?`)
+			`Você tem ceteza que deseja remover ${produto.name}?`)
 			.subscribe(res => {
 				if (res) {
 					this.produtoService.delete(produto.id).subscribe(produto => {
@@ -116,7 +115,7 @@ export class ProdutoComponent implements OnInit {
 	}
 
 	save(produto: Produto) {
-		this.produtoService.save(produto).subscribe(produto => {
+		this.produtoService.save(produto).subscribe(resultado => {
 			this.openSnackBar("Salvo com sucesso", "OK");
 			this.findAll();
 		}, err => {

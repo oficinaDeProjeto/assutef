@@ -35,9 +35,9 @@ import { MatInputModule } from '@angular/material';
 import { NgxBarcodeModule } from 'ngx-barcode';
 import {MatTableModule} from '@angular/material';
 import { ActivationAssociadoModule } from './views/activation-associado/activation.module';
-import { GrupousuarioComponent } from './views/grupousuario/grupousuario.component';
+import { VendaModule } from './views/venda/venda.module';
+import { CarrinhoModule } from './views/carrinho/carrinho.module';
 import { BancoModule } from './views/banco/banco.module';
-
 
 
 /** 
@@ -53,7 +53,6 @@ import { BancoModule } from './views/banco/banco.module';
 		HttpModule,
 		HttpClientModule,
 		ToastyModule.forRoot(),
-
 		// Views (Módulos)
 		LoginModule,
 		HomeModule,
@@ -69,13 +68,14 @@ import { BancoModule } from './views/banco/banco.module';
 		PainelModule,
 		ActivationAssociadoModule,
 		ProdutoModule,
-		BancoModule,
-
+		VendaModule,
+		CarrinhoModule,
 		// Modules
 		NgxBarcodeModule,
 		LayoutsModule,
 		TipoconveniadoModule,
 		ConveniadoModule,
+		BancoModule,
 		PainelModule,
 		ROUTES
 	],

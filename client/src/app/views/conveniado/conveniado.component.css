@@ -34,3 +34,24 @@
   .mat-form-field {
     width: 600px;
   }
+  
+  .divCodigo{
+    width: 33%;
+  }
+
+  .divNome{
+      width: 40%;
+  }
+
+  .alinhar{
+    position: relative;
+  }
+
+  .conveniadoReg{
+    background-color: white;
+  }
+  
+  .conveniadoReg :hover{
+    background-color: #f2f2f2;
+    cursor: pointer;
+  }

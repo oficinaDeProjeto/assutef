@@ -12,6 +12,9 @@ export class CategoriaService {
 	}
 
 	save(categoria: Categoria): Observable<Categoria> {
+		if (categoria.id) {
+			return this.httpClient.put<Categoria>(`${this.apiUrl}categoria/${categoria.id}`, categoria);
+		}
 		return this.httpClient.post<Categoria>(`${this.apiUrl}categoria`, categoria);
 	}
 

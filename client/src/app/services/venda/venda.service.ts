@@ -14,7 +14,11 @@ export class VendaService extends SuperService {
     super();
   }
 
-  findAll() : Observable<Venda[]> {
+  delete(id: string): Observable<Venda>{
+    return this.httpClient.delete<Venda>(`${this.apiUrl}venda/${id}`);
+  }
+
+  findAll(): Observable<Venda[]> {
     return this.httpClient.get<Venda[]>(`${this.apiUrl}venda`);
   }
 
@@ -22,7 +26,10 @@ export class VendaService extends SuperService {
 		return this.httpClient.get<Venda[]>(`${this.apiUrl}venda?data=${data}`);
 	}
       
-   save(venda: Venda): Observable<Venda> {
+  save(venda: Venda): Observable<Venda> {
+     if (venda.id) {
+       return this.httpClient.put<Venda>(`${this.apiUrl}venda/${venda.id}`, venda);
+     }
     return this.httpClient.post<Venda>(`${this.apiUrl}venda`, venda);
   }
 }

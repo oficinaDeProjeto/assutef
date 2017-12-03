@@ -19,7 +19,8 @@ import {
     MatNativeDateModule,
     MatRadioModule,
     MatSnackBarModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatPaginatorModule
 } from "@angular/material";
 import { BancoComponent } from './banco.component';
 import { ModalBancoComponent } from './modal/modal-banco.component';
@@ -49,10 +50,9 @@ import { MaskModule } from '../../directives/mask/mask.module';
         FlexLayoutModule,
         MatSnackBarModule,
         ConfirmDialogModule,
-        MaskModule
-       
+        MaskModule,
+        MatPaginatorModule   
              
-
     ],
     entryComponents:[ModalBancoComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],

@@ -5,21 +5,30 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { CarrinhoService } from '../../services/carrinho/carrinho.service';
 import { Produto } from '../../models/produto';
 import { Venda } from '../../models/venda';
+import { ProdutoService } from '../../services/produto/produto.service';
+import { VendaProduto } from '../../models/vendaproduto';
+import { Associado } from '../../models/associado';
+import { AssociadoService } from '../../services/associado/associado.service';
 
 @Component({
   selector: 'app-carrinho',
   templateUrl: './carrinho.component.html',
   styleUrls: ['./carrinho.component.css']
 })
-export class CarrinhoComponent {
+export class CarrinhoComponent implements OnInit {
 
-  constructor(
-		iconRegistry: MatIconRegistry, 
-		sanitizer: DomSanitizer, 
-		private carrinhoService: CarrinhoService,
-		private dialog: MatDialog,
-		@Optional() @Inject(MAT_DIALOG_DATA) public venda: Venda
-	) {
+	produtos: Produto[] = [];
+	associados: Associado[] = [];
+
+	constructor(
+			iconRegistry: MatIconRegistry, 
+			sanitizer: DomSanitizer, 
+			private carrinhoService: CarrinhoService,
+			private dialog: MatDialog,
+			private produtoService: ProdutoService,
+			private associadoService: AssociadoService,
+			@Optional() @Inject(MAT_DIALOG_DATA) public venda: Venda
+		) {
 		// To avoid XSS attacks, the URL needs to be trusted from inside of your application.
 		const avatarsSafeUrl = sanitizer.bypassSecurityTrustResourceUrl('./assets/avatars.svg');
 		iconRegistry.addSvgIconSetInNamespace('avatars', avatarsSafeUrl);
@@ -28,29 +37,76 @@ export class CarrinhoComponent {
 		}
 	}
 
-	addProduto(produto: Produto): void {
-		// let length = this.venda.produtos && this.venda.produtos.length;
-		// if (!length) {
-		// 	this.venda.produtos = [];
-		// 	length = 0;
-		// }
-		// length++;
-		// if (!produto) {
-		// 	produto = new Produto();
-		// }
+	addProduto(): void {
+		if (!this.venda) {
+			return;
+		}
+		if (!this.venda.produtos || !this.venda.produtos.length) {
+			this.venda.produtos = [];
+		}
+		const vendaProduto = new VendaProduto();
+		this.venda.produtos.push(vendaProduto);
+	}
 
-		// this.venda.produtos.push(produto);
-		// this.venda.total = this.getTotalVenda();
+	compararAssociado(associadoAtual: Associado, associadoSelecionado: Associado): boolean {
+		return associadoAtual && associadoSelecionado && 
+			associadoAtual.id === associadoSelecionado.id;
+	}
+
+	compararProduto(produtoAtual: Produto, produtoSelecionado: Produto): boolean {
+		return produtoAtual && produtoSelecionado &&
+			produtoAtual.id === produtoSelecionado.id;
 	}
 
 	private getTotalVenda(): number {
-		// if (!this.venda || !this.venda.produtos || !this.venda.produtos.length) {
-		// 	return 0;
-		// }
-		// let total = 0;
-		// this.venda.produtos.forEach(produto => total += produto['valor']);
-		// return total;
-		return 0;
+		if (!this.venda || !this.venda.produtos || !this.venda.produtos.length) {
+			return 0;
+		}
+		let total = 0;
+		this.venda.produtos.forEach(vendaProduto => 
+			total += (parseFloat(vendaProduto.quantidade || '0') * 
+				parseFloat(vendaProduto.valor || '0')));
+		return total;
+	}
+
+	getDescricaoProduto(vendaProduto: VendaProduto): string {
+		return (vendaProduto && vendaProduto.produto &&
+			vendaProduto.produto.descricao);
+	}
+	
+	getValorProduto(vendaProduto: VendaProduto): number {
+		return (vendaProduto && vendaProduto.produto && 
+			parseFloat(vendaProduto.produto.valor)) || 0;
+	}
+
+	ngOnInit() {
+		this.produtoService.findAll().subscribe(produtos => {
+			this.produtos = produtos || [];
+		});
+		this.associadoService.findAll().subscribe(associados => {
+			this.associados = associados || [];
+		});
+	}
+
+	onProdutoChange(produto, vendaProduto: VendaProduto): void {
+		if (vendaProduto) {
+			vendaProduto.produto = produto;
+			vendaProduto.valor = (produto && produto.valor) || '0';
+		}	
+		this.venda.total = `${this.getTotalVenda()}`;
+	}
+	
+	onQuantidadeChange(quantidade, vendaProduto: VendaProduto): void {
+		if (vendaProduto) {
+			vendaProduto.quantidade = `${quantidade || 0}`;	
+		}
+		this.venda.total = `${this.getTotalVenda()}`;
+	}
+
+	removerProduto(index: number) {
+		if (this.venda && this.venda.produtos && this.venda.produtos.length) {
+			this.venda.produtos.splice(index, 1);
+		}
 	}
 
 }
