@@ -3,5 +3,5 @@ export class PlanoConta {
     nomeConta: string;
     codConta: string;
     contaMae: string;
-
+    natureza: string;
 }

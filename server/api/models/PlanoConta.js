@@ -17,7 +17,6 @@ module.exports = {
     nomeConta: {
 			type: 'string',
 			required: true,
-			unique: true
 		},
 		codConta: {
 			type: 'string',

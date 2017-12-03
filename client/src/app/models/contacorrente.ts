@@ -1,4 +1,5 @@
 import { Banco } from "./banco";
+import { PlanoConta } from "./planoConta";
 
 export class Contacorrente {
     id:string;
@@ -6,5 +7,5 @@ export class Contacorrente {
     nrConta:string;
     agencia:string;
     banco: Banco;
-    //planoConta: Planoconta;
+    planoConta: PlanoConta;
 }
