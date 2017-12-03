@@ -36,10 +36,13 @@ import {
   
 })
 export class GrupousuarioComponent implements OnInit {
+	paginator: any;
 	grupousuario: Grupousuario = new Grupousuario();
 	grupousuarios : Grupousuario[] = [];
 	selectedGrupousuario: Grupousuario  = new Grupousuario;
 	filteredGrupousuarios: Grupousuario[] = [];
+	finalGrupoUsuarios: Grupousuario[] = [];
+	
 		
   constructor(
     iconRegistry: MatIconRegistry, 
@@ -62,7 +65,7 @@ export class GrupousuarioComponent implements OnInit {
 	getAll() {
 		this.grupousuarioService.getAll().subscribe(grupousuarios => {
 			this.grupousuarios = <Grupousuario[]>grupousuarios;
-			this.filteredGrupousuarios = Object.assign([], this.grupousuarios);
+			this.filteredGrupousuarios = Object.assign([], this.grupousuarios); 
 			this.selectedGrupousuario = this.grupousuarios[0];
 		}, err => {
 			this.openSnackBar("Não foi possível carregar os grupos de usuários", "OK");
@@ -138,6 +141,12 @@ export class GrupousuarioComponent implements OnInit {
 		});
 	}
 
+	onPaginateChange(event):void{
+		let startIndex = event.pageIndex * event.pageSize;
+		let endIndex = Math.min(startIndex + this.paginator.pageSize, this.filteredGrupousuarios.length);
+		this.finalGrupoUsuarios = this.filteredGrupousuarios.slice(startIndex, endIndex);
+		
+	 }
 
 
 

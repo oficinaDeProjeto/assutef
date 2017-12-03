@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { GenericService } from './../../services/generic/generic.service';
-import { MatDialogModule, MatSlideToggleModule } from '@angular/material';
+import { MatDialogModule, MatSlideToggleModule, MatPaginatorModule } from '@angular/material';
 import { MatButtonModule, MatInputModule } from '@angular/material';
 import { MatCardModule } from '@angular/material';
 import { MatIconModule } from '@angular/material';
@@ -47,7 +47,8 @@ import {
     FlexLayoutModule,
     MatSnackBarModule,
     ConfirmDialogModule,
-    MaskModule
+    MaskModule,
+    MatPaginatorModule 
   ],
   providers: [
     AuthService, GenericService, GrupousuarioService
