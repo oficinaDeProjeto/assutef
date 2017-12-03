@@ -1,12 +1,17 @@
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef, MatSnackBar } from '@angular/material';
 import { Component, OnInit, Optional, Inject } from '@angular/core';
-import { Lancamento } from '../../../models/lancamento';
+import { Lancamento } from '../../../models/lancamento'; 
+import {LancamentoService} from '../../../services/lancamento/lancamento.service';
 import { Conveniado } from '../../../models/conveniado';
 import { ConveniadoService } from '../../../services/conveniado/conveniado.service';
 import { Associado } from '../../../models/associado';
 import { AssociadoService } from '../../../services/associado/associado.service';
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
+import {LancamentoComponent} from '../lancamento.component';
+import {BrowserModule} from '@angular/platform-browser';
+import {ViewChild} from '@angular/core';
+
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/map';
 
@@ -20,6 +25,13 @@ import 'rxjs/add/operator/map';
 })
 export class ModalLancamentoComponent implements OnInit {
 
+  lancamentoComponent: LancamentoComponent;
+  
+  @ViewChild('inptassoc')
+  inptassoc: any;
+  
+  valueassoc: string = '';
+  valuevlr: string;
   myControl: FormControl = new FormControl();
   myControl2: FormControl = new FormControl();
   associados: Associado[] = [];
@@ -34,7 +46,8 @@ export class ModalLancamentoComponent implements OnInit {
     @Optional() @Inject(MAT_DIALOG_DATA) public data,		
     private associadoService: AssociadoService,
     private conveniadoService: ConveniadoService,
-    
+    private lancamentoService: LancamentoService,
+    private snackBar: MatSnackBar
   ) {
    }
 
@@ -72,6 +85,29 @@ export class ModalLancamentoComponent implements OnInit {
   }
   displayFnConveniado(user: Conveniado): string {
     return user ? user.razaosocial : user.razaosocial;
+  }
+
+  salvarusuario(){
+
+    if(this.lancamento == null){
+      this.lancamento = new Lancamento();
+    }
+    this.lancamento.dataLancamento =  new Date();
+    this.lancamentoService.save(this.lancamento).subscribe(lancamento => {
+      console.log('Lançado!');
+      this.openSnackBar('Lançado', "Ok");
+      this.valueassoc = null;
+      this.inptassoc.nativeElement.focus();
+		}, err => {
+			console.log(err);
+		});
+  }
+
+
+  openSnackBar(message: string, action: string) {
+		this.snackBar.open(message, action, {
+			duration: 10000,
+		});
   }
 
 }

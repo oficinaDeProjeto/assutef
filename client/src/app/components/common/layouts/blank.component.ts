@@ -9,10 +9,10 @@ declare var jQuery:any;
 export class blankComponent {
 
     ngAfterViewInit() {
-        jQuery('body').addClass('gray-bg');
+        // jQuery('body').addClass('gray-bg');
     }
 
     ngOnDestroy() {
-        jQuery('body').removeClass('gray-bg');
+        // jQuery('body').removeClass('gray-bg');
     }
 }

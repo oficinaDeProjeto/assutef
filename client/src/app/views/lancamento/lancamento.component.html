@@ -7,32 +7,30 @@
 	  </mat-form-field>
 	</div>
 
-	
-
 	<mat-table #table [dataSource]="dataSource" matSort>
 		
   
 	  <!-- Position Column -->
 	  <ng-container matColumnDef="Conveniado">
-		<mat-header-cell *matHeaderCellDef> Conveniado </mat-header-cell>
+		<mat-header-cell *matHeaderCellDef  mat-sort-header> Conveniado </mat-header-cell>
 		<mat-cell *matCellDef="let elemento"> {{elemento.conveniado}} </mat-cell>
 	  </ng-container>
   
 	  <!-- Name Column -->
 	  <ng-container matColumnDef="Associado">
-		<mat-header-cell *matHeaderCellDef> Associado </mat-header-cell>
+		<mat-header-cell *matHeaderCellDef  mat-sort-header> Associado </mat-header-cell>
 		<mat-cell *matCellDef="let elemento"> {{elemento.associado}} </mat-cell>
 	  </ng-container>
   
 	  <!-- Weight Column -->
 	  <ng-container matColumnDef="Valor">
-		<mat-header-cell *matHeaderCellDef> Valor </mat-header-cell>
+		<mat-header-cell *matHeaderCellDef  mat-sort-header> Valor </mat-header-cell>
 		<mat-cell *matCellDef="let elemento"> R$ {{elemento.valor | number: '.2'}} </mat-cell>
 	  </ng-container>
   
 	  <!-- Color Column -->
 	  <ng-container matColumnDef="Data">
-		<mat-header-cell *matHeaderCellDef> Data </mat-header-cell>
+		<mat-header-cell *matHeaderCellDef  mat-sort-header> Data </mat-header-cell>
 		<mat-cell *matCellDef="let elemento"> {{elemento.dia | date: 'dd/MM/yyyy'}} </mat-cell>
 		</ng-container>
 		
@@ -53,11 +51,9 @@
 	  <mat-row *matRowDef="let elemento; columns: displayedColumns;"></mat-row>
 	</mat-table>
 	
-	<mat-paginator #paginator
-		[pageSize]="1"
-		[pageSizeOptions]="[5, 10, 20]">
-	</mat-paginator>
-  </div>
+	<mat-paginator [length]="filteredLancamentos.length" [pageSize]="10" (page)="onPaginateChange($event)"[pageSizeOptions]="[1, 5, 10, 25, 100]"></mat-paginator>
+	
+</div>
 
 
 <button mat-fab (click)="openDialog()" class="fab-bottom-right">

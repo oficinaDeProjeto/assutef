@@ -32,8 +32,7 @@ module.exports = {
 		},
 		categoria: {
 			type: 'string',
-			required: true,
-			unique: true
+			required: true
 		},
 		unidade: {
 			type: 'string',

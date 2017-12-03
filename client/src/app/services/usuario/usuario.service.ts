@@ -27,10 +27,10 @@ export class UsuarioService extends SuperService {
         return this.httpClient.get<Usuario[]>(`${this.apiUrl}usuario`);
     }
 	
-	save(usuario: Usuario): Observable<Usuario> {
+	save(usuario: Usuario): Observable<any> {
 		if(usuario.id)
-            return this.httpClient.put<Usuario>(`${this.apiUrl}usuario/${usuario.id}`, usuario);
-		return this.httpClient.post<Usuario>(`${this.apiUrl}usuario`, usuario);
+            return this.httpClient.put<any>(`${this.apiUrl}usuario/${usuario.id}`, usuario);
+		return this.httpClient.post<any>(`${this.apiUrl}usuario`, usuario);
     }
     
     delete(id: string): Observable<Usuario> {

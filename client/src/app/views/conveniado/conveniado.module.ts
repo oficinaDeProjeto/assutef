@@ -1,4 +1,4 @@
-
+import { MaskModule } from './../../directives/mask/mask.module';
 import { AuthService } from './../../services/auth/auth.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
@@ -18,13 +18,16 @@ import {
     MatNativeDateModule,
     MatRadioModule,
     MatTooltipModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatPaginatorModule
 } from "@angular/material";
 import { ConveniadoComponent } from './conveniado.component';
 import { ModalConveniadoComponent } from './modal/modal-conveniado.component';
-import { appMaskModule } from '../../directives/mask.module';
 import { ConveniadoService } from '../../services/conveniado/conveniado.service';
 import { TipoconveniadoService } from '../../services/tipoconveniado/tipoconveniado.service';
+import { BancoService } from '../../services/banco/banco.service';
+import { MaskService } from '../../directives/mask/mask.service';
+import { GenericService } from '../../services/generic/generic.service';
 
 @NgModule({
     declarations: [ConveniadoComponent, ModalConveniadoComponent],
@@ -45,13 +48,14 @@ import { TipoconveniadoService } from '../../services/tipoconveniado/tipoconveni
         MatButtonModule,
         MatRadioModule,
         FlexLayoutModule,
-        appMaskModule,
         MatTooltipModule,
-        MatSlideToggleModule
+        MatSlideToggleModule,
+        MaskModule,
+        MatPaginatorModule
     ],
     entryComponents: [ModalConveniadoComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    providers: [AuthService, ConveniadoService, TipoconveniadoService]
+    providers: [AuthService, GenericService, ConveniadoService, TipoconveniadoService, BancoService, MaskService]
 })
 
 export class ConveniadoModule { }

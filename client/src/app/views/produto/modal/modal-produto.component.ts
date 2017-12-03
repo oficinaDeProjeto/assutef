@@ -13,8 +13,9 @@ import { Categoria } from '../../../models/categoria';
 	styleUrls: ['./modal-produto.component.css']
 })
 export class ModalProdutoComponent implements OnInit {
+	categorias: Categoria[] = [];
 	produto: Produto = new Produto();
-	categorias: Categoria[] = []
+	
 
 	constructor(
 		public dialogRef: MatDialogRef<ModalProdutoComponent>,
@@ -26,11 +27,11 @@ export class ModalProdutoComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
-		if (this.data)
+		if (this.data) {
 			this.produto = this.data;
-
+		}
 		this.findAllCategoria();
-		
+		//this.categorias = this.data.categoria;
 	}
 
 	findAllCategoria() {

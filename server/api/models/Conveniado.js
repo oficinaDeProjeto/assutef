@@ -22,8 +22,7 @@ module.exports = {
 		},
 		nomefantasia: {
 			type: 'string',
-			required: true,
-			unique: true
+			required: true
 		},
 		telefone: {
 			type: 'string',
@@ -33,8 +32,7 @@ module.exports = {
 			unique: true,
 		},
 		comissao: {
-			type: 'string',
-			unique: true,
+			type: 'string'
 		},
 		datacadastro: {
 			type: 'date',
@@ -48,6 +46,9 @@ module.exports = {
     },
 		tipoconveniado:{
 			model: 'tipoconveniado'
+		},
+		contacorrente:{
+			model: 'contacorrente'
 		}
   }
 };

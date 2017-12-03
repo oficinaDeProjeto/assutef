@@ -3,8 +3,7 @@
 	<div>
 		<mat-card fxFlex>
 			<mat-card-header>
-				<mat-card-title>Produto</mat-card-title>
-				
+				<mat-card-title>Produto</mat-card-title>				
 				<mat-card-subtitle>Lista de produtos cadastrados</mat-card-subtitle>
 				<span fxFlex></span>
 				<mat-input-container>
@@ -13,8 +12,7 @@
 			</mat-card-header>
 			<mat-card-content>
 				<mat-list>
-
-						<mat-list-item *ngFor="let produto of filteredProdutos">
+					<mat-list-item *ngFor="let produto of filteredProdutos">
 						<div fxLayout="row" fxLayoutAlign="space-between center" >
 							<div>
 								<h4 mat-line>{{produto.nome}}</h4>

@@ -1,4 +1,4 @@
-import { MatDialogModule, MatInputModule, MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatStepperModule, MatSelectModule, MatDatepickerModule, MatTooltipModule, MatSnackBarModule } from '@angular/material';
+import { MatDialogModule, MatInputModule, MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatStepperModule, MatSelectModule, MatDatepickerModule, MatTooltipModule, MatSnackBarModule, MatPaginatorModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -30,7 +30,8 @@ import { ConfirmDialogModule } from '../../components/common/confirm-dialog/conf
         FlexLayoutModule,
         MatTooltipModule,
         MatSnackBarModule,
-        ConfirmDialogModule    
+        ConfirmDialogModule,
+        MatPaginatorModule   
     ],
     entryComponents:[ModalTipoconveniadoComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],

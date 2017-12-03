@@ -1,0 +1,43 @@
+<div class="content" fxLayout="row" fxLayoutAlign="space-around center">
+	<mat-card >
+		<mat-card-header>
+			<mat-input-container>
+				<input class="input" matInput [(ngModel)]="query" width="700" name="query" placeholder="Pesquise pelo Nome do banco" (input)="filterBanco(query)">
+				<span fxFlex.gt-sm="50" fxFlex="100" class="p-5"></span>
+			</mat-input-container>
+		</mat-card-header><br>
+		<mat-card-content>
+			<mat-card-content>
+				<mat-list>
+					<mat-list-item *ngFor="let banco of finalBancos" class="bancoReg">
+						<hr align="center" width="700" size="0">
+						<div fxLayout="row" fxLayoutAlign="space-between center" class="alinhar">
+							<div class="divNome">
+								<h4 mat-line>{{banco.descricao}}</h4>
+							</div>
+							<div class="divCodigo">
+								<h4 mat-line>{{banco.codigo}}</h4>
+							</div>
+							<div>
+								<button mat-icon-button color="primary" (click)="openDialog(banco)"
+									matTooltip="Editar o Banco {{banco.descricao}}">
+									<mat-icon>create</mat-icon>
+								</button>
+								<button mat-icon-button color="warn" (click)="delete(banco)"
+									matTooltip="Remover o Banco {{banco.descricao}}">
+									<mat-icon>delete</mat-icon>
+								</button>
+							</div>
+						</div>
+					</mat-list-item>
+				</mat-list>
+				<hr align="center" width="700" size="0">
+				<mat-paginator [length]="filteredBancos.length" [pageSize]="5" (page)="onPaginateChange($event)"[pageSizeOptions]="[1, 5, 10, 25, 100]"></mat-paginator>
+			</mat-card-content>
+		</mat-card-content>
+	</mat-card>
+</div>
+
+<button mat-fab (click)="openDialog()" class="fab-bottom-right">
+	<mat-icon>add</mat-icon>
+</button>

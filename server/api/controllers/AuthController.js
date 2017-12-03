@@ -6,33 +6,33 @@
  */
 
 module.exports = {
-	index: function (req, res) {
-		var email = req.param("email");
-		var password = req.param("password");
+	index:  (req, res) => {
+		let email = req.param("email");
+		let password = req.param("password");
 
 		if (!email || !password) {
-			return res.json(401, { err: "E-mail e senha são necessários" });
+			return res.ok("E-mail e senha são necessários");
 		}
 
-		Usuario.findOne({ email: email }).then(function (user) {
-			Usuario.comparePassword(password, user, function (err, valid) {
+		Usuario.findOne({ email: email }).then( (user) => {
+			Usuario.comparePassword(password, user,  (err, valid) => {
 				if (err) {
-					return res.json(403, { err: "forbidden" });
+					return res.ok("E-mail ou senha inválidos");
 				}
 
 				if (!valid) {
-					return res.json(401, { err: "E-mail ou senha inválidos" });
+					return res.ok("E-mail ou senha inválidos");
 				} else {
 					res.json({
 						token: jwToken.issue({ id: user.id })
 					});
 				}
 			})
-		}).catch(function (err) {
-			return res.json(401, { err: "E-mail ou senha inválidos!" });
+		}).catch( (err) => {
+			return res.ok("E-mail ou senha inválidos!");
 		})
 	},
-	getusuariobytoken: function (req, res) {
+	getusuariobytoken:(req, res) => {
 		var token, idUsuario;
 		if (req.headers && req.headers.authorization) {
 			var parts = req.headers.authorization.split(" ");
@@ -44,14 +44,16 @@ module.exports = {
 			}
 		}
 		idUsuario = jwToken.getIdUsuarioByToken(token);
-		Usuario.findOne({ id: idUsuario }).then(function (user) {
+		console.log(idUsuario)
+		Usuario.findOne({ id: idUsuario }).then( (user) => {
 			if (!user) {
-				return res.json(401, { err: "Usuário não encontrado!" });
+				return res.ok( "Usuário não encontrado!" );
 			} else {
-				return res.json(user);
+				console.log(user);
+				return res.ok(user);
 			}
-		}).catch(function(err){
-			return res.json(403, { err: err });
+		}).catch((err) => {
+			return res.forbidden(err);
 		});
 	}
 };

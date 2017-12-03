@@ -12,13 +12,13 @@
 							<input matInput placeholder="Nome Fantasia" [(ngModel)]="conveniado.nomefantasia" required name="nomefantasia">
 						</mat-form-field>
 						<mat-form-field fxFlex.gt-sm="30" fxFlex="30" class="p-5">
-							<input matInput placeholder="CNPJ" [(ngModel)]="conveniado.cnpj" required name="cnpj">
+							<input matInput placeholder="CNPJ" [mask]="'cnpj'" [(ngModel)]="conveniado.cnpj" required name="cnpj">
 						</mat-form-field>
 						<mat-form-field fxFlex.gt-sm="30" fxFlex="30" class="p-5">
 							<input matInput placeholder="Comissão" [(ngModel)]="conveniado.comissao" required name="comissao">
 						</mat-form-field>					
 						<mat-form-field fxFlex.gt-sm="30" fxFlex="30" class="p-5">
-							<input matInput placeholder="Telefone" [(ngModel)]="conveniado.telefone" required name="telefone">
+							<input matInput placeholder="Telefone" [mask]="'brLandlinePhone'" [(ngModel)]="conveniado.telefone" required name="telefone">
 						</mat-form-field>	
 						<mat-form-field fxFlex="30" class="p-5">
 							<input required matInput name="datacadastro" [matDatepicker]="picker" [(ngModel)]="conveniado.datacadastro" placeholder="Informe a data de cadastro">
@@ -52,7 +52,7 @@
 				<form #enderecoForm="ngForm">
 					<div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="center start">
 						<mat-form-field fxFlex.gt-sm="50" fxFlex="100" class="p-5">
-							<input matInput placeholder="Cep" [(ngModel)]="conveniado.endereco.cep" name="cep"
+							<input matInput placeholder="Cep" [mask]="'cep'" [(ngModel)]="conveniado.endereco.cep" name="cep"
 							 (blur)="getAddressByPostalCode(conveniado.endereco.cep)">
 						</mat-form-field>
 						<div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="center start" fxFlex.gt-sm="50" fxFlex="100" class="p-5">
@@ -85,44 +85,73 @@
 			</form>
 		</mat-step>
 		<mat-step>
+			<form>
+				<ng-template matStepLabel>Dados da Conta Corrente</ng-template>
+				<form #dadosContaCorrenteForm="ngForm">
+					<div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="center start">
+						<mat-form-field fxFlex.gt-sm="30" fxFlex="30" class="p-5">
+							<input matInput placeholder="Nome da Conta" [(ngModel)]="conveniado.contacorrente.nome" required name="nome" >
+						</mat-form-field>					
+						<mat-form-field fxFlex.gt-sm="30" fxFlex="30" class="p-5">
+							<input matInput placeholder="Número da Conta" [(ngModel)]="conveniado.contacorrente.nrConta" required name="nrConta">
+						</mat-form-field>
+						<mat-form-field fxFlex.gt-sm="30" fxFlex="30" class="p-5">
+							<input matInput placeholder="Agência" [(ngModel)]="conveniado.contacorrente.agencia" required name="agencia">
+						</mat-form-field>
+						<mat-form-field fxFlex.gt-sm="30" fxFlex="30" class="p-5">
+							<mat-select name="banco" placeholder="Banco" [(ngModel)]="conveniado.contacorrente.banco">
+								<mat-option  *ngFor="let banco of bancos" [value]="banco.id">
+								{{ banco.descricao }}
+								</mat-option>
+							</mat-select>
+						</mat-form-field>
+					</div>
+				</form>
+				<div fxLayout="row">
+					<button mat-button matStepperNext color="primary" [disabled]="!dadosContaCorrenteForm.form.valid">Próximo</button>
+				</div>
+			</form>
+		</mat-step>
+		<mat-step>
 			<ng-template matStepLabel>Confirmar Dados</ng-template>
 			<div *ngIf="!error && !success">
-					<div class="ibox product-detail">
-						<div class="ibox-content">
-							<div class="row">
-								<div class="col-mat-7">
-									<h2 class="font-bold m-b-xs">
-											<small class="text-muted">Razão Social</small><br>
-										{{conveniado.razaosocial}}
-									</h2>
-									<div class="m-t-mat">
-										<h2 class="product-main-price">
-											<small class="text-muted">Nome Fantasia</small><br>
-											{{conveniado.nomefantasia}}
-										</h2>
-									</div>
-									<hr>
-									<h4>Confira os dados do Conveniado:</h4>
-									<div class="small text-muted">
-										<br>Data Cadastro: {{conveniado.datacadastro | date}}
-										<br>Telefone: {{conveniado.telefone}}
-										<br>Cnpj: {{conveniado.cnpj}}
-										<br>Comissão: {{conveniado.comissao}}
-										<br>Tipo Conveniado: {{conveniado.tipoconveniado}}
-										<br>Cep: {{conveniado.endereco?.cep}}
-										<br>Estado: {{conveniado.endereco?.uf}}
-										<br>Cidade: {{conveniado.endereco?.localidade}}
-										<br>Bairro: {{conveniado.endereco?.bairro}}
-										<br>Endereço: {{conveniado.endereco?.logradouro}} nº {{conveniado.endereco?.numero}}
-										<br>Ativado: {{conveniado.ativo}}
-									</div>
-									<hr>
-								</div>
-							</div>
-
+				<div class="ibox product-detail">
+					<div class="col-mat-7">
+						<h2 class="font-bold m-b-xs">
+								<small class="text-muted">Razão Social</small><br>
+							{{conveniado.razaosocial}}
+						</h2>
+						<div class="m-t-mat">
+							<h2 class="product-main-price">
+								<small class="text-muted">Nome Fantasia</small><br>
+								{{conveniado.nomefantasia}}
+							</h2>
 						</div>
+						<hr>
+						<h4>Confira os dados do Conveniado:</h4>
+						<div class="small text-muted"></div>
+						<br>Data Cadastro: {{conveniado.datacadastro | date}}
+						<br>Telefone: {{conveniado.telefone}}
+						<br>Cnpj: {{conveniado.cnpj}}
+						<br>Comissão: {{conveniado.comissao}}
+						<br>Tipo Conveniado: {{conveniado.tipoconveniado}}
+						<br>Cep: {{conveniado.endereco?.cep}}
+						<br>Estado: {{conveniado.endereco?.uf}}
+						<br>Cidade: {{conveniado.endereco?.localidade}}
+						<br>Bairro: {{conveniado.endereco?.bairro}}
+						<br>Endereço: {{conveniado.endereco?.logradouro}} nº {{conveniado.endereco?.numero}}
+						<br>Ativado: {{conveniado.ativo}}
 					</div>
+					<hr>
+					<h4>Dados da Conta Corrente:</h4>
+					<div class="small text-muted">
+						<br>Nome da Conta: {{conveniado.contacorrente?.nome}}
+						<br>Número da Conta: {{conveniado.contacorrente?.nrConta}}
+						<br>Número da Agência: {{conveniado.contacorrente?.agencia}}
+					</div>
+					<hr>
 				</div>
+			</div>
 			<app-animation-msg-error *ngIf="error"></app-animation-msg-error>
 			<app-animation-msg-success *ngIf="success"></app-animation-msg-success>
 			<div  md-dialog-actions fxLayout="row" fxLayoutAlign="end center">

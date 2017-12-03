@@ -9,7 +9,7 @@
 
 
         <mat-form-field class="example-full-width">
-            <input [(ngModel)]="lancamento.associado" type="text" placeholder="Associado" aria-label="Associado" matInput [formControl]="myControl" [matAutocomplete]="auto" >
+            <input #inptassoc [(ngModel)]="lancamento.associado" type="text" placeholder="Associado" aria-label="Associado" matInput [formControl]="myControl" [matAutocomplete]="auto" [value]="valueassoc" >
             <mat-autocomplete #auto="matAutocomplete"  [displayWith]="displayFnAssociado">
                 <mat-option *ngFor="let associadoValue of filteredAssociados | async" [value]="associadoValue">
                     {{ associadoValue.nome }}
@@ -41,8 +41,8 @@
         <p></p>-->
 
 
-        <mat-input-container>
-            <input [(ngModel)]="lancamento.valor" type="number" matInput placeholder="Valor R$" class="example-right-align">
+        <mat-input-container class="example-full-width">
+            <input [(ngModel)]="lancamento.valor" type="number" matInput placeholder="Valor R$" class="example-left-align " [value]="valueassoc">
             <span matPrefix>R$&nbsp;</span>
         </mat-input-container>
 
@@ -50,5 +50,5 @@
     </mat-card-content>
 
     <div md-dialog-actions fxLayout="row" fxLayoutAlign="end center">
-        <button mat-button color="primary" [mat-dialog-close]="lancamento">Salvar</button>
+        <button mat-raised-button color="primary" (click)="salvarusuario()">Salvar</button>
     </div>
