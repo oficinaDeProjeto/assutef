@@ -79,19 +79,23 @@ var createPaisEstadoCidade = function () {
  * Caso não exista o usuário admin, será criado um.
  */
 var createAdminUsuario = function () {
-	Usuario.findOrCreate({ email: 'admin@admin.com' }, {
-		nome: "admin",
-		email: 'admin@admin.com',
-		password: 'admin',
-		confirmPassword: 'admin',
-		empresa: '',
-		role: 'ADMIN',
-		avatar: ''
-	}).exec(function (error, createdOrFoundRecords) {
-		if (error) {
-			sails.log("Usuário administrador não foi criado", error.errmsg);
-		} else {
-			sails.log("Usuario admin ok", createdOrFoundRecords.id);
+	Grupousuario.findOrCreate({nome: 'ADMIN'}, {
+		nome: "ADMIN"
+	}).exec((error, grupoFound) => {
+		if(error) sails.log("Erro ao criar grupo de usuario ADMIN", error.errmsg);
+		else {
+			Usuario.findOrCreate({ email: 'admin@admin.com' }, {
+				nome: "admin",
+				email: 'admin@admin.com',
+				password: 'admin',
+				confirmPassword: 'admin',
+				grupo: grupoFound,
+				role: 'ADMIN'
+			}).exec((err, userAdmin) => {
+				if (err) sails.log("Usuário administrador não foi criado", err.errmsg);
+				else sails.log("Usuario admin ok", userAdmin.id);
+			})
 		}
 	});
+	
 };
