@@ -5,8 +5,6 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatIconRegistry, MatDialog, MatSnackBar, MatPaginator } from "@angular/material";
 import { ConfirmDialogService } from '../../components/common/confirm-dialog/confirm-dialog.service';
-import { Grupousuario } from '../../models/Grupousuario';
-
 
 @Component({
 	selector: 'app-usuario',
@@ -80,7 +78,6 @@ export class UsuarioComponent implements OnInit {
 		});
 
 		dialogRef.afterClosed().subscribe(result => {
-			console.log(result);
 			if(typeof result !== 'undefined')
 				this.save(result);
 		});

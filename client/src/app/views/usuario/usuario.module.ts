@@ -29,7 +29,7 @@ import { CommonModule } from '@angular/common';
         MatTooltipModule,
         MatPaginatorModule,                
         MatSelectModule ,
-        MatStepperModule    
+        MatStepperModule 
     ],
     providers: [
         GenericService
