@@ -16,7 +16,7 @@ export class ModalProdutoComponent implements OnInit {
 	categorias: Categoria[] = [];
 	produto: Produto = new Produto();
 	
-
+//construtores
 	constructor(
 		public dialogRef: MatDialogRef<ModalProdutoComponent>,
 		@Optional() @Inject(MAT_DIALOG_DATA) public data: Produto,
@@ -25,7 +25,7 @@ export class ModalProdutoComponent implements OnInit {
 		private produtoService: ProdutoService,
 		private categoriaService: CategoriaService
 	) { }
-
+//abertura do modal de produtos trazendo todas as categorias
 	ngOnInit() {
 		if (this.data) {
 			this.produto = this.data;
@@ -33,7 +33,7 @@ export class ModalProdutoComponent implements OnInit {
 		this.findAllCategoria();
 		//this.categorias = this.data.categoria;
 	}
-
+//buscar categorias
 	findAllCategoria() {
 		this.categoriaService.findAll().subscribe(res => {
 			this.categorias = res;
@@ -41,6 +41,7 @@ export class ModalProdutoComponent implements OnInit {
 			this.openSnackBar("Erro ao listar categoria", "OK");
 		})
 	}
+	//msg na parte inferior da tela
 	openSnackBar(message: string, action: string) {
 		this.snackBar.open(message, action, {
 			duration: 10000,

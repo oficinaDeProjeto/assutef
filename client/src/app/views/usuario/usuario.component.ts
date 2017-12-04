@@ -6,7 +6,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatIconRegistry, MatDialog, MatSnackBar, MatPaginator } from "@angular/material";
 import { ConfirmDialogService } from '../../components/common/confirm-dialog/confirm-dialog.service';
 
-
 @Component({
 	selector: 'app-usuario',
 	templateUrl: './usuario.component.html',
@@ -48,7 +47,7 @@ export class UsuarioComponent implements OnInit {
 	}
 	
 	save(usuario): void {
-		usuario.role = "ADMIN";
+		if(typeof usuario.role === 'undefined')	usuario.role = "USER";
 		this.usuarioService.save(usuario).subscribe(usuario => {
 			this.openSnackBar("Salvo com sucesso", "OK");
 			this.getAll();

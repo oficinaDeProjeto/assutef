@@ -17,7 +17,7 @@
 							[compareWith]="compararAssociado">
 							<mat-option align-text="center">Selecione o associado</mat-option>
 							<mat-option *ngFor="let associado of associados" 
-								[value]="associado">
+								[value]="associado.id">
 								{{associado.nome}}
 							</mat-option>
 						</mat-select>

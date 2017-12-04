@@ -27,11 +27,14 @@ module.exports = {
 		password: {
 			type: "string"
 		},
-		role: {
+		role: {	
 			type: 'string',
 			enum: ['ADMIN', 'USER', 'ASSOCIADO'],
 			required: "true",
-		},		
+		},
+		grupo: {
+			model: "grupousuario"
+		},	
 		// Para não enviar uma senha criptografada
 		toJSON:  function() {
 			var obj = this.toObject();
@@ -42,8 +45,6 @@ module.exports = {
 	// Criptografa a senha antes de criar o usuário.
 	beforeCreate:  (values, next) =>{
 		bcrypt.genSalt(10,  function(err, salt){
-			console.log(salt)
-			console.log(values)
 			if (err) return next(err);
 			bcrypt.hash(values.password, salt,  (err, hash) =>{
 				if (err) return next(err);
@@ -55,16 +56,17 @@ module.exports = {
 	beforeUpdate: (values, next) => {
 		if(typeof values.password === 'undefined')
 			return next();
-		if(values.password != null){
+		if(values.confirmPassword != null){
 			bcrypt.genSalt(10, function(err, salt) {
 				if (err) return next(err);
 				bcrypt.hash(values.password, salt,  (err, hash) =>{
 					if (err) return next(err);
 					values.password = hash;
+					next();
 				});
 			});
-		}
-		next();
+		}else next();
+		
 	},
 	comparePassword:  (password, user, next) =>{
 		bcrypt.compare(password, user.password,  (err, match) =>{

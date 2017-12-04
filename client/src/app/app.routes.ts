@@ -19,6 +19,7 @@ import { TipoconveniadoComponent } from './views/tipoconveniado/tipoconveniado.c
 import { ImpressaoChequinhoComponent } from './views/chequinho/impressao/impressao-chequinho.component';
 import { VendaComponent } from './views/venda/venda.component';
 import { CarrinhoComponent } from './views/carrinho/carrinho.component';
+import { BancoComponent } from './views/banco/banco.component';
 
 
 const routes: Routes = [
@@ -86,17 +87,17 @@ const routes: Routes = [
                 }
             },
             {
+                path: 'banco',
+                component: BancoComponent,
+                data: {
+                    breadcrumb: "Banco"
+                }
+            },
+            {
                 path: 'perfil',
                 component: ProfileComponent,
                 data: {
                     breadcrumb: "Perfil"
-                }
-            },
-            {
-                path: 'chequinhoimpressao/:ids',
-                component: ImpressaoChequinhoComponent,
-                data: {
-                    breadcrumb: "Imprimir chequinho"
                 }
             },
             {
@@ -145,6 +146,13 @@ const routes: Routes = [
             {
                 path: 'activation-associado/:token',
                 component: ActivationAssociadoComponent
+            },
+            {
+                path: 'chequinhoimpressao/:ids',
+                component: ImpressaoChequinhoComponent,
+                data: {
+                    breadcrumb: "Imprimir chequinho"
+                }
             }
         ]
     },

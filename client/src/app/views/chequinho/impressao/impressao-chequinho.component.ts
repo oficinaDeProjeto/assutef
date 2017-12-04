@@ -34,15 +34,8 @@ export class ImpressaoChequinhoComponent implements OnInit {
 		this.el = el;
 	 }		 
 
-	ngOnInit() {
-	/*	if (this.dataAssociado)
-			this.associado = this.dataAssociado;
-		if (this.dataChequinho)
-			this.chequinho = this.dataChequinho;*/
-		//let idChequinho = this.route.snapshot.params["id"];
-		//this.qtdeChequinho = ;
-		this.tratarIDSChequinhos(this.route.snapshot.params["ids"]);
-		//this.getChequinhoById(idChequinho)
+	ngOnInit() {	
+		this.tratarIDSChequinhos(this.route.snapshot.params["ids"]);		
 	}
 
 	tratarIDSChequinhos(str : string):void{

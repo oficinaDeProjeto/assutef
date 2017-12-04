@@ -26,12 +26,12 @@ import 'rxjs/add/observable/fromEvent';
 })
 export class ProdutoComponent implements OnInit {
 	[x:string]: any;
-
+//instancio
 	produto: Produto = new Produto();
 	produtos: Produto[] = [];
 	selectedProduto: Produto = new Produto;
 	filteredProdutos: Produto[] = [];
-
+//contrói
 	constructor(
 		private produtoService: ProdutoService,
 		private router: Router,
@@ -44,11 +44,11 @@ export class ProdutoComponent implements OnInit {
 	}
 
 	@ViewChild('filter') filter: ElementRef;
-
+//busca todos os cadastros
 	ngOnInit() {
 		this.findAll();
 	}
-
+//método para fazer busca dos produtso
 	findAll() {
 		this.produtoService.findAll().subscribe(produtos => {
 			this.produtos = <Produto[]>produtos;
@@ -58,7 +58,7 @@ export class ProdutoComponent implements OnInit {
 			this.openSnackBar("Não foi possível carregar ", "OK");
 		});
 	}
-
+//salvar
 	salvarProduto(produto: Produto) {
 		this.produtoService.save(produto).subscribe(result => {
 			console.log('Salvo com sucesso');
@@ -67,11 +67,11 @@ export class ProdutoComponent implements OnInit {
 			console.log(err);
 		});
 	}
-
+//cadastrar novo produto
 	newProduto() {
 		this.selectedProduto = new Produto();
 	}
-
+//filtros
 	assignCopy() {
 		this.filteredProdutos = Object.assign([], this.produto);
 	}
@@ -85,7 +85,7 @@ export class ProdutoComponent implements OnInit {
 			)
 		}
 	}
-
+//abertura da janela abaixo para informação
 	openDialog(produto: Produto): void {
 		let dialogRef = this.dialog.open(ModalProdutoComponent, {
 			data: produto
@@ -97,7 +97,7 @@ export class ProdutoComponent implements OnInit {
 			}
 		});
 	}
-
+//deleta o produto mostrando um modal
 	delete(produto: Produto) {
 		this.confirmDialogService.confirm(
 			'Confirmação',
@@ -113,7 +113,7 @@ export class ProdutoComponent implements OnInit {
 				}
 			});
 	}
-
+//salva o produto
 	save(produto: Produto) {
 		this.produtoService.save(produto).subscribe(resultado => {
 			this.openSnackBar("Salvo com sucesso", "OK");
@@ -122,7 +122,7 @@ export class ProdutoComponent implements OnInit {
 			this.openSnackBar("Não foi possível salvar o produto", "OK");
 		});
 	}
-
+//janelas abaino na tela para msg
 	openSnackBar(message: string, action: string) {
 		this.snackBar.open(message, action, {
 			duration: 10000,
