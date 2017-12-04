@@ -17,7 +17,7 @@ export class ChequinhoComponent implements OnInit {
 	
 	chequinho: Chequinho = new Chequinho();
 	chequinhos: string[] = [];
-	qtdeChequinho: Number;
+	qtdeChequinho: number;
 
 
 	constructor(
@@ -42,25 +42,33 @@ export class ChequinhoComponent implements OnInit {
 	}
 	
 	gerarChequinho(){		
-		this.chequinho.data = new Date();
-		this.chequinho.numero = 1;
-		for(let i=0; i < this.qtdeChequinho; i+=1){
-			this.chequinhoService.save(this.chequinho).subscribe(chequinho => {				
-				this.chequinhos.push(chequinho.id);
-				console.log(this.chequinhos);
-				if(this.chequinhos.length === this.qtdeChequinho){					
-					this.router.navigate(["chequinhoimpressao", this.chequinhos.join('~') ]);
-				}
-
-			}, err => {
-				this.openSnackBar("Não foi possível gerar o(s) chequinho(s)", "OK");
-				return;
-			});
+		var valo = this.chequinho.valorLimite * this.qtdeChequinho;
+		if(valo <= 500){		
+			this.chequinho.data = new Date();
+			this.chequinho.numero = 1;
+			for(let i=0; i < this.qtdeChequinho; i+=1){
+				this.chequinhoService.save(this.chequinho).subscribe(chequinho => {				
+					this.chequinhos.push(chequinho.id);
+					console.log(this.chequinhos);
+					if(this.chequinhos.length === this.qtdeChequinho){					
+						this.router.navigate(["chequinhoimpressao", this.chequinhos.join('~') ]);
+					}
+			
+				}, err => {
+					this.openSnackBar("Não foi possível gerar o(s) chequinho(s)", "OK");
+					return;
+				});
+			}
+		}else{
+			this.openSnackBar("O valor limite disponível do associado é menor do que o valor requisitado para os chequinhos", "OK");
+			return;
 		}
-
-		//this.openSnackBar("Chequinho(s) gerado(s) com sucesso", "OK");			
-		//console.log(this.chequinhos.map(function(item){return item.id;}));
-		//	
+				
+	}
+	limparCampos(){
+		this.qtdeChequinho = 0;
+		this.chequinho.associado = null;
+		this.chequinho.valorLimite = 0;
 	}
 
 	openSnackBar(message: string, action: string) {

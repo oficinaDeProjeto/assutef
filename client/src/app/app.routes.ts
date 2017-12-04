@@ -101,13 +101,6 @@ const routes: Routes = [
                 }
             },
             {
-                path: 'chequinhoimpressao/:ids',
-                component: ImpressaoChequinhoComponent,
-                data: {
-                    breadcrumb: "Imprimir chequinho"
-                }
-            },
-            {
                 path: 'lancamento',
                 component: LancamentoComponent,
                 data: {
@@ -153,6 +146,13 @@ const routes: Routes = [
             {
                 path: 'activation-associado/:token',
                 component: ActivationAssociadoComponent
+            },
+            {
+                path: 'chequinhoimpressao/:ids',
+                component: ImpressaoChequinhoComponent,
+                data: {
+                    breadcrumb: "Imprimir chequinho"
+                }
             }
         ]
     },
