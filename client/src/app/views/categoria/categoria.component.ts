@@ -14,12 +14,12 @@ import { CategoriaService } from './../../services/categoria/categoria.service';
 })
 export class CategoriaComponent implements OnInit {
 	[x: string]: any;
-
+//instanciando
 	categoria: Categoria = new Categoria();
 	categorias: Categoria[] = [];
 	selectedCategoria: Categoria = new Categoria;
 	filteredCategorias: Categoria[] = [];
-
+//criando
 	constructor(
 		private genercService: GenericService,
 		private router: Router,
@@ -35,7 +35,7 @@ export class CategoriaComponent implements OnInit {
 		this.findAll();
 	}
 
-
+//buscando todas as categorias
 	findAll() {
 		this.categoriaService.findAll().subscribe(categorias => {
 			this.categorias = <Categoria[]>categorias;
@@ -53,7 +53,7 @@ export class CategoriaComponent implements OnInit {
 			console.log(err);
 		});
 	}
-
+//criando nova Categoria
 	newCategoria() {
 		this.selectedCategoria = new Categoria();
 	}
@@ -61,7 +61,7 @@ export class CategoriaComponent implements OnInit {
 	assignCopy() {
 		this.filteredCategorias = Object.assign([], this.categoria);
 	}
-
+//filtragem das categorias
 	filterCategoria(query) {
 		if (!query) {
 			this.filteredCategorias = Object.assign([], this.categorias);
@@ -71,7 +71,7 @@ export class CategoriaComponent implements OnInit {
 			)
 		}
 	}
-
+//abrir o modal de categoria
 	openDialog(categoria: Categoria): void {
 		let dialogRef = this.dialog.open(ModalCategoriaComponent, {
 			data: categoria
@@ -81,7 +81,7 @@ export class CategoriaComponent implements OnInit {
 			this.save(result);
 		});
 	}
-
+//deletar e msg
 	delete(categoria: Categoria) {
 		this.confirmDialogService.confirm(
 			'Confirmação',
@@ -97,7 +97,7 @@ export class CategoriaComponent implements OnInit {
 				}
 			});
 	}
-
+//salvar categoria e mostra msg .save do categoria.service.ts
 	save(categoria: Categoria) {
 		this.categoriaService.save(categoria).subscribe(categoria => {
 			this.openSnackBar("Salvo com sucesso", "OK");
@@ -106,7 +106,7 @@ export class CategoriaComponent implements OnInit {
 			this.openSnackBar("Não foi possível salvar ", "OK");
 		});
 	}
-
+//msg parte inferior da tela
 	openSnackBar(message: string, action: string) {
 		this.snackBar.open(message, action, {
 			duration: 10000,
