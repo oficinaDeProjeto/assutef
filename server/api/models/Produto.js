@@ -17,18 +17,15 @@ module.exports = {
 		},*/
 		name: {
 			type: 'string',
-			required: true,
-			unique: true
+			required: true
 		},
 		descricao: {
 			type: 'string',
-			required: true,
-			unique: true
+			required: true
 		},
 		valor: {
 			type: 'string',
-			required: true,
-			unique: true
+			required: true
 		},
 		categoria: {
 			type: 'string',
@@ -36,13 +33,11 @@ module.exports = {
 		},
 		unidade: {
 			type: 'string',
-			required: true,
-			unique: true
+			required: true
 		},
 		estoque: {
 			type: 'string',
-			required: true,
-			unique: true
+			required: true
 		}
   }
 };

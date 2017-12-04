@@ -56,3 +56,5 @@ import { AuthService } from '../../services/auth/auth.service';
 })
 
 export class ProdutoModule { }
+
+//todos os componentes utilizado para fazer o produto
