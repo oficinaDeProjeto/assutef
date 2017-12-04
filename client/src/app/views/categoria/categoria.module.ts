@@ -25,7 +25,7 @@ import {
     MatTooltipModule
 } from "@angular/material";
 
-
+//componentes utilizados para a construção dos modais da categoria
 @NgModule({
     declarations: [CategoriaComponent, ModalCategoriaComponent],
     exports: [CategoriaComponent, ModalCategoriaComponent],
