@@ -7,7 +7,7 @@ import { SuperService } from '../super.service';
 
 @Injectable()
 export class VendaService extends SuperService {
-  
+
   private apiUrl = environment.api_url;
   
   constructor(private httpClient: HttpClient) {
@@ -23,9 +23,9 @@ export class VendaService extends SuperService {
   }
 
   findByData(data: string): Observable<Venda[]> {
-		return this.httpClient.get<Venda[]>(`${this.apiUrl}venda?data=${data}`);
-	}
-      
+    return this.httpClient.get<Venda[]>(`${this.apiUrl}venda?data=${data}`);
+  }
+
   save(venda: Venda): Observable<Venda> {
      if (venda.id) {
        return this.httpClient.put<Venda>(`${this.apiUrl}venda/${venda.id}`, venda);

@@ -3,31 +3,35 @@
 		<div>
 			<mat-card fxFlex>
 				<mat-card-header>
-					<mat-card-title>Venda</mat-card-title>
-					<button mat-button (click)="addProduto()">Adicionar</button>
+					
+						<mat-card-title>Venda</mat-card-title>
+						<div layout="row"  style="min-height: 60px; margin-right:0px ">
+						<button  mat-raised-button  (click)="addProduto()">Adicionar produto
+						</button>
+					</div>
 				</mat-card-header>
 				<mat-card-content>
 					{{venda.data}}
 					<mat-form-field>
-						<mat-select [(ngModel)]="venda.associado"
+						<mat-select  placeholder="Selecione o associado" [(ngModel)]="venda.associado"
 							[compareWith]="compararAssociado">
-							<mat-option>Selecione o associado</mat-option>
+							<mat-option align-text="center">Selecione o associado</mat-option>
 							<mat-option *ngFor="let associado of associados" 
 								[value]="associado">
 								{{associado.nome}}
 							</mat-option>
 						</mat-select>
 					</mat-form-field>
-					<mat-list>
+						<mat-list>
 						<h3 mat-subheader>Produtos</h3>
 						<mat-list-item *ngFor="let vendaProduto of venda.produtos; let i=index">
 							<div fxLayout="row" fxLayoutAlign="space-between center" >
 								<div>
 									<h4 mat-line>
-										<mat-select [ngModel]="vendaProduto.produto"
+										<mat-select placeholder="Selecione o produto"[ngModel]="vendaProduto.produto"
 											(ngModelChange)="onProdutoChange($event, vendaProduto)"
 											[compareWith]="compararProduto">
-											<mat-option>Selecione o produto</mat-option>
+											<mat-option align-text="center">Selecione o produto</mat-option>
 											<mat-option *ngFor="let produto of produtos" 
 												[value]="produto">
 												{{produto.descricao}}
@@ -41,10 +45,16 @@
 										<input type="number" matInput min="1"
 											[ngModel]="vendaProduto.quantidade"
 											(ngModelChange)="onQuantidadeChange($event, vendaProduto)" 
-											name="quantidade[{{i}}]" placeholder="quantidade">
+											name="quantidade[{{i}}]" placeholder="digite a quantidade">
 									</p>
 								</div>
-								<div>
+						<!--		<div>
+									<button mat-icon-button color="warn" 
+										(click)="addProduto(i)">
+									<mat-icon>add</mat-icon>
+								</button>
+								</div> -->
+								<div>	
 									<button mat-icon-button color="warn" 
 										(click)="removerProduto(i)"
 										matTooltip="Remover {{getDescricaoProduto()}}">
@@ -57,9 +67,9 @@
 				</mat-card-content>
 				<mat-card-footer>
 					Total da venda: R$ {{venda.total}}
-					<button mat-button color="primary" [mat-dialog-close]="venda">Salvar</button>
+					<button  mat-button color="primary" [mat-dialog-close]="venda">Salvar</button>
 				</mat-card-footer>
-			</mat-card>
+			</mat-card> 
 		</div>
 	</div>
 </div>

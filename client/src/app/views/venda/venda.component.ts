@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Venda } from '../../models/venda';
 import { GenericService } from '../../services/generic/generic.service';
 import { VendaService } from '../../services/venda/venda.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
-import { MatSnackBar, MatDialog } from '@angular/material';
+import { MatSnackBar, MatDialog, MatPaginator } from '@angular/material';
 import { CarrinhoService } from '../../services/carrinho/carrinho.service';
 import { CarrinhoComponent } from '../carrinho/carrinho.component';
 import { ConfirmDialogService } from '../../components/common/confirm-dialog/confirm-dialog.service';
@@ -16,10 +16,13 @@ import { Produto } from '../../models/produto';
   styleUrls: ['./venda.component.css']
 })
 export class VendaComponent implements OnInit {
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
   venda: Venda = new Venda();
   vendas: Venda[] = [];
   selectedVenda: Venda = new Venda();
   filteredVendas: Venda[] = [];
+  finalVendas: Venda[] = [];
   
   constructor(
     private genercService: GenericService,
@@ -95,6 +98,7 @@ export class VendaComponent implements OnInit {
         }
       });
     }
+    this.finalVendas = this.vendas.slice(0, Math.min(this.vendas.length, this.paginator.pageSize));
   }
   
   openSnackBar(message: string, action: string) {
@@ -118,13 +122,18 @@ export class VendaComponent implements OnInit {
       });
   
   
-      dialogRef.afterClosed().subscribe(result => {
-        if (result) {
-          this.save(result);
-        }
-      });
-
-      // this.router.navigate(['carrinho']);
+  dialogRef.afterClosed().subscribe(result => {
+    if (result) {
+      this.save(result);
     }
+  });
+      // this.router.navigate(['carrinho']);
+  }
   
+ // onPaginateChange(event):void{
+//		let startIndex = event.pageIndex * event.pageSize;
+//		let endIndex = Math.min(startIndex + this.paginator.pageSize, this.vendas.length);
+//		this.finalVendas = this.vendas.slice(startIndex, endIndex);
+//		
+//	 }
 }
