@@ -42,16 +42,20 @@ export class ChequinhoComponent implements OnInit {
 	}
 	
 	gerarChequinho(){		
+		//A variavel de valor serve para saber se o valor requisitado dos chequinhos ultrapassa o limite disponível do associado
 		var valo = this.chequinho.valorLimite * this.qtdeChequinho;
-		if(valo <= 500){		
+		if(valo <= 500){		//Não há campo para valor limite no associado ainda
 			this.chequinho.data = new Date();
-			this.chequinho.numero = 1;
+			if(this.chequinho.numero == null){ //Apenas enquanto não usarmos o postgres
+				this.chequinho.numero = 1;
+			}			
 			for(let i=0; i < this.qtdeChequinho; i+=1){
+				this.chequinho.numero += 1; //Incrementa o número
 				this.chequinhoService.save(this.chequinho).subscribe(chequinho => {				
 					this.chequinhos.push(chequinho.id);
 					console.log(this.chequinhos);
 					if(this.chequinhos.length === this.qtdeChequinho){					
-						this.router.navigate(["chequinhoimpressao", this.chequinhos.join('~') ]);
+						this.router.navigate(["chequinhoimpressao", this.chequinhos.join('~') ]); //"Split ao contrário" para concatenar os códigos
 					}
 			
 				}, err => {
