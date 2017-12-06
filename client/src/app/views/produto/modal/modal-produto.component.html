@@ -12,13 +12,13 @@
 	<br />
 	
 		<mat-form-field>
-			<input matInput placeholder="Descrição" [(ngModel)]="produto.descricao" #nome="ngModel" required name="descricao">
+			<input matInput placeholder="Descrição"  [(ngModel)]="produto.descricao" #nome="ngModel" required name="descricao">
 		</mat-form-field>
 	
 	<br />
 	
 		<mat-form-field>
-			<input matInput placeholder="Valor" [(ngModel)]="produto.valor" #nome="ngModel" required name="valor">
+			<input matInput placeholder="Valor" [mask]="'money2'" [(ngModel)]="produto.valor" #nome="ngModel" required name="valor">
 		</mat-form-field>
 	
 	<br />
