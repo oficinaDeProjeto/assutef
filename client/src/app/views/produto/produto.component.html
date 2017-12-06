@@ -1,16 +1,18 @@
 <div class="content">
 	<div fxLayout="row" fxLayoutAlign="space-around center">
-	<div>
-		<mat-card fxFlex>
+	
+		<mat-card>
 			<mat-card-header>
 				<mat-card-title>Produto</mat-card-title>				
 				<mat-card-subtitle>Lista de produtos cadastrados</mat-card-subtitle>
-				<span fxFlex></span>
+				
 				<mat-input-container>
 					<input matInput [(ngModel)]="query" name="query" placeholder="Pesquise por produto" (input)="filterProduto(query)">
+					<span fxFlex.gt-sm="50" fxFlex="100" class="p-5"></span>
 				</mat-input-container>
 			</mat-card-header>
 			<mat-card-content>
+				<mat-card-content>
 				<mat-list>
 					<mat-list-item *ngFor="let produto of filteredProdutos">
 						<div fxLayout="row" fxLayoutAlign="space-between center" >
@@ -32,10 +34,10 @@
 					</mat-list-item>
 				</mat-list>
 				<mat-paginator [length]="filteredProdutos.length" [pageSize]="5" (page)="onPaginateChange($event)"[pageSizeOptions]="[1, 5, 10, 25, 100]"></mat-paginator>
-				
+			</mat-card-content>
 			</mat-card-content>
 		</mat-card>
-	</div>
+	
 </div>
 
 <button matTooltip="Adicionar novo produto" mat-fab (click)="openDialog()" class="fab-bottom-right">

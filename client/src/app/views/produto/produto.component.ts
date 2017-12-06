@@ -3,7 +3,7 @@ import { AuthService } from './../../services/auth/auth.service';
 import { Produto } from './../../models/produto';
 import { ModalProdutoComponent } from './modal/modal-produto.component';
 import { Router } from '@angular/router';
-import { MatDialog, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
+import { MatDialog, MAT_DIALOG_DATA, MatSnackBar, MatPaginator } from '@angular/material';
 import { Component, OnInit, Inject, ViewChild, ElementRef } from '@angular/core';
 import { ProdutoService } from '../../services/produto/produto.service';
 import { Categoria } from '../../models/categoria';
@@ -27,6 +27,9 @@ import 'rxjs/add/observable/fromEvent';
 export class ProdutoComponent implements OnInit {
 	[x:string]: any;
 
+	
+	@ViewChild(MatPaginator) paginator: MatPaginator;
+
 	produto: Produto = new Produto();
 	produtos: Produto[] = [];
 	selectedProduto: Produto = new Produto;
@@ -45,7 +48,7 @@ export class ProdutoComponent implements OnInit {
 	) {
 	}
 
-	@ViewChild('filter') filter: ElementRef;
+	//@ViewChild('filter') filter: ElementRef;
 //busca todos os cadastros
 	ngOnInit() {
 		this.findAll();
@@ -61,14 +64,14 @@ export class ProdutoComponent implements OnInit {
 		});
 	}
 //salvar
-	salvarProduto(produto: Produto) {
-		this.produtoService.save(produto).subscribe(result => {
-			console.log('Salvo com sucesso');
-			this.getAll();
-		}, err => {
-			console.log(err);
-		});
-	}
+//	salvarProduto(produto: Produto) {
+//		this.produtoService.save(produto).subscribe(result => {
+//			console.log('Salvo com sucesso');
+//			this.getAll();
+//		}, err => {
+//			console.log(err);
+//		});
+//	}
 //cadastrar novo produto
 	newProduto() {
 		this.selectedProduto = new Produto();
@@ -86,7 +89,7 @@ export class ProdutoComponent implements OnInit {
 				produto => produto.name.toLowerCase().indexOf(query.toLowerCase()) > -1
 			)
 		}
-		this.finalProdutos = this.finalProdutos.slice(0, Math.min(this.filteredProdutos.length, this.paginator.pageSize));
+		this.finalProdutos = this.filteredProdutos.slice(0, Math.min(this.filteredProdutos.length, this.paginator.pageSize));
 	}
 
 	openDialog(produto: Produto): void {
