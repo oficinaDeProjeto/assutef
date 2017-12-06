@@ -26,11 +26,13 @@ import 'rxjs/add/observable/fromEvent';
 })
 export class ProdutoComponent implements OnInit {
 	[x:string]: any;
-//instancio
+
 	produto: Produto = new Produto();
 	produtos: Produto[] = [];
 	selectedProduto: Produto = new Produto;
 	filteredProdutos: Produto[] = [];
+	finalProdutos: Produto[] = [];
+
 //contrói
 	constructor(
 		private produtoService: ProdutoService,
@@ -52,8 +54,8 @@ export class ProdutoComponent implements OnInit {
 	findAll() {
 		this.produtoService.findAll().subscribe(produtos => {
 			this.produtos = <Produto[]>produtos;
-			//this.produtos = produtos;
 			this.filteredProdutos = Object.assign([], this.produtos);
+			this.filterProduto("");
 		}, err => {
 			this.openSnackBar("Não foi possível carregar ", "OK");
 		});
@@ -80,12 +82,13 @@ export class ProdutoComponent implements OnInit {
 		if (!query) {
 			this.filteredProdutos = Object.assign([], this.produtos);
 		} else {
-			this.filteredProdutos = Object.assign([], this.produto).filter(
+			this.filteredProdutos = Object.assign([], this.produtos).filter(
 				produto => produto.name.toLowerCase().indexOf(query.toLowerCase()) > -1
 			)
 		}
+		this.finalProdutos = this.finalProdutos.slice(0, Math.min(this.filteredProdutos.length, this.paginator.pageSize));
 	}
-//abertura da janela abaixo para informação
+
 	openDialog(produto: Produto): void {
 		let dialogRef = this.dialog.open(ModalProdutoComponent, {
 			data: produto
@@ -113,7 +116,7 @@ export class ProdutoComponent implements OnInit {
 				}
 			});
 	}
-//salva o produto
+
 	save(produto: Produto) {
 		this.produtoService.save(produto).subscribe(resultado => {
 			this.openSnackBar("Salvo com sucesso", "OK");
@@ -122,12 +125,17 @@ export class ProdutoComponent implements OnInit {
 			this.openSnackBar("Não foi possível salvar o produto", "OK");
 		});
 	}
-//janelas abaino na tela para msg
+
 	openSnackBar(message: string, action: string) {
 		this.snackBar.open(message, action, {
 			duration: 10000,
 		});
 	}
 
-
+	onPaginateChange(event):void{
+		let startIndex = event.pageIndex * event.pageSize;
+		let endIndex = Math.min(startIndex + this.paginator.pageSize, this.filteredProdutos.length);
+		this.finalProdutos = this.filteredProdutos.slice(startIndex, endIndex);
+		
+	 }
 }
