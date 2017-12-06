@@ -17,96 +17,99 @@ import { AssociadoService } from '../../services/associado/associado.service';
 })
 export class CarrinhoComponent implements OnInit {
 
-	produtos: Produto[] = [];
-	associados: Associado[] = [];
+produtos: Produto[] = [];
+associados: Associado[] = [];
 
-	constructor(
-			iconRegistry: MatIconRegistry, 
-			sanitizer: DomSanitizer, 
-			private carrinhoService: CarrinhoService,
-			private dialog: MatDialog,
-			private produtoService: ProdutoService,
-			private associadoService: AssociadoService,
-			@Optional() @Inject(MAT_DIALOG_DATA) public venda: Venda
-		) {
-		// To avoid XSS attacks, the URL needs to be trusted from inside of your application.
-		const avatarsSafeUrl = sanitizer.bypassSecurityTrustResourceUrl('./assets/avatars.svg');
-		iconRegistry.addSvgIconSetInNamespace('avatars', avatarsSafeUrl);
+constructor(
+	iconRegistry: MatIconRegistry,
+	sanitizer: DomSanitizer,
+	private carrinhoService: CarrinhoService,
+	private dialog: MatDialog,
+	private produtoService: ProdutoService,
+	private associadoService: AssociadoService,
+	@Optional() @Inject(MAT_DIALOG_DATA) public venda: Venda
+) {
+	// To avoid XSS attacks, the URL needs to be trusted from inside of your application.
+const avatarsSafeUrl = sanitizer.bypassSecurityTrustResourceUrl('./assets/avatars.svg');
+	iconRegistry.addSvgIconSetInNamespace('avatars', avatarsSafeUrl);
 		if (!this.venda) {
-			this.venda = new Venda();
-		}
+		this.venda = new Venda();
 	}
+}
 
-	addProduto(): void {
-		if (!this.venda) {
-			return;
-		}
-		if (!this.venda.produtos || !this.venda.produtos.length) {
-			this.venda.produtos = [];
-		}
-		const vendaProduto = new VendaProduto();
-		this.venda.produtos.push(vendaProduto);
+addProduto(): void {
+	if (!this.venda) {
+		return;
 	}
+	if (!this.venda.produtos || !this.venda.produtos.length) {
+		this.venda.produtos = [];
+	}
+	const vendaProduto = new VendaProduto();
+	vendaProduto.quantidade = "1";
+	this.venda.produtos.push(vendaProduto);
+}
 
-	compararAssociado(associadoAtual: Associado, associadoSelecionado: Associado): boolean {
-		return associadoAtual && associadoSelecionado && 
-			associadoAtual.id === associadoSelecionado.id;
-	}
+compararAssociado(associadoAtual: Associado, associadoSelecionado: Associado): boolean {
+	return associadoAtual && associadoSelecionado && 
+		associadoAtual.id === associadoSelecionado.id;
+}
 
-	compararProduto(produtoAtual: Produto, produtoSelecionado: Produto): boolean {
-		return produtoAtual && produtoSelecionado &&
-			produtoAtual.id === produtoSelecionado.id;
-	}
+compararProduto(produtoAtual: Produto, produtoSelecionado: Produto): boolean {
+	return produtoAtual && produtoSelecionado &&
+		produtoAtual.id === produtoSelecionado.id;
+}
 
-	private getTotalVenda(): number {
-		if (!this.venda || !this.venda.produtos || !this.venda.produtos.length) {
-			return 0;
-		}
-		let total = 0;
-		this.venda.produtos.forEach(vendaProduto => 
-			total += (parseFloat(vendaProduto.quantidade || '0') * 
-				parseFloat(vendaProduto.valor || '0')));
-		return total;
+private getTotalVenda(): number {
+	if (!this.venda || !this.venda.produtos || !this.venda.produtos.length) {
+		return 0;
 	}
+	let total = 0;
+	this.venda.produtos.forEach(vendaProduto => {
+		const quantidade = parseFloat(vendaProduto.quantidade || '1');
+		const valor = parseFloat(vendaProduto.valor || '0');
+		total += quantidade * valor;
+	});
+	return total;
+}
 
-	getDescricaoProduto(vendaProduto: VendaProduto): string {
-		return (vendaProduto && vendaProduto.produto &&
-			vendaProduto.produto.descricao);
-	}
-	
-	getValorProduto(vendaProduto: VendaProduto): number {
-		return (vendaProduto && vendaProduto.produto && 
-			parseFloat(vendaProduto.produto.valor)) || 0;
-	}
+getDescricaoProduto(vendaProduto: VendaProduto): string {
+	return (vendaProduto && vendaProduto.produto &&
+		vendaProduto.produto.descricao);
+}
 
-	ngOnInit() {
-		this.produtoService.findAll().subscribe(produtos => {
-			this.produtos = produtos || [];
-		});
-		this.associadoService.findAll().subscribe(associados => {
-			this.associados = associados || [];
-		});
-	}
+getValorProduto(vendaProduto: VendaProduto): number {
+	return (vendaProduto && vendaProduto.produto && 
+		parseFloat(vendaProduto.produto.valor)) || 0;
+}
 
-	onProdutoChange(produto, vendaProduto: VendaProduto): void {
-		if (vendaProduto) {
-			vendaProduto.produto = produto;
-			vendaProduto.valor = (produto && produto.valor) || '0';
-		}	
-		this.venda.total = `${this.getTotalVenda()}`;
-	}
-	
-	onQuantidadeChange(quantidade, vendaProduto: VendaProduto): void {
-		if (vendaProduto) {
-			vendaProduto.quantidade = `${quantidade || 0}`;	
-		}
-		this.venda.total = `${this.getTotalVenda()}`;
-	}
+ngOnInit() {
+	this.produtoService.findAll().subscribe(produtos => {
+		this.produtos = produtos || [];
+	});
+	this.associadoService.findAll().subscribe(associados => {
+		this.associados = associados || [];
+	});
+}
 
-	removerProduto(index: number) {
-		if (this.venda && this.venda.produtos && this.venda.produtos.length) {
-			this.venda.produtos.splice(index, 1);
-		}
+onProdutoChange(produto, vendaProduto: VendaProduto): void {
+	if (vendaProduto) {
+		vendaProduto.produto = produto;
+		vendaProduto.valor = (produto && produto.valor) || '0';
+	}	
+	this.venda.total = `${this.getTotalVenda()}`;
+}
+
+onQuantidadeChange(quantidade, vendaProduto: VendaProduto): void {
+	if (vendaProduto) {
+		vendaProduto.quantidade = `${quantidade || 0}`;	
 	}
+	this.venda.total = `${this.getTotalVenda()}`;
+}
+
+removerProduto(index: number) {
+	if (this.venda && this.venda.produtos && this.venda.produtos.length) {
+		this.venda.produtos.splice(index, 1);
+	}
+}
 
 }
