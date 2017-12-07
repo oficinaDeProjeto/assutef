@@ -91,7 +91,7 @@ export class ProdutoComponent implements OnInit {
 		}
 		this.finalProdutos = this.filteredProdutos.slice(0, Math.min(this.filteredProdutos.length, this.paginator.pageSize));
 	}
-
+//abertura da janela abaixo para informação
 	openDialog(produto: Produto): void {
 		let dialogRef = this.dialog.open(ModalProdutoComponent, {
 			data: produto
@@ -119,7 +119,7 @@ export class ProdutoComponent implements OnInit {
 				}
 			});
 	}
-
+//salva o produto
 	save(produto: Produto) {
 		this.produtoService.save(produto).subscribe(resultado => {
 			this.openSnackBar("Salvo com sucesso", "OK");
@@ -128,7 +128,7 @@ export class ProdutoComponent implements OnInit {
 			this.openSnackBar("Não foi possível salvar o produto", "OK");
 		});
 	}
-
+//janelas abaino na tela para msg
 	openSnackBar(message: string, action: string) {
 		this.snackBar.open(message, action, {
 			duration: 10000,
