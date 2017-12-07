@@ -136,6 +136,7 @@ export class ProdutoComponent implements OnInit {
 	}
 
 	onPaginateChange(event):void{
+		console.log('Paginator');
 		let startIndex = event.pageIndex * event.pageSize;
 		let endIndex = Math.min(startIndex + this.paginator.pageSize, this.filteredProdutos.length);
 		this.finalProdutos = this.filteredProdutos.slice(startIndex, endIndex);
