@@ -22,10 +22,11 @@ import {
     MatNativeDateModule,
     MatRadioModule,
     MatSnackBarModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatPaginatorModule
 } from "@angular/material";
 
-
+//componentes utilizados para a construção dos modais da categoria
 @NgModule({
     declarations: [CategoriaComponent, ModalCategoriaComponent],
     exports: [CategoriaComponent, ModalCategoriaComponent],
@@ -48,7 +49,8 @@ import {
         FlexLayoutModule,
         MaskModule,
         MatSnackBarModule,
-        ConfirmDialogModule
+        ConfirmDialogModule,
+        MatPaginatorModule
        
              
 

@@ -11,7 +11,7 @@
 		<mat-card-content> <!-- lista  -->
 			<mat-list>
 				<h3 mat-subheader>Grupo de usuários</h3>
-				<mat-list-item *ngFor="let grupousuario of filteredGrupousuarios" (click)="openGrupouser(grupousuario)">					
+				<mat-list-item *ngFor="let grupousuario of finalGrupoUsuarios">					
 				
 					<div fxLayout="row" fxLayoutAlign="space-between center" >
 						<div>
@@ -31,8 +31,11 @@
 					</div>
 				</mat-list-item>
 			</mat-list>
+			<mat-paginator [length]="filteredGrupousuarios.length" [pageSize]="5" (page)="onPaginateChange($event)"[pageSizeOptions]="[1, 5, 10, 25, 100]"></mat-paginator>
+			
 		</mat-card-content>
 	</mat-card>
+
 </div>
 
 

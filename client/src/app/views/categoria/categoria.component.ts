@@ -3,8 +3,8 @@ import { AuthService } from './../../services/auth/auth.service';
 import { Categoria } from './../../models/categoria';
 import { ModalCategoriaComponent } from './modal/modal-categoria.component';
 import { Router } from '@angular/router';
-import { MatDialog, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
-import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialog, MAT_DIALOG_DATA, MatSnackBar, MatPaginator } from '@angular/material';
+import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { ConfirmDialogService } from './../../components/common/confirm-dialog/confirm-dialog.service';
 import { CategoriaService } from './../../services/categoria/categoria.service';
 @Component({
@@ -15,11 +15,15 @@ import { CategoriaService } from './../../services/categoria/categoria.service';
 export class CategoriaComponent implements OnInit {
 	[x: string]: any;
 
+	@ViewChild(MatPaginator) paginator: MatPaginator;
+	
+//instanciando
 	categoria: Categoria = new Categoria();
 	categorias: Categoria[] = [];
 	selectedCategoria: Categoria = new Categoria;
 	filteredCategorias: Categoria[] = [];
-
+	finalCategoria: Categoria[] = [];
+//criando
 	constructor(
 		private genercService: GenericService,
 		private router: Router,
@@ -35,11 +39,12 @@ export class CategoriaComponent implements OnInit {
 		this.findAll();
 	}
 
-
+//buscando todas as categorias
 	findAll() {
 		this.categoriaService.findAll().subscribe(categorias => {
 			this.categorias = <Categoria[]>categorias;
 			this.filteredCategorias = Object.assign([], this.categorias);
+			this.filterCategoria("");
 		}, err => {
 			this.openSnackBar("Não foi possível carregar ", "OK");
 		});
@@ -53,7 +58,7 @@ export class CategoriaComponent implements OnInit {
 			console.log(err);
 		});
 	}
-
+//criando nova Categoria
 	newCategoria() {
 		this.selectedCategoria = new Categoria();
 	}
@@ -61,17 +66,18 @@ export class CategoriaComponent implements OnInit {
 	assignCopy() {
 		this.filteredCategorias = Object.assign([], this.categoria);
 	}
-
+//filtragem das categorias
 	filterCategoria(query) {
 		if (!query) {
 			this.filteredCategorias = Object.assign([], this.categorias);
 		} else {
-			this.filteredCategorias = Object.assign([], this.categoria).filter(
+			this.filteredCategorias = Object.assign([], this.categorias).filter(
 				categoria => categoria.descricao.toLowerCase().indexOf(query.toLowerCase()) > -1
 			)
 		}
+		this.finalCategoria = this.filteredCategorias.slice(0, Math.min(this.filteredCategorias.length, this.paginator.pageSize));
 	}
-
+//abrir o modal de categoria
 	openDialog(categoria: Categoria): void {
 		let dialogRef = this.dialog.open(ModalCategoriaComponent, {
 			data: categoria
@@ -81,7 +87,7 @@ export class CategoriaComponent implements OnInit {
 			this.save(result);
 		});
 	}
-
+//deletar e msg
 	delete(categoria: Categoria) {
 		this.confirmDialogService.confirm(
 			'Confirmação',
@@ -97,7 +103,7 @@ export class CategoriaComponent implements OnInit {
 				}
 			});
 	}
-
+//salvar categoria e mostra msg .save do categoria.service.ts
 	save(categoria: Categoria) {
 		this.categoriaService.save(categoria).subscribe(categoria => {
 			this.openSnackBar("Salvo com sucesso", "OK");
@@ -106,12 +112,17 @@ export class CategoriaComponent implements OnInit {
 			this.openSnackBar("Não foi possível salvar ", "OK");
 		});
 	}
-
+//msg parte inferior da tela
 	openSnackBar(message: string, action: string) {
 		this.snackBar.open(message, action, {
 			duration: 10000,
 		});
 	}
 
-
+	onPaginateChange(event):void{
+		let startIndex = event.pageIndex * event.pageSize;
+		let endIndex = Math.min(startIndex + this.paginator.pageSize, this.filteredCategorias.length);
+		this.finalCategoria = this.filteredCategorias.slice(startIndex, endIndex);
+		
+	 }
 }
