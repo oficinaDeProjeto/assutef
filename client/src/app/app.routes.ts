@@ -20,6 +20,7 @@ import { ImpressaoChequinhoComponent } from './views/chequinho/impressao/impress
 import { VendaComponent } from './views/venda/venda.component';
 import { CarrinhoComponent } from './views/carrinho/carrinho.component';
 import { BancoComponent } from './views/banco/banco.component';
+import { RechequinhoComponent } from './views/rechequinho/rechequinho.component';
 
 
 const routes: Routes = [
@@ -133,6 +134,13 @@ const routes: Routes = [
                         component: CarrinhoComponent
                     }
                 ]
+            },
+            {
+                path: 'rechequinho',
+                component: RechequinhoComponent,
+                data:{
+                    breadcrumb: 'Re-Impressão Chequinho'
+                }
             }
         ]
     },
