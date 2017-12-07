@@ -7,7 +7,7 @@
 			<label style="font-size:11px;margin-left:14.7cm;max-width:4.7cm;">{{chequinho.valorLimite}}</label>												
 		</div>
 		<div style="margin-top:3.4cm">
-			<label style="position: absolute;font-size:11px;margin-left:4.2cm;max-width:4.3cm">1</label>			
+			<label style="position: absolute;font-size:11px;margin-left:4.2cm;max-width:4.3cm">{{chequinho.associado.id}}</label>			
 		
 			<label style="position: absolute;font-size:11px;margin-left:8.1cm;min-width:10cm;max-width:10cm"> {{chequinho.associado.nome}}</label>							
 
@@ -20,7 +20,7 @@
 			<ngx-barcode
 			[bc-format]='codabar'
 			[bc-element-type]='svg'
-			[bc-value]='1234'
+			[bc-value]='chequinho.numero'
 			[bc-width]=3
 			[bc-height]=50
 			[bc-display-value]=true

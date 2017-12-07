@@ -5,6 +5,7 @@ import { GenericService } from '../../../services/generic/generic.service';
 import { ProdutoService } from '../../../services/produto/produto.service';
 import { CategoriaService } from '../../../services/categoria/categoria.service';
 import { Categoria } from '../../../models/categoria';
+import { Masks } from '../../../services/constantes';
 
 
 @Component({
@@ -15,6 +16,7 @@ import { Categoria } from '../../../models/categoria';
 export class ModalProdutoComponent implements OnInit {
 	categorias: Categoria[] = [];
 	produto: Produto = new Produto();
+	masks = Masks;
 	
 //construtores
 	constructor(

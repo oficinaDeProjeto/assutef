@@ -3,7 +3,7 @@ import { AuthService } from './../../services/auth/auth.service';
 import { Produto } from './../../models/produto';
 import { ModalProdutoComponent } from './modal/modal-produto.component';
 import { Router } from '@angular/router';
-import { MatDialog, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
+import { MatDialog, MAT_DIALOG_DATA, MatSnackBar, MatPaginator } from '@angular/material';
 import { Component, OnInit, Inject, ViewChild, ElementRef } from '@angular/core';
 import { ProdutoService } from '../../services/produto/produto.service';
 import { Categoria } from '../../models/categoria';
@@ -26,11 +26,16 @@ import 'rxjs/add/observable/fromEvent';
 })
 export class ProdutoComponent implements OnInit {
 	[x:string]: any;
-//instancio
+
+	
+	@ViewChild(MatPaginator) paginator: MatPaginator;
+
 	produto: Produto = new Produto();
 	produtos: Produto[] = [];
 	selectedProduto: Produto = new Produto;
 	filteredProdutos: Produto[] = [];
+	finalProdutos: Produto[] = [];
+
 //contrói
 	constructor(
 		private produtoService: ProdutoService,
@@ -43,7 +48,7 @@ export class ProdutoComponent implements OnInit {
 	) {
 	}
 
-	@ViewChild('filter') filter: ElementRef;
+	//@ViewChild('filter') filter: ElementRef;
 //busca todos os cadastros
 	ngOnInit() {
 		this.findAll();
@@ -52,21 +57,21 @@ export class ProdutoComponent implements OnInit {
 	findAll() {
 		this.produtoService.findAll().subscribe(produtos => {
 			this.produtos = <Produto[]>produtos;
-			//this.produtos = produtos;
 			this.filteredProdutos = Object.assign([], this.produtos);
+			this.filterProduto("");
 		}, err => {
 			this.openSnackBar("Não foi possível carregar ", "OK");
 		});
 	}
 //salvar
-	salvarProduto(produto: Produto) {
-		this.produtoService.save(produto).subscribe(result => {
-			console.log('Salvo com sucesso');
-			this.getAll();
-		}, err => {
-			console.log(err);
-		});
-	}
+//	salvarProduto(produto: Produto) {
+//		this.produtoService.save(produto).subscribe(result => {
+//			console.log('Salvo com sucesso');
+//			this.getAll();
+//		}, err => {
+//			console.log(err);
+//		});
+//	}
 //cadastrar novo produto
 	newProduto() {
 		this.selectedProduto = new Produto();
@@ -80,10 +85,11 @@ export class ProdutoComponent implements OnInit {
 		if (!query) {
 			this.filteredProdutos = Object.assign([], this.produtos);
 		} else {
-			this.filteredProdutos = Object.assign([], this.produto).filter(
+			this.filteredProdutos = Object.assign([], this.produtos).filter(
 				produto => produto.name.toLowerCase().indexOf(query.toLowerCase()) > -1
 			)
 		}
+		this.finalProdutos = this.filteredProdutos.slice(0, Math.min(this.filteredProdutos.length, this.paginator.pageSize));
 	}
 //abertura da janela abaixo para informação
 	openDialog(produto: Produto): void {
@@ -129,5 +135,11 @@ export class ProdutoComponent implements OnInit {
 		});
 	}
 
-
+	onPaginateChange(event):void{
+		console.log('Paginator');
+		let startIndex = event.pageIndex * event.pageSize;
+		let endIndex = Math.min(startIndex + this.paginator.pageSize, this.filteredProdutos.length);
+		this.finalProdutos = this.filteredProdutos.slice(startIndex, endIndex);
+		
+	 }
 }
