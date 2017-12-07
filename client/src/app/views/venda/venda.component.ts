@@ -25,8 +25,7 @@ export class VendaComponent implements OnInit {
   selectedVenda: Venda = new Venda();
   filteredVendas: Venda[] = [];
   finalVendas: Venda[] = [];
- 
-  
+
   constructor(
     private genercService: GenericService,
     private vendaService: VendaService,
@@ -37,11 +36,11 @@ export class VendaComponent implements OnInit {
     private dialog: MatDialog,
     public confirmDialogService: ConfirmDialogService
   ) { }
-  
+
   ngOnInit() {
     this.findAll();
   }
-  
+
   findAll() {
       this.vendaService.findAll().subscribe(venda => {
         this.vendas = <Venda[]>venda;
@@ -69,17 +68,18 @@ export class VendaComponent implements OnInit {
     this.filteredVendas = Object.assign([], this.vendas);
     this.finalVendas = Object.assign([], this.filteredVendas);
   }
-  
+
   newVenda() {
       this.selectedVenda = new Venda();
     }
-  
+
   delete(venda: Venda) {
     this.confirmDialogService.confirm(
       'Confirmação',
       `Você tem ceteza que deseja remover essa venda?`)
       .subscribe(res => {
         if (res) {
+          // tslint:disable-next-line:no-shadowed-variable
           this.vendaService.delete(venda.id).subscribe(venda => {
             this.openSnackBar("Removida com sucesso", "OK");
             this.findAll();
@@ -88,7 +88,7 @@ export class VendaComponent implements OnInit {
           });
         }
       });
-  }  
+  }
 
   onDataChange(novaData): void {
     if (!novaData) {
@@ -105,7 +105,7 @@ export class VendaComponent implements OnInit {
     }
     this.finalVendas = this.filteredVendas.slice(0, Math.min(this.filteredVendas.length, this.paginator.pageSize));
   }
-  
+
 filterVenda(query) {
   if (!query) {
     this.filteredVendas = Object.assign([], this.vendas);
@@ -124,20 +124,20 @@ filterVenda(query) {
   }
 
   save(venda: Venda) {
-      this.vendaService.save(venda).subscribe(venda => {
+      // tslint:disable-next-line:no-shadowed-variable
+      this.vendaService.save(venda).subscribe( venda => {
         this.openSnackBar("Salva com sucesso", "OK");
         this.findAll();
       }, err => {
         this.openSnackBar("Não foi possível salvar a venda", "OK");
       });
     }
-  
+
   openDialog(venda): void {
       let dialogRef = this.dialog.open(CarrinhoComponent, {
         data: venda
       });
-  
-  
+
   dialogRef.afterClosed().subscribe(result => {
     if (result) {
       this.save(result);
@@ -145,8 +145,8 @@ filterVenda(query) {
   });
       // this.router.navigate(['carrinho']);
   }
-  
-onPaginateChange(event):void{
+
+onPaginateChange(event): void {
   let startIndex = event.pageIndex * event.pageSize;
   let endIndex = Math.min(startIndex + this.paginator.pageSize, this.filteredVendas.length);
   this.finalVendas = this.filteredVendas.slice(startIndex, endIndex);
