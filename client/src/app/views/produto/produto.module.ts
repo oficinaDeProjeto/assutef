@@ -19,7 +19,8 @@ import {
     MatNativeDateModule,
     MatRadioModule,
     MatSnackBarModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatPaginatorModule
 } from "@angular/material";
 import { ConfirmDialogModule } from '../../components/common/confirm-dialog/confirm-dialog.module';
 import { GenericService } from '../../services/generic/generic.service';
@@ -47,7 +48,8 @@ import { AuthService } from '../../services/auth/auth.service';
         FlexLayoutModule,
         MatSnackBarModule,
         ConfirmDialogModule,
-        MaskModule   
+        MaskModule,
+        MatPaginatorModule   
     ],
     entryComponents:[ModalProdutoComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
