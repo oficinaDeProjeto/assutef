@@ -31,7 +31,8 @@ export class LancamentoComponent implements OnInit {
 
 	@ViewChild(MatPaginator) paginator: MatPaginator;
 	@ViewChild(MatSort) sort: MatSort;
-
+	shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
+	//novo
 
 
 	el: Elemento = new Elemento();

@@ -1,3 +1,4 @@
+<a class="nav-item nav-link"><h3>Lançamentos</h3></a>
 <div class="container">
     <main role="main">
       <div class="row marketing">
@@ -15,9 +16,9 @@
                   </thead>
                   <tbody>
                   <tr *ngFor="let c of chequinhos">
-                    <td>{{c.conveniado.razaosocial}}</td>
+                   <!-- <td>{{c.conveniado.razaosocial}}</td>-->
                     <td>{{c.valorLimite}}</td>
-                    <td>{{c.qtdeChequinho}}</td>
+                    <td>{{c.qtdeChequinho | date:"MM/dd/yyyy"}}</td>
                   </tr>s
                   </tbody>
                 </table>
@@ -30,6 +31,7 @@
     <mat-paginator [length]="chequinhos.length" [pageSize]="5" (page)="onPaginateChange($event)"[pageSizeOptions]="[1, 5, 10, 25, 100]"></mat-paginator>
     
   </div>
+  
 <!--
 https://mongodbwise.wordpress.com/2014/05/22/mongodb-guia-rapido/
 http://fernandoanselmo.blogspot.com.br/2013/12/rest-arrumando-o-projeto.html

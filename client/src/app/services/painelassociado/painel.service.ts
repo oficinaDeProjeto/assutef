@@ -23,9 +23,9 @@ export class PainelService{
         return this.httpClient.get<Lancamento[]>(`${this.apiUrl}lancamento`)
     }
 
-    findAllConveniados(): Observable<Conveniado[]>{
+    /*findAllConveniados(): Observable<Conveniado[]>{
         return this.httpClient.get<Conveniado[]>(`${this.apiUrl}conveniado`);
-    }
+    }*/
 }
  /*listagem dos chequinhos
  observable = coleção de dados unidirecional, que notifica sempre que um item/objeto sofre mudanças

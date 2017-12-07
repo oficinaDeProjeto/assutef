@@ -51,6 +51,7 @@ export class PainelComponent implements OnInit {
         console.log(err);
       });	
     }
+    
 /*
     getAllConveniados(){
       this.painelService.findAllConveniados().subscribe(conveniado =>{
