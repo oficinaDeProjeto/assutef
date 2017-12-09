@@ -1,5 +1,5 @@
-import { Conveniado } from './../../models/conveniado';
 import { Observable } from 'rxjs/Observable';
+import { Conveniado } from './../../models/conveniado';
 import { Lancamento } from './../../models/lancamento';
 import { Chequinho } from './../../models/chequinho';
 import { HttpClient } from '@angular/common/http';
@@ -19,7 +19,10 @@ export class PainelService{
         return this.httpClient.get<Chequinho[]>(`${this.apiUrl}chequinho`);
     }
 
-    findAllLancamentos() : Observable<Lancamento[]>{ //listando a coleção de dados de lançamento
+    /*findAllLancamentos() : Observable<Lancamento[]>{ //listando a coleção de dados de lançamento
+        return this.httpClient.get<Lancamento[]>(`${this.apiUrl}lancamento`)
+    }*/
+    findAll() : Observable<Lancamento[]>{ //listando a coleção de dados de lançamento
         return this.httpClient.get<Lancamento[]>(`${this.apiUrl}lancamento`)
     }
 

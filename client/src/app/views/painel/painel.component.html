@@ -28,19 +28,9 @@
       </div>
     </div>
   </main>
-  <mat-paginator [length]="lancamentos.length" [pageSize]="5" (page)="onPaginateChange($event)"[pageSizeOptions]="[1, 5, 10, 25, 100]"></mat-paginator>
+  <mat-paginator [length]="filteredLancamentos.length" [pageSize]="5" (page)="onPaginateChange($event)"
+  [pageSizeOptions]="[1, 5, 10, 25, 100]"></mat-paginator>
 </div>
 <br />
 
-
-
-<!--verificar a criação da função list
-https://mongodbwise.wordpress.com/2014/05/22/mongodb-guia-rapido/
-http://fernandoanselmo.blogspot.com.br/2013/12/rest-arrumando-o-projeto.html
-
-- PESQUISA NA TELA
-- DATE FILTER
-- ORDENAÇÃO DOS REGISTROS OU APRESENTAÇÃO POR MÊS DOS DADOS
-- material designr
--->
 

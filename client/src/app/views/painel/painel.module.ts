@@ -1,4 +1,4 @@
-import { MatPaginatorModule } from '@angular/material';
+import { MatPaginatorModule} from '@angular/material';
 import { LancamentoModule } from './../lancamento/lancamento.module';
 import { ChequinhoService } from './../../services/chequinho/chequinho.service';
 import { LancamentoService } from './../../services/lancamento/lancamento.service';
@@ -21,7 +21,7 @@ import { NgModule } from '@angular/core';
         FlexLayoutModule, 
         RouterModule,
         LancamentoModule,
-        MatPaginatorModule     
+        MatPaginatorModule 
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA], //custom dos esquemas da classe
     providers: [ //injetando metodos e registrando componentes na classe painel service que contém a listagem dos dados
