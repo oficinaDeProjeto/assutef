@@ -2,3 +2,15 @@ a {
     color: inherit;
     text-decoration: none;
 }
+
+.corpo{
+    width: 85%;
+    height: 65%;
+    margin-left: 10%;
+    letter-spacing: 0.4em; word-spacing: 0.5em;
+    color: #5d665b;
+    font-size: 12px;
+    font-family: Arial, sans-serif;
+    text-align: justify;
+    background-color: #e8eae8;
+}
