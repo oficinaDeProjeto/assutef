@@ -1,0 +1,62 @@
+<div class="content">
+	<div fxLayout="row" fxLayoutAlign="space-around center">
+	<mat-card fxFlex="60"> 
+		   
+		<mat-card-header>
+			<mat-card-title>Re-impressão de chequinho</mat-card-title>
+			
+		</mat-card-header>		
+		<mat-card-content>				
+															
+      <mat-form-field>
+          <input type="text" [(ngModel)]="associadoSelecionado" placeholder="Pick one" aria-label="Number" matInput 
+                [formControl]="stateCtrl"  [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+            <mat-option *ngFor="let ass of assFiltrado | async" [value]="ass" (click)="carregarChequinhos()">
+              {{ ass.nome }}
+            </mat-option>
+          </mat-autocomplete>
+      </mat-form-field>
+              
+			</mat-card-content>
+
+      <mat-card-content>
+          <!--<mat-list>
+            <mat-list-item *ngFor="let cheqcheq of chequinhos" class="usuarioReg" >
+              <hr align="center" width="700" size="0">
+              <div fxLayout="row"  fxLayoutAlign="space-between center" >
+                <div>
+                  <h4 mat-line>{{cheqcheq.data}} - {{cheqcheq.valorLimite}}</h4>
+                </div>
+                <div>
+                </div>
+              </div>
+            </mat-list-item>
+          </mat-list>-->
+          <mat-selection-list #shoes>
+              <mat-list-option *ngFor="let cheqcheq of chequinhos">
+                  <div>
+                    <h4 mat-line>{{cheqcheq.data}} - {{cheqcheq.valorLimite}}</h4>
+                  </div>
+              </mat-list-option>
+            </mat-selection-list>
+            
+            <p>
+              Options selected: {{shoes.selectedOptions.selected.length}}
+            </p>
+        </mat-card-content>
+        <button type="button" mat-raised-button (click)="batata()">Ir</button>
+  </mat-card>
+	</div>
+
+
+<!--<mat-form-field floatLabel="never">
+      <input matInput placeholder="Selecione o associado" [matAutocomplete]="reactiveAuto" [(ngModel)]="test" [formControl]="stateCtrl">
+      <mat-autocomplete #reactiveAuto="matAutocomplete" [displayWith]="displayFn">
+        <mat-option *ngFor="let ass of associados" [value]="ass">
+          {{ ass.nome }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <button type="button" mat-raised-button (click)="batata()">Ir</button>-->

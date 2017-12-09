@@ -1,0 +1,63 @@
+<div fxLayout="row" fxLayoutAlign="space-around center">
+	<mat-horizontal-stepper>
+		<mat-step>
+			<form>
+				<ng-template matStepLabel>Dados da Conta</ng-template>
+				<form #dadosContasForm="ngForm">
+					<div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="center start">
+						<div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="center start">
+							<mat-form-field fxFlex.gt-sm="50" fxFlex="100" class="p-5">
+								<input matInput type="text" placeholder="Código" [(ngModel)]="planoConta.codConta" required name="codConta">
+							</mat-form-field>
+						</div>
+
+						<div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="center start">
+							<mat-form-field fxFlex.gt-sm="100" fxFlex="100" class="p-5">
+								<input matInput type="text" placeholder="Nome da Conta" [(ngModel)]="planoConta.nomeConta" required name="nomeConta">
+							</mat-form-field>
+						</div>
+
+						<div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="center start">
+							<mat-form-field fxFlex.gt-sm="50" fxFlex="100" class="p-5">
+								<input matInput type="text" placeholder="Conta Mãe" [(ngModel)]="planoConta.contaMae" required name="contaMae">
+							</mat-form-field>
+						</div>
+					</div>
+				</form>
+				<div fxLayout="row" fxLayoutAlign="end center">
+					<button mat-button matStepperNext color="primary" [disabled]="!dadosContasForm.form.valid">Próximo</button>
+				</div>
+			</form>
+		</mat-step>
+		<mat-step>
+			<ng-template matStepLabel>Conclusão</ng-template>
+			<div *ngIf="!error && !success">
+					<div class="ibox product-detail">
+						<div class="ibox-content">
+							<div class="row">
+								<div class="col-mat-7">
+									<h2 class="font-bold m-b-xs">
+										{{planoConta.nomeConta}}
+									</h2>
+									<hr>
+									<h4>Confira os dados da Conta:</h4>
+									<div class="small text-muted">
+										Cod. Conta: {{planoConta.codConta}}
+										<br>Conta Mãe: {{planoConta.contaMae}}
+									</div>
+									<hr>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			<app-animation-msg-error *ngIf="error"></app-animation-msg-error>
+			<app-animation-msg-success *ngIf="success"></app-animation-msg-success>
+			<div  md-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+				<button mat-button matStepperPrevious>Voltar</button>
+				<button mat-button color="primary" [mat-dialog-close]="planoConta">Salvar</button>
+			</div>
+		</mat-step>
+	</mat-horizontal-stepper>
+</div>

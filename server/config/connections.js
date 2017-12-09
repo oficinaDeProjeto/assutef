@@ -56,14 +56,14 @@ module.exports.connections = {
   * Run: npm install sails-mongo                                             *
   *                                                                          *
   ***************************************************************************/
-  mongo: {
-    adapter: 'sails-mongo',
-    host: 'localhost',
-    port: 27017,
+  //mongo: {
+  //  adapter: 'sails-mongo',
+  //  host: 'localhost',
+  //  port: 27017,
     //user: 'username', optional
     //password: 'password', optional
-    database: 'assutef_db' //optional
-  },
+  //  database: 'assutef_db' //optional
+  //},
 
   /***************************************************************************
   *                                                                          *
@@ -74,13 +74,25 @@ module.exports.connections = {
   *                                                                          *
   *                                                                          *
   ***************************************************************************/
-  // somePostgresqlServer: {
-  //   adapter: 'sails-postgresql',
-  //   host: 'YOUR_POSTGRES_SERVER_HOSTNAME_OR_IP_ADDRESS',
-  //   user: 'YOUR_POSTGRES_USER', // optional
-  //   password: 'YOUR_POSTGRES_PASSWORD', // optional
-  //   database: 'YOUR_POSTGRES_DB' //optional
-  // }
+  
+  /****************************************************************************
+  *                                                                           *
+  * By Bruno                                                                  *
+  * 1- Se achar desejavel, voce pode alterar as propriedades user e password  *
+  * para o seu usuario dentro do servidor.                                    *
+  *                                                                           *
+  * 2- Importante destacar que é necessario criar o banco antes, é recomendado*
+  * manter o nome assutef                                                     *   
+  *                                                                           *
+  ****************************************************************************/
+
+  postgres: {
+     adapter: 'sails-postgresql',
+     host: 'localhost',
+     user: 'postgres', // optional
+     password: 'postgres', // optional
+     database: 'assutef'
+   }
 
 
   /***************************************************************************

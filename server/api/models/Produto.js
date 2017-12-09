@@ -7,14 +7,13 @@
 
 module.exports = {
 	schema: true,
-	connection: 'mongo',
+	connection: 'postgres',
 	attributes: {
-		/*pra quando for usar o postgres
 		id: {
 			type: 'integer',
 			autoIncrement: true,
 			primaryKey: true
-		},*/
+		},
 		name: {
 			type: 'string',
 			required: true
@@ -28,7 +27,8 @@ module.exports = {
 			required: true
 		},
 		categoria: {
-			type: 'string',
+			model: 'categoria',
+			/*type: 'string',*/
 			required: true
 		},
 		unidade: {

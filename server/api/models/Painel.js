@@ -8,7 +8,7 @@
 
 module.exports = {
   schema: true,
-    connection: 'mongo',
+    connection: 'postgres',
     attributes: {
       codigo: {
         type: 'string',

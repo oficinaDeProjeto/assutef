@@ -1,3 +1,4 @@
+import { PlanoContaComponent } from './views/plano-conta/plano-conta.component';
 import { GrupousuarioComponent } from './views/grupousuario/grupousuario.component';
 import { ActivationAssociadoComponent } from './views/activation-associado/activation-associado.component';
 import { PainelComponent } from './views/painel/painel.component';
@@ -20,6 +21,7 @@ import { ImpressaoChequinhoComponent } from './views/chequinho/impressao/impress
 import { VendaComponent } from './views/venda/venda.component';
 import { CarrinhoComponent } from './views/carrinho/carrinho.component';
 import { BancoComponent } from './views/banco/banco.component';
+import { RechequinhoComponent } from './views/rechequinho/rechequinho.component';
 
 
 const routes: Routes = [
@@ -101,6 +103,13 @@ const routes: Routes = [
                 }
             },
             {
+                path: 'plano-conta',
+                component: PlanoContaComponent,
+                data: {
+                    breadcrumb: "Plano de Contas"
+                }
+            },
+            {
                 path: 'lancamento',
                 component: LancamentoComponent,
                 data: {
@@ -133,6 +142,13 @@ const routes: Routes = [
                         component: CarrinhoComponent
                     }
                 ]
+            },
+            {
+                path: 'rechequinho',
+                component: RechequinhoComponent,
+                data:{
+                    breadcrumb: 'Re-Impressão Chequinho'
+                }
             }
         ]
     },
