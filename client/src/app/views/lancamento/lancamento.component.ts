@@ -250,4 +250,3 @@ export class Elemento {
 	dia: Date;
 	id: string;
 }
-

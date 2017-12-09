@@ -7,15 +7,14 @@
 
 module.exports = {
 	schema: true,
-	connection: 'mongo',
+	connection: 'postgres',
   attributes: {
-    /*pra o postgres
 		id: {
 			type: 'integer',
 			autoIncrement: true,
 			primaryKey: true
-		},*/
-    nome: {
+		},
+    	nome: {
 			type: 'string',
 			required: true,
 			unique: true
@@ -31,6 +30,9 @@ module.exports = {
 		banco: {
 			model: 'banco',
 			required: true
+		},
+		planoconta: {
+			model: 'planoconta'
 		}
   }
 };

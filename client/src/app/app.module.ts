@@ -1,3 +1,4 @@
+import { PlanoContaModule } from './views/plano-conta/plano-conta.module';
 import { ActivationAssociadoComponent } from './views/activation-associado/activation-associado.component';
 import { PainelModule } from './views/painel/painel.module';
 import { UsuarioModule } from './views/usuario/usuario.module';
@@ -41,7 +42,7 @@ import { BancoModule } from './views/banco/banco.module';
 import { RechequinhoModule } from './views/rechequinho/rechequinho.module';
 
 
-/** 
+/** s
  * Módulo principal da aplicação 
  * delclara o componente principal e importa os módulos das outras telas
  */
@@ -71,6 +72,7 @@ import { RechequinhoModule } from './views/rechequinho/rechequinho.module';
 		ProdutoModule,
 		VendaModule,
 		CarrinhoModule,
+		PlanoContaModule,
 		// Modules
 		NgxBarcodeModule,
 		LayoutsModule,
