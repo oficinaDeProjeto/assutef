@@ -3,73 +3,81 @@
 		<div>
 			<mat-card fxFlex>
 				<mat-card-header>
-					
-						<mat-card-title>Venda</mat-card-title>
-						<div layout="row"  style="min-height: 60px; margin-right:0px ">
-						<button  mat-raised-button  (click)="addProduto()">Adicionar produto
-						</button>
+					<h3 mat-subheader>Venda</h3> 
+	            </mat-card-header>
+					<mat-card-content>
+					<div>
+						<label>{{venda.data}}</label>
 					</div>
-				</mat-card-header>
-				<mat-card-content>
-					{{venda.data}}
+					<br/>
 					<mat-form-field>
-						<mat-select  placeholder="Selecione o associado" [(ngModel)]="venda.associado"
-							[compareWith]="compararAssociado">
+						<mat-select placeholder="Selecione o associado"
+								[(ngModel)]="venda.associado"
+								[compareWith]="compararAssociado">
 							<mat-option align-text="center">Selecione o associado</mat-option>
 							<mat-option *ngFor="let associado of associados" 
-								[value]="associado.id">
-								{{associado.nome}}
-							</mat-option>
+							[value]="associado.id">{{associado.nome}}</mat-option>
 						</mat-select>
 					</mat-form-field>
-						<mat-list>
-						<h3 mat-subheader>Produtos</h3>
-						<mat-list-item *ngFor="let vendaProduto of venda.produtos; let i=index">
-							<div fxLayout="row" fxLayoutAlign="space-between center" >
-								<div>
-									<h4 mat-line>
-										<mat-select placeholder="Selecione o produto"[ngModel]="vendaProduto.produto"
-											(ngModelChange)="onProdutoChange($event, vendaProduto)"
-											[compareWith]="compararProduto">
-											<mat-option align-text="center">Selecione o produto</mat-option>
-											<mat-option *ngFor="let produto of produtos" 
-												[value]="produto">
-												{{produto.descricao}}
-											</mat-option>
-										</mat-select>
-									</h4>
-									<p mat-line>
-										Valor unitário: R$ {{vendaProduto.valor}}
-									</p>
-									<p mat-line>
-										<input type="number" matInput min="1"
-											[ngModel]="vendaProduto.quantidade"
-											(ngModelChange)="onQuantidadeChange($event, vendaProduto)" 
-											name="quantidade[{{i}}]" placeholder="digite a quantidade">
-									</p>
+						<br/><br/>
+				<mat-card-footer style="padding:20px;">
+					<button mat-raised-button (click)="addProduto()">Adicionar produto</button> 
+				</mat-card-footer>								
+					</mat-card-content>
+			</mat-card>
+				<mat-card style="width: 600px;">
+					<h3>Produtos</h3>
+						<mat-list>  
+							<mat-dialog-content>
+							<mat-list-item *ngFor="let vendaProduto of venda.produtos; let i=index">
+								<div fxLayout="row" style="border-bottom: 1px solid #B5B5B5;">
+									<div style="padding:10px; margin-right:20px;">
+										<h4 mat-line>
+											<mat-form-field>
+												<mat-select placeholder="Selecione o produto"[ngModel]="vendaProduto.produto"
+													(ngModelChange)="onProdutoChange($event, vendaProduto)"
+													[compareWith]="compararProduto">
+													<mat-option align-text="center">Selecione o produto</mat-option>
+													<mat-option *ngFor="let produto of produtos" [value]="produto">
+														{{produto.descricao}}
+													</mat-option>
+												</mat-select>
+											</mat-form-field>
+										</h4>
+									</div>
+									<div style="padding:10px; width: 160px; margin-right:10px;">
+										<p mat-line>
+											Valor Unitário: R$ {{vendaProduto.valor}}
+										</p>
+									</div>
+									<div style="padding:10px; margin-right:20px;">
+										<p mat-line>
+											<mat-form-field style="width: 100px;">
+											<input type="number" matInput min="1" [ngModel]="vendaProduto.quantidade"
+												(ngModelChange)="onQuantidadeChange($event, vendaProduto)"
+												name="quantidade[{{i}}]" placeholder="Informe a quantidade">
+											</mat-form-field>
+										</p>
+									</div>
+									<div style="margin-top:10px;">
+										<button mat-icon-button color="warn"
+											(click)="removerProduto(i)"
+											matTooltip="Remover {{getDescricaoProduto()}}">
+											<mat-icon>delete</mat-icon>
+										</button>
+									</div>
 								</div>
-						<!--		<div>
-									<button mat-icon-button color="warn" 
-										(click)="addProduto(i)">
-									<mat-icon>add</mat-icon>
-								</button>
-								</div> -->
-								<div>	
-									<button mat-icon-button color="warn" 
-										(click)="removerProduto(i)"
-										matTooltip="Remover {{getDescricaoProduto()}}">
-										<mat-icon>delete</mat-icon>
-									</button>
-								</div>
-							</div>
-						</mat-list-item>
-					</mat-list>
-				</mat-card-content>
-				<mat-card-footer>
-					Total da venda: R$ {{venda.total}}
-					<button  mat-button color="primary" [mat-dialog-close]="venda">Salvar</button>
-				</mat-card-footer>
-			</mat-card> 
+							</mat-list-item>
+							</mat-dialog-content>
+						</mat-list>
+						<mat-card-footer style="padding:20px;">
+								<button style="float:right;" mat-button color="primary" [mat-dialog-close]="venda">Salvar</button>
+								<h4 style="float:left;">Total da venda: R$ {{venda.total}}</h4>
+						</mat-card-footer>
+					</mat-card>
+				</div>
+			</div>
 		</div>
-	</div>
-</div>
+	
+	
+	

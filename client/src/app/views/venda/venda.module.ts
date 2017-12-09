@@ -20,7 +20,8 @@ import {
     MatNativeDateModule,
     MatRadioModule,
     MatSnackBarModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatTooltipModule
 } from "@angular/material";
 import { CarrinhoComponent } from '../carrinho/carrinho.component';
 
@@ -46,7 +47,8 @@ import { CarrinhoComponent } from '../carrinho/carrinho.component';
         FlexLayoutModule,
         MaskModule,
         MatSnackBarModule,
-        MatPaginatorModule
+        MatPaginatorModule,
+        MaskModule
     ],
     entryComponents: [CarrinhoComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],

@@ -9,6 +9,8 @@ import { CarrinhoService } from '../../services/carrinho/carrinho.service';
 import { CarrinhoComponent } from '../carrinho/carrinho.component';
 import { ConfirmDialogService } from '../../components/common/confirm-dialog/confirm-dialog.service';
 import { Produto } from '../../models/produto';
+import { DecimalPipe } from '@angular/common';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-venda',
@@ -23,7 +25,7 @@ export class VendaComponent implements OnInit {
   selectedVenda: Venda = new Venda();
   filteredVendas: Venda[] = [];
   finalVendas: Venda[] = [];
-  
+
   constructor(
     private genercService: GenericService,
     private vendaService: VendaService,
@@ -34,15 +36,16 @@ export class VendaComponent implements OnInit {
     private dialog: MatDialog,
     public confirmDialogService: ConfirmDialogService
   ) { }
-  
+
   ngOnInit() {
     this.findAll();
   }
-  
+
   findAll() {
       this.vendaService.findAll().subscribe(venda => {
         this.vendas = <Venda[]>venda;
         this.filteredVendas = Object.assign([], this.vendas);
+        this.filterVenda("");
         if (this.filteredVendas) {
           this.filteredVendas.forEach(outraVenda => {
             if (outraVenda && outraVenda.produtos && outraVenda.produtos.length) {
@@ -63,18 +66,20 @@ export class VendaComponent implements OnInit {
 
   private limparFiltro(): void {
     this.filteredVendas = Object.assign([], this.vendas);
+    this.finalVendas = Object.assign([], this.filteredVendas);
   }
-  
+
   newVenda() {
       this.selectedVenda = new Venda();
     }
-  
+
   delete(venda: Venda) {
     this.confirmDialogService.confirm(
       'Confirmação',
       `Você tem ceteza que deseja remover essa venda?`)
       .subscribe(res => {
         if (res) {
+          // tslint:disable-next-line:no-shadowed-variable
           this.vendaService.delete(venda.id).subscribe(venda => {
             this.openSnackBar("Removida com sucesso", "OK");
             this.findAll();
@@ -83,7 +88,7 @@ export class VendaComponent implements OnInit {
           });
         }
       });
-  }  
+  }
 
   onDataChange(novaData): void {
     if (!novaData) {
@@ -98,9 +103,20 @@ export class VendaComponent implements OnInit {
         }
       });
     }
-    this.finalVendas = this.vendas.slice(0, Math.min(this.vendas.length, this.paginator.pageSize));
+    this.finalVendas = this.filteredVendas.slice(0, Math.min(this.filteredVendas.length, this.paginator.pageSize));
   }
-  
+
+filterVenda(query) {
+  if (!query) {
+    this.filteredVendas = Object.assign([], this.vendas);
+  } else {
+    this.filteredVendas = Object.assign([], this.vendas).filter(
+      venda => venda.data.indexOf(query.toLowerCase()) > -1
+    )
+  }
+  this.finalVendas = this.filteredVendas.slice(0, Math.min(this.filteredVendas.length, this.paginator.pageSize));
+}
+
   openSnackBar(message: string, action: string) {
       this.snackBar.open(message, action, {
         duration: 10000,
@@ -108,20 +124,20 @@ export class VendaComponent implements OnInit {
   }
 
   save(venda: Venda) {
-      this.vendaService.save(venda).subscribe(venda => {
+      // tslint:disable-next-line:no-shadowed-variable
+      this.vendaService.save(venda).subscribe( venda => {
         this.openSnackBar("Salva com sucesso", "OK");
         this.findAll();
       }, err => {
         this.openSnackBar("Não foi possível salvar a venda", "OK");
       });
     }
-  
+
   openDialog(venda): void {
       let dialogRef = this.dialog.open(CarrinhoComponent, {
         data: venda
       });
-  
-  
+
   dialogRef.afterClosed().subscribe(result => {
     if (result) {
       this.save(result);
@@ -129,11 +145,10 @@ export class VendaComponent implements OnInit {
   });
       // this.router.navigate(['carrinho']);
   }
-  
- // onPaginateChange(event):void{
-//		let startIndex = event.pageIndex * event.pageSize;
-//		let endIndex = Math.min(startIndex + this.paginator.pageSize, this.vendas.length);
-//		this.finalVendas = this.vendas.slice(startIndex, endIndex);
-//		
-//	 }
+
+onPaginateChange(event): void {
+  let startIndex = event.pageIndex * event.pageSize;
+  let endIndex = Math.min(startIndex + this.paginator.pageSize, this.filteredVendas.length);
+  this.finalVendas = this.filteredVendas.slice(startIndex, endIndex);
+  }
 }
