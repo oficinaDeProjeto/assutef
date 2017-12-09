@@ -34,30 +34,24 @@ export class ImpressaoChequinhoComponent implements OnInit {
 		this.el = el;
 	 }		 
 
-	ngOnInit() {
-	/*	if (this.dataAssociado)					
-			this.chequinho = this.dataChequinho;*/
-		//let idChequinho = this.route.snapshot.params["id"];
-		//this.qtdeChequinho = ;
-		
-		this.tratarIDSChequinhos(this.route.snapshot.params["ids"]);
-		//this.getChequinhoById(idChequinho)
+	ngOnInit() {	
+		this.tratarIDSChequinhos(this.route.snapshot.params["ids"]);	
 	}
 
 	tratarIDSChequinhos(str : string):void{
 		let observables : any = [];
-		for(let id of str.split("~")){
+		for(let id of str.split("~")){ //Separar os ids que vieram concatenados para printar corretamente em tela
 			observables.push(this.chequinhoService.findById(id));		
 		}
 
-		Observable.forkJoin(observables).subscribe((response) => {
+		Observable.forkJoin(observables).subscribe((response) => { 
 			for(let chequinho of response) {
 				this.chequinhos.push(<Chequinho>chequinho);
 			}
-			setTimeout(function(){
+			setTimeout(function(){ //Abre a tela de impressão
 				this.print();
 			}, 3000);
-		});
+		});	
 	}
 
 	openSnackBar(message: string, action: string) {

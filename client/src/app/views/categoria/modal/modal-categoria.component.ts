@@ -20,12 +20,12 @@ export class ModalCategoriaComponent implements OnInit {
 		private categoriaService: CategoriaService,
 		public snackBar: MatSnackBar
 	) { }
-
+//abrindo modal sem info
 	ngOnInit() {
 		if (this.data)
 			this.categoria = this.data;
 	}
-
+//msg parte inferior da tela
 	openSnakBar(message: string, action: string){
 		this.snackBar.open(message, action, {
 			duration: 10000,

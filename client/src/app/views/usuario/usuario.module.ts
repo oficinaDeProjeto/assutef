@@ -3,10 +3,10 @@ import { MatCardModule } from '@angular/material';
 import { MatIconModule, MatTooltipModule, MatPaginatorModule } from '@angular/material';
 import { ModalUsuarioComponent } from './modal/modal-user.component';
 import { GenericService } from './../../services/generic/generic.service';
-import { MatDialogModule, MatSlideToggleModule, MatSnackBarModule } from '@angular/material';
+import { MatDialogModule, MatSlideToggleModule, MatSnackBarModule, MatSelectModule, MatStepperModule } from '@angular/material';
 import { UsuarioComponent } from './usuario.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { NgModule } from "@angular/core";
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -27,12 +27,15 @@ import { CommonModule } from '@angular/common';
 		FlexLayoutModule,
 		MatSnackBarModule,
         MatTooltipModule,
-        MatPaginatorModule
+        MatPaginatorModule,                
+        MatSelectModule ,
+        MatStepperModule 
     ],
     providers: [
         GenericService
     ],
-    entryComponents:[ModalUsuarioComponent]
+    entryComponents:[ModalUsuarioComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 
 export class UsuarioModule { }

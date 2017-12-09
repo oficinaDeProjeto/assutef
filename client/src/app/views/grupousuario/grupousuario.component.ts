@@ -1,7 +1,8 @@
-import { Component, OnInit,  Optional, Inject } from '@angular/core';
-import { MatIconRegistry, MatDialog } from "@angular/material";
+import { Component, OnInit, Optional, Inject, ViewChild } from '@angular/core';
+import { MatIconRegistry } from "@angular/material";
 import { DomSanitizer } from '@angular/platform-browser';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatDialog, MatSnackBar, MatPaginator } from '@angular/material';
 import { ModalGrupousuarioComponent } from './modal/modal-grupouser.component';
 import { Grupousuario } from './../../models/Grupousuario';
 import { GrupousuarioService } from './../../services/grupousuario/grupousuario.service';
@@ -9,7 +10,7 @@ import { ConfirmDialogService } from './../../components/common/confirm-dialog/c
 import { GenericService } from './../../services/generic/generic.service';
 import { AuthService } from './../../services/auth/auth.service';
 import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material';
+
 
 
 import {
@@ -36,16 +37,22 @@ import {
   
 })
 export class GrupousuarioComponent implements OnInit {
+
+	@ViewChild(MatPaginator) paginator: MatPaginator;
+
+	
 	grupousuario: Grupousuario = new Grupousuario();
 	grupousuarios : Grupousuario[] = [];
 	selectedGrupousuario: Grupousuario  = new Grupousuario;
 	filteredGrupousuarios: Grupousuario[] = [];
+	finalGrupoUsuarios: Grupousuario[] = [];
+	
 		
   constructor(
     iconRegistry: MatIconRegistry, 
 		sanitizer: DomSanitizer, 
 		private grupousuarioService: GrupousuarioService,
-    private genericService: GenericService,
+        private genericService: GenericService,
 		private router: Router,
 		private authService: AuthService,
 		public dialog: MatDialog,
@@ -58,12 +65,14 @@ export class GrupousuarioComponent implements OnInit {
     this.getAll();
 	}
 	
+	
 
 	getAll() {
 		this.grupousuarioService.getAll().subscribe(grupousuarios => {
 			this.grupousuarios = <Grupousuario[]>grupousuarios;
-			this.filteredGrupousuarios = Object.assign([], this.grupousuarios);
-			this.selectedGrupousuario = this.grupousuarios[0];
+			this.filteredGrupousuarios = Object.assign([], this.grupousuarios); 
+			this.filterGrupousuario("");
+		
 		}, err => {
 			this.openSnackBar("Não foi possível carregar os grupos de usuários", "OK");
 		});
@@ -90,6 +99,7 @@ export class GrupousuarioComponent implements OnInit {
 				grupousuario => grupousuario.nome.toLowerCase().indexOf(query.toLowerCase()) > -1
 			)
 		}
+		this.finalGrupoUsuarios = this.filteredGrupousuarios.slice(0, Math.min(this.filteredGrupousuarios.length, this.paginator.pageSize));
 	}
 
   openNewGrupousuarioDialog(grupousuario: Grupousuario): void {
@@ -138,7 +148,13 @@ export class GrupousuarioComponent implements OnInit {
 		});
 	}
 
+	onPaginateChange(event):void{
+		let startIndex = event.pageIndex * event.pageSize;
+		let endIndex = Math.min(startIndex + this.paginator.pageSize, this.filteredGrupousuarios.length);
+		this.finalGrupoUsuarios = this.filteredGrupousuarios.slice(startIndex, endIndex);
+		
+	 }
 
-
+	 
 
 }
