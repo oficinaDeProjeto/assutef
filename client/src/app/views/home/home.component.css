@@ -12,8 +12,7 @@ a {
     width: 95%;
     height: 85%;
     margin-left: 20px;
-    letter-spacing: 0.1em; word-spacing: 0.1em;
-    font-size: 12px;
+    font-size: 16px;
     text-align: center;
     text-align: justify;
 }
