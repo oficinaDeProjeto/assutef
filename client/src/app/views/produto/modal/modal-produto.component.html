@@ -18,7 +18,8 @@
 	<br />
 	
 		<mat-form-field>
-			<input matInput placeholder="Valor" [mask]="'money2'" [(ngModel)]="produto.valor" #nome="ngModel" required name="valor">
+			<input matInput placeholder="Valor" [(ngModel)]="produto.valor" #nome="ngModel" required name="valor">
+			<span matPrefix>R$&nbsp;</span>
 		</mat-form-field>
 	
 	<br />

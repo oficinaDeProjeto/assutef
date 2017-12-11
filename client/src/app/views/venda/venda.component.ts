@@ -64,7 +64,7 @@ export class VendaComponent implements OnInit {
       });
   }
 
-  private limparFiltro(): void {
+  limparFiltro(): void {
     this.filteredVendas = Object.assign([], this.vendas);
     this.finalVendas = Object.assign([], this.filteredVendas);
   }

@@ -7,7 +7,7 @@ export class Venda {
 
     id: string;
     associado: Associado;
-    total: string;
+    total: number;
     produtos: Array<VendaProduto>;
     data: string;
 

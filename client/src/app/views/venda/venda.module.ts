@@ -48,7 +48,8 @@ import { CarrinhoComponent } from '../carrinho/carrinho.component';
         MaskModule,
         MatSnackBarModule,
         MatPaginatorModule,
-        MaskModule
+        MaskModule,
+        MatTooltipModule
     ],
     entryComponents: [CarrinhoComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],

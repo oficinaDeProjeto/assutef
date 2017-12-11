@@ -47,7 +47,7 @@
 									</div>
 									<div style="padding:10px; width: 160px; margin-right:10px;">
 										<p mat-line>
-											Valor Unitário: R$ {{vendaProduto.valor}}
+											Valor Unitário: R$ {{vendaProduto.valor | currency:'BRL':true:'1.2-2'}}
 										</p>
 									</div>
 									<div style="padding:10px; margin-right:20px;">
@@ -72,7 +72,7 @@
 						</mat-list>
 						<mat-card-footer style="padding:20px;">
 								<button style="float:right;" mat-button color="primary" [mat-dialog-close]="venda">Salvar</button>
-								<h4 style="float:left;">Total da venda: R$ {{venda.total}}</h4>
+								<h4 style="float:left;">Total da venda: {{venda.total | currency:'BRL':true:'1.2-2'}}</h4>
 						</mat-card-footer>
 					</mat-card>
 				</div>
