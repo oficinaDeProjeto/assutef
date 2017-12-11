@@ -9,6 +9,7 @@ import { ProdutoService } from '../../services/produto/produto.service';
 import { VendaProduto } from '../../models/vendaproduto';
 import { Associado } from '../../models/associado';
 import { AssociadoService } from '../../services/associado/associado.service';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'app-carrinho',
@@ -45,7 +46,7 @@ addProduto(): void {
 		this.venda.produtos = [];
 	}
 	const vendaProduto = new VendaProduto();
-	vendaProduto.quantidade = "1";
+	vendaProduto.quantidade = 1;
 	this.venda.produtos.push(vendaProduto);
 }
 
@@ -65,8 +66,8 @@ private getTotalVenda(): number {
 	}
 	let total = 0;
 	this.venda.produtos.forEach(vendaProduto => {
-		const quantidade = parseFloat(vendaProduto.quantidade || '1');
-		const valor = parseFloat(vendaProduto.valor || '0');
+		const quantidade = (vendaProduto.quantidade || 1);
+		const valor = (vendaProduto.valor || 0);
 		total += quantidade * valor;
 	});
 	return total;
@@ -79,7 +80,7 @@ getDescricaoProduto(vendaProduto: VendaProduto): string {
 
 getValorProduto(vendaProduto: VendaProduto): number {
 	return (vendaProduto && vendaProduto.produto && 
-		parseFloat(vendaProduto.produto.valor)) || 0;
+		(vendaProduto.produto.valor) || 0);
 }
 
 ngOnInit() {
@@ -96,14 +97,16 @@ onProdutoChange(produto, vendaProduto: VendaProduto): void {
 		vendaProduto.produto = produto;
 		vendaProduto.valor = (produto && produto.valor) || '0';
 	}	
-	this.venda.total = `${this.getTotalVenda()}`;
+	this.venda.total = this.getTotalVenda();
+	
+	//this.venda.total = this.venda.total.replace(".",",");
 }
 
 onQuantidadeChange(quantidade, vendaProduto: VendaProduto): void {
 	if (vendaProduto) {
-		vendaProduto.quantidade = `${quantidade || 0}`;	
+		vendaProduto.quantidade = (quantidade || 0);	
 	}
-	this.venda.total = `${this.getTotalVenda()}`;
+	this.venda.total = this.getTotalVenda();
 }
 
 removerProduto(index: number) {

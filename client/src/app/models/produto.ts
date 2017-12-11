@@ -4,8 +4,8 @@ export class Produto {
     id:string;
     name:string;
     descricao:string;
-    valor:string;
+    valor:number;
     categoria:Categoria = new Categoria();
     unidade:string;
-    estoque:string;
+    estoque:number;
 }
