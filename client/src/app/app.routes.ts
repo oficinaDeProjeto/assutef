@@ -23,7 +23,8 @@ import { VendaComponent } from './views/venda/venda.component';
 import { CarrinhoComponent } from './views/carrinho/carrinho.component';
 import { BancoComponent } from './views/banco/banco.component';
 import { RechequinhoComponent } from './views/rechequinho/rechequinho.component';
-
+import { ContabancariaComponent } from './views/contabancaria/contabancaria.component';
+import { RemessabancariaComponent } from './views/remessabancaria/remessabancaria.component';
 
 const routes: Routes = [
     // Main redirect
@@ -156,6 +157,20 @@ const routes: Routes = [
                 component: RechequinhoComponent,
                 data:{
                     breadcrumb: 'Re-Impressão Chequinho'
+                }
+            },
+            {
+                path: 'contabancaria',
+                component: ContabancariaComponent,
+                data: {
+                    breadcrumb: "Contas BancÃ¡rias"
+                }
+            },
+            {
+                path: 'remessabancaria',
+                component: RemessabancariaComponent,
+                data: {
+                    breadcrumb: "Remessas BancÃ¡rias"
                 }
             }
         ]
