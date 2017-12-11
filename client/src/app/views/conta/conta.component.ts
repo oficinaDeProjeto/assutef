@@ -67,6 +67,7 @@ export class ContaComponent implements OnInit {
 			this.filteredContasD = Object.assign([], this.planoContas).filter(
 				planoConta => planoConta.natureza.toLowerCase().indexOf(query.toLowerCase()) > -1
 			)
+			
 		}
 	}
 }

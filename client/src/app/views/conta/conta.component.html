@@ -15,16 +15,16 @@
 				<p></p>				
 			<mat-form-field>
 				<mat-select name="planoConta" [(ngModel)]="conta.contaReceita"  id="cmbReceita" placeholder="Selecione a Receita">
-					<mat-option *ngFor="let planoConta of planoContas" [value]="C">
-						{{planoConta.nomeConta}}
+					<mat-option *ngFor="let planoConta of planoContas" [value]="planoConta.id">
+						{{planoConta.nomeConta}} - {{planoConta.natureza}}
 					</mat-option>
 				</mat-select>	
 			</mat-form-field>
 				<p></p>
 			<mat-form-field>
 				<mat-select name="planoConta" [(ngModel)]="conta.contaDespesa"  id="cmbDespesa" placeholder="Selecione a Despesa">
-					<mat-option *ngFor="let planoConta of planoContas" [value]="D">
-						{{planoConta.nomeConta}}
+					<mat-option *ngFor="let planoConta of planoContas" [value]="planoConta.id">
+						{{planoConta.nomeConta}} - {{planoConta.natureza}}
 					</mat-option>
 				</mat-select>
 			</mat-form-field>
