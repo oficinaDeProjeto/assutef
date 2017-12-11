@@ -6,7 +6,7 @@ import { VendaProduto } from './vendaproduto';
 export class Venda {
 
     id: string;
-    associado: Associado = new Associado();
+    associado: Associado;
     total: string;
     produtos: Array<VendaProduto>;
     data: string;

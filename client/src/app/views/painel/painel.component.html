@@ -1,16 +1,4 @@
-<!--menu navegação-->
-<nav class="navbar navbar-expand-md navbar-light bg-light rounded mb-3">
-  <div class="collapse navbar-collapse" id="navbarCollapse">
-    <ul class="navbar-nav text-md-center nav-justified w-100">
-      <a class="nav-item nav-link" href="#">Chequinhos</a>
-    
-      <a class="nav-item nav-link" href="#">Plano de Saude</a>
-    
-      <a class="nav-item nav-link" href="#">Demais Gastos</a>
-    </ul>
-  </div>
-  </nav>
-<!--tela do corpo principal-->
+<!--tela do lançamentos-->
 <div class="container">
   <main role="main">
     <div class="row marketing">
@@ -20,87 +8,29 @@
             <div class="table-responsive">
               <table class="table table-striped">
                 <thead>
-                  <tr>
-                    <th id="linha1">Chequinhos</th>
-                    <th>Local</th>
+                  <tr class="odd">
+                    <th>Conveniado</th>
                     <th>Valor</th>
+                    <th>Data</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>001</td>
-                    <td>Mercado Brasao</td>
-                    <td>R$ 300,00</td>
-                  </tr>
-                  <tr>
-                    <td>002</td>
-                    <td>Posto Patinho</td>
-                    <td>R$ 200,00</td>
-                  </tr>
-                  <tr>
-                    <td>003</td>
-                    <td>Ferraria</td>
-                    <td>R$ 500,00</td>
-                  </tr>
-                  <tr>
-                    <td>004</td>
-                    <td>Mercado Patão</td>
-                    <td>R$ 600,00</td>
-                  </tr>
-                  <tr>
-                    <td>005</td>
-                    <td>Mercado Economico</td>
-                    <td>R$ 100,00</td>
-                  </tr>
-                  <tr>
-                    <td>006</td>
-                    <td>Mecanica</td>
-                    <td>R$ 50,00</td>
-                  </tr>
-                  <tr>
-                      <td>001</td>
-                      <td>Mercado Brasao</td>
-                      <td>R$ 300,00</td>
-                    </tr>
-                    <tr>
-                      <td>002</td>
-                      <td>Posto Patinho</td>
-                      <td>R$ 200,00</td>
-                    </tr>
-                    <tr>
-                      <td>003</td>
-                      <td>Ferraria</td>
-                      <td>R$ 500,00</td>
-                    </tr>
-                    <tr>
-                      <td>004</td>
-                      <td>Mercado Patão</td>
-                      <td>R$ 600,00</td>
-                    </tr>
-                    <tr>
-                      <td>005</td>
-                      <td>Mercado Economico</td>
-                      <td>R$ 100,00</td>
-                    </tr>
-                    <tr>
-                      <td>006</td>
-                      <td>Mecanica</td>
-                      <td>R$ 50,00</td>
-                    </tr>
+                  <tr mat-list-item *ngFor="let l of lancamentos">
+                    <td>{{l.conveniado.razaosocial}}</td>
+                    <td>{{l.valor}}</td>
+                    <td>{{l.dataLancamento | date:"MM/dd/yyyy"}}</td>
+                  </tr>                  
                 </tbody>
               </table>
             </div>
           </main>
         </div>
-      </div>		
+      </div>
     </div>
   </main>
-</div> 
-  
-  
-<!--verificar a criação da função list
-https://mongodbwise.wordpress.com/2014/05/22/mongodb-guia-rapido/
-http://fernandoanselmo.blogspot.com.br/2013/12/rest-arrumando-o-projeto.html
--->
+  <mat-paginator [length]="filteredLancamentos.length" [pageSize]="5" (page)="onPaginateChange($event)"
+  [pageSizeOptions]="[1, 5, 10, 25, 100]"></mat-paginator>
+</div>
+<br />
 
 

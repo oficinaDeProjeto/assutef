@@ -40,6 +40,7 @@ import { ActivationAssociadoModule } from './views/activation-associado/activati
 import { VendaModule } from './views/venda/venda.module';
 import { CarrinhoModule } from './views/carrinho/carrinho.module';
 import { BancoModule } from './views/banco/banco.module';
+import { RechequinhoModule } from './views/rechequinho/rechequinho.module';
 
 
 /** s
@@ -81,6 +82,7 @@ import { BancoModule } from './views/banco/banco.module';
 		ConveniadoModule,
 		BancoModule,
 		PainelModule,
+		RechequinhoModule,
 		ROUTES
 	],
 	bootstrap: [AppComponent],

@@ -1,0 +1,40 @@
+<a class="nav-item nav-link"><h3>Lançamentos</h3></a>
+<div class="container">
+    <main role="main">
+      <div class="row marketing">
+        <div class="container-fluid">
+          <div class="row">
+            <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Conveniado</th>
+                      <th>Valor limite</th>
+                      <th>Quantidade impressa</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let c of chequinhos">
+                   <!-- <td>{{c.conveniado.razaosocial}}</td>-->
+                    <td>{{c.valorLimite}}</td>
+                    <td>{{c.qtdeChequinho | date:"MM/dd/yyyy"}}</td>
+                  </tr>s
+                  </tbody>
+                </table>
+              </div>
+            </main>
+          </div>
+        </div>
+      </div>
+    </main>
+    <mat-paginator [length]="chequinhos.length" [pageSize]="5" (page)="onPaginateChange($event)"[pageSizeOptions]="[1, 5, 10, 25, 100]"></mat-paginator>
+    
+  </div>
+  
+<!--
+https://mongodbwise.wordpress.com/2014/05/22/mongodb-guia-rapido/
+http://fernandoanselmo.blogspot.com.br/2013/12/rest-arrumando-o-projeto.html
+
+VERIFICAR SE PODE SER FEITO UMA SOMA DOS CONVENIADOS NA LISTAGEM DOS DADOS
+-->

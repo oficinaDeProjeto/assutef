@@ -112,7 +112,6 @@ export class TipoconveniadoComponent implements OnInit {
 	onPaginateChange(event):void{
 		let startIndex = event.pageIndex * event.pageSize;
 		let endIndex = Math.min(startIndex + this.paginator.pageSize, this.filteredTipoconveniados.length);
-		this.finalTipoconveniados = this.filteredTipoconveniados.slice(startIndex, endIndex);
-		
+		this.finalTipoconveniados = this.filteredTipoconveniados.slice(startIndex, endIndex);		
 	 }
 }

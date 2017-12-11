@@ -16,18 +16,15 @@ module.exports = {
 		},
 		name: {
 			type: 'string',
-			required: true,
-			unique: true
+			required: true
 		},
 		descricao: {
 			type: 'string',
-			required: true,
-			unique: true
+			required: true
 		},
 		valor: {
 			type: 'string',
-			required: true,
-			unique: true
+			required: true
 		},
 		categoria: {
 			model: 'categoria',
@@ -36,13 +33,11 @@ module.exports = {
 		},
 		unidade: {
 			type: 'string',
-			required: true,
-			unique: true
+			required: true
 		},
 		estoque: {
-			type: 'integer',
-			required: true,
-			unique: true
+			type: 'string',
+			required: true
 		}
   }
 };

@@ -13,7 +13,7 @@
 		</mat-card-header>
 		<mat-card-content>
 			<mat-list>
-				<mat-list-item *ngFor="let categoria of filteredCategorias">
+				<mat-list-item *ngFor="let categoria of finalCategoria">
 					<div fxLayout="row" fxLayoutAlign="space-between center">
 						<div>
 							<h4 mat-line>{{categoria.descricao}}</h4>
@@ -33,6 +33,7 @@
 				</mat-list-item>
 			
 			</mat-list>
+			<mat-paginator [length]="filteredCategorias.length" [pageSize]="5" (page)="onPaginateChange($event)"[pageSizeOptions]="[1, 5, 10, 25, 100]"></mat-paginator>
 		</mat-card-content>
 	</mat-card>
 	</div>

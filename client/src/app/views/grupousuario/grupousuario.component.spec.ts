@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { GrupousuarioComponent } from './grupousuario.component';
 
 describe('GrupousuarioComponent', () => {

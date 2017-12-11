@@ -1,4 +1,4 @@
-<mat-card>
+<!--<mat-card>
 	<mat-card-header>
 		<mat-card-title>Usuário</mat-card-title>
 		<mat-card-subtitle>Informe os dados para cadastro de usuário</mat-card-subtitle>
@@ -13,13 +13,91 @@
 		</mat-form-field>
 		<br />
 		<mat-form-field>
-			<input type="password" matInput placeholder="Senha" [(ngModel)]="usuario.senha" #nome="ngModel" required name="senha">
+			<mat-select [(ngModel)]="usuario.grupo"  placeholder="Selecione o Grupo de usuarios">
+				<mat-option *ngFor="let grupo of grupos" [value]="grupo">
+					{{grupo.nome}}
+				</mat-option>
+			</mat-select>
 		</mat-form-field>
-		
+		<br />
+		<mat-form-field>
+			<input type="password" matInput placeholder="Senha" [(ngModel)]="usuario.password" #nome="ngModel" required name="senha">
+		</mat-form-field>
+		<br />
+		<mat-form-field>
+			<input type="password" matInput placeholder="Confirme sua senha" [(ngModel)]="usuario.confirmPassword" #nome="ngModel" required name="confirmsenha">
+		</mat-form-field>
 		
 	</mat-card-content>
 	<mat-card-actions>
 		<button type="button" mat-raised-button [mat-dialog-close]="usuario">SALVAR</button>
 		<button type="button" mat-button (click)="dialogRef.close()">CANCELAR</button>
 	</mat-card-actions>
-</mat-card>
+</mat-card> -->
+
+<div fxLayout="row" fxLayoutAlign="space-around center">
+	<mat-horizontal-stepper>
+		<mat-step>
+			<form>
+				<ng-template matStepLabel>Dados do usuario</ng-template>
+				<form #dadosPessoaisForm="ngForm">
+					<div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="center start">
+						<mat-form-field fxFlex.gt-sm="100" fxFlex="100" class="p-5">
+							<input matInput placeholder="Nome" [(ngModel)]="usuario.nome" #nome="ngModel" required name="nome">
+						</mat-form-field>
+						<mat-form-field fxFlex.gt-sm="50" fxFlex="100" class="p-5">
+							<input matInput [formControl]="emailFormControl" placeholder="Email" [(ngModel)]="usuario.email" required name="email">
+						</mat-form-field>
+						<mat-form-field fxFlex.gt-sm="50" fxFlex="100" class="p-5">
+							<mat-select [(ngModel)]="usuario.grupo" required name="grupo"  placeholder="Selecione o Grupo de usuarios">
+								<mat-option *ngFor="let grupo of grupos" [value]="grupo">
+									{{grupo.nome}}
+								</mat-option>
+							</mat-select>
+						</mat-form-field>
+						<mat-form-field fxFlex.gt-sm="50" fxFlex="100" class="p-5">
+							<input type="password" matInput placeholder="Senha" [(ngModel)]="usuario.password" #nome="ngModel" [required]="!usuario.id" name="senha">
+						</mat-form-field>
+						<mat-form-field fxFlex.gt-sm="50" fxFlex="100" class="p-5">
+							<input type="password" matInput placeholder="Confirme sua senha" [(ngModel)]="usuario.confirmPassword" #nome="ngModel" [required]="!usuario.id" name="confirmsenha">
+						</mat-form-field>
+					</div>
+				</form>
+				<div fxLayout="row" fxLayoutAlign="end center">
+					<button mat-button matStepperNext color="primary" [disabled]="!dadosPessoaisForm.form.valid">Próximo</button>
+				</div>
+			</form>
+		</mat-step>		
+		<mat-step>
+			<ng-template matStepLabel>Pronto</ng-template>
+			<div *ngIf="!error && !success">
+					<div class="ibox product-detail">
+						<div class="ibox-content">
+							<div class="row">
+								<div class="col-mat-7">
+									<h4>Confira os dados do usuário</h4>
+									<h2 class="font-bold m-b-xs">
+										{{usuario.nome}}
+									</h2>
+									<small>{{usuario.email}}</small>
+									<div class="m-t-mat">
+										<h2 class="product-main-price">
+											{{usuario.grupo.nome || "None"}}
+											<small class="text-muted">Permissões</small>
+										</h2>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			<app-animation-msg-error *ngIf="error"></app-animation-msg-error>
+			<app-animation-msg-success *ngIf="success"></app-animation-msg-success>
+			<div  md-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+				<button mat-button matStepperPrevious>Voltar</button>
+				<button mat-button color="primary" [mat-dialog-close]="usuario">Salvar</button>
+			</div>
+		</mat-step>
+	</mat-horizontal-stepper>
+</div>

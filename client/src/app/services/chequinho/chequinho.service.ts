@@ -23,7 +23,10 @@ export class ChequinhoService {
 
 	findById(id: string): Observable<Chequinho> {
 		return this.httpClient.get<Chequinho>(`${this.apiUrl}chequinho/${id}`);
-    }
+	}
 	
+	findLastResultsByAssociado(id: string) : Observable<Chequinho[]> {
+		return this.httpClient.get<Chequinho[]>(`${this.apiUrl}chequinho?associado=${id}&sort=data DESC&limit=10`);
+	}
 
 }

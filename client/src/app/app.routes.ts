@@ -22,6 +22,7 @@ import { ImpressaoChequinhoComponent } from './views/chequinho/impressao/impress
 import { VendaComponent } from './views/venda/venda.component';
 import { CarrinhoComponent } from './views/carrinho/carrinho.component';
 import { BancoComponent } from './views/banco/banco.component';
+import { RechequinhoComponent } from './views/rechequinho/rechequinho.component';
 
 
 const routes: Routes = [
@@ -103,13 +104,6 @@ const routes: Routes = [
                 }
             },
             {
-                path: 'chequinhoimpressao/:ids',
-                component: ImpressaoChequinhoComponent,
-                data: {
-                    breadcrumb: "Imprimir chequinho"
-                }
-            },
-            {
                 path: 'plano-conta',
                 component: PlanoContaComponent,
                 data: {
@@ -156,6 +150,13 @@ const routes: Routes = [
                         component: CarrinhoComponent
                     }
                 ]
+            },
+            {
+                path: 'rechequinho',
+                component: RechequinhoComponent,
+                data:{
+                    breadcrumb: 'Re-Impressão Chequinho'
+                }
             }
         ]
     },
@@ -169,6 +170,13 @@ const routes: Routes = [
             {
                 path: 'activation-associado/:token',
                 component: ActivationAssociadoComponent
+            },
+            {
+                path: 'chequinhoimpressao/:ids',
+                component: ImpressaoChequinhoComponent,
+                data: {
+                    breadcrumb: "Imprimir chequinho"
+                }
             }
         ]
     },
