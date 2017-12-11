@@ -45,6 +45,14 @@ export class AssociadoService {
 	}
 
 	/**
+	 * Pesquisa associados por email
+	 * @param email email para pesquisa
+	 */
+	findByNome(nome: string): Observable<Associado[]> {
+		return this.httpClient.get<Associado[]>(`${this.apiUrl}associado?nome=${nome}`);
+	}
+
+	/**
 	 * Remove o associado da base de dados.
 	 * @param id 
 	 */

@@ -1,13 +1,12 @@
-import { VendaService } from './../../services/venda/venda.service';
 import { MaskModule } from './../../directives/mask/mask.module';
-import { GenericService } from './../../services/generic/generic.service';
-import { AuthService } from './../../services/auth/auth.service';
-import { VendaComponent } from './venda.component';
+import { ModalRemessabancariaComponent } from './modal/modal-remessabancaria.component';
+import { RemessabancariaComponent } from './remessabancaria.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { RemessabancariaService } from '../../services/remessabancaria/remessabancaria.service';
 import {
     MatDialogModule,
     MatCardModule,
@@ -20,15 +19,16 @@ import {
     MatNativeDateModule,
     MatRadioModule,
     MatSnackBarModule,
-    MatPaginatorModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatPaginatorModule
 } from "@angular/material";
-import { CarrinhoComponent } from '../carrinho/carrinho.component';
-
+import { ConfirmDialogModule } from '../../components/common/confirm-dialog/confirm-dialog.module';
+import { GenericService } from '../../services/generic/generic.service';
+import { AuthService } from '../../services/auth/auth.service';
 
 @NgModule({
-    declarations: [VendaComponent],
-    exports: [VendaComponent],
+    declarations: [RemessabancariaComponent, ModalRemessabancariaComponent],
+    exports: [RemessabancariaComponent, ModalRemessabancariaComponent],
     imports: [
         CommonModule,
         FormsModule,
@@ -44,16 +44,19 @@ import { CarrinhoComponent } from '../carrinho/carrinho.component';
         MatNativeDateModule,
         MatButtonModule,
         MatRadioModule,
+        MatTooltipModule,
         FlexLayoutModule,
-        MaskModule,
         MatSnackBarModule,
-        MatPaginatorModule,
+        ConfirmDialogModule,
         MaskModule,
-        MatTooltipModule
+        MatPaginatorModule
     ],
-    entryComponents: [CarrinhoComponent],
+    entryComponents:[ModalRemessabancariaComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    providers: [AuthService, GenericService, VendaService]
+    providers:[RemessabancariaService, AuthService, GenericService]
+
 })
 
-export class VendaModule { }
+export class RemessabancariaModule { }
+
+//todos os componentes utilizado para fazer o remessabancaria

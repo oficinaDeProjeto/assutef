@@ -1,0 +1,47 @@
+<div class="content">
+	<div fxLayout="row" fxLayoutAlign="space-around center">
+
+		<mat-card>
+			<mat-card-header>
+				<mat-card-title>Remessa Bancária</mat-card-title>
+				<mat-card-subtitle>Lista de remessas bancárias</mat-card-subtitle>
+
+				<mat-input-container>
+					<input matInput [(ngModel)]="query" name="query" placeholder="Pesquise por remessa bancária" (input)="filterRemessabancaria(query)">
+					<span fxFlex.gt-sm="50" fxFlex="100" class="p-5"></span>
+				</mat-input-container>
+			</mat-card-header>
+			<mat-card-content>
+				<mat-card-content>
+				<mat-list>
+					<mat-list-item *ngFor="let remessabancaria of finalRemessabancarias">
+						<div fxLayout="row" fxLayoutAlign="space-between center" >
+							<div>
+								<h4 mat-line>Código Comando: {{remessabancaria.codigo_comando}} - Carteira Cobrança: {{remessabancaria.carteira_cobranca}}</h4>
+								<p mat-line> Agencia: {{remessabancaria.contabancaria.agencia_numero}}-{{remessabancaria.contabancaria.agencia_digito}} Conta: {{remessabancaria.contabancaria.conta_numero}}-{{remessabancaria.contabancaria.conta_digito}} </p>
+							</div>
+							<div>
+								<button mat-icon-button color="primary" (click)="openDialog(remessabancaria)"
+									matTooltip="Editar {{remessabancaria.codigo_comando}}">
+									<mat-icon>create</mat-icon>
+								</button>
+								<button mat-icon-button color="warn" (click)="delete(remessabancaria)"
+									matTooltip="Remover {{remessabancaria.codigo_comando}}">
+									<mat-icon>delete</mat-icon>
+								</button>
+							</div>
+						</div>
+					</mat-list-item>
+				</mat-list>
+				<mat-paginator [length]="filteredRemessabancarias.length" [pageSize]="5" (page)="onPaginateChange($event)"
+				[pageSizeOptions]="[1, 5, 10, 25, 100]"></mat-paginator>
+			</mat-card-content>
+			</mat-card-content>
+		</mat-card>
+
+</div>
+
+<button matTooltip="Adicionar nova remessa bancária" mat-fab (click)="openDialog()" class="fab-bottom-right">
+	<mat-icon>add</mat-icon>
+</button>
+</div>

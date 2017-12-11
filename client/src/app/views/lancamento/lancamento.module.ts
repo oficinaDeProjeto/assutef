@@ -13,6 +13,7 @@ import {BrowserModule} from "@angular/platform-browser";
 import { ModalLancamentoComponent } from './modal/modal-lancamento.component'
 import {Elemento} from './lancamento.component'
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import {
     MatDialogModule,
     MatCardModule,
@@ -55,7 +56,8 @@ import {
         MatAutocompleteModule,
         MatPaginatorModule,
         MatSortModule,
-        MaskModule
+        MaskModule,
+        MatCheckboxModule
     ],
     entryComponents: [ModalLancamentoComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],

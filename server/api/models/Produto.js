@@ -23,7 +23,7 @@ module.exports = {
 			required: true
 		},
 		valor: {
-			type: 'string',
+			type: 'float',
 			required: true
 		},
 		categoria: {
@@ -36,7 +36,7 @@ module.exports = {
 			required: true
 		},
 		estoque: {
-			type: 'string',
+			type: 'integer',
 			required: true
 		}
   }

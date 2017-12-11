@@ -10,8 +10,8 @@ export class VendaProduto {
     venda: Venda = new Venda();
     produto: Produto = new Produto();
     sku: string;
-    quantidade: string;
-    valor: string;
+    quantidade: number;
+    valor: number;
 
 }
 

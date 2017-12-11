@@ -12,6 +12,10 @@
                             <mat-datepicker #picker></mat-datepicker>
                             <span fxFlex.gt-sm="50" fxFlex="100" class="p-5"></span>
                         </mat-form-field>
+                        <button mat-icon-button color="#000" (click)="limparFiltro()" 
+                            matTooltip="Limpar filtro">
+                        <mat-icon>clear</mat-icon>
+                    </button>
                     </div>                        
                 </mat-card-header>
                 <mat-card-content>
@@ -27,8 +31,7 @@
                                     </div>
                                 </md-virtual-repeat-container>
                                 <div>
-                                    <button mat-icon-button color="warn" (click)="delete(venda)"
-                                        matTooltip="Remover a venda">
+                                    <button mat-icon-button color="warn" (click)="delete(venda)" matTooltip="Remover a venda">
                                         <mat-icon>delete</mat-icon>
                                     </button>
                                 </div>

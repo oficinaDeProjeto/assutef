@@ -52,7 +52,7 @@ export class TipoconveniadoComponent implements OnInit {
 			this.openSnackBar("Salvo com sucesso", "OK");
 			this.getAll();
 		}, err => {
-			this.openSnackBar("Não foi possível salvar o conveniado", "OK");
+			this.openSnackBar("Não foi possível salvar o tipo conveniado", "OK");
 		});
 	}
 
@@ -96,7 +96,7 @@ export class TipoconveniadoComponent implements OnInit {
 						this.openSnackBar("Removido com sucesso", "OK");
 						this.getAll();
 					}, err => {
-						this.openSnackBar("Não foi possível remover o Tipo Conveniado", "OK");
+						this.openSnackBar("Não foi possível remover o tipo Conveniado", "OK");
 					})
 				}
 			}
