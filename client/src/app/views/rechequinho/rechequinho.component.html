@@ -9,7 +9,7 @@
 		<mat-card-content>				
 															
       <mat-form-field>
-          <input type="text" [(ngModel)]="associadoSelecionado" placeholder="Pick one" aria-label="Number" matInput 
+          <input type="text" [(ngModel)]="associadoSelecionado" placeholder="Digite o nome do associado" aria-label="Number" matInput 
                 [formControl]="stateCtrl"  [matAutocomplete]="auto">
           <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
             <mat-option *ngFor="let ass of assFiltrado | async" [value]="ass" (click)="carregarChequinhos()">
@@ -42,7 +42,7 @@
             </mat-selection-list>
             
             <p>
-              Options selected: {{shoes.selectedOptions.selected.length}}
+              Chequinhos selecionados selected: {{shoes.selectedOptions.selected.length}}
             </p>
         </mat-card-content>
         <button type="button" mat-raised-button (click)="batata()">Ir</button>
