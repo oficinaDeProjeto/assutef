@@ -1,0 +1,38 @@
+.example-right-align {
+    text-align: right;
+  }
+  
+  input.example-right-align::-webkit-outer-spin-button,
+  input.example-right-align::-webkit-inner-spin-button {
+    display: none;
+  }
+  
+  /* Structure */
+.example-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+  }
+  
+  .example-header {
+    min-height: 64px;
+    display: flex;
+    align-items: baseline;
+    padding: 8px 24px 0;
+    font-size: 20px;
+    justify-content: space-between;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    flex-grow: 1;
+    margin-left: 32px;
+    width: 60%;
+  }
+
+  mat-sidenav-container {
+      height: 100vh;
+  }
+  .content {
+    padding: 12px;
+  }
