@@ -1,0 +1,77 @@
+<mat-card>
+	<mat-card-header>
+		<mat-card-title>Remessa Bancária</mat-card-title>
+		<br />
+		<mat-card-subtitle>Informe os dados para cadastro de remessa bancária</mat-card-subtitle>
+	</mat-card-header>
+
+	<mat-form-field>
+		<mat-select [(ngModel)]="remessabancaria.contabancaria" id="cmbContabancaria" placeholder="Selecione a conta bancaria">
+			<mat-option *ngFor="let contabancariaValue of contabancarias" [value]="contabancariaValue.id">
+				Banco - {{contabancariaValue.banco.descricao}} - Agencia {{contabancariaValue.agencia_numero}} - Conta - {{contabancariaValue.conta_numero}}-{{contabancariaValue.conta_digito}}
+			</mat-option>
+  </mat-select>
+  </mat-form-field>
+	<br />
+		<mat-form-field>
+		<input matInput placeholder="Agência Cobradora" [(ngModel)]="remessabancaria.agencia_cobradora" #name="ngModel" required name="agencia_cobradora">
+	</mat-form-field>
+
+	<mat-form-field>
+		<input matInput placeholder="Código comando" [(ngModel)]="remessabancaria.codigo_comando" #name="ngModel" required name="codigo_comando">
+	</mat-form-field>
+
+	<br />
+
+	<mat-form-field>
+		<input matInput placeholder="Carteira cobrança" [(ngModel)]="remessabancaria.carteira_cobranca" #name="ngModel" required name="carteira_cobranca">
+	</mat-form-field>
+
+	<mat-form-field>
+		<input matInput placeholder="Código responsabilidade" [(ngModel)]="remessabancaria.cod_responsabilidade" #name="ngModel" required name="cod_responsabilidade">
+	</mat-form-field>
+
+	<br />
+
+	<mat-form-field>
+		<input matInput placeholder="Taxa juro mensal" [(ngModel)]="remessabancaria.taxa_juro_mensal" #name="ngModel" required name="taxa_juro_mensal">
+	</mat-form-field>
+
+
+	<mat-form-field>
+		<input matInput placeholder="Numero bordero" [(ngModel)]="remessabancaria.num_bordero" #name="ngModel" required name="num_bordero">
+	</mat-form-field>
+
+	<br />
+
+	<mat-form-field>
+		<input matInput placeholder="Variação" [(ngModel)]="remessabancaria.variacao" #name="ngModel" required name="variacao">
+	</mat-form-field>
+
+
+	<mat-form-field>
+		<input matInput placeholder="Dias baixa" [(ngModel)]="remessabancaria.dias_baixa" #name="ngModel" required name="dias_baixa">
+	</mat-form-field>
+
+	<br />
+
+	<mat-form-field>
+		<input matInput placeholder="Especie do documento" [(ngModel)]="remessabancaria.especie_doc" #name="ngModel" required name="especie_doc">
+	</mat-form-field>
+
+	<mat-form-field >
+		<input matInput placeholder="N° contrato pagamento" [(ngModel)]="remessabancaria.num_contrato_pagto" #name="ngModel" required name="num_contrato_pagto">
+	</mat-form-field>
+
+	<br />
+
+	<mat-form-field>
+		<input matInput placeholder="N° contrato recebimento" [(ngModel)]="remessabancaria.num_contrato_receb" #name="ngModel" required name="num_contrato_receb">
+	</mat-form-field>
+
+	<br />
+	<mat-card-actions>
+		<button mat-button color="primary" [mat-dialog-close]="remessabancaria">SALVAR</button>
+		<button mat-button (click)="dialogRef.close()">CANCELAR</button>
+	</mat-card-actions>
+</mat-card>

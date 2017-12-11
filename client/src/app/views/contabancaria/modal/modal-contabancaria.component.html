@@ -1,0 +1,52 @@
+<mat-card>
+	<mat-card-header>
+		<mat-card-title>Conta Bancária</mat-card-title>
+		<br />
+		<mat-card-subtitle>Informe os dados para cadastro de conta bancária</mat-card-subtitle>
+	</mat-card-header>
+
+		<mat-form-field>
+			<input matInput placeholder="Agência Número" [(ngModel)]="contabancaria.agencia_numero" #name="ngModel" required name="agencia_numero">
+		</mat-form-field>
+
+	<br />
+
+	<mat-form-field>
+		<input matInput placeholder="Agência Digito" [(ngModel)]="contabancaria.agencia_digito" #name="ngModel" required name="agencia_digito">
+	</mat-form-field>
+
+<br />
+
+		<mat-form-field>
+			<input matInput placeholder="Conta Número"  [(ngModel)]="contabancaria.conta_numero" #nome="ngModel" required name="conta_numero">
+		</mat-form-field>
+
+	<br />
+
+	<mat-form-field>
+		<input matInput placeholder="Conta Digito"  [(ngModel)]="contabancaria.conta_digito" #nome="ngModel" required name="conta_digito">
+	</mat-form-field>
+
+<br />
+
+	<mat-form-field>
+		<input matInput placeholder="Documento Títular"  [(ngModel)]="contabancaria.doc_titular" #nome="ngModel" required name="doc_titular">
+	</mat-form-field>
+
+	<br />
+
+	<mat-form-field>
+		<mat-select [(ngModel)]="contabancaria.banco"  id="cmbBanco" placeholder="Selecione o Banco">
+			<mat-option *ngFor="let bancoValue of bancos" [value]="bancoValue.id">
+				{{bancoValue.descricao}}
+			</mat-option>
+  </mat-select>
+
+</mat-form-field>
+
+	<br />
+	<mat-card-actions>
+		<button mat-button color="primary" [mat-dialog-close]="contabancaria">SALVAR</button>
+		<button mat-button (click)="dialogRef.close()">CANCELAR</button>
+	</mat-card-actions>
+</mat-card>

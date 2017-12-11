@@ -20,8 +20,11 @@ export class NavigationService extends SuperService {
 		{ link: "conveniado", icon: "local_grocery_store", desc: "Conveniado", permicoes: ['ADMIN', 'CLIENT'] },
 		{ link: "lancamento", icon: "compare_arrows", desc: "Lançamentos", permicoes: ['ADMIN', 'CLIENT'] },
 		{ link: "plano-conta", icon: "import_contacts", desc: "Plano de Contas", permicoes: ['ADMIN', 'CLIENT'] },
+		{ link: "conta", icon: "import_contacts", desc: "Contas", permicoes: ['ADMIN', 'CLIENT'] },
 		{ link: "painel", icon: "compare_arrows", desc: "Painel", permicoes: ['ADMIN', 'CLIENT'] },
 		{ link: "banco", icon: "attach_money", desc: "Banco", permicoes: ['ADMIN', 'CLIENT'] },
+        { link: "contabancaria", icon: "attach_money", desc: "Contas Bancárias", permicoes: ['ADMIN', 'CLIENT'] },
+        { link: "remessabancaria", icon: "attach_money", desc: "Remessas Bancárias", permicoes: ['ADMIN', 'CLIENT'] },
 		{ link: "grupousuario", icon: "supervisor_account", desc: "Grupo de Usuários", permicoes: ['ADMIN', 'CLIENT'] },
 		{ link: "venda", icon: "shopping_cart", desc: "Venda", permicoes: ['ADMIN', 'CLIENT'] }
 	];
