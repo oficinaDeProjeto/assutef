@@ -1,4 +1,4 @@
-import { MAT_DIALOG_DATA, MatDialogRef, MatSnackBar } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef, MatSnackBar, MatCheckbox, MatDialog, MatInput } from '@angular/material';
 import { Component, OnInit, Optional, Inject } from '@angular/core';
 import { Lancamento } from '../../../models/lancamento'; 
 import {LancamentoService} from '../../../services/lancamento/lancamento.service';
@@ -14,6 +14,8 @@ import {ViewChild} from '@angular/core';
 
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/map';
+import { Chequinho } from '../../../models/chequinho';
+import { ChequinhoService } from '../../../services/chequinho/chequinho.service';
 
 
 
@@ -29,7 +31,11 @@ export class ModalLancamentoComponent implements OnInit {
   
   @ViewChild('inptassoc')
   inptassoc: any;
-  
+
+  @ViewChild('checkchequinho')
+  checkchequinho: MatCheckbox;
+
+
   valueassoc: string = '';
   valuevlr: string;
   myControl: FormControl = new FormControl();
@@ -39,7 +45,8 @@ export class ModalLancamentoComponent implements OnInit {
   lancamento: Lancamento = new Lancamento();
   filteredAssociados: Observable<Associado[]>;
   filteredConveniados: Observable<Conveniado[]>;
-  
+  associadoSelct: Associado;
+  chequinhos: Chequinho[] = [];
   
   constructor(
     public dialogRef: MatDialogRef<ModalLancamentoComponent>,
@@ -47,7 +54,9 @@ export class ModalLancamentoComponent implements OnInit {
     private associadoService: AssociadoService,
     private conveniadoService: ConveniadoService,
     private lancamentoService: LancamentoService,
-    private snackBar: MatSnackBar
+    private chequinhoService: ChequinhoService,
+    private snackBar: MatSnackBar,
+    public dialogChequinho: MatDialog,
   ) {
    }
 
@@ -87,20 +96,44 @@ export class ModalLancamentoComponent implements OnInit {
     return user ? user.razaosocial : user.razaosocial;
   }
 
+  
   salvarusuario(){
 
-    if(this.lancamento == null){
-      this.lancamento = new Lancamento();
-    }
-    this.lancamento.dataLancamento =  new Date();
-    this.lancamentoService.save(this.lancamento).subscribe(lancamento => {
-      console.log('Lançado!');
-      this.openSnackBar('Lançado', "Ok");
+    if(this.checkchequinho){
+      
+      this.chequinhoService.findByAssociado(this.lancamento.associado.id).subscribe(res => {
+        this.chequinhos = <Chequinho[]> res;
+      }, err => {
+        console.log("Erro ao listar chequinhos");
+      });
+
+      for(let chequinho of this.chequinhos){
+        if(chequinho.ativo){
+          chequinho.ativo = false;
+          break;
+        }
+      }
+
+    }else{
+      if(this.lancamento == null){
+        this.lancamento = new Lancamento();
+      }
+
+      this.lancamento.dataLancamento =  new Date();
+      
+      this.lancamentoService.save(this.lancamento).subscribe(lancamento => {
+        console.log('Lançado!');
+        this.openSnackBar('Lançado', "Ok");
+
+
+      }, err => {
+        console.log(err);
+      });
+      
       this.valueassoc = null;
       this.inptassoc.nativeElement.focus();
-		}, err => {
-			console.log(err);
-		});
+    }  
+
   }
 
 

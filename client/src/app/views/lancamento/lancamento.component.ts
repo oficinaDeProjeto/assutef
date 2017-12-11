@@ -157,8 +157,7 @@ export class LancamentoComponent implements OnInit {
 
 	openDialog(lancamento: Lancamento): void {
 		let dialogRef = this.dialog.open(ModalLancamentoComponent, {
-			width: '40%',
-
+			width: '40%',	
 			data: { lanc: lancamento, conveniados: this.conveniados, associados: this.associados }
 		});
 
@@ -187,8 +186,6 @@ export class LancamentoComponent implements OnInit {
 
 	}
 
-
-
 	findAll() {
 		this.lancamentoService.findAll().subscribe(lancamentos => {
 			this.lancamentos = <Lancamento[]>lancamentos;
@@ -199,9 +196,6 @@ export class LancamentoComponent implements OnInit {
 	}
 
 	construirData(lancamentos: Lancamento[]) {
-
-
-
 		for (let index = 0; index < lancamentos.length; index++) {
 
 			this.el = new Elemento();
