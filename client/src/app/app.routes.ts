@@ -7,6 +7,8 @@ import { AssociadoComponent } from './views/associado/associado.component';
 import { UsuarioComponent } from './views/usuario/usuario.component';
 import { CategoriaComponent } from './views/categoria/categoria.component';
 import { ProdutoComponent } from './views/produto/produto.component';
+import { ContabancariaComponent } from './views/contabancaria/contabancaria.component';
+import { RemessabancariaComponent } from './views/remessabancaria/remessabancaria.component';
 import { ChequinhoComponent } from './views/chequinho/chequinho.component';
 import { LancamentoComponent } from './views/lancamento/lancamento.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -23,8 +25,6 @@ import { VendaComponent } from './views/venda/venda.component';
 import { CarrinhoComponent } from './views/carrinho/carrinho.component';
 import { BancoComponent } from './views/banco/banco.component';
 import { RechequinhoComponent } from './views/rechequinho/rechequinho.component';
-import { ContabancariaComponent } from './views/contabancaria/contabancaria.component';
-import { RemessabancariaComponent } from './views/remessabancaria/remessabancaria.component';
 
 const routes: Routes = [
     // Main redirect
@@ -60,6 +60,20 @@ const routes: Routes = [
                 component: ProdutoComponent,
                 data: {
                     breadcrumb: "Produtos"
+                }
+            },
+            {
+                path: 'contabancaria',
+                component: ContabancariaComponent,
+                data: {
+                    breadcrumb: "Contas BancÃ¡rias"
+                }
+            },
+            {
+                path: 'remessabancaria',
+                component: RemessabancariaComponent,
+                data: {
+                    breadcrumb: "Remessas BancÃ¡rias"
                 }
             },
             {
@@ -157,20 +171,6 @@ const routes: Routes = [
                 component: RechequinhoComponent,
                 data:{
                     breadcrumb: 'Re-Impressão Chequinho'
-                }
-            },
-            {
-                path: 'contabancaria',
-                component: ContabancariaComponent,
-                data: {
-                    breadcrumb: "Contas BancÃ¡rias"
-                }
-            },
-            {
-                path: 'remessabancaria',
-                component: RemessabancariaComponent,
-                data: {
-                    breadcrumb: "Remessas BancÃ¡rias"
                 }
             }
         ]

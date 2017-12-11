@@ -6,7 +6,7 @@
 	</mat-card-header>
 
 	<mat-form-field>
-		<mat-select [(ngModel)]="remessabancaria.contabancaria"  id="cmbContabancaria" placeholder="Selecione a conta bancaria">
+		<mat-select [(ngModel)]="remessabancaria.contabancaria" id="cmbContabancaria" placeholder="Selecione a conta bancaria">
 			<mat-option *ngFor="let contabancariaValue of contabancarias" [value]="contabancariaValue.id">
 				Banco - {{contabancariaValue.banco.descricao}} - Agencia {{contabancariaValue.agencia_numero}} - Conta - {{contabancariaValue.conta_numero}}-{{contabancariaValue.conta_digito}}
 			</mat-option>

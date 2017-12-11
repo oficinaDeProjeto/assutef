@@ -1,7 +1,7 @@
 module.exports = {
 
   attributes: {
-    schema: true,
+    //schema: true,
     connection: 'postgres',
     agencia_numero: {
       type: 'string',

@@ -7,11 +7,11 @@ import { ChequinhoModule } from './views/chequinho/chequinho.module';
 import { ImpressaoChequinhoModule } from './views/chequinho/impressao/impressao-chequinho.module';
 import { CategoriaModule } from './views/categoria/categoria.module';
 import { ProdutoModule } from './views/produto/produto.module';
+import { ContabancariaModule } from './views/contabancaria/contabancaria.module';
+import { RemessabancariaModule } from './views/remessabancaria/remessabancaria.module';
 import { AssociadoModule } from './views/associado/associado.module';
 import { LancamentoModule } from './views/lancamento/lancamento.module';
 import { GrupousuarioModule } from './views/grupousuario/grupousuario.module';
-import { ContabancariaModule } from './views/contabancaria/contabancaria.module';
-import { RemessabancariaModule } from './views/remessabancaria/remessabancaria.module';
 
 import 'hammerjs';
 import { BrowserModule } from '@angular/platform-browser';
@@ -65,6 +65,8 @@ import { RechequinhoModule } from './views/rechequinho/rechequinho.module';
 		AssociadoModule,
 		CategoriaModule,
 		ProdutoModule,
+        ContabancariaModule,
+        RemessabancariaModule,
 		ChequinhoModule,
 		UsuarioModule,
 		LancamentoModule,
@@ -85,8 +87,6 @@ import { RechequinhoModule } from './views/rechequinho/rechequinho.module';
 		BancoModule,
 		PainelModule,
 		RechequinhoModule,
-        ContabancariaModule,
-        RemessabancariaModule,
 		ROUTES
 	],
 	bootstrap: [AppComponent],
