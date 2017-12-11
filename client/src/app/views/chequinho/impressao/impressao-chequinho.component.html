@@ -1,31 +1,31 @@
 <div id="chequinhoimpressao">	
 	<div *ngFor="let chequinho of chequinhos">
 
-		<div style="margin-top:0.5cm;max-height:1cm;width:100%;">						
-			<label id="1" style="position: absolute;font-size:11px;margin-left:8.3cm;max-width:3.5cm!important;min-width:3.5">{{chequinho.id}}</label>
+		<div style="margin-top:0.9cm;max-height:1cm;width:100%;">						
+			<label id="1" style="position: absolute;font-size:11px;margin-left:10.8cm;max-width:3.5cm!important;min-width:3.5">{{chequinho.id}}</label>
 			<span style="width: 2.8cm;min-width:2.8cm"></span>
-			<label style="font-size:11px;margin-left:14.7cm;max-width:4.7cm;">{{chequinho.valorLimite}}</label>												
+			<label style="font-size:11px;margin-left:19.0cm;max-width:4.7cm;">{{chequinho.valorLimite}}</label>												
 		</div>
-		<div style="margin-top:3.4cm">
-			<label style="position: absolute;font-size:11px;margin-left:4.2cm;max-width:4.3cm">{{chequinho.associado.id}}</label>			
-		
-			<label style="position: absolute;font-size:11px;margin-left:8.1cm;min-width:10cm;max-width:10cm"> {{chequinho.associado.nome}}</label>							
-
-			<label style="position: absolute;font-size:11px;margin-left:17.2cm;max-width:7.2cm">{{chequinho.associado.cpf}}</label>										
-		</div>
-		<div style="margin-top:1.9cm"></div>
-		<br/>
-		<br/>		
-		<div style="margin-left:6.8cm">
+		<div style="margin-left:6.0cm;margin-top:2.0cm;width:100%">
 			<ngx-barcode
 			[bc-format]='codabar'
 			[bc-element-type]='svg'
-			[bc-value]='chequinho.numero'
+			[bc-value]='chequinho.id'
 			[bc-width]=3
-			[bc-height]=50
+			[bc-height]=20
 			[bc-display-value]=true
 			[bc-font]='monospace'>
 			</ngx-barcode>
 		</div>
+		<div style="margin-top:0.7cm">
+			<label style="position: absolute;font-size:11px;margin-left:6.9cm;max-width:4.3cm">{{chequinho.associado.id}}</label>			
+		
+			<label style="position: absolute;font-size:11px;margin-left:10.4cm;min-width:10cm;max-width:10cm"> {{chequinho.associado.nome}}</label>							
+
+			<label style="position: absolute;font-size:11px;margin-left:22.3cm;max-width:7.2cm">{{chequinho.associado.cpf}}</label>										
+		</div>
+		<div style="margin-top:3.6cm"></div>
+		<br/>
+		<br/>				
 	</div>	
 </div>

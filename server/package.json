@@ -15,7 +15,8 @@
     "sails": "~0.12.13",
     "sails-disk": "~0.10.9",
     "sails-hook-email": "^0.12.1",
-    "sails-mongo": "^0.12.2"
+    "sails-mongo": "^0.12.2",
+    "sails-postgresql": "^0.11.4"
   },
   "scripts": {
     "debug": "node debug app.js",
