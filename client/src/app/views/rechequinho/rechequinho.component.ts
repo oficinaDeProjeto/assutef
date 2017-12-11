@@ -8,6 +8,7 @@ import { FormControl } from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
 import {startWith} from 'rxjs/operators/startWith';
 import {map} from 'rxjs/operators/map';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-rechequinho',
@@ -19,6 +20,8 @@ export class RechequinhoComponent implements OnInit {
   associados : Associado[] = [];
   chequinhos : Chequinho[] = [];
 
+  chequinhosReimpressao : Chequinho[] = [];
+  
   test: any;
 
   //config do auto complebosta
@@ -29,6 +32,7 @@ export class RechequinhoComponent implements OnInit {
   @ViewChild(MatSelectionList) chequinhosSelected: MatSelectionList;
 
   constructor(
+    private router: Router,
     private chequinhoService: ChequinhoService,
 		private associadoService: AssociadoService,
 		public snackBar: MatSnackBar) {
@@ -75,7 +79,13 @@ export class RechequinhoComponent implements OnInit {
 		});
   }
   batata():void{
-    console.log(this.chequinhosSelected.selectedOptions.selected.toLocaleString);
+    this.chequinhosReimpressao = [];
+    this.chequinhosSelected.selectedOptions.selected.forEach(p => {
+      this.chequinhosReimpressao.push(p.value.id);
+    });
+
+    console.log(this.chequinhosReimpressao);
+    this.router.navigate(["chequinhoimpressao", this.chequinhosReimpressao.join('~') ]); //"Split ao contrário" para concatenar os códigos
     
   }
 
