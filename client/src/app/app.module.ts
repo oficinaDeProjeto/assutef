@@ -1,3 +1,4 @@
+import { ContaModule } from './views/conta/conta.module';
 import { PlanoContaModule } from './views/plano-conta/plano-conta.module';
 import { ActivationAssociadoComponent } from './views/activation-associado/activation-associado.component';
 import { PainelModule } from './views/painel/painel.module';
@@ -72,6 +73,7 @@ import { BancoModule } from './views/banco/banco.module';
 		VendaModule,
 		CarrinhoModule,
 		PlanoContaModule,
+		ContaModule,
 		// Modules
 		NgxBarcodeModule,
 		LayoutsModule,

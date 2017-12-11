@@ -1,3 +1,4 @@
+import { ContaComponent } from './views/conta/conta.component';
 import { PlanoContaComponent } from './views/plano-conta/plano-conta.component';
 import { GrupousuarioComponent } from './views/grupousuario/grupousuario.component';
 import { ActivationAssociadoComponent } from './views/activation-associado/activation-associado.component';
@@ -113,6 +114,13 @@ const routes: Routes = [
                 component: PlanoContaComponent,
                 data: {
                     breadcrumb: "Plano de Contas"
+                }
+            },
+            {
+                path: 'conta',
+                component: ContaComponent,
+                data: {
+                    breadcrumb: "Contas"
                 }
             },
             {
