@@ -34,7 +34,7 @@
             </mat-list-item>
           </mat-list>-->
           <mat-selection-list #shoes>
-              <mat-list-option *ngFor="let cheqcheq of chequinhos">
+              <mat-list-option [value]="cheqcheq" *ngFor="let cheqcheq of chequinhos">
                   <div>
                     <h4 mat-line>{{cheqcheq.data}} - {{cheqcheq.valorLimite}}</h4>
                   </div>
