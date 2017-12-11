@@ -83,10 +83,9 @@ export class RechequinhoComponent implements OnInit {
     this.chequinhosSelected.selectedOptions.selected.forEach(p => {
       this.chequinhosReimpressao.push(p.value.id);
     });
-
-    console.log(this.chequinhosReimpressao);
-    this.router.navigate(["chequinhoimpressao", this.chequinhosReimpressao.join('~') ]); //"Split ao contrário" para concatenar os códigos
-    
+    if(this.chequinhosReimpressao.length > 0)
+      this.router.navigate(["chequinhoimpressao", this.chequinhosReimpressao.join('~') ]); //"Split ao contrário" para concatenar os códigos
+    else this.openSnackBar('Por favor, seleciona um ou mais chequinhos', 'OK');
   }
 
 

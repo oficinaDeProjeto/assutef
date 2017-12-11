@@ -36,16 +36,16 @@
           <mat-selection-list #shoes>
               <mat-list-option [value]="cheqcheq" *ngFor="let cheqcheq of chequinhos">
                   <div>
-                    <h4 mat-line>{{cheqcheq.data}} - {{cheqcheq.valorLimite}}</h4>
+                    <h4 mat-line>Chequinho: {{cheqcheq.id}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Data: {{cheqcheq.data | date: 'dd/MM/yyyy'}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{cheqcheq.valorLimite | currency:'BRL':true:'1.2-2'}}</h4>
                   </div>
               </mat-list-option>
             </mat-selection-list>
             
             <p>
-              Chequinhos selecionados selected: {{shoes.selectedOptions.selected.length}}
+              Chequinhos selecionados: {{shoes.selectedOptions.selected.length}}
             </p>
         </mat-card-content>
-        <button type="button" mat-raised-button (click)="batata()">Ir</button>
+        <button type="button" mat-raised-button (click)="batata()">Imprimir</button>
   </mat-card>
 	</div>
 
