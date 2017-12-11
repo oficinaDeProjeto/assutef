@@ -5,5 +5,6 @@ export class Chequinho {
     valorLimite : number;
     valorUtilizado : number;
     associado: Associado = new Associado;
-    data: Date;    
+    data: Date;   
+    ativo: boolean = true;
 }
