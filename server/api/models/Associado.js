@@ -47,6 +47,9 @@ module.exports = {
 		},
 		usuario: {
 			model: "usuario"
+		},
+		valorLimite: {
+			type: 'number'
 		}
 		//createdAt: 'date',
 		//updatedAt: 'date',

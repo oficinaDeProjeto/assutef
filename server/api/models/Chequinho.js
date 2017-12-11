@@ -34,6 +34,11 @@ module.exports = {
 			type: 'float',
 			required: true
 		},
+		ativo:{
+			type: 'boolean',
+			required: true,
+			defaultsTo: true,			
 		}
+	}
 };
 
