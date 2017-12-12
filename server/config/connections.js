@@ -92,6 +92,7 @@ module.exports.connections = {
      user: 'postgres', // optional
      password: 'admin', // optional
      database: 'assutef'
+     //porta: 5432
    }
 
 
