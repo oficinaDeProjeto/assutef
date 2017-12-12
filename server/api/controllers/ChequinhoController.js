@@ -6,6 +6,21 @@
  */
 
 module.exports = {
-	
-};
+	findTotalChequinhoByAssociado : (req, res) =>  {
+        let idAssociado = req.param('associado')
+        Chequinho.find({associado: idAssociado, ativo: true}).sum('valorLimite').then(result => {
+            res.json(result)
+        }).catch(error => {
+            res.json('Não foi possível gerar o total.')
+        });
+    },
 
+    findByAssociado: (req,res) => {
+        let idAssociado = req.param('associado')
+        Chequinho.find({associado: idAssociado}).then(result => {
+            res.json(result)
+        }).catch(error => {
+            res.json("NAO CARREGOU ")
+        });
+    }
+};

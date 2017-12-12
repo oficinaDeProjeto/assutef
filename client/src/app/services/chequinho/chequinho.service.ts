@@ -13,9 +13,13 @@ export class ChequinhoService {
 	}
 
 	save(chequinho: Chequinho): Observable<Chequinho> {		
+		
+		if(chequinho.id){
+			return this.httpClient.put<Chequinho>(`${this.apiUrl}chequinho/${chequinho.id}`, chequinho);
+		}
 		return this.httpClient.post<Chequinho>(`${this.apiUrl}chequinho`, chequinho);
 	}
-	
+
 
 	findAll() : Observable<Chequinho[]> {
 		return this.httpClient.get<Chequinho[]>(`${this.apiUrl}chequinho`);
@@ -25,8 +29,16 @@ export class ChequinhoService {
 		return this.httpClient.get<Chequinho>(`${this.apiUrl}chequinho/${id}`);
 	}
 	
-	findLastResultsByAssociado(id: string) : Observable<Chequinho[]> {
+	findLastResultsByAssociado(id: number) : Observable<Chequinho[]> {
 		return this.httpClient.get<Chequinho[]>(`${this.apiUrl}chequinho?associado=${id}&sort=data DESC&limit=10`);
+	}
+
+	findTotalChequinhoByAssociado(id: number) : Observable<any>{
+		return this.httpClient.get<any>(`${this.apiUrl}chequinho/findTotalChequinhoByAssociado?associado=${id}`);
+	}
+
+	findByAssociado(id: number): Observable<Chequinho[]>{
+		return this.httpClient.get<Chequinho[]>(`${this.apiUrl}chequinho/findByAssociado?associado=${id}`);
 	}
 
 }

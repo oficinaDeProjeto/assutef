@@ -50,7 +50,7 @@ export class ImpressaoChequinhoComponent implements OnInit {
 			}
 			setTimeout(function(){ //Abre a tela de impressão
 				this.print();
-			}, 3000);
+			}, 500);
 		});	
 	}
 

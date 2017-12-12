@@ -35,6 +35,8 @@ export class ModalLancamentoComponent implements OnInit {
   @ViewChild('checkchequinho')
   checkchequinho: MatCheckbox;
 
+  chequinhoId: string;
+
 
   valueassoc: string = '';
   valuevlr: string;
@@ -108,9 +110,16 @@ export class ModalLancamentoComponent implements OnInit {
       });
 
       for(let chequinho of this.chequinhos){
-        if(chequinho.ativo){
+        if(chequinho.id == this.chequinhoId){
           chequinho.ativo = false;
-          break;
+          chequinho.valorUtilizado = this.lancamento.valor; 
+          this.chequinhoService.save(chequinho).subscribe(chequinho => {
+            this.openSnackBar("Salvo", "OK");
+          }, err => {
+            this.openSnackBar("Alterar", "OK");
+          });
+        }else{
+          this.openSnackBar("Esse chquinho não pertence a esse associado!", "OK");
         }
       }
 
@@ -124,8 +133,6 @@ export class ModalLancamentoComponent implements OnInit {
       this.lancamentoService.save(this.lancamento).subscribe(lancamento => {
         console.log('Lançado!');
         this.openSnackBar('Lançado', "Ok");
-
-
       }, err => {
         console.log(err);
       });

@@ -56,7 +56,7 @@ export class AssociadoService {
 	 * Remove o associado da base de dados.
 	 * @param id 
 	 */
-	delete(id: string): Observable<Associado> {
+	delete(id: number): Observable<Associado> {
 		return this.httpClient.delete<Associado>(`${this.apiUrl}associado/${id}`)
 	}
 	

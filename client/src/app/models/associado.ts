@@ -1,7 +1,7 @@
 import { Usuario } from './Usuario';
 import { Endereco } from './endereco';
 export class Associado {
-    id: string;
+    id: number;
     nome:string;
     email: string;
     tel: string;
@@ -10,4 +10,5 @@ export class Associado {
     sexo: string;
     endereco: Endereco = new Endereco();
     usuario: Usuario;
+    valorLimite: number;
 }
