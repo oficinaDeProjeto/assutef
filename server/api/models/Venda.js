@@ -13,7 +13,7 @@ module.exports = {
           model: 'Associado'
         },
         total: {
-          type: 'string',
+          type: 'float',
           required: true
         },
         produtos: {

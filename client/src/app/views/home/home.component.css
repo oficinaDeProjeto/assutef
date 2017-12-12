@@ -3,14 +3,16 @@ a {
     text-decoration: none;
 }
 
+.expansion{
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
 .corpo{
-    width: 85%;
-    height: 65%;
-    margin-left: 10%;
-    letter-spacing: 0.4em; word-spacing: 0.5em;
-    color: #5d665b;
-    font-size: 12px;
-    font-family: Arial, sans-serif;
+    width: 95%;
+    height: 85%;
+    margin-left: 20px;
+    font-size: 16px;
+    text-align: center;
     text-align: justify;
-    background-color: #e8eae8;
 }

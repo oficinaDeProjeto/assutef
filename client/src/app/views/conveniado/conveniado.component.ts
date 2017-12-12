@@ -129,7 +129,7 @@ export class ConveniadoComponent implements OnInit {
 	delete(conveniado: Conveniado) {
 		this.confirmDialogService.confirm(
 			'Confirmação',
-			`Você tem ceteza que deseja remover o associado ${conveniado.razaosocial}?`)
+			`Você tem ceteza que deseja remover o conveniado ${conveniado.razaosocial}?`)
 			.subscribe(res => {
 				if (res) {
 					this.conveniadoService.delete(conveniado.id).subscribe(conveniado => {

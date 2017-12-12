@@ -1,0 +1,47 @@
+<div class="content">
+	<div fxLayout="row" fxLayoutAlign="space-around center">
+
+		<mat-card>
+			<mat-card-header>
+				<mat-card-title>Conta Bancária</mat-card-title>
+				<mat-card-subtitle>Lista de contas bancárias</mat-card-subtitle>
+
+				<mat-input-container>
+					<input matInput [(ngModel)]="query" name="query" placeholder="Pesquise por conta bancária" (input)="filterContabancaria(query)">
+					<span fxFlex.gt-sm="50" fxFlex="100" class="p-5"></span>
+				</mat-input-container>
+			</mat-card-header>
+			<mat-card-content>
+				<mat-card-content>
+				<mat-list>
+					<mat-list-item *ngFor="let contabancaria of finalContabancarias">
+						<div fxLayout="row" fxLayoutAlign="space-between center" >
+							<div>
+								<h4 mat-line>{{contabancaria.conta_numero}} - {{contabancaria.conta_digito}}</h4>
+								<p mat-line> {{contabancaria.banco.descricao}} </p>
+							</div>
+							<div>
+								<button mat-icon-button color="primary" (click)="openDialog(contabancaria)"
+									matTooltip="Editar {{contabancaria.conta_numero}}">
+									<mat-icon>create</mat-icon>
+								</button>
+								<button mat-icon-button color="warn" (click)="delete(contabancaria)"
+									matTooltip="Remover {{contabancaria.conta_numero}}">
+									<mat-icon>delete</mat-icon>
+								</button>
+							</div>
+						</div>
+					</mat-list-item>
+				</mat-list>
+				<mat-paginator [length]="filteredContabancarias.length" [pageSize]="5" (page)="onPaginateChange($event)"
+				[pageSizeOptions]="[1, 5, 10, 25, 100]"></mat-paginator>
+			</mat-card-content>
+			</mat-card-content>
+		</mat-card>
+
+</div>
+
+<button matTooltip="Adicionar nova conta bancária" mat-fab (click)="openDialog()" class="fab-bottom-right">
+	<mat-icon>add</mat-icon>
+</button>
+</div>

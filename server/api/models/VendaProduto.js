@@ -21,11 +21,11 @@ module.exports = {
             type: 'string'
         },
         quantidade: {
-            type: 'string',
+            type: 'integer',
             required: true
         },
         valor: {
-            type: 'string',
+            type: 'float',
             required: true   
         }
     }

@@ -8,7 +8,7 @@ html, body, material-app, mat-sidenav-container, .my-content {
 }
 
 mat-sidenav {
-  width: 250px;
+  width: 320px;
 }
 
 ::-webkit-scrollbar {

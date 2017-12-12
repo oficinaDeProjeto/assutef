@@ -95,7 +95,7 @@ export class BancoComponent implements OnInit {
 						this.openSnackBar("Removido com sucesso", "OK");
 						this.findAll();
 					}, err => {
-						this.openSnackBar("Não foi possível remover ", "OK");
+						this.openSnackBar("Não foi possível remover o banco", "OK");
 					})
 				}
 			});
@@ -106,7 +106,7 @@ export class BancoComponent implements OnInit {
 			this.openSnackBar("Salvo com sucesso", "OK");
 			this.findAll();
 		}, err => {
-			this.openSnackBar("Não foi possível salvar ", "OK");
+			this.openSnackBar("Não foi possível salvar o banco", "OK");
 		});
 	}
 
