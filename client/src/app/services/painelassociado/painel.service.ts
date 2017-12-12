@@ -19,12 +19,13 @@ export class PainelService{
         return this.httpClient.get<Chequinho[]>(`${this.apiUrl}chequinho`);
     }
 
-    /*findAllLancamentos() : Observable<Lancamento[]>{ //listando a coleção de dados de lançamento
-        return this.httpClient.get<Lancamento[]>(`${this.apiUrl}lancamento`)
-    }*/
     findAll() : Observable<Lancamento[]>{ //listando a coleção de dados de lançamento
         return this.httpClient.get<Lancamento[]>(`${this.apiUrl}lancamento`)
     }
+
+    /*findAllLancamentos() : Observable<Lancamento[]>{ //listando a coleção de dados de lançamento
+        return this.httpClient.get<Lancamento[]>(`${this.apiUrl}lancamento`)
+    }*/
 
     /*findAllConveniados(): Observable<Conveniado[]>{
         return this.httpClient.get<Conveniado[]>(`${this.apiUrl}conveniado`);
