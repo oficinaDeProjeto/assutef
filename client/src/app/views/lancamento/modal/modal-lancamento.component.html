@@ -13,6 +13,10 @@
 
         <mat-checkbox [(ngModel)]="checkchequinho">Chequinho?</mat-checkbox>
 
+        <mat-form-field class="example-full-width" >
+            <input matInput placeholder="Código do chequinho" [(ngModel)]="chequinhoId" [disabled]="!checkchequinho">
+        </mat-form-field>
+
         <mat-form-field class="example-full-width" layout-margin style="margin-top: 20px">
             <input #inptassoc [(ngModel)]="lancamento.associado" type="text" placeholder="Associado" aria-label="Associado" matInput [formControl]="myControl" [matAutocomplete]="auto" [value]="valueassoc" >
             <mat-autocomplete #auto="matAutocomplete"  [displayWith]="displayFnAssociado">
