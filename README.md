@@ -1,4 +1,4 @@
-# Assutef
+# Assutef -TESTE
 
 Aplicação desenvolvida pelos alunos do 6º período de sistema de informação, para a matéria de oficina de projeto. A aplicação vai resolver problemas organizacionais da associação de professores da UTFPR
 
